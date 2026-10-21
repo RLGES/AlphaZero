@@ -2,13 +2,14 @@
 
 The AlphaZero engine (`src/engines/alphazero/`) is PUCT search guided by a
 policy/value network. Untrained, it runs with uniform priors and needs no
-PyTorch. A trained checkpoint is loaded with `--checkpoint`.
+PyTorch. A trained network is loaded with `--checkpoint`; the v1 networks are
+in `models/`.
 
 ```bash
 python -m pip install -e '.[dev,egglog,alphazero,modal]'
 ./rewrite arithmetic/expand_cancel --engine alphazero --iterations 25
 ./rewrite arithmetic/expand_cancel --engine alphazero --iterations 25 \
-    --checkpoint checkpoints/arith/latest.pt
+    --checkpoint models/arithmetic_v1.pt
 ```
 
 ## How training works
@@ -18,48 +19,82 @@ with the current network, trains on the replay buffer, and publishes a new
 checkpoint.
 
 - **Training terms** come from `benchmarks/generators.py` (arithmetic, boolean,
-  bitvector). They are random terms with planted redundancy. The hand-written
-  benchmarks are never used for training; they are the held-out evaluation.
+  bitvector). They are random terms with planted redundancy; `--depth MIN,MAX`
+  controls how hard they are. The hand-written benchmarks are never used for
+  training.
 - **Each self-play move** runs a PUCT search. The root visit counts become the
   policy target.
 - **Value target** of a state = the fraction of its cost removed by the best
   cost reached afterwards.
 - **Loss** = policy cross-entropy (over legal rules only) + value MSE. AdamW
   weight decay.
+- **Held-out score:** with `--heldout N`, every round also scores the network
+  on N generated terms (`--heldout-depth`) from a seed training never uses.
+  - `best.pt` is saved whenever that score improves.
+  - `--patience P` stops the run after P rounds without improvement.
 - **Checkpoints** store the language and its rule order. Loading one into a
   different language fails loudly.
 
 ## Local
 
 ```bash
-python -m src.engines.alphazero.train --suite arithmetic --rounds 10 --games 64 \
-    --sims 32 --steps 200 --workers 6 --out checkpoints/arith
+python -m src.engines.alphazero.train --suite arithmetic --rounds 20 --games 256 \
+    --sims 64 --steps 400 --workers 7 --out checkpoints/arithmetic_v1
 python -m src.engines.alphazero.train ... --resume   # continue from latest.pt
+scripts/train_local.sh arithmetic boolean bitvector   # one after another, auto-resume
 ```
 
 Each round writes these files to `--out`:
 - `theta_kNNNN.pt` and `latest.pt` (the latter also holds the optimizer state)
+- `best.pt` when the score improves
 - `buffer.pkl`
-- one line in `metrics.jsonl`: losses, sample counts, held-out eval cost, timings
+- one line in `metrics.jsonl`: losses, sample counts, eval scores, timings
 
-## Modal
+## Modal (v2 recipe)
+
+`modal_app.py` defaults to the v2 recipe:
+
+| Setting | v1 (local) | v2 (Modal default) |
+|---|---|---|
+| Training term depth | 2–5 | 3–7 |
+| Moves per game | 24 | 40 |
+| Simulations per move | 64 | 128 |
+| Network | 128 hidden, 4 layers | 192 hidden, 5 layers |
+| Batch | 64 | 128 |
+| Rounds | 20 | up to 60 |
+| Held-out score / early stop | — | 30 hard terms / stop after 8 flat rounds |
 
 ```bash
-modal token new                                   # once per machine
-modal run --detach modal_app.py --suite arithmetic --run-name arith_v1
-modal run --detach modal_app.py --suite boolean --run-name bool_v1 --rounds 30
-modal volume ls rewritezero-checkpoints arith_v1
-modal volume get rewritezero-checkpoints arith_v1/latest.pt checkpoints/arith_v1/
+modal token new                          # once per machine
+scripts/modal_v2.sh                      # launch arithmetic, boolean, bitvector; returns at once
+ROUNDS=30 scripts/modal_v2.sh boolean    # one suite, capped rounds
+scripts/modal_fetch.sh                   # download best.pt, latest.pt, metrics.jsonl
 ```
 
-- **Self-play** fans out over `--chunks` one-CPU containers per round.
-- **The driver** runs gradient steps on CPU, which is enough for this network
-  size. There is no GPU option, because Modal requires a payment method for GPU
-  functions.
-- **Resource caps** keep a small budget safe: self-play uses at most 16
-  one-CPU/1 GB workers, and the driver runs on 2 CPUs with a 4 GB, 4-hour limit.
-- **Disconnects:** `--detach` keeps the run alive if your laptop disconnects.
-  The volume is committed after every round, and the driver resumes from
-  `latest.pt`.
-- **Run names:** reusing a `--run-name` continues that run. Use a new name to
-  start fresh.
+- **Watch:** live logs and cost per run are at https://modal.com/apps. Fetched
+  results land in `checkpoints/<suite>_v2/`.
+- **Single run:** `modal run --detach modal_app.py --suite arithmetic`
+  streams that run's log. Any option can be overridden, e.g. `--sims 64 --rounds 20`.
+- **Self-play** fans out over `--chunks` (32) one-CPU containers per round, at
+  most 32 at a time.
+- **The driver** runs gradient steps on 4 CPUs with a 12-hour limit. There is no
+  GPU option, because Modal requires a payment method for GPU functions.
+- **Disconnects and timeouts:** the volume is committed after every round, and
+  running the same command again resumes from `latest.pt`. Reusing a
+  `--run-name` continues that run; use a new name to start fresh.
+
+### Cost and time estimate (v2, per suite)
+
+This is measured on a MacBook (one v2 game ≈ 9.5 CPU-seconds) and scaled to
+Modal, assuming its CPUs are about 1.5–2× slower. Prices are approximate (about
+$0.05 per CPU-hour plus memory); check modal.com/pricing.
+
+| | Per round | 60 rounds (cap) | With early stopping (~25–40 rounds, typical) |
+|---|---|---|---|
+| Cost | ~$0.08–0.10 | ~$5–6 | ~$2–4 |
+| Wall time | ~6–8 min | ~6–8 h | ~3–5 h |
+
+- **All three suites in parallel:** about $8–18 total, finishing in the same
+  wall time as one suite.
+- **Same recipe on a MacBook:** about 8–9 minutes per round. That's roughly 9
+  hours per suite, run one suite at a time.
