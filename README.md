@@ -7,7 +7,7 @@ for the arithmetic and Boolean suites.
 
 ## Quick start
 
-Python 3.11 or newer is required. Run these commands from the repository root
+Python 3.12 or newer is required (egglog 14 needs it). Run these commands from the repository root
 (on Windows, use your WSL terminal):
 
 ```bash
@@ -213,4 +213,4 @@ Semantic checks exercise arithmetic values, Boolean truth tables, bitvector
 wraparound, lambda capture avoidance, matrix values/shapes, and regex membership.
 
 Egglog-dependent tests skip cleanly when the optional package is absent.
-CI runs the full suite, lint checks, and aggregate CLI on Python 3.11, 3.12, and 3.14.
+Run `python -m pytest -q` and `ruff check .` locally; there is no CI workflow for now.
