@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "rewritezero"
+version = "0.1.0"
+description = "Language-agnostic term optimization with MCTS and egglog"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = []
+
+[project.optional-dependencies]
+egglog = ["egglog>=14,<15"]
+alphazero = ["torch>=2.4"]
+modal = ["modal>=1.0"]
+dev = ["pytest>=8,<10", "ruff>=0.12"]
+
+[project.scripts]
+rewrite = "src.api.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["src*", "benchmarks*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F", "I"]
