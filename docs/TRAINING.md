@@ -50,6 +50,37 @@ Each round writes these files to `--out`:
 - `buffer.pkl`
 - one line in `metrics.jsonl`: losses, sample counts, eval scores, timings
 
+## Overnight on a laptop: the Learn-R pipeline
+
+```bash
+scripts/overnight.sh            # whole night; keep the lid open and the charger in
+QUICK=1 scripts/overnight.sh    # 2-minute smoke test of every step
+tail -f checkpoints/overnight.log
+cat checkpoints/overnight_summary.txt   # in the morning
+```
+
+The script runs Learn-R → asm suite → AlphaZero end to end. Every step resumes
+or skips if it already finished, so rerunning is always safe.
+
+1. **Check** the environment and the Learn-R checkout. It defaults to
+   `~/Projects/RLGES/Learn-R`; set `LEARNR_PATH` to use another location.
+2. **Fresh run only:** compile 3,300 random Learn-R programs with Learn-R's
+   frontend into the asm corpus, and import Learn-R's LLM rules. A rule is
+   accepted only if it is still sound once generalised.
+3. **Run the tests.** The script stops if any fail.
+4. **Before report:** untrained AlphaZero vs MCTS on held-out Learn-R terms.
+5. **Train AlphaZero on asm**, with Learn-R's 45 rules as moves. Up to 100
+   rounds of 256 games, about 5 minutes per round on a MacBook. It early-stops
+   after 12 rounds without a better hard held-out score.
+6. **After report** with `best.pt`.
+7. **v2 runs** of boolean, bitvector and arithmetic with the remaining time.
+
+Options:
+- **Stopping:** Ctrl-C at any point; run the script again to continue.
+- **Disk:** the script stops cleanly when less than `MIN_FREE_GB` (default 2) is
+  free.
+- **Tuning:** `WORKERS` (default 7) and `EXTRA_SUITES` change the run.
+
 ## Modal (v2 recipe)
 
 `modal_app.py` defaults to the v2 recipe:

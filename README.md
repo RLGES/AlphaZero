@@ -10,6 +10,11 @@ engines that share one language-agnostic API:
 | **MCTS** | Hand-written UCT Monte Carlo tree search with random rollouts | nothing |
 | **egglog** | Bounded equality saturation, for comparison (arithmetic and Boolean) | `egglog` |
 
+The **asm** suite connects the engines to **Learn-R**: its terms come from programs
+compiled by Learn-R's frontend, and its 45 actions are Learn-R's built-in rewrite
+rules (plus any LLM-learned rules that stay sound when generalised).
+`scripts/overnight.sh` runs the whole Learn-R → AlphaZero pipeline on a laptop.
+
 The term-rewriting framework, its benchmark suites and the MCTS and egglog
 engines come from **RewriteZero / MCTS-Zero by Sujay Karpur**. The AlphaZero
 engine, training pipeline, term generators and trained networks are built on
