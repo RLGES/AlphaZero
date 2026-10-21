@@ -49,6 +49,9 @@ class TrainConfig:
     workers: int = 1
     eval_iterations: int = 100
     depth: tuple[int, int] = (2, 5)
+    heldout_terms: int = 0  # generated test terms scored each round; 0 scores benchmarks only
+    heldout_depth: tuple[int, int] = (3, 7)
+    patience: int = 0  # stop after this many rounds without a better score; 0 = never
     device: str = "cpu"
     selfplay: SelfPlayConfig = field(default_factory=SelfPlayConfig)
     spec: NetworkSpec | None = None
@@ -98,6 +101,26 @@ def evaluate_held_out(suite: str, net: PolicyValueNet, iterations: int, device: 
     }
 
 
+def evaluate_generated(
+    suite: str,
+    net: PolicyValueNet,
+    iterations: int,
+    device: str,
+    count: int,
+    depth: tuple[int, int],
+) -> float:
+    """Mean relative improvement on generated terms that training never draws."""
+    from .evaluate import TEST_SEED
+
+    language = load_suite(suite).language
+    engine = AlphaZeroEngine(AlphaZeroConfig(iterations=iterations, network=net, device=device))
+    total = 0.0
+    for term in generate(suite, Random(TEST_SEED), count, depth):
+        result = engine.run(language, term)
+        total += result.improvement_percent / 100
+    return total / count
+
+
 class Trainer:
     def __init__(self, cfg: TrainConfig, resume: bool = False):
         if cfg.suite not in GENERATOR_SUITES:
@@ -107,6 +130,8 @@ class Trainer:
         self.language = load_suite(cfg.suite).language
         width = len(self.language.action_vocabulary())
         self.round = 0
+        self.best_score = float("-inf")
+        self.rounds_since_best = 0
         self.buffer = ReplayBuffer(cfg.buffer_capacity)
         payload = load_checkpoint(self.out / "latest.pt", self.language) if resume else None
         spec = NetworkSpec(**payload["spec"]) if payload else cfg.spec or NetworkSpec(width)
@@ -119,6 +144,8 @@ class Trainer:
             if payload["optimizer"] is not None:
                 self.optimizer.load_state_dict(payload["optimizer"])
             self.round = payload["round"] + 1
+            self.best_score = payload["metrics"].get("best_score", float("-inf"))
+            self.rounds_since_best = payload["metrics"].get("rounds_since_best", 0)
             buffer_path = self.out / "buffer.pkl"
             if buffer_path.exists():
                 self.buffer.extend(pickle.loads(buffer_path.read_bytes()))
@@ -162,17 +189,40 @@ class Trainer:
             "buffer": len(self.buffer),
             "mean_target_value": sum(s.value for s in samples) / max(len(samples), 1),
             **evaluate_held_out(cfg.suite, self.net, cfg.eval_iterations, cfg.device),
+        }
+        if cfg.heldout_terms:
+            metrics["heldout_mean_improvement"] = evaluate_generated(
+                cfg.suite,
+                self.net,
+                cfg.eval_iterations,
+                cfg.device,
+                cfg.heldout_terms,
+                cfg.heldout_depth,
+            )
+        # Higher is better; the hard held-out set is the signal when it is enabled.
+        score = metrics.get("heldout_mean_improvement", metrics["eval_mean_improvement"])
+        improved = score > self.best_score
+        if improved:
+            self.best_score, self.rounds_since_best = score, 0
+        else:
+            self.rounds_since_best += 1
+        metrics |= {
+            "score": score,
+            "best_score": self.best_score,
+            "rounds_since_best": self.rounds_since_best,
             "selfplay_seconds": round(selfplay_time, 2),
             "train_seconds": round(train_time, 2),
         }
-        self.save(metrics)
+        self.save(metrics, improved)
         self.round += 1
         return metrics
 
-    def save(self, metrics: dict[str, Any]) -> None:
+    def save(self, metrics: dict[str, Any], improved: bool = False) -> None:
         self.out.mkdir(parents=True, exist_ok=True)
         args = (self.net, self.language, self.round, metrics)
         save_checkpoint(self.out / f"theta_k{self.round:04d}.pt", *args)
+        if improved:
+            save_checkpoint(self.out / "best.pt", *args)
         save_checkpoint(self.out / "latest.pt", *args, optimizer=self.optimizer)
         tmp = self.out / "buffer.pkl.tmp"
         tmp.write_bytes(pickle.dumps(self.buffer.items()))
@@ -191,14 +241,28 @@ def outer_loop(
     trainer = Trainer(cfg, resume)
     play = play or play_locally(cfg.workers)
     while trainer.round < cfg.rounds:
+        if cfg.patience and trainer.rounds_since_best >= cfg.patience:
+            log(f"early stop: no better score for {cfg.patience} rounds")
+            break
         metrics = trainer.run_round(play, chunk_count or max(cfg.workers, 1))
         log(
             f"round {metrics['round']}: loss={metrics['loss']:.4f} "
             f"policy={metrics['policy_loss']:.4f} value={metrics['value_loss']:.4f} "
             f"samples={metrics['samples']} eval_cost={metrics['eval_mean_final_cost']:.2f} "
+            f"score={metrics['score']:.4f} best={metrics['best_score']:.4f} "
             f"({metrics['selfplay_seconds']}s play, {metrics['train_seconds']}s train)"
         )
     return trainer.out / "latest.pt"
+
+
+def depth_range(text: str) -> tuple[int, int]:
+    try:
+        low, high = (int(part) for part in text.split(","))
+    except ValueError:
+        raise argparse.ArgumentTypeError("expected MIN,MAX, e.g. 3,7") from None
+    if not 0 <= low <= high:
+        raise argparse.ArgumentTypeError("expected 0 <= MIN <= MAX")
+    return low, high
 
 
 def _parser() -> argparse.ArgumentParser:
@@ -215,6 +279,10 @@ def _parser() -> argparse.ArgumentParser:
     parser.add_argument("--layers", type=int, default=4)
     parser.add_argument("--workers", type=int, default=1)
     parser.add_argument("--eval-iterations", type=int, default=100)
+    parser.add_argument("--depth", type=depth_range, default=(2, 5), help="Training term depth")
+    parser.add_argument("--heldout", type=int, default=0, help="Generated test terms per round")
+    parser.add_argument("--heldout-depth", type=depth_range, default=(3, 7))
+    parser.add_argument("--patience", type=int, default=0, help="Early stop; 0 = off")
     parser.add_argument("--seed", type=int, default=0)
     parser.add_argument("--device", default="cpu")
     parser.add_argument("--out", default="checkpoints/run")
@@ -235,6 +303,10 @@ def config_from_args(args: argparse.Namespace) -> TrainConfig:
         out_dir=args.out,
         workers=args.workers,
         eval_iterations=args.eval_iterations,
+        depth=args.depth,
+        heldout_terms=args.heldout,
+        heldout_depth=args.heldout_depth,
+        patience=args.patience,
         device=args.device,
         selfplay=SelfPlayConfig(simulations_per_move=args.sims, max_moves=args.max_moves),
         spec=NetworkSpec(width, hidden=args.hidden, layers=args.layers),

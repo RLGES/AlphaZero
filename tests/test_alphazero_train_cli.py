@@ -28,6 +28,30 @@ def test_train_one_round_then_resume(tmp_path, capsys):
     assert "round 1" in capsys.readouterr().out
 
 
+def test_heldout_score_best_checkpoint_and_early_stop(tmp_path):
+    out = tmp_path / "v2"
+    args = [*TINY, "--depth", "1,2", "--heldout", "3", "--patience", "1", "--out", str(out)]
+    assert main([*args, "--rounds", "6"]) == 0
+    rows = [json.loads(line) for line in (out / "metrics.jsonl").read_text().splitlines()]
+    for row in rows:
+        assert 0.0 <= row["heldout_mean_improvement"] <= 1.0
+        assert row["score"] == row["heldout_mean_improvement"]
+    assert len(rows) == 6 or rows[-1]["rounds_since_best"] >= 1
+    best_round = max(rows, key=lambda r: r["score"])["round"]
+    torch = pytest.importorskip("torch")
+    assert torch.load(out / "best.pt", weights_only=False)["round"] == best_round
+    # Resuming keeps the best score instead of restarting the comparison.
+    assert main([*args, "--rounds", str(len(rows) + 1), "--resume", "--patience", "0"]) == 0
+    resumed = json.loads((out / "metrics.jsonl").read_text().splitlines()[-1])
+    assert resumed["best_score"] >= max(r["score"] for r in rows)
+
+
+@pytest.mark.parametrize("depth", ["5,2", "3", "a,b"])
+def test_bad_depth_rejected(tmp_path, depth):
+    with pytest.raises(SystemExit):
+        main([*TINY, "--rounds", "1", "--depth", depth, "--out", str(tmp_path / "x")])
+
+
 def test_resume_without_checkpoint_fails(tmp_path):
     with pytest.raises(SystemExit):
         main([*TINY, "--rounds", "1", "--out", str(tmp_path / "none"), "--resume"])
