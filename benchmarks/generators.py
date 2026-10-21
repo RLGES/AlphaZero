@@ -1,23 +1,38 @@
 """Training-term generation for AlphaZero self-play.
 
 Hand-written benchmarks stay held out: generated terms equal to any of them are
-discarded, as are duplicates and terms where no rule applies.
+discarded, as are duplicates and terms where no rule applies. Generators that
+accept a ``split`` argument (asm) draw held-out evaluation terms from separate
+data when called with ``split="test"``; the others rely on a distinct seed.
 """
 
 from importlib import import_module
+from inspect import signature
 from random import Random
 
 from .registry import load_suite
 
-GENERATOR_SUITES = ("arithmetic", "boolean", "bitvector")
+GENERATOR_SUITES = ("arithmetic", "boolean", "bitvector", "asm")
 
 
-def generate(suite: str, rng: Random, count: int, depth: tuple[int, int] = (2, 5)) -> list:
+def generate(
+    suite: str,
+    rng: Random,
+    count: int,
+    depth: tuple[int, int] = (2, 5),
+    split: str = "train",
+) -> list:
     if suite not in GENERATOR_SUITES:
         raise ValueError(
             f"No term generator for '{suite}'. Choose from: {', '.join(GENERATOR_SUITES)}"
         )
-    random_term = import_module(f"benchmarks.{suite}.generator").random_term
+    module_term = import_module(f"benchmarks.{suite}.generator").random_term
+    if "split" in signature(module_term).parameters:
+
+        def random_term(rng: Random, depth: int):
+            return module_term(rng, depth, split=split)
+    else:
+        random_term = module_term
     loaded = load_suite(suite)
     language = loaded.language
     held_out = {benchmark.term for benchmark in loaded.benchmarks}

@@ -115,7 +115,7 @@ def evaluate_generated(
     language = load_suite(suite).language
     engine = AlphaZeroEngine(AlphaZeroConfig(iterations=iterations, network=net, device=device))
     total = 0.0
-    for term in generate(suite, Random(TEST_SEED), count, depth):
+    for term in generate(suite, Random(TEST_SEED), count, depth, split="test"):
         result = engine.run(language, term)
         total += result.improvement_percent / 100
     return total / count

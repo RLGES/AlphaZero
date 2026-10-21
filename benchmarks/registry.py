@@ -5,7 +5,7 @@ from importlib import import_module
 
 from .common import Benchmark, Suite
 
-SUITE_NAMES = ("arithmetic", "boolean", "lambda", "bitvector", "linear_algebra", "regex")
+SUITE_NAMES = ("arithmetic", "boolean", "lambda", "bitvector", "linear_algebra", "regex", "asm")
 
 
 @lru_cache(maxsize=None)

@@ -1,0 +1,93 @@
+{
+  "sources": [
+    "/Users/sumeet/Projects/RLGES/Learn-R/output.txt",
+    "/Users/sumeet/Projects/RLGES/Learn-R/output2.txt",
+    "/Users/sumeet/Projects/RLGES/Learn-R/output3.txt"
+  ],
+  "accepted": [],
+  "rejected": [
+    {
+      "lhs_seq": [
+        "sub dst, src",
+        "cmp dst, 0"
+      ],
+      "rhs_seq": [
+        "xor dst, dst",
+        "test src, src",
+        "setl al",
+        "cmovl dst, -1"
+      ],
+      "reason": "unsupported instruction 'cmp dst, 0'"
+    },
+    {
+      "lhs_seq": [
+        "cmp r1, r2",
+        "jge Label_A",
+        "mov dst, r3",
+        "jmp Label_B"
+      ],
+      "rhs_seq": [
+        "xor eax, eax",
+        "test r1, r1"
+      ],
+      "reason": "unsupported instruction 'cmp r1, r2'"
+    },
+    {
+      "lhs_seq": [
+        "CMP x, y",
+        "JGE L0"
+      ],
+      "rhs_seq": [
+        "xor eax, eax",
+        "test src, dst",
+        "mov edx, 1",
+        "cmovg eax, edx"
+      ],
+      "reason": "unsupported instruction 'CMP x, y'"
+    },
+    {
+      "lhs_seq": [
+        "MOV t2, 1",
+        "MOV result, t2"
+      ],
+      "rhs_seq": [
+        "xor eax, eax",
+        "mov eax, 1"
+      ],
+      "reason": "left side is a bare register or constant"
+    },
+    {
+      "lhs_seq": [
+        "MUL t4, t3"
+      ],
+      "rhs_seq": [
+        "mov eax, t4"
+      ],
+      "reason": "unsound or unbound: sides disagree on some inputs"
+    },
+    {
+      "lhs_seq": [
+        "MOV start, a",
+        "MOV t2, start",
+        "ADD t2, t1"
+      ],
+      "rhs_seq": [
+        "mov eax, a",
+        "add eax, t1"
+      ],
+      "reason": "no-op: both sides compute the same expression"
+    },
+    {
+      "lhs_seq": [
+        "MOV t6, y",
+        "MUL t6, t5"
+      ],
+      "rhs_seq": [
+        "mov eax, y",
+        "test eax, eax",
+        "cmovz eax, t5"
+      ],
+      "reason": "unsupported instruction 'test eax, eax'"
+    }
+  ]
+}

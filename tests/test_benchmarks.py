@@ -55,7 +55,7 @@ def test_every_benchmark_smoke(suite, benchmark):
 
 
 def test_registry_and_difficulty_metadata():
-    assert len(SUITE_NAMES) == 6
+    assert len(SUITE_NAMES) == 7
     for name in SUITE_NAMES:
         suite = load_suite(name)
         assert suite.name == name

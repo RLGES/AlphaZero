@@ -34,7 +34,7 @@ def _rows(args: argparse.Namespace) -> list[dict]:
     language = suite.language
     terms = [(f"{suite.name}/{b.name}", b.term) for b in suite.benchmarks]
     if args.generated:
-        generated = generate(args.suite, Random(TEST_SEED), args.generated, (3, 5))
+        generated = generate(args.suite, Random(TEST_SEED), args.generated, (3, 5), split="test")
         terms += [(f"generated/{i:03d}", term) for i, term in enumerate(generated)]
     network = None
     if args.checkpoint:
