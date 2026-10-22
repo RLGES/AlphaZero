@@ -1,3 +1,4 @@
+from collections import Counter
 from random import Random
 
 import pytest
@@ -137,6 +138,35 @@ def test_ir_inlining_matches_learnr_lowering():
     assert not straight_line
 
 
+def test_greedy_misses_what_needs_a_reassociation():
+    from benchmarks.asm.hardness import greedy_cost, hardness, is_hard
+    from benchmarks.asm.language import AsmLanguage
+
+    language = AsmLanguage()
+    term = B("mul", B("mul", x, Const(2)), Const(4))  # x*2*4: best is x<<3 (cost 3)
+    assert language.cost(term) == 9
+    assert greedy_cost(language, term) == 5  # shl(shl(x, 1), 2): no cheaper single step
+    stats = hardness(term)
+    assert stats["strong"] == 3 and is_hard(stats)
+    assert not is_hard(hardness(B("add", x, Const(0))))
+
+
+def test_hard_style_programs_compile():
+    from benchmarks.asm.learnr_bridge import DEFAULT_LEARNR, program_terms, random_program
+
+    if not (DEFAULT_LEARNR / "frontend").is_dir():
+        pytest.skip("no Learn-R checkout")
+    rng = Random(3)
+    classic = random_program(Random(3))
+    assert random_program(Random(3)) == classic  # classic stays reproducible
+    terms = [
+        t
+        for _ in range(20)
+        for t in program_terms(random_program(rng, style="hard"), DEFAULT_LEARNR, 150)
+    ]
+    assert len(terms) > 40
+
+
 def test_corpus_splits_are_disjoint_and_generator_uses_them():
     from benchmarks.asm.generator import corpus, random_term
     from benchmarks.generators import generate
@@ -180,3 +210,74 @@ def test_asm_benchmarks_are_optimizable():
     for benchmark in suite.benchmarks:
         result = rewrite_detailed(suite.language, benchmark.term, MCTSConfig(iterations=300))
         assert result.final_cost < result.initial_cost, benchmark.name
+
+
+def test_z3_proves_sound_rules_and_refutes_unsound_ones():
+    pytest.importorskip("z3")
+    from benchmarks.asm.rules import PATTERN_RULES
+    from benchmarks.asm.smt import prove_rule
+
+    assert all(prove_rule(lhs, rhs)[0] == "proved" for _, lhs, rhs in PATTERN_RULES)
+    assert prove_rule("(sub (add ?x ?y) ?y)", "?x")[0] == "proved"
+    assert prove_rule("(add ?x ?y)", "(sub ?x ?y)")[0] == "counterexample"
+    assert prove_rule("(div (mul ?x ?y) ?y)", "?x")[0] == "counterexample"  # y = 0, overflow
+    assert prove_rule("(mod ?x ?x)", "0")[0] == "proved"  # x % 0 is 0 too
+
+
+def test_llm_text_keeps_list_items_with_comments():
+    from benchmarks.asm.learned import parse_llm_text
+
+    text = "LHS: ['MOV t1, a ; copy', 'ADD t1, 0']\nRHS: ['MOV t1, a']\n"
+    assert parse_llm_text(text) == [(["MOV t1, a", "ADD t1, 0"], ["MOV t1, a"])]
+
+
+def test_discovery_accepts_only_new_proved_rules():
+    pytest.importorskip("z3")
+    from benchmarks.asm.discover import discover, parse_proposals
+
+    reply = "\n".join(
+        [
+            "Sure! Here are rules:",
+            '{"name": "cancel", "lhs": "(sub (add ?x ?y) ?y)", "rhs": "?x"}',
+            '{"name": "again", "lhs": "(sub (add ?a ?b) ?b)", "rhs": "?a"}',
+            '{"name": "known", "lhs": "(add ?x 0)", "rhs": "?x"}',
+            '{"name": "bad", "lhs": "(add ?x ?y)", "rhs": "(sub ?x ?y)"}',
+            '{"name": "trap", "lhs": "(div (mul ?x ?y) ?y)", "rhs": "?x"}',
+            '{"name": "free", "lhs": "(add ?x 1)", "rhs": "?z"}',
+            '{"name": "reg", "lhs": "(cmp eax 0)", "rhs": "0"}',
+            "not json {",
+        ]
+    )
+    assert len(parse_proposals(reply)) == 7
+    seeds = [B("sub", B("add", x, y), y)]
+    report = discover(lambda prompt, t: reply, seeds, prompts=2, workers=1, log=lambda _: None)
+    assert [(r["lhs"], r["rhs"]) for r in report["accepted"]] == [("(sub (add ?x ?y) ?y)", "?x")]
+    assert report["accepted"][0]["seed_matches"] == 1 and report["accepted"][0]["lowers_cost"]
+    reasons = Counter(r["reason"] for r in report["rejected"])
+    assert reasons["duplicate"] == 5  # renamed copy + built-in, then all three again
+    assert reasons["unsound (random 32-bit test)"] == 4
+    assert reasons["right side uses unbound variables"] == 2
+    assert reasons["unparseable"] == 2  # bare register names are not pattern variables
+
+
+def test_learned_rules_selectable_by_environment(monkeypatch, tmp_path):
+    from benchmarks.asm.learned import LEARNED_PATH, learned_path
+
+    monkeypatch.delenv("RLGES_ASM_LEARNED", raising=False)
+    assert learned_path() == LEARNED_PATH
+    monkeypatch.setenv("RLGES_ASM_LEARNED", "none")
+    assert learned_path() is None
+    monkeypatch.setenv("RLGES_ASM_LEARNED", str(tmp_path / "r.json"))
+    assert learned_path() == tmp_path / "r.json"
+
+
+def test_control_flow_splits_into_exact_basic_blocks():
+    from benchmarks.asm.learnr_bridge import ir_to_block_terms
+
+    ir = ["t0 = 0", "i = t0", "L0:", "t1 = 3", "CMP i, t1", "JGE L1", "t2 = 2", "t3 = i * t2"]
+    ir += ["t4 = s + t3", "s = t4", "t5 = 1", "t6 = i + t5", "i = t6", "JMP L0", "L1:"]
+    blocks = ir_to_block_terms(ir)
+    assert blocks[0] == {"i": Const(0)}
+    assert blocks[1] == {"cmp0": Var("i"), "cmp1": Const(3)}
+    s, i = Var("s"), Var("i")
+    assert blocks[2] == {"s": B("add", s, B("mul", i, Const(2))), "i": B("add", i, Const(1))}
