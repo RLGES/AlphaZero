@@ -24,10 +24,13 @@ CORPUS_SHARE = 0.6
 
 @lru_cache(maxsize=None)
 def corpus(split: str) -> tuple[Expr, ...]:
-    path = CORPUS_DIR / f"{split}.jsonl"
-    if not path.exists():
-        return ()
-    return tuple(from_sexpr(json.loads(line)["sexpr"]) for line in path.open())
+    """Straight-line terms plus basic-block terms from if/while programs (``cf_``)."""
+    terms: list[Expr] = []
+    for name in (f"{split}.jsonl", f"cf_{split}.jsonl"):
+        path = CORPUS_DIR / name
+        if path.exists():
+            terms += (from_sexpr(json.loads(line)["sexpr"]) for line in path.open())
+    return tuple(terms)
 
 
 def _leaf(rng: Random) -> Expr:
