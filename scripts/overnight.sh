@@ -13,7 +13,7 @@
 #   5. train AlphaZero on asm (Learn-R rules, Learn-R-compiled programs),
 #      early-stopping on a hard held-out score; resumes from latest.pt
 #   6. "after" report with the best network
-#   7. with time left, v2 runs for EXTRA_SUITES (default: boolean bitvector arithmetic)
+#   7. with time left, $EXTRA_TAG runs (with an after report) for EXTRA_SUITES (default: boolean bitvector arithmetic)
 # Logs: checkpoints/overnight.log; morning summary: checkpoints/overnight_summary.txt
 set -euo pipefail
 cd "$(dirname "$0")/.."
@@ -21,7 +21,8 @@ cd "$(dirname "$0")/.."
 PY=.venv/bin/python
 LEARNR_PATH="${LEARNR_PATH:-$HOME/Projects/RLGES/Learn-R}"
 EXTRA_SUITES="${EXTRA_SUITES:-boolean bitvector arithmetic}"
-RUN="${RUN:-asm_v1}"
+RUN="${RUN:-asm_v2}"
+EXTRA_TAG="${EXTRA_TAG:-v3}"
 WORKERS="${WORKERS:-7}"
 if [[ -n "${QUICK:-}" ]]; then
   RUN="quick_${RUN}"
@@ -32,10 +33,10 @@ if [[ -n "${QUICK:-}" ]]; then
                --eval-iterations 5)
 else
   TRAIN=(--rounds 100 --games 256 --sims 96 --max-moves 40 --depth 3,6 --steps 400
-         --batch-size 128 --hidden 192 --layers 5 --heldout 30 --patience 12)
+         --batch-size 128 --hidden 192 --layers 5 --heldout 100 --eval-iterations 25 --patience 12)
   EVAL=(--budgets 10,25,50,100 --seeds 2 --generated 50)
   EXTRA_TRAIN=(--rounds 60 --games 256 --sims 128 --max-moves 40 --depth 3,7 --steps 400
-               --batch-size 128 --hidden 192 --layers 5 --heldout 30 --patience 8)
+               --batch-size 128 --hidden 192 --layers 5 --heldout 100 --eval-iterations 25 --patience 8)
 fi
 OUT="checkpoints/$RUN"
 mkdir -p "$OUT"
@@ -110,9 +111,9 @@ step "6. after: trained AlphaZero (best.pt) vs MCTS"
   echo; echo "AFTER (best.pt):"; cat "$OUT/report_after.txt"
 } > checkpoints/overnight_summary.txt
 
-step "7. extra v2 runs: $EXTRA_SUITES"
+step "7. extra $EXTRA_TAG runs: $EXTRA_SUITES"
 for suite in $EXTRA_SUITES; do
-  out="checkpoints/${QUICK:+quick_}${suite}_v2"
+  out="checkpoints/${QUICK:+quick_}${suite}_${EXTRA_TAG}"
   mkdir -p "$out"
   resume=()
   [[ -f "$out/latest.pt" ]] && resume=(--resume)
@@ -120,7 +121,12 @@ for suite in $EXTRA_SUITES; do
   disk_ok || break
   "$PY" -m src.engines.alphazero.train --suite "$suite" "${EXTRA_TRAIN[@]}" --workers "$WORKERS" \
     --out "$out" ${resume[@]+"${resume[@]}"} 2>&1 | tee -a "$out/train.log"
-  { echo; echo "$suite v2 (last rounds):"; tail -3 "$out/train.log"; } >> checkpoints/overnight_summary.txt
+  "$PY" -m src.engines.alphazero.evaluate --suite "$suite" --checkpoint "$out/best.pt" "${EVAL[@]}" \
+    --no-egglog --csv "$out/eval_after.csv" | tee "$out/report_after.txt"
+  {
+    echo; echo "$suite $EXTRA_TAG (last rounds):"; tail -3 "$out/train.log"
+    echo "AFTER (best.pt):"; cat "$out/report_after.txt"
+  } >> checkpoints/overnight_summary.txt
 done
 
 step "done. Summary: checkpoints/overnight_summary.txt"
