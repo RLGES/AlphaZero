@@ -6,15 +6,17 @@
 #
 # Steps (each one is skipped or resumed if it already finished):
 #   1. check the environment and the Learn-R checkout (LEARNR_PATH)
-#   2. fresh runs only: re-export the Learn-R corpus and import Learn-R's learned
-#      rules (skipped once training started, so the rule list stays fixed)
+#   2. only with REEXPORT=1 on a fresh run: re-export the classic Learn-R corpus
+#      and re-import Learn-R's learned rules (the committed hard corpus is kept
+#      otherwise). The rule set comes from RLGES_ASM_LEARNED (none|<path>).
 #   3. run the test suite; stop if anything fails
 #   4. "before" report: untrained AlphaZero vs MCTS on held-out Learn-R terms
 #   5. train AlphaZero on asm (Learn-R rules, Learn-R-compiled programs),
 #      early-stopping on a hard held-out score; resumes from latest.pt
 #   6. "after" report with the best network
+#   (SKIP_ASM=1 skips steps 4-6)
 #   7. with time left, $EXTRA_TAG runs (with an after report) for EXTRA_SUITES (default: boolean bitvector arithmetic)
-# Logs: checkpoints/overnight.log; morning summary: checkpoints/overnight_summary.txt
+# Logs: checkpoints/overnight.log; morning summary: checkpoints/summary_<RUN>.txt
 set -euo pipefail
 cd "$(dirname "$0")/.."
 
@@ -39,6 +41,7 @@ else
                --batch-size 128 --hidden 192 --layers 5 --heldout 100 --eval-iterations 25 --patience 8)
 fi
 OUT="checkpoints/$RUN"
+SUMMARY="checkpoints/summary_$RUN.txt"
 mkdir -p "$OUT"
 LOG=checkpoints/overnight.log
 exec > >(tee -a "$LOG") 2>&1
@@ -66,8 +69,11 @@ else
 fi
 
 step "2. Learn-R corpus and learned rules"
+echo "rule set: RLGES_ASM_LEARNED=${RLGES_ASM_LEARNED:-<default learned_rules.json>}"
 if [[ -f "$OUT/latest.pt" ]]; then
   echo "training already started: keeping the current corpus and rule list"
+elif [[ -z "${REEXPORT:-}" ]]; then
+  echo "keeping the committed corpus ($(wc -l < benchmarks/asm/corpus/train.jsonl) train terms)"
 elif [[ -n "$LEARNR_PATH" ]]; then
   LEARNR_PATH="$LEARNR_PATH" "$PY" -m benchmarks.asm.learnr_bridge --learnr "$LEARNR_PATH"
   "$PY" - "$LEARNR_PATH" <<'EOF'
@@ -85,31 +91,34 @@ fi
 step "3. tests"
 "$PY" -m pytest -q -x 2>&1 | tail -3
 
-step "4. before: untrained AlphaZero vs MCTS on held-out Learn-R terms"
-if [[ ! -f "$OUT/report_before.txt" ]]; then
-  "$PY" -m src.engines.alphazero.evaluate --suite asm "${EVAL[@]}" --no-egglog \
-    --csv "$OUT/eval_before.csv" | tee "$OUT/report_before.txt"
-else
-  cat "$OUT/report_before.txt"
+if [[ -z "${SKIP_ASM:-}" ]]; then  # SKIP_ASM=1: only the extra suites
+  step "4. before: untrained AlphaZero vs MCTS on held-out Learn-R terms"
+  if [[ ! -f "$OUT/report_before.txt" ]]; then
+    "$PY" -m src.engines.alphazero.evaluate --suite asm "${EVAL[@]}" --no-egglog \
+      --csv "$OUT/eval_before.csv" | tee "$OUT/report_before.txt"
+  else
+    cat "$OUT/report_before.txt"
+  fi
+
+  step "5. train AlphaZero on asm -> $OUT"
+  disk_ok
+  resume=()
+  [[ -f "$OUT/latest.pt" ]] && resume=(--resume)
+  "$PY" -m src.engines.alphazero.train --suite asm "${TRAIN[@]}" --workers "$WORKERS" \
+    --out "$OUT" ${resume[@]+"${resume[@]}"} 2>&1 | tee -a "$OUT/train.log"
+
+  step "6. after: trained AlphaZero (best.pt) vs MCTS"
+  "$PY" -m src.engines.alphazero.evaluate --suite asm --checkpoint "$OUT/best.pt" "${EVAL[@]}" \
+    --no-egglog --csv "$OUT/eval_after.csv" | tee "$OUT/report_after.txt"
+
+  {
+    echo "Overnight summary: $RUN, rules ${RLGES_ASM_LEARNED:-default} ($(date '+%F %T'))"
+    echo; echo "asm training (last rounds):"; tail -5 "$OUT/train.log"
+    echo; echo "BEFORE (untrained):"; cat "$OUT/report_before.txt"
+    echo; echo "AFTER (best.pt):"; cat "$OUT/report_after.txt"
+  } > "$SUMMARY"
+
 fi
-
-step "5. train AlphaZero on asm -> $OUT"
-disk_ok
-resume=()
-[[ -f "$OUT/latest.pt" ]] && resume=(--resume)
-"$PY" -m src.engines.alphazero.train --suite asm "${TRAIN[@]}" --workers "$WORKERS" \
-  --out "$OUT" ${resume[@]+"${resume[@]}"} 2>&1 | tee -a "$OUT/train.log"
-
-step "6. after: trained AlphaZero (best.pt) vs MCTS"
-"$PY" -m src.engines.alphazero.evaluate --suite asm --checkpoint "$OUT/best.pt" "${EVAL[@]}" \
-  --no-egglog --csv "$OUT/eval_after.csv" | tee "$OUT/report_after.txt"
-
-{
-  echo "Overnight summary ($(date '+%F %T'))"
-  echo; echo "asm training (last rounds):"; tail -5 "$OUT/train.log"
-  echo; echo "BEFORE (untrained):"; cat "$OUT/report_before.txt"
-  echo; echo "AFTER (best.pt):"; cat "$OUT/report_after.txt"
-} > checkpoints/overnight_summary.txt
 
 step "7. extra $EXTRA_TAG runs: $EXTRA_SUITES"
 for suite in $EXTRA_SUITES; do
@@ -126,7 +135,7 @@ for suite in $EXTRA_SUITES; do
   {
     echo; echo "$suite $EXTRA_TAG (last rounds):"; tail -3 "$out/train.log"
     echo "AFTER (best.pt):"; cat "$out/report_after.txt"
-  } >> checkpoints/overnight_summary.txt
+  } >> "$SUMMARY"
 done
 
-step "done. Summary: checkpoints/overnight_summary.txt"
+step "done. Summary: $SUMMARY"
