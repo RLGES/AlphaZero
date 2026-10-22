@@ -14,6 +14,7 @@ from __future__ import annotations
 
 import ast
 import json
+import os
 import re
 from pathlib import Path
 from random import Random
@@ -120,7 +121,12 @@ def parse_llm_text(text: str) -> list[tuple[list[str], list[str]]]:
         rhs.clear()
 
     for raw in text.splitlines():
-        line = raw.split(";", 1)[0].strip()
+        line = raw.strip()
+        prefix = line[:4] if line.upper().startswith(("LHS:", "RHS:")) else ""
+        body = line[len(prefix) :].strip()
+        if not body.startswith("["):  # list items carry their own "; comment"
+            body = body.split(";", 1)[0].strip()
+        line = f"{prefix} {body}".strip()
         upper = line.upper()
         if upper.startswith("LHS:"):
             flush()
@@ -191,8 +197,16 @@ def import_rules(paths: list[Path], builtin: set[tuple[str, str]], out: Path = L
     return report
 
 
-def load_learned_rules(path: Path = LEARNED_PATH) -> tuple[TreeRule, ...]:
-    if not path.exists():
+def learned_path() -> Path | None:
+    """``RLGES_ASM_LEARNED``: a rules file, or ``none`` for built-in rules only."""
+    choice = os.environ.get("RLGES_ASM_LEARNED", "")
+    if choice.lower() == "none":
+        return None
+    return Path(choice) if choice else LEARNED_PATH
+
+
+def load_learned_rules(path: Path | None = LEARNED_PATH) -> tuple[TreeRule, ...]:
+    if path is None or not path.exists():
         return ()
     report = json.loads(path.read_text())
     return tuple(pattern_rule(r["name"], r["lhs"], r["rhs"]) for r in report["accepted"])

@@ -2,7 +2,7 @@ from dataclasses import replace
 
 from benchmarks.common import TreeLanguage, TreeRule
 
-from .learned import load_learned_rules
+from .learned import learned_path, load_learned_rules
 from .rules import BUILTIN_RULES
 from .term import Expr
 
@@ -13,7 +13,7 @@ OP_COST = {"mul": 3, "div": 10, "mod": 10, "load": 4}
 class AsmLanguage(TreeLanguage[Expr]):
     """Learn-R's Asm IR: built-in rules plus verified learned rules as actions."""
 
-    rules: tuple[TreeRule[Expr], ...] = BUILTIN_RULES + load_learned_rules()
+    rules: tuple[TreeRule[Expr], ...] = BUILTIN_RULES + load_learned_rules(learned_path())
 
     def children(self, term: Expr) -> tuple[Expr, ...]:
         return term.args
