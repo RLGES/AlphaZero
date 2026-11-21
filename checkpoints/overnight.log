@@ -187,3 +187,11 @@ MCTS          100   314        59.9%         80%        582.5    1.5425
 
 === 2026-11-21 17:30:40 5. train AlphaZero on asm -> checkpoints/asm_v4_builtin_s1
 round 0: loss=1.8419 policy=1.8294 value=0.0125 samples=2875 eval_cost=2.43 score=0.5022 best=0.5022 (417.32s play, 97.17s train)
+round 1: loss=1.8009 policy=1.7949 value=0.0060 samples=2797 eval_cost=2.43 score=0.5071 best=0.5071 (304.09s play, 91.47s train)
+round 2: loss=1.7924 policy=1.7875 value=0.0049 samples=2642 eval_cost=2.43 score=0.5104 best=0.5104 (285.59s play, 93.44s train)
+round 3: loss=1.7636 policy=1.7590 value=0.0046 samples=2739 eval_cost=2.43 score=0.5190 best=0.5190 (235.9s play, 90.98s train)
+round 4: loss=1.7682 policy=1.7637 value=0.0046 samples=2836 eval_cost=2.43 score=0.5339 best=0.5339 (290.86s play, 86.38s train)
+round 5: loss=1.7739 policy=1.7694 value=0.0045 samples=2805 eval_cost=2.43 score=0.5221 best=0.5339 (320.39s play, 90.47s train)
+round 6: loss=1.7744 policy=1.7698 value=0.0047 samples=2865 eval_cost=2.43 score=0.5143 best=0.5339 (307.16s play, 92.43s train)
+round 7: loss=1.7787 policy=1.7740 value=0.0048 samples=2958 eval_cost=2.43 score=0.5297 best=0.5339 (298.09s play, 93.16s train)
+round 8: loss=1.7864 policy=1.7818 value=0.0046 samples=3085 eval_cost=2.43 score=0.5359 best=0.5359 (366.44s play, 93.83s train)
