@@ -55,6 +55,7 @@ class TrainConfig:
     device: str = "cpu"
     selfplay: SelfPlayConfig = field(default_factory=SelfPlayConfig)
     spec: NetworkSpec | None = None
+    init: str | None = None  # start from this checkpoint's network (fresh optimizer)
 
 
 # A chunk of games: (suite, network spec, CPU state_dict, terms, self-play config, seed).
@@ -134,11 +135,17 @@ class Trainer:
         self.rounds_since_best = 0
         self.buffer = ReplayBuffer(cfg.buffer_capacity)
         payload = load_checkpoint(self.out / "latest.pt", self.language) if resume else None
-        spec = NetworkSpec(**payload["spec"]) if payload else cfg.spec or NetworkSpec(width)
+        # --init continues training an earlier network (e.g. a plateaued best.pt) in a
+        # new run, with this run's optimizer settings; --resume wins if both apply.
+        start = None if payload or not cfg.init else load_checkpoint(cfg.init, self.language)
+        source = payload or start
+        spec = NetworkSpec(**source["spec"]) if source else cfg.spec or NetworkSpec(width)
         self.net = PolicyValueNet(spec).to(cfg.device)
         self.optimizer = torch.optim.AdamW(
             self.net.parameters(), lr=cfg.lr, weight_decay=cfg.weight_decay
         )
+        if start:
+            self.net.load_state_dict(start["state_dict"])
         if payload:
             self.net.load_state_dict(payload["state_dict"])
             if payload["optimizer"] is not None:
@@ -239,6 +246,25 @@ def outer_loop(
     log: Callable[[str], None] = print,
 ) -> Path:
     trainer = Trainer(cfg, resume)
+    if cfg.init and trainer.round == 0 and cfg.heldout_terms:
+        # The starting network is the score to beat, so best.pt never gets worse than it.
+        trainer.best_score = evaluate_generated(
+            cfg.suite,
+            trainer.net,
+            cfg.eval_iterations,
+            cfg.device,
+            cfg.heldout_terms,
+            cfg.heldout_depth,
+        )
+        trainer.out.mkdir(parents=True, exist_ok=True)
+        save_checkpoint(
+            trainer.out / "best.pt",
+            trainer.net,
+            trainer.language,
+            -1,
+            {"score": trainer.best_score, "init": cfg.init},
+        )
+        log(f"init from {cfg.init}: score={trainer.best_score:.4f}")
     play = play or play_locally(cfg.workers)
     while trainer.round < cfg.rounds:
         if cfg.patience and trainer.rounds_since_best >= cfg.patience:
@@ -287,6 +313,7 @@ def _parser() -> argparse.ArgumentParser:
     parser.add_argument("--device", default="cpu")
     parser.add_argument("--out", default="checkpoints/run")
     parser.add_argument("--resume", action="store_true")
+    parser.add_argument("--init", help="Start from this checkpoint's network (fresh optimizer)")
     return parser
 
 
@@ -310,6 +337,7 @@ def config_from_args(args: argparse.Namespace) -> TrainConfig:
         device=args.device,
         selfplay=SelfPlayConfig(simulations_per_move=args.sims, max_moves=args.max_moves),
         spec=NetworkSpec(width, hidden=args.hidden, layers=args.layers),
+        init=args.init,
     )
 
 

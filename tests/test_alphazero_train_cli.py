@@ -55,3 +55,20 @@ def test_bad_depth_rejected(tmp_path, depth):
 def test_resume_without_checkpoint_fails(tmp_path):
     with pytest.raises(SystemExit):
         main([*TINY, "--rounds", "1", "--out", str(tmp_path / "none"), "--resume"])
+
+
+def test_init_continues_from_checkpoint_and_keeps_its_score(tmp_path):
+    torch = pytest.importorskip("torch")
+    args = [*TINY, "--depth", "1,2", "--heldout", "3"]
+    first = tmp_path / "first"
+    assert main([*args, "--rounds", "1", "--out", str(first)]) == 0
+    second = tmp_path / "second"
+    init = str(first / "latest.pt")
+    assert main([*args, "--rounds", "1", "--out", str(second), "--init", init, "--lr", "1e-4"]) == 0
+    start = torch.load(first / "latest.pt", weights_only=False)
+    row = json.loads((second / "metrics.jsonl").read_text().splitlines()[0])
+    assert row["round"] == 0
+    # best.pt starts as the init network, so the continued run never reports worse.
+    best = torch.load(second / "best.pt", weights_only=False)
+    assert best["metrics"]["score"] >= 0.0 and row["best_score"] >= best["metrics"]["score"] - 1e-9
+    assert best["spec"] == start["spec"]
