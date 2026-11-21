@@ -5,7 +5,7 @@
 > - **Commits:** sumeettummarmatti <sumeettummarmatti@gmail.com>, no Claude trailers.
 > - **Pushing:** `git -c credential.helper= -c 'credential.helper=!gh auth git-credential' push`. Plain `git push` returns 403.
 
-## ▶ RESUME HERE (last updated 2026-11-21 ~20:13 IST)
+## ▶ RESUME HERE (last updated 2026-11-21 ~21:13 IST)
 
 **Run 4 is in progress on the Vultr server.**
 - Server: `ssh <server>`; work dir `/root/rlges`.
@@ -68,3 +68,4 @@
 - 11-21 18:13 IST: builtin_s0 at round 16, score 0.531, best 0.539 (unchanged since round 8; patience 15 may stop it around round 23). Discovery round 1 at 139/150 prompts, 97 verified. No errors.
 - 11-21 19:13 IST: builtin_s0 round 25, score 0.543, new best 0.545. Discovery round 1 done: 105 verified, 20 accepted rules -> learned_rules_qwen.json. Round 2 at 38/200 prompts (19 verified). No errors.
 - 11-21 20:13 IST: builtin_s0 round 33, score 0.540, new best 0.550 (matches night-3 builtin ~0.55). Discovery round 2 at 100/200 prompts, 62 verified. No errors.
+- 11-21 21:13 IST: builtin_s0 round 41, score 0.545, best 0.552 (round 39, above night-3 builtin ~0.55). Discovery round 2 at 158/200, 77 verified. No errors. Sent run-4 facts to the report agent (capEXPLAINERAGENT).
