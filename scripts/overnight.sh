@@ -22,21 +22,26 @@ cd "$(dirname "$0")/.."
 
 PY=.venv/bin/python
 LEARNR_PATH="${LEARNR_PATH:-$HOME/Projects/RLGES/Learn-R}"
-EXTRA_SUITES="${EXTRA_SUITES:-boolean bitvector arithmetic}"
+EXTRA_SUITES="${EXTRA_SUITES-boolean bitvector arithmetic}"  # set it empty for none
 RUN="${RUN:-asm_v2}"
 EXTRA_TAG="${EXTRA_TAG:-v3}"
 WORKERS="${WORKERS:-7}"
+SEED="${SEED:-0}"            # training seed (night 3 repeats each arm with 3 seeds)
+HELDOUT="${HELDOUT:-100}"    # held-out terms scored each round to pick best.pt
+PATIENCE="${PATIENCE:-12}"   # early stop after this many rounds without a better score
+GENERATED="${GENERATED:-50}" # generated terms per seed in the before/after reports
 if [[ -n "${QUICK:-}" ]]; then
   RUN="quick_${RUN}"
   TRAIN=(--rounds 2 --games 8 --sims 8 --max-moves 10 --steps 5 --hidden 32 --layers 1
-         --heldout 5 --eval-iterations 10 --patience 0)
+         --heldout 5 --eval-iterations 10 --patience 0 --seed "$SEED")
   EVAL=(--budgets 5 --seeds 1 --generated 5)
   EXTRA_TRAIN=(--rounds 1 --games 4 --sims 4 --steps 2 --hidden 16 --layers 1 --heldout 3
                --eval-iterations 5)
 else
   TRAIN=(--rounds 100 --games 256 --sims 96 --max-moves 40 --depth 3,6 --steps 400
-         --batch-size 128 --hidden 192 --layers 5 --heldout 100 --eval-iterations 25 --patience 12)
-  EVAL=(--budgets 10,25,50,100 --seeds 2 --generated 50)
+         --batch-size 128 --hidden 192 --layers 5 --heldout "$HELDOUT" --eval-iterations 25
+         --patience "$PATIENCE" --seed "$SEED")
+  EVAL=(--budgets 10,25,50,100 --seeds 2 --generated "$GENERATED")
   EXTRA_TRAIN=(--rounds 60 --games 256 --sims 128 --max-moves 40 --depth 3,7 --steps 400
                --batch-size 128 --hidden 192 --layers 5 --heldout 100 --eval-iterations 25 --patience 8)
 fi
