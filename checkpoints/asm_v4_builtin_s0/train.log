@@ -49,3 +49,9 @@ round 47: loss=1.7193 policy=1.7151 value=0.0043 samples=2743 eval_cost=2.43 sco
 round 48: loss=1.7107 policy=1.7065 value=0.0042 samples=2700 eval_cost=2.43 score=0.5398 best=0.5517 (214.36s play, 80.25s train)
 round 49: loss=1.7143 policy=1.7102 value=0.0041 samples=2782 eval_cost=2.43 score=0.5427 best=0.5517 (227.41s play, 82.35s train)
 round 50: loss=1.7134 policy=1.7091 value=0.0043 samples=2861 eval_cost=2.43 score=0.5437 best=0.5517 (289.11s play, 86.53s train)
+round 51: loss=1.7099 policy=1.7056 value=0.0043 samples=2980 eval_cost=2.43 score=0.5446 best=0.5517 (289.56s play, 80.89s train)
+round 52: loss=1.7114 policy=1.7069 value=0.0044 samples=2881 eval_cost=2.43 score=0.5474 best=0.5517 (258.48s play, 86.6s train)
+round 53: loss=1.7160 policy=1.7115 value=0.0046 samples=3000 eval_cost=2.43 score=0.5436 best=0.5517 (327.19s play, 82.8s train)
+round 54: loss=1.7215 policy=1.7170 value=0.0045 samples=3077 eval_cost=2.43 score=0.5511 best=0.5517 (336.22s play, 89.99s train)
+early stop: no better score for 15 rounds
+Latest checkpoint: checkpoints/asm_v4_builtin_s0/latest.pt
