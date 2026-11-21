@@ -1,0 +1,29 @@
+=== 2026-11-21 10:16:20 run 4 start
+
+=== 2026-11-21 10:16:20 1. environment
+torch 2.15.0+cpu
+Learn-R: /root/rlges/Learn-R (?)
+
+=== 2026-11-21 10:16:22 2. Learn-R corpus and learned rules
+rule set: RLGES_ASM_LEARNED=none
+keeping the committed corpus (10999 train terms)
+
+=== 2026-11-21 10:16:22 3. tests
+=========================== short test summary info ============================
+SKIPPED [1] tests/test_modal_app.py:3: could not import 'modal': No module named 'modal'
+164 passed, 1 skipped in 29.62s
+
+=== 2026-11-21 10:16:57 4. before: untrained AlphaZero vs MCTS on held-out Learn-R terms
+Engine     Budget  Runs  Improvement  best-known  transitions   Seconds
+AlphaZero      10   314        47.3%         29%         10.0    0.0240
+MCTS           10   314        54.4%         43%         74.1    0.2067
+AlphaZero      25   314        54.6%         49%         25.5    0.0498
+MCTS           25   314        58.0%         63%        170.9    0.4647
+AlphaZero      50   314        57.9%         66%         51.6    0.0900
+MCTS           50   314        59.1%         72%        315.0    0.8429
+AlphaZero     100   314        59.2%         78%        101.8    0.1670
+MCTS          100   314        59.9%         80%        582.5    1.5425
+
+=== 2026-11-21 10:34:42 5. train AlphaZero on asm -> checkpoints/asm_v4_builtin_s0
+round 0: loss=1.8875 policy=1.8751 value=0.0124 samples=2869 eval_cost=2.43 score=0.5015 best=0.5015 (344.49s play, 108.13s train)
+round 1: loss=1.8259 policy=1.8200 value=0.0059 samples=2786 eval_cost=2.43 score=0.5133 best=0.5133 (315.36s play, 92.0s train)

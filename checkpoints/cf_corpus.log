@@ -1,1 +1,3 @@
 hardness filter: train, 15099 candidates
+hardness filter: test, 1763 candidates
+corpus terms: {'train': 8178, 'test': 823}; Learn-R test programs: ['test_code', 'test_code2', 'test_code3']

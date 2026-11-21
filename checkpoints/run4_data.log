@@ -1,2 +1,12 @@
 === 2026-11-21 08:27:57 hard corpus (night 3: 10,999 train / 911 test)
 === 2026-11-21 09:48:11 control-flow corpus (night 3: 8,172 / 811 after dedup)
+cf_test 811
+cf_train 8172
+=== 2026-11-21 10:13:18 stress set (night 3: 824 terms, 784 after corpus dedup)
+    811 benchmarks/asm/corpus/cf_test.jsonl
+   8172 benchmarks/asm/corpus/cf_train.jsonl
+    824 benchmarks/asm/corpus/stress_test.jsonl
+    911 benchmarks/asm/corpus/test.jsonl
+  10999 benchmarks/asm/corpus/train.jsonl
+  21717 total
+=== 2026-11-21 10:16:15 done

@@ -1,0 +1,811 @@
+{"sexpr": "(sub (add (add v1 4) 3) (mul in0 8))", "initial": 11.0, "greedy": 9.0, "quick": 9.0, "strong": 7.0, "hard": true}
+{"sexpr": "(mul (mul 7 (mul v1 6)) (add (sub 7 7) 1))", "initial": 17.0, "greedy": 9.0, "quick": 5.0, "strong": 5.0, "hard": true}
+{"sexpr": "(sub (add (add 5 (mul 7 (mul v8 8))) (add (mul v11 v10) 6)) (mul (mul 2 (mul v2 8)) (mul 2 4)))", "initial": 37.0, "greedy": 27.0, "quick": 29.0, "strong": 21.0, "hard": true}
+{"sexpr": "(add (add 5 v3) (add v4 4))", "initial": 7.0, "greedy": 7.0, "quick": 5.0, "strong": 5.0, "hard": true}
+{"sexpr": "(add (add 5 (mul v18 (add (sub 9 9) 1))) (add (add (add 1 v10) (add v15 9)) 4))", "initial": 21.0, "greedy": 13.0, "quick": 11.0, "strong": 9.0, "hard": true}
+{"sexpr": "(add (add (sub (mul 16 v18) (mul v18 16)) 5) 3)", "initial": 15.0, "greedy": 13.0, "quick": 1.0, "strong": 1.0, "hard": true}
+{"sexpr": "(mul (add (add (mul 9 (mul v25 9)) 7) 7) (mul 2 4))", "initial": 21.0, "greedy": 15.0, "quick": 15.0, "strong": 9.0, "hard": true}
+{"sexpr": "(add (add (mul v22 2) 2) 1)", "initial": 9.0, "greedy": 7.0, "quick": 7.0, "strong": 5.0, "hard": true}
+{"sexpr": "(mul (add (add (mul (mul v11 2) 2) 1) 8) (add (sub 9 9) 1))", "initial": 21.0, "greedy": 9.0, "quick": 7.0, "strong": 5.0, "hard": true}
+{"sexpr": "(add (add 4 in0) 5)", "initial": 5.0, "greedy": 5.0, "quick": 3.0, "strong": 3.0, "hard": true}
+{"sexpr": "(add (add (add (add v0 6) 7) 4) 8)", "initial": 9.0, "greedy": 9.0, "quick": 3.0, "strong": 3.0, "hard": true}
+{"sexpr": "(mul 9 (mul (add (add (add (add (add (add v0 6) 7) 4) 8) 6) 2) 4))", "initial": 21.0, "greedy": 19.0, "quick": 13.0, "strong": 9.0, "hard": true}
+{"sexpr": "(add (add (mul (mul (add (add 9 (mul (add v3 v2) (sub 9 9))) (add (mul 2 (mul 1 4)) 1)) (add (sub 6 6) 1)) (add (sub 4 4) 1)) 3) 4)", "initial": 43.0, "greedy": 1.0, "quick": 7.0, "strong": 1.0, "hard": true}
+{"sexpr": "(add (add 7 in0) (add 0 1))", "initial": 7.0, "greedy": 5.0, "quick": 3.0, "strong": 3.0, "hard": true}
+{"sexpr": "(add (add 1 (mul (mul v8 4) 2)) (add (sub in0 16) 4))", "initial": 17.0, "greedy": 13.0, "quick": 13.0, "strong": 9.0, "hard": true}
+{"sexpr": "(mul (mul (add (add 8 v4) (add v8 8)) 2) 2)", "initial": 15.0, "greedy": 11.0, "quick": 9.0, "strong": 7.0, "hard": true}
+{"sexpr": "(sub (add (mul 9 (mul 4 9)) (add (add v4 8) 9)) (add (add (add v4 8) 9) (mul 9 (mul 4 9))))", "initial": 31.0, "greedy": 15.0, "quick": 15.0, "strong": 7.0, "hard": true}
+{"sexpr": "(mul 5 (mul (sub (add (mul 4 (mul 10 2)) (sub v5 v13)) (add (sub v5 v13) (mul 4 (mul 10 2)))) 3))", "initial": 35.0, "greedy": 19.0, "quick": 19.0, "strong": 15.0, "hard": true}
+{"sexpr": "(add (add 7 v7) (add 0 7))", "initial": 7.0, "greedy": 5.0, "quick": 3.0, "strong": 3.0, "hard": true}
+{"sexpr": "(add (add v5 4) 2)", "initial": 5.0, "greedy": 5.0, "quick": 3.0, "strong": 3.0, "hard": true}
+{"sexpr": "(add (add 6 (add (add 9 (sub (mul 3 v21) (mul v21 3))) (add (mul (add v4 v6) (sub 6 6)) 7))) (add (sub (add (add v13 v13) (sub (add 8 v2) (add v2 8))) (add (sub (add 8 v2) (add v2 8)) (add v13 v13))) 7))", "initial": 53.0, "greedy": 43.0, "quick": 43.0, "strong": 41.0, "hard": true}
+{"sexpr": "(add (add (mul 8 (mul v18 4)) 1) 7)", "initial": 13.0, "greedy": 11.0, "quick": 7.0, "strong": 7.0, "hard": true}
+{"sexpr": "(add (add v14 3) 5)", "initial": 5.0, "greedy": 5.0, "quick": 3.0, "strong": 3.0, "hard": true}
+{"sexpr": "(add (add 9 (add (add (add (add 2 v12) (add v12 9)) 6) 8)) (add (mul (add (sub (mul v28 v4) (mul v4 v28)) (mul 6 (mul 4 9))) (sub 2 2)) 9))", "initial": 43.0, "greedy": 15.0, "quick": 13.0, "strong": 11.0, "hard": true}
+{"sexpr": "(add (add 8 (mul (mul v29 4) 4)) (add (add (add v29 3) 9) 4))", "initial": 19.0, "greedy": 15.0, "quick": 13.0, "strong": 9.0, "hard": true}
+{"sexpr": "(mul (mul (mul v1 2) 2) (mul 1 2))", "initial": 17.0, "greedy": 7.0, "quick": 3.0, "strong": 3.0, "hard": true}
+{"sexpr": "(sub (mul (add (add in2 1) 6) (mul in0 (add (sub 6 6) 1))) (mul (mul in0 (add (sub 6 6) 1)) (add (add in2 1) 6)))", "initial": 35.0, "greedy": 19.0, "quick": 15.0, "strong": 1.0, "hard": true}
+{"sexpr": "(add (add (add (add (sub (mul (sub (mul v0 in0) (mul in0 v0)) (add (mul 10 0) in2)) (mul (add (mul 10 0) in2) (sub (mul v0 in0) (mul in0 v0)))) 1) 3) 3) 1)", "initial": 51.0, "greedy": 39.0, "quick": 35.0, "strong": 33.0, "hard": true}
+{"sexpr": "(mul (add (mul 9 (mul in0 2)) (mul (mul (add (add (add (add (sub (mul (sub (mul v0 in0) (mul in0 v0)) (add (mul 10 0) in2)) (mul (add (mul 10 0) in2) (sub (mul v0 in0) (mul in0 v0)))) 1) 3) 3) 1) 2) 4)) (add (sub 3 3) 1))", "initial": 77.0, "greedy": 51.0, "quick": 47.0, "strong": 45.0, "hard": true}
+{"sexpr": "(add (add 7 v2) (add 0 6))", "initial": 7.0, "greedy": 5.0, "quick": 3.0, "strong": 3.0, "hard": true}
+{"sexpr": "(mul 8 (mul (mul (add (add (add (add 7 v2) (add 0 6)) 3) 6) 1) 5))", "initial": 23.0, "greedy": 17.0, "quick": 15.0, "strong": 9.0, "hard": true}
+{"sexpr": "(mul (add (add 7 v2) (add 0 6)) (mul 1 2))", "initial": 15.0, "greedy": 7.0, "quick": 7.0, "strong": 5.0, "hard": true}
+{"sexpr": "(mul (mul (mul (sub (mul 3 v3) (mul v3 3)) (mul 1 2)) 2) 2)", "initial": 27.0, "greedy": 17.0, "quick": 15.0, "strong": 13.0, "hard": true}
+{"sexpr": "(add (add 6 0) (add v14 3))", "initial": 7.0, "greedy": 5.0, "quick": 3.0, "strong": 3.0, "hard": true}
+{"sexpr": "(add (add 3 (mul (mul (mul (mul (mul in0 2) 4) (mul 4 2)) (mul 1 4)) (mul 2 4))) (add (add (add 5 (add (add (mul (mul (mul in0 2) 4) (mul 4 2)) 8) 2)) (add (mul (mul 10 2) 4) 1)) 1))", "initial": 73.0, "greedy": 31.0, "quick": 31.0, "strong": 27.0, "hard": true}
+{"sexpr": "(mul (mul 8 (mul (mul (add (add (mul (add (add 1 8) 7) (mul 4 2)) 8) 4) (mul 4 4)) 7)) (mul 1 4))", "initial": 41.0, "greedy": 1.0, "quick": 21.0, "strong": 5.0, "hard": true}
+{"sexpr": "(add (add 9 (mul (add (add 5 7) 6) (add (sub 6 6) 1))) (add (sub (mul (sub (add 0 5) (add 5 0)) (mul v1 (mul 4 4))) (mul (mul v1 (mul 4 4)) (sub (add 0 5) (add 5 0)))) 3))", "initial": 57.0, "greedy": 1.0, "quick": 15.0, "strong": 1.0, "hard": true}
+{"sexpr": "(mul (mul (add in1 0) 2) 4)", "initial": 11.0, "greedy": 5.0, "quick": 3.0, "strong": 3.0, "hard": true}
+{"sexpr": "(mul (mul (sub (add (mul (mul v0 4) 2) (add (add v0 7) 8)) (add (add (add v0 7) 8) (mul (mul v0 4) 2))) 2) 2)", "initial": 39.0, "greedy": 27.0, "quick": 23.0, "strong": 19.0, "hard": true}
+{"sexpr": "(add (add v6 4) 6)", "initial": 5.0, "greedy": 5.0, "quick": 3.0, "strong": 3.0, "hard": true}
+{"sexpr": "(mul (mul in0 16) (mul (mul v10 4) 4))", "initial": 17.0, "greedy": 11.0, "quick": 11.0, "strong": 9.0, "hard": true}
+{"sexpr": "(mul (mul (add (add (mul 16 v1) 1) 1) 2) 2)", "initial": 17.0, "greedy": 13.0, "quick": 11.0, "strong": 7.0, "hard": true}
+{"sexpr": "(sub (add (add (mul (mul 2 2) 0) (mul v7 8)) (mul (mul (mul (mul (mul in0 16) (mul (mul v10 4) 4)) (mul 2 4)) 2) 4)) (add (mul (mul (mul (mul (mul in0 16) (mul (mul v10 4) 4)) (mul 2 4)) 2) 4) (add (mul (mul 2 2) 0) (mul v7 8))))", "initial": 99.0, "greedy": 43.0, "quick": 47.0, "strong": 1.0, "hard": true}
+{"sexpr": "(mul (sub (add (mul v0 16) (mul 9 (mul v5 2))) (add (mul 9 (mul v5 2)) (mul v0 16))) (mul (mul (mul 3 (mul 1 4)) 4) 4))", "initial": 51.0, "greedy": 27.0, "quick": 29.0, "strong": 27.0, "hard": true}
+{"sexpr": "(add (add 7 (add v18 0)) (add (mul (add v1 v6) (sub 6 6)) 3))", "initial": 17.0, "greedy": 5.0, "quick": 5.0, "strong": 3.0, "hard": true}
+{"sexpr": "(add (add (mul v0 v17) 7) 4)", "initial": 9.0, "greedy": 9.0, "quick": 7.0, "strong": 7.0, "hard": true}
+{"sexpr": "(add (add (sub (mul (mul v6 (mul 2 2)) (add (add 1 v8) (add v11 5))) (mul (add (add 1 v8) (add v11 5)) (mul v6 (mul 2 2)))) 3) 6)", "initial": 43.0, "greedy": 31.0, "quick": 31.0, "strong": 29.0, "hard": true}
+{"sexpr": "(sub (mul (sub (add (mul 5 (mul 2 2)) (add v13 v25)) (add (add v13 v25) (mul 5 (mul 2 2)))) (add (add (mul v24 (add (sub 2 2) 1)) 7) 1)) (mul (add (add (mul v24 (add (sub 2 2) 1)) 7) 1) (sub (add (mul 5 (mul 2 2)) (add v13 v25)) (add (add v13 v25) (mul 5 (mul 2 2))))))", "initial": 87.0, "greedy": 39.0, "quick": 39.0, "strong": 35.0, "hard": true}
+{"sexpr": "(sub (add (mul (mul (mul (mul 10 (mul 2 2)) 2) 2) (add (sub 8 8) 1)) (sub (mul (sub (mul v10 0) (mul 0 v10)) (mul (mul v16 2) 4)) (mul (mul (mul v16 2) 4) (sub (mul v10 0) (mul 0 v10))))) (add (sub (mul (sub (mul v10 0) (mul 0 v10)) (mul (mul v16 2) 4)) (mul (mul (mul v16 2) 4) (sub (mul v10 0) (mul 0 v10)))) (mul (mul (mul (mul 10 (mul 2 2)) 2) 2) (add (sub 8 8) 1))))", "initial": 147.0, "greedy": 1.0, "quick": 15.0, "strong": 3.0, "hard": true}
+{"sexpr": "(mul (mul 3 (mul v25 5)) (mul 2 4))", "initial": 17.0, "greedy": 11.0, "quick": 11.0, "strong": 5.0, "hard": true}
+{"sexpr": "(add (add 5 (sub (mul v28 (mul (add (add (mul 8 (mul v18 7)) (add (add 9 v16) (add (mul 5 (mul 4 2)) 3))) (mul (mul (mul v10 2) 2) (mul 4 2))) (sub 1 1))) (mul (mul (add (add (mul 8 (mul v18 7)) (add (add 9 v16) (add (mul 5 (mul 4 2)) 3))) (mul (mul (mul v10 2) 2) (mul 4 2))) (sub 1 1)) v28))) (add (add (add 6 16) (add v28 6)) 3))", "initial": 119.0, "greedy": 9.0, "quick": 11.0, "strong": 7.0, "hard": true}
+{"sexpr": "(mul 6 (mul v20 8))", "initial": 9.0, "greedy": 7.0, "quick": 7.0, "strong": 5.0, "hard": true}
+{"sexpr": "(sub (add (add (add (sub 3 v24) 2) 2) (mul (add (add v23 6) 7) (mul 4 4))) (add (mul (add (add v23 6) 7) (mul 4 4)) (add (add (sub 3 v24) 2) 2)))", "initial": 43.0, "greedy": 31.0, "quick": 27.0, "strong": 23.0, "hard": true}
+{"sexpr": "(add (add (add v17 0) 9) 6)", "initial": 7.0, "greedy": 5.0, "quick": 3.0, "strong": 3.0, "hard": true}
+{"sexpr": "(sub (add (add (add 6 1) (add v5 9)) (mul (mul v29 4) 2)) (add (mul (mul v29 4) 2) (add (add 6 1) (add v5 9))))", "initial": 35.0, "greedy": 23.0, "quick": 19.0, "strong": 19.0, "hard": true}
+{"sexpr": "(mul (mul (mul (mul v0 in0) 1) 2) 4)", "initial": 17.0, "greedy": 9.0, "quick": 9.0, "strong": 7.0, "hard": true}
+{"sexpr": "(add (sub (add 8 v3) (add v3 8)) (mul 8 (mul v3 4)))", "initial": 17.0, "greedy": 15.0, "quick": 13.0, "strong": 13.0, "hard": true}
+{"sexpr": "(sub (add (mul (mul (add (sub (add 8 v3) (add v3 8)) (mul 8 (mul v3 4))) (mul 2 2)) (mul 2 4)) (mul 4 (mul (mul 10 (add (sub 4 4) 1)) 3))) (add (mul 4 (mul (mul 10 (add (sub 4 4) 1)) 3)) (mul (mul (add (sub (add 8 v3) (add v3 8)) (mul 8 (mul v3 4))) (mul 2 2)) (mul 2 4))))", "initial": 103.0, "greedy": 43.0, "quick": 43.0, "strong": 39.0, "hard": true}
+{"sexpr": "(mul (add (add 7 (add (add v5 2) 5)) (add (mul (add v7 v9) (sub 5 5)) 5)) (mul 1 2))", "initial": 27.0, "greedy": 11.0, "quick": 11.0, "strong": 7.0, "hard": true}
+{"sexpr": "(add (add (mul (mul v12 4) 4) 4) 9)", "initial": 13.0, "greedy": 9.0, "quick": 5.0, "strong": 5.0, "hard": true}
+{"sexpr": "(mul (mul (add (add 5 (mul 6 (mul 3 7))) (add (mul 2 v9) 5)) 2) 4)", "initial": 27.0, "greedy": 13.0, "quick": 13.0, "strong": 9.0, "hard": true}
+{"sexpr": "(sub (mul (mul (sub (mul 4 in0) (mul in0 4)) 2) 4) (add (add 1 (mul 4 (add (sub 3 3) 1))) (add (mul (mul v20 4) 2) 1)))", "initial": 43.0, "greedy": 23.0, "quick": 19.0, "strong": 15.0, "hard": true}
+{"sexpr": "(sub (add (mul (add v1 0) 1) (mul (mul v30 1) 16)) (add (mul (mul v30 1) 16) (mul (add v1 0) 1)))", "initial": 35.0, "greedy": 11.0, "quick": 11.0, "strong": 1.0, "hard": true}
+{"sexpr": "(mul 5 (mul in0 9))", "initial": 9.0, "greedy": 9.0, "quick": 5.0, "strong": 5.0, "hard": true}
+{"sexpr": "(add (add 4 (mul (mul 0 2) 2)) (add (mul in1 (add (sub 4 4) 1)) 4))", "initial": 23.0, "greedy": 5.0, "quick": 5.0, "strong": 3.0, "hard": true}
+{"sexpr": "(mul 2 (mul (mul 3 (mul (mul 5 (mul v1 5)) 4)) 7))", "initial": 25.0, "greedy": 23.0, "quick": 15.0, "strong": 11.0, "hard": true}
+{"sexpr": "(add (add (add (add 1 (add (add 7 v5) (add v8 3))) (add (mul (add 3 v2) (sub 2 2)) 2)) 1) 9)", "initial": 25.0, "greedy": 15.0, "quick": 11.0, "strong": 9.0, "hard": true}
+{"sexpr": "(sub (mul (mul v10 (add (sub 8 8) 1)) (sub (add v14 v4) (add v4 v14))) (mul (sub (add v14 v4) (add v4 v14)) (mul v10 (add (sub 8 8) 1))))", "initial": 39.0, "greedy": 23.0, "quick": 23.0, "strong": 1.0, "hard": true}
+{"sexpr": "(mul (sub 4 2) (add in1 in1))", "initial": 9.0, "greedy": 7.0, "quick": 5.0, "strong": 5.0, "hard": true}
+{"sexpr": "(add (add 4 (mul in1 (add (sub 1 1) 1))) (add (mul in0 (add (sub 5 5) 1)) 8))", "initial": 23.0, "greedy": 7.0, "quick": 5.0, "strong": 5.0, "hard": true}
+{"sexpr": "(mul (add (mul in1 0) 4) (add (mul in0 0) in0))", "initial": 17.0, "greedy": 5.0, "quick": 3.0, "strong": 3.0, "hard": true}
+{"sexpr": "(sub (add (sub (add (add v0 v1) (mul v0 (mul 2 4))) (add (mul v0 (mul 2 4)) (add v0 v1))) (add (add (add (add v0 2) 2) 8) 3)) (add (add (add (add (add v0 2) 2) 8) 3) (sub (add (add v0 v1) (mul v0 (mul 2 4))) (add (mul v0 (mul 2 4)) (add v0 v1)))))", "initial": 75.0, "greedy": 51.0, "quick": 49.0, "strong": 43.0, "hard": true}
+{"sexpr": "(mul (mul 4 (mul v3 1)) (add (add v4 4) 6))", "initial": 17.0, "greedy": 13.0, "quick": 9.0, "strong": 9.0, "hard": true}
+{"sexpr": "(mul 8 (mul (mul (mul (mul (mul (mul 4 (mul v3 1)) (add (add v4 4) 6)) (add (sub 2 2) 1)) 2) 4) 5))", "initial": 41.0, "greedy": 25.0, "quick": 25.0, "strong": 17.0, "hard": true}
+{"sexpr": "(add (add 8 (add (add (sub (mul 10 8) (mul 8 10)) 3) 5)) (add (add (add (sub 5 5) 9) 2) 9))", "initial": 27.0, "greedy": 1.0, "quick": 3.0, "strong": 1.0, "hard": true}
+{"sexpr": "(sub (mul (mul v4 (mul 1 4)) (add (add 4 v0) (add 2 6))) (mul (add (add 4 v0) (add 2 6)) (mul v4 (mul 1 4))))", "initial": 39.0, "greedy": 23.0, "quick": 21.0, "strong": 1.0, "hard": true}
+{"sexpr": "(add (add 1 2) (add v17 2))", "initial": 7.0, "greedy": 5.0, "quick": 3.0, "strong": 3.0, "hard": true}
+{"sexpr": "(add (add 9 (add (add (mul (add 1 1) (sub 3 3)) 4) 5)) (add (add (add (add (add v13 8) 3) 1) 1) 6))", "initial": 27.0, "greedy": 13.0, "quick": 15.0, "strong": 9.0, "hard": true}
+{"sexpr": "(mul (add (add 8 (mul (add in0 v15) (sub 6 6))) (add (mul (add (add 1 2) (add v17 2)) (mul 4 2)) 9)) (mul (mul (sub (mul 10 v8) (mul v8 10)) 4) 4))", "initial": 51.0, "greedy": 29.0, "quick": 31.0, "strong": 25.0, "hard": true}
+{"sexpr": "(add (add 1 v5) (add v16 7))", "initial": 7.0, "greedy": 7.0, "quick": 5.0, "strong": 5.0, "hard": true}
+{"sexpr": "(add (add (mul v8 (add (sub 8 8) 1)) 3) 1)", "initial": 13.0, "greedy": 5.0, "quick": 3.0, "strong": 3.0, "hard": true}
+{"sexpr": "(add (add v8 4) 8)", "initial": 5.0, "greedy": 5.0, "quick": 3.0, "strong": 3.0, "hard": true}
+{"sexpr": "(mul (mul (add (add (mul 1 (mul in0 3)) 6) 6) 2) 4)", "initial": 21.0, "greedy": 13.0, "quick": 13.0, "strong": 9.0, "hard": true}
+{"sexpr": "(sub (mul (sub (add (sub (add 10 in0) (add in0 10)) (add 4 4)) (add (add 4 4) (sub (add 10 in0) (add in0 10)))) (mul (add (mul (mul (mul (add (add 16 6) 3) 16) 4) 4) in1) (add (sub 8 8) 1))) (mul (mul (add (mul (mul (mul (add (add 16 6) 3) 16) 4) 4) in1) (add (sub 8 8) 1)) (sub (add (sub (add 10 in0) (add in0 10)) (add 4 4)) (add (add 4 4) (sub (add 10 in0) (add in0 10))))))", "initial": 107.0, "greedy": 51.0, "quick": 59.0, "strong": 1.0, "hard": true}
+{"sexpr": "(sub (mul (mul 1 (mul (add (add 3 10) (add 5 6)) 7)) (mul (mul (mul v3 (add (sub 6 6) 1)) 4) 4)) (mul (mul (mul (mul v3 (add (sub 6 6) 1)) 4) 4) (mul 1 (mul (add (add 3 10) (add 5 6)) 7))))", "initial": 71.0, "greedy": 19.0, "quick": 19.0, "strong": 15.0, "hard": true}
+{"sexpr": "(mul 2 (mul (sub v2 v7) 8))", "initial": 11.0, "greedy": 9.0, "quick": 7.0, "strong": 5.0, "hard": true}
+{"sexpr": "(sub (add (add v0 2) (add (add v2 2) 7)) (add (add (add v2 2) 7) (add v0 2)))", "initial": 19.0, "greedy": 19.0, "quick": 17.0, "strong": 15.0, "hard": true}
+{"sexpr": "(mul (mul (sub (mul (sub (mul v2 10) (mul 10 v2)) (sub (mul v2 v3) (mul v3 v2))) (mul (sub (mul v2 v3) (mul v3 v2)) (sub (mul v2 10) (mul 10 v2)))) 4) 4)", "initial": 59.0, "greedy": 55.0, "quick": 55.0, "strong": 53.0, "hard": true}
+{"sexpr": "(mul (add (add (add v1 0) 2) 4) (sub (mul (add (add 1 5) 8) (sub v3 4)) (mul (sub v3 4) (add (add 1 5) 8))))", "initial": 33.0, "greedy": 23.0, "quick": 21.0, "strong": 21.0, "hard": true}
+{"sexpr": "(add (sub (mul 10 4) (mul 10 4)) (mul (mul v0 (mul (mul v4 4) 4)) 1))", "initial": 29.0, "greedy": 9.0, "quick": 9.0, "strong": 7.0, "hard": true}
+{"sexpr": "(add (add (sub (mul (add (add 2 5) (add in0 5)) (add 10 10)) (mul (add 10 10) (add (add 2 5) (add in0 5)))) 3) 3)", "initial": 31.0, "greedy": 23.0, "quick": 21.0, "strong": 21.0, "hard": true}
+{"sexpr": "(add (add 6 (mul (sub 5 in0) (add (sub 6 6) 1))) (add (mul (mul (mul (add (mul (sub (add (add (sub (mul (add (add 2 5) (add in0 5)) (add 10 10)) (mul (add 10 10) (add (add 2 5) (add in0 5)))) 3) 3) (add (add (sub (mul (add (add 2 5) (add in0 5)) (add 10 10)) (mul (add 10 10) (add (add 2 5) (add in0 5)))) 3) 3)) (sub in1 in1)) (mul (sub (add (add (sub (mul (add (add 2 5) (add in0 5)) (add 10 10)) (mul (add 10 10) (add (add 2 5) (add in0 5)))) 3) 3) (add (add (sub (mul (add (add 2 5) (add in0 5)) (add 10 10)) (mul (add 10 10) (add (add 2 5) (add in0 5)))) 3) 3)) (sub in1 in1))) 2) 4) (add (sub 1 1) 1)) 1))", "initial": 171.0, "greedy": 7.0, "quick": 13.0, "strong": 5.0, "hard": true}
+{"sexpr": "(mul (mul (add (add v2 7) 1) 4) 2)", "initial": 13.0, "greedy": 9.0, "quick": 5.0, "strong": 5.0, "hard": true}
+{"sexpr": "(sub (mul (add (add (mul 3 (mul 1 2)) 5) 4) (mul (mul v0 (add (sub 1 1) 1)) (add (sub 9 9) 1))) (mul (mul (mul v0 (add (sub 1 1) 1)) (add (sub 9 9) 1)) (add (add (mul 3 (mul 1 2)) 5) 4)))", "initial": 67.0, "greedy": 11.0, "quick": 1.0, "strong": 1.0, "hard": true}
+{"sexpr": "(mul (add (add (mul (sub (mul (add (add (mul 3 (mul 1 2)) 5) 4) (mul (mul v0 (add (sub 1 1) 1)) (add (sub 9 9) 1))) (mul (mul (mul v0 (add (sub 1 1) 1)) (add (sub 9 9) 1)) (add (add (mul 3 (mul 1 2)) 5) 4))) (add (sub 5 5) 1)) 1) 8) (mul 1 4))", "initial": 87.0, "greedy": 17.0, "quick": 31.0, "strong": 15.0, "hard": true}
+{"sexpr": "(add (add 9 (mul (mul in0 in0) (mul 0 in0))) (add (mul (mul in0 in0) (mul 2 2)) 7))", "initial": 31.0, "greedy": 11.0, "quick": 15.0, "strong": 9.0, "hard": true}
+{"sexpr": "(sub 5 (add (add 9 (mul (mul in0 in0) (mul 0 in0))) (add (mul (mul in0 in0) (mul 2 2)) 7)))", "initial": 33.0, "greedy": 13.0, "quick": 17.0, "strong": 11.0, "hard": true}
+{"sexpr": "(mul 6 (mul (mul (mul (mul v1 2) 2) (mul 4 2)) 8))", "initial": 25.0, "greedy": 13.0, "quick": 9.0, "strong": 9.0, "hard": true}
+{"sexpr": "(mul 4 (mul (add (add 9 in0) (add v1 6)) 1))", "initial": 15.0, "greedy": 11.0, "quick": 7.0, "strong": 7.0, "hard": true}
+{"sexpr": "(mul (mul 1 (mul v5 3)) (mul 4 2))", "initial": 17.0, "greedy": 7.0, "quick": 5.0, "strong": 5.0, "hard": true}
+{"sexpr": "(add (add v7 3) 3)", "initial": 5.0, "greedy": 5.0, "quick": 3.0, "strong": 3.0, "hard": true}
+{"sexpr": "(add (add (add (add 3 v0) (add 8 1)) 9) 3)", "initial": 11.0, "greedy": 9.0, "quick": 5.0, "strong": 3.0, "hard": true}
+{"sexpr": "(mul (add (add 8 4) (add 8 4)) (add (add (add v1 9) 6) (add (add v1 9) 6)))", "initial": 21.0, "greedy": 11.0, "quick": 9.0, "strong": 9.0, "hard": true}
+{"sexpr": "(add (add 8 (sub (mul (add (add in0 2) 7) (mul in1 in1)) (mul (mul in1 in1) (add (add in0 2) 7)))) (add (mul 6 (mul (mul 2 (mul 1 2)) 6)) 3))", "initial": 49.0, "greedy": 31.0, "quick": 33.0, "strong": 25.0, "hard": true}
+{"sexpr": "(mul (mul (add (add 9 16) (add in1 1)) 2) 2)", "initial": 15.0, "greedy": 9.0, "quick": 5.0, "strong": 5.0, "hard": true}
+{"sexpr": "(add (sub (add (add v1 7) 3) (add (add v1 7) 3)) (add (add (sub 16 in0) 4) 5))", "initial": 19.0, "greedy": 7.0, "quick": 5.0, "strong": 5.0, "hard": true}
+{"sexpr": "(add (add 7 (sub (mul v7 v11) (mul v11 v7))) (add (add (add v0 7) 7) 2))", "initial": 21.0, "greedy": 21.0, "quick": 19.0, "strong": 17.0, "hard": true}
+{"sexpr": "(mul 4 (mul (sub (add 2 v7) (add v7 2)) 9))", "initial": 15.0, "greedy": 15.0, "quick": 11.0, "strong": 11.0, "hard": true}
+{"sexpr": "(mul (mul (sub (mul v12 v1) (mul v1 v12)) 2) 2)", "initial": 19.0, "greedy": 15.0, "quick": 15.0, "strong": 13.0, "hard": true}
+{"sexpr": "(mul (add (add 2 9) 9) (mul v10 (mul 2 2)))", "initial": 17.0, "greedy": 7.0, "quick": 5.0, "strong": 5.0, "hard": true}
+{"sexpr": "(add (add 1 (mul v6 v15)) (add (mul (add v16 10) (sub 6 6)) 1))", "initial": 19.0, "greedy": 9.0, "quick": 7.0, "strong": 7.0, "hard": true}
+{"sexpr": "(sub (mul 5 (mul (sub (mul 3 in0) (mul in0 3)) 6)) (sub (add (sub (mul in0 in0) (mul in0 in0)) (mul (add 4 in0) (sub 5 5))) (add (mul (add 4 in0) (sub 5 5)) (sub (mul in0 in0) (mul in0 in0)))))", "initial": 63.0, "greedy": 19.0, "quick": 15.0, "strong": 15.0, "hard": true}
+{"sexpr": "(add (add 8 (mul (mul (add (sub (mul 5 (mul (sub (mul 3 in0) (mul in0 3)) 6)) (sub (add (sub (mul in0 in0) (mul in0 in0)) (mul (add 4 in0) (sub 5 5))) (add (mul (add 4 in0) (sub 5 5)) (sub (mul in0 in0) (mul in0 in0))))) (sub (mul 5 (mul (sub (mul 3 in0) (mul in0 3)) 6)) (sub (add (sub (mul in0 in0) (mul in0 in0)) (mul (add 4 in0) (sub 5 5))) (add (mul (add 4 in0) (sub 5 5)) (sub (mul in0 in0) (mul in0 in0)))))) 4) 2)) (add (mul (sub in0 16) 8) 7))", "initial": 147.0, "greedy": 35.0, "quick": 37.0, "strong": 35.0, "hard": true}
+{"sexpr": "(add (add 7 (sub (add (mul v1 0) v0) (add (add v0 9) 8))) (add (add (add 7 (sub 1 in0)) (add (add (add (mul (mul 3 v1) 0) (add v0 v0)) v0) 5)) 3))", "initial": 41.0, "greedy": 25.0, "quick": 25.0, "strong": 21.0, "hard": true}
+{"sexpr": "(add (add 4 (add (add (mul (add 10 3) (sub 9 9)) 7) 7)) (add (sub (mul v4 (add (sub 1 1) 1)) (mul 16 (mul 2 4))) 2))", "initial": 37.0, "greedy": 7.0, "quick": 9.0, "strong": 5.0, "hard": true}
+{"sexpr": "(add (add 5 (add (add v1 6) 3)) (add (sub (mul v17 v12) (mul v12 v17)) 3))", "initial": 21.0, "greedy": 21.0, "quick": 21.0, "strong": 19.0, "hard": true}
+{"sexpr": "(add (add 4 (mul (mul v20 4) (add (sub 2 2) 1))) (add (mul (sub (add v22 v15) (add v15 v22)) (add (sub 1 1) 1)) 8))", "initial": 33.0, "greedy": 15.0, "quick": 15.0, "strong": 13.0, "hard": true}
+{"sexpr": "(sub (mul (mul (mul (mul 1 2) 2) (mul 2 2)) (add (mul v16 8) 0)) (mul (add (mul v16 8) 0) (mul (mul (mul 1 2) 2) (mul 2 2))))", "initial": 55.0, "greedy": 13.0, "quick": 15.0, "strong": 1.0, "hard": true}
+{"sexpr": "(mul 5 (mul v12 7))", "initial": 9.0, "greedy": 9.0, "quick": 5.0, "strong": 5.0, "hard": true}
+{"sexpr": "(mul (add 16 0) (sub (mul v1 (sub (mul (mul (mul (mul 1 2) 2) (mul 2 2)) (add (mul v16 8) 0)) (mul (add (mul v16 8) 0) (mul (mul (mul 1 2) 2) (mul 2 2))))) (mul (sub (mul (mul (mul (mul 1 2) 2) (mul 2 2)) (add (mul v16 8) 0)) (mul (add (mul v16 8) 0) (mul (mul (mul 1 2) 2) (mul 2 2)))) v1)))", "initial": 125.0, "greedy": 39.0, "quick": 43.0, "strong": 37.0, "hard": true}
+{"sexpr": "(sub (add (sub 3 3) (add (add v16 7) 9)) (sub (sub v9 v9) (sub v9 v9)))", "initial": 17.0, "greedy": 5.0, "quick": 3.0, "strong": 3.0, "hard": true}
+{"sexpr": "(add (add 8 v33) (add v20 1))", "initial": 7.0, "greedy": 7.0, "quick": 5.0, "strong": 5.0, "hard": true}
+{"sexpr": "(mul (add (add 9 v24) (add v33 6)) (add (sub 5 5) 1))", "initial": 15.0, "greedy": 7.0, "quick": 5.0, "strong": 5.0, "hard": true}
+{"sexpr": "(sub (add (mul (mul (mul 6 (mul v26 3)) 2) 4) (mul (mul (add (add 3 3) 3) 4) 2)) (add (mul (mul (add (add 3 3) 3) 4) 2) (mul (mul (mul 6 (mul v26 3)) 2) 4)))", "initial": 63.0, "greedy": 31.0, "quick": 27.0, "strong": 15.0, "hard": true}
+{"sexpr": "(add (add (mul (sub 4 v2) 2) 1) 8)", "initial": 11.0, "greedy": 9.0, "quick": 9.0, "strong": 7.0, "hard": true}
+{"sexpr": "(mul (mul (add (add 4 v1) (add v1 6)) (add (sub 8 8) 1)) (add (sub 4 4) 1))", "initial": 23.0, "greedy": 7.0, "quick": 7.0, "strong": 5.0, "hard": true}
+{"sexpr": "(sub (add (sub (add (mul v5 (add (sub 4 4) 1)) (sub 16 16)) (add (sub 16 16) (mul v5 (add (sub 4 4) 1)))) (mul (mul (mul 8 v6) 2) 4)) (add (mul (mul (mul 8 v6) 2) 4) (sub (add (mul v5 (add (sub 4 4) 1)) (sub 16 16)) (add (sub 16 16) (mul v5 (add (sub 4 4) 1))))))", "initial": 83.0, "greedy": 1.0, "quick": 27.0, "strong": 1.0, "hard": true}
+{"sexpr": "(add (add 1 (mul v12 (mul 4 2))) (add (mul 10 1) 8))", "initial": 19.0, "greedy": 7.0, "quick": 5.0, "strong": 5.0, "hard": true}
+{"sexpr": "(mul (add (add 6 (mul v0 v3)) (add (mul 9 (mul v15 2)) 2)) (add (sub 2 2) 1))", "initial": 27.0, "greedy": 17.0, "quick": 15.0, "strong": 15.0, "hard": true}
+{"sexpr": "(mul (add (add (add 16 7) 6) 0) (add (add (mul (add (add 0 6) 4) 1) 6) 1))", "initial": 23.0, "greedy": 1.0, "quick": 5.0, "strong": 1.0, "hard": true}
+{"sexpr": "(mul (mul v9 2) 4)", "initial": 9.0, "greedy": 5.0, "quick": 5.0, "strong": 3.0, "hard": true}
+{"sexpr": "(add (mul (add (mul 10 10) (add (add v21 6) 8)) 0) (sub (mul v3 16) (add (add v13 8) 3)))", "initial": 27.0, "greedy": 9.0, "quick": 7.0, "strong": 7.0, "hard": true}
+{"sexpr": "(mul (mul 2 (mul (add (add 8 10) (add in0 3)) 6)) (add (sub 1 1) 1))", "initial": 23.0, "greedy": 13.0, "quick": 9.0, "strong": 9.0, "hard": true}
+{"sexpr": "(add (add 6 (mul (mul 2 (mul (mul (mul 2 (mul (add (add 8 10) (add in0 3)) 6)) (add (sub 1 1) 1)) 2)) (add (sub 6 6) 1))) (add (mul (add (sub 10 10) (add (add 2 (mul (mul 2 (mul (add (add 8 10) (add in0 3)) 6)) (add (sub 1 1) 1))) (add in0 1))) (sub 1 1)) 5))", "initial": 83.0, "greedy": 23.0, "quick": 31.0, "strong": 21.0, "hard": true}
+{"sexpr": "(mul (add (add 2 v2) (add v4 5)) (mul 1 2))", "initial": 15.0, "greedy": 9.0, "quick": 9.0, "strong": 7.0, "hard": true}
+{"sexpr": "(mul (mul (sub (add v4 v1) (add v1 v4)) 2) 2)", "initial": 15.0, "greedy": 11.0, "quick": 11.0, "strong": 9.0, "hard": true}
+{"sexpr": "(add (add (mul 6 (mul v4 5)) 6) 7)", "initial": 13.0, "greedy": 13.0, "quick": 7.0, "strong": 7.0, "hard": true}
+{"sexpr": "(mul (mul v3 v1) (mul (mul v5 2) 4))", "initial": 17.0, "greedy": 13.0, "quick": 13.0, "strong": 11.0, "hard": true}
+{"sexpr": "(mul 4 (mul v0 3))", "initial": 9.0, "greedy": 9.0, "quick": 5.0, "strong": 5.0, "hard": true}
+{"sexpr": "(mul 2 (mul (add (add (mul v5 (add (sub 8 8) 1)) 6) 5) 5))", "initial": 21.0, "greedy": 13.0, "quick": 7.0, "strong": 7.0, "hard": true}
+{"sexpr": "(sub (mul v13 2) (mul 2 v13))", "initial": 11.0, "greedy": 9.0, "quick": 1.0, "strong": 1.0, "hard": true}
+{"sexpr": "(mul (sub (mul v13 2) (mul 2 v13)) 2)", "initial": 15.0, "greedy": 11.0, "quick": 1.0, "strong": 1.0, "hard": true}
+{"sexpr": "(sub (mul (mul (add (mul v9 0) 3) (sub (mul v15 v13) (mul v13 v15))) (mul (mul (sub v18 v18) 4) 4)) (mul (mul (mul (sub v18 v18) 4) 4) (mul (add (mul v9 0) 3) (sub (mul v15 v13) (mul v13 v15)))))", "initial": 71.0, "greedy": 1.0, "quick": 3.0, "strong": 1.0, "hard": true}
+{"sexpr": "(sub (add v15 v3) (add (add 1 v5) (add v19 7)))", "initial": 11.0, "greedy": 11.0, "quick": 9.0, "strong": 9.0, "hard": true}
+{"sexpr": "(mul 6 (mul v4 6))", "initial": 9.0, "greedy": 9.0, "quick": 5.0, "strong": 5.0, "hard": true}
+{"sexpr": "(mul (mul (mul (add (add v19 4) 2) 2) 4) (mul 2 2))", "initial": 21.0, "greedy": 11.0, "quick": 9.0, "strong": 7.0, "hard": true}
+{"sexpr": "(sub (add (mul (mul in2 4) 4) (mul 4 (mul in1 9))) (add (mul 4 (mul in1 9)) (mul (mul in2 4) 4)))", "initial": 39.0, "greedy": 31.0, "quick": 19.0, "strong": 19.0, "hard": true}
+{"sexpr": "(mul (mul (add (add 6 v7) (add v4 2)) 2) 4)", "initial": 15.0, "greedy": 11.0, "quick": 11.0, "strong": 7.0, "hard": true}
+{"sexpr": "(sub (mul 2 in2) (mul in2 2))", "initial": 11.0, "greedy": 9.0, "quick": 1.0, "strong": 1.0, "hard": true}
+{"sexpr": "(sub (add (sub (mul 10 (mul v0 (add (sub 6 6) 1))) (mul (mul v0 (add (sub 6 6) 1)) 10)) (add (add 16 6) 3)) (add (add (add 16 6) 3) (sub (mul 10 (mul v0 (add (sub 6 6) 1))) (mul (mul v0 (add (sub 6 6) 1)) 10))))", "initial": 67.0, "greedy": 27.0, "quick": 1.0, "strong": 1.0, "hard": true}
+{"sexpr": "(add (add v6 3) 8)", "initial": 5.0, "greedy": 5.0, "quick": 3.0, "strong": 3.0, "hard": true}
+{"sexpr": "(add (add 1 (mul (add v3 v1) (sub 5 5))) (add (add (add 9 v6) (add in0 4)) 7))", "initial": 21.0, "greedy": 11.0, "quick": 9.0, "strong": 7.0, "hard": true}
+{"sexpr": "(sub (add (sub (mul (mul 2 (mul 1 2)) (mul 4 (mul 2 2))) (mul (mul 4 (mul 2 2)) (mul 2 (mul 1 2)))) (add (add 8 (add (add 4 (mul v4 (add (sub 5 5) 1))) (add 2 6))) (add (mul v3 1) 1))) (add (add (add 8 (add (add 4 (mul v4 (add (sub 5 5) 1))) (add 2 6))) (add (mul v3 1) 1)) (sub (mul (mul 2 (mul 1 2)) (mul 4 (mul 2 2))) (mul (mul 4 (mul 2 2)) (mul 2 (mul 1 2))))))", "initial": 139.0, "greedy": 1.0, "quick": 47.0, "strong": 21.0, "hard": true}
+{"sexpr": "(mul (mul (sub (add v0 v8) (add v8 v0)) 2) 2)", "initial": 15.0, "greedy": 11.0, "quick": 11.0, "strong": 9.0, "hard": true}
+{"sexpr": "(add (add (add (add v7 10) 4) 6) (sub (sub v18 v18) (mul v14 3)))", "initial": 17.0, "greedy": 15.0, "quick": 13.0, "strong": 11.0, "hard": true}
+{"sexpr": "(add (add 9 (sub (add (add 10 v0) (mul v17 2)) (add (mul v17 2) (add 10 v0)))) (add (mul (mul (add 10 0) 4) 4) 1))", "initial": 35.0, "greedy": 19.0, "quick": 23.0, "strong": 17.0, "hard": true}
+{"sexpr": "(add (add 5 (mul 3 (mul v13 9))) (add (sub (add (add 9 (sub (add (add 10 v0) (mul v17 2)) (add (mul v17 2) (add 10 v0)))) (add (mul (mul (add 10 0) 4) 4) 1)) v7) 8))", "initial": 51.0, "greedy": 35.0, "quick": 35.0, "strong": 31.0, "hard": true}
+{"sexpr": "(mul (sub (sub (mul v20 v5) (mul v5 v20)) (add (add v0 9) 6)) (add (sub 1 1) 1))", "initial": 25.0, "greedy": 17.0, "quick": 15.0, "strong": 15.0, "hard": true}
+{"sexpr": "(add (add v15 4) 7)", "initial": 5.0, "greedy": 5.0, "quick": 3.0, "strong": 3.0, "hard": true}
+{"sexpr": "(sub (mul (mul v17 (add (sub 7 7) 1)) (add (add 8 0) (add v15 3))) (mul (add (add 8 0) (add v15 3)) (mul v17 (add (sub 7 7) 1))))", "initial": 39.0, "greedy": 19.0, "quick": 1.0, "strong": 1.0, "hard": true}
+{"sexpr": "(mul (mul (add (add 5 2) (add v18 8)) 4) 4)", "initial": 15.0, "greedy": 9.0, "quick": 5.0, "strong": 5.0, "hard": true}
+{"sexpr": "(add (add 3 (mul (mul in0 (add (sub 5 5) 1)) (mul 1 2))) (add (add (add 5 1) (add (mul in0 (add (sub 5 5) 1)) 2)) 5))", "initial": 37.0, "greedy": 13.0, "quick": 15.0, "strong": 11.0, "hard": true}
+{"sexpr": "(mul (mul (add (add 7 v0) (add 2 4)) 2) 4)", "initial": 15.0, "greedy": 9.0, "quick": 9.0, "strong": 5.0, "hard": true}
+{"sexpr": "(sub (mul (add (add 6 (add (add v3 5) 2)) (add (sub v2 v2) 5)) (sub (mul (add (add 7 v0) (add 0 3)) (sub v6 in0)) (mul (sub v6 in0) (add (add 7 v0) (add 0 3))))) (mul (sub (mul (add (add 7 v0) (add 0 3)) (sub v6 in0)) (mul (sub v6 in0) (add (add 7 v0) (add 0 3)))) (add (add 6 (add (add v3 5) 2)) (add (sub v2 v2) 5))))", "initial": 87.0, "greedy": 71.0, "quick": 55.0, "strong": 55.0, "hard": true}
+{"sexpr": "(add (add 3 v7) (add v13 3))", "initial": 7.0, "greedy": 7.0, "quick": 5.0, "strong": 5.0, "hard": true}
+{"sexpr": "(add (mul (add (add (add 4 0) 2) 1) 0) (add (add (add v0 v0) 8) 6))", "initial": 19.0, "greedy": 7.0, "quick": 5.0, "strong": 5.0, "hard": true}
+{"sexpr": "(add (add 7 (mul (add (sub v14 1) (mul v11 (mul 2 2))) (sub 3 3))) (add (mul 6 (mul (add (add v8 7) 4) 9)) 7))", "initial": 37.0, "greedy": 17.0, "quick": 13.0, "strong": 9.0, "hard": true}
+{"sexpr": "(add (add v8 5) 8)", "initial": 5.0, "greedy": 5.0, "quick": 3.0, "strong": 3.0, "hard": true}
+{"sexpr": "(add (sub (add v16 0) (add (mul v23 0) 10)) (add (add (mul v20 16) 4) 7))", "initial": 21.0, "greedy": 11.0, "quick": 9.0, "strong": 9.0, "hard": true}
+{"sexpr": "(sub (add (mul (add (add in0 9) 6) (add (sub 9 9) 1)) (add (sub 1 in0) (sub 1 in0))) (add (add (sub 1 in0) (sub 1 in0)) (mul (add (add in0 9) 6) (add (sub 9 9) 1))))", "initial": 43.0, "greedy": 23.0, "quick": 19.0, "strong": 19.0, "hard": true}
+{"sexpr": "(mul (mul 5 v0) (add (add in0 8) 8))", "initial": 13.0, "greedy": 13.0, "quick": 13.0, "strong": 11.0, "hard": true}
+{"sexpr": "(sub (add (mul (add (add v1 9) 1) (add (sub 2 2) 1)) (sub (mul (sub in1 v1) (mul 1 (mul v6 4))) (mul (mul 1 (mul v6 4)) (sub in1 v1)))) (add (sub (mul (sub in1 v1) (mul 1 (mul v6 4))) (mul (mul 1 (mul v6 4)) (sub in1 v1))) (mul (add (add v1 9) 1) (add (sub 2 2) 1))))", "initial": 91.0, "greedy": 51.0, "quick": 49.0, "strong": 1.0, "hard": true}
+{"sexpr": "(mul (mul (add (add 8 (mul v1 (add (sub 7 7) 1))) (add (mul 2 (mul 5 3)) 2)) 2) 2)", "initial": 31.0, "greedy": 9.0, "quick": 15.0, "strong": 5.0, "hard": true}
+{"sexpr": "(add (add 8 (mul (mul in0 4) 4)) (add (add (add v11 3) 2) 1))", "initial": 19.0, "greedy": 15.0, "quick": 13.0, "strong": 9.0, "hard": true}
+{"sexpr": "(sub (mul (sub (mul (mul v5 (sub (mul v3 v2) (mul v2 v3))) (mul 3 (add (sub 5 5) 1))) (mul (mul 3 (add (sub 5 5) 1)) (mul v5 (sub (mul v3 v2) (mul v2 v3))))) (mul (mul (mul (mul (mul 5 (mul (sub (mul v4 0) (mul 0 v4)) 2)) (add (sub 9 9) 1)) (add (sub 6 6) 1)) 4) 2)) (mul (mul (mul (mul (mul (mul 5 (mul (sub (mul v4 0) (mul 0 v4)) 2)) (add (sub 9 9) 1)) (add (sub 6 6) 1)) 4) 2) (sub (mul (mul v5 (sub (mul v3 v2) (mul v2 v3))) (mul 3 (add (sub 5 5) 1))) (mul (mul 3 (add (sub 5 5) 1)) (mul v5 (sub (mul v3 v2) (mul v2 v3)))))))", "initial": 203.0, "greedy": 1.0, "quick": 103.0, "strong": 87.0, "hard": true}
+{"sexpr": "(add (add v10 9) 1)", "initial": 5.0, "greedy": 5.0, "quick": 3.0, "strong": 3.0, "hard": true}
+{"sexpr": "(add (add 2 (mul 8 (mul (mul 9 (mul in0 9)) 9))) (add (mul (add (mul 6 (mul v0 3)) (mul v5 v9)) (sub 8 8)) 5))", "initial": 43.0, "greedy": 21.0, "quick": 17.0, "strong": 11.0, "hard": true}
+{"sexpr": "(mul (mul (mul 3 (mul v10 2)) 4) 2)", "initial": 17.0, "greedy": 11.0, "quick": 7.0, "strong": 5.0, "hard": true}
+{"sexpr": "(sub (add (mul (mul (mul 3 (mul v10 2)) 4) 2) 10) (add 10 (mul (mul (mul 3 (mul v10 2)) 4) 2)))", "initial": 39.0, "greedy": 27.0, "quick": 23.0, "strong": 19.0, "hard": true}
+{"sexpr": "(sub (add (mul (add (mul in0 0) in1) 1) (add (mul 2 in0) (mul 2 in0))) (add (add (mul 2 in0) (mul 2 in0)) (mul (add (mul in0 0) in1) 1)))", "initial": 47.0, "greedy": 19.0, "quick": 17.0, "strong": 15.0, "hard": true}
+{"sexpr": "(mul (add (add (add (sub (add (mul (add (mul in0 0) in1) 1) (add (mul 2 in0) (mul 2 in0))) (add (add (mul 2 in0) (mul 2 in0)) (mul (add (mul in0 0) in1) 1))) 2) 9) (mul (mul in1 2) 2)) (mul 2 2))", "initial": 69.0, "greedy": 31.0, "quick": 33.0, "strong": 27.0, "hard": true}
+{"sexpr": "(mul 3 (mul (sub (mul (add v2 0) (mul 8 16)) (mul (mul 8 16) (add v2 0))) 8))", "initial": 31.0, "greedy": 17.0, "quick": 15.0, "strong": 15.0, "hard": true}
+{"sexpr": "(add (add 1 v3) (add 2 4))", "initial": 7.0, "greedy": 5.0, "quick": 5.0, "strong": 3.0, "hard": true}
+{"sexpr": "(mul (sub (mul 2 (add (add 1 v3) (add 2 4))) (mul (add (add 1 v3) (add 2 4)) 2)) (mul 2 4))", "initial": 31.0, "greedy": 19.0, "quick": 17.0, "strong": 1.0, "hard": true}
+{"sexpr": "(mul (mul (add v6 5) 4) 2)", "initial": 11.0, "greedy": 7.0, "quick": 5.0, "strong": 5.0, "hard": true}
+{"sexpr": "(add (add (sub (add v1 3) (add 3 v1)) 8) 9)", "initial": 11.0, "greedy": 11.0, "quick": 9.0, "strong": 9.0, "hard": true}
+{"sexpr": "(add (add 5 (sub (sub v9 4) (mul v6 1))) (add (mul (add (add (add v6 6) 9) (add (add 1 v6) (add in1 5))) (sub 2 2)) 8))", "initial": 33.0, "greedy": 9.0, "quick": 7.0, "strong": 7.0, "hard": true}
+{"sexpr": "(mul (mul (sub (mul v2 v3) (mul v3 v2)) 2) 2)", "initial": 19.0, "greedy": 15.0, "quick": 15.0, "strong": 13.0, "hard": true}
+{"sexpr": "(sub (add (add (add v14 4) 4) (mul v13 8)) (add (mul v13 8) (add (add v14 4) 4)))", "initial": 23.0, "greedy": 19.0, "quick": 17.0, "strong": 15.0, "hard": true}
+{"sexpr": "(add (add v17 1) 8)", "initial": 5.0, "greedy": 5.0, "quick": 3.0, "strong": 3.0, "hard": true}
+{"sexpr": "(sub (mul (sub 10 (add (add v17 1) 8)) (mul (mul v2 2) 4)) (mul (mul (mul v2 2) 4) (sub 10 (add (add v17 1) 8))))", "initial": 39.0, "greedy": 31.0, "quick": 25.0, "strong": 25.0, "hard": true}
+{"sexpr": "(add (add 1 (mul (mul v12 (add (sub 2 2) 1)) (mul 4 2))) (add (sub (add (mul (mul v12 2) 4) (add (add 3 4) (add v3 3))) (add (add (add 3 4) (add v3 3)) (mul (mul v12 2) 4))) 7))", "initial": 57.0, "greedy": 31.0, "quick": 27.0, "strong": 25.0, "hard": true}
+{"sexpr": "(mul (mul (sub (add v3 v1) (add v1 v3)) 2) 2)", "initial": 15.0, "greedy": 11.0, "quick": 11.0, "strong": 9.0, "hard": true}
+{"sexpr": "(sub (mul 2 v26) (mul v26 2))", "initial": 11.0, "greedy": 9.0, "quick": 1.0, "strong": 1.0, "hard": true}
+{"sexpr": "(sub (mul (add (add (add (add v10 1) 7) 4) 1) (add (add (sub v26 v10) 2) 9)) (mul (add (add (sub v26 v10) 2) 9) (add (add (add (add v10 1) 7) 4) 1)))", "initial": 39.0, "greedy": 39.0, "quick": 27.0, "strong": 23.0, "hard": true}
+{"sexpr": "(mul 5 (mul (mul (mul v32 (mul 1 2)) (mul 4 2)) 7))", "initial": 25.0, "greedy": 13.0, "quick": 9.0, "strong": 5.0, "hard": true}
+{"sexpr": "(mul (mul (mul (mul (mul v11 4) 2) 2) 4) (add (sub 5 5) 1))", "initial": 25.0, "greedy": 9.0, "quick": 7.0, "strong": 5.0, "hard": true}
+{"sexpr": "(sub (add (add 4 (mul (mul in0 2) 2)) (add (mul (mul 3 2) 4) 4)) (mul 8 (mul (sub v28 v36) 7)))", "initial": 35.0, "greedy": 21.0, "quick": 19.0, "strong": 15.0, "hard": true}
+{"sexpr": "(mul 2 (mul (sub (add in1 in0) (add in0 in1)) 9))", "initial": 15.0, "greedy": 15.0, "quick": 11.0, "strong": 11.0, "hard": true}
+{"sexpr": "(sub (mul (sub (add (add (add (mul in0 (add (sub 9 9) 1)) 9) 9) (add (add 1 2) 6)) (add (add (add 1 2) 6) (add (add (mul in0 (add (sub 9 9) 1)) 9) 9))) (mul 4 (mul (mul in1 (mul 4 4)) 5))) (mul (mul 4 (mul (mul in1 (mul 4 4)) 5)) (sub (add (add (add (mul in0 (add (sub 9 9) 1)) 9) 9) (add (add 1 2) 6)) (add (add (add 1 2) 6) (add (add (mul in0 (add (sub 9 9) 1)) 9) 9)))))", "initial": 119.0, "greedy": 59.0, "quick": 71.0, "strong": 45.0, "hard": true}
+{"sexpr": "(mul (mul (mul in1 2) 4) (mul 1 2))", "initial": 17.0, "greedy": 7.0, "quick": 5.0, "strong": 3.0, "hard": true}
+{"sexpr": "(mul (mul (mul (mul in1 2) 4) (mul 1 2)) (mul 4 2))", "initial": 25.0, "greedy": 9.0, "quick": 7.0, "strong": 5.0, "hard": true}
+{"sexpr": "(mul 7 (mul (mul in1 (mul 1 2)) 1))", "initial": 17.0, "greedy": 7.0, "quick": 5.0, "strong": 5.0, "hard": true}
+{"sexpr": "(add (add (add (add 7 (mul v7 (mul 2 4))) (add (mul v3 (mul 4 2)) 5)) 9) 1)", "initial": 27.0, "greedy": 15.0, "quick": 15.0, "strong": 11.0, "hard": true}
+{"sexpr": "(sub (mul (sub (add (add v5 3) 3) (sub v6 v1)) (add (add (sub (add v7 (mul 7 (mul (mul in1 (mul 1 2)) 1))) (add (mul 7 (mul (mul in1 (mul 1 2)) 1)) v7)) 7) 2)) (mul (add (add (sub (add v7 (mul 7 (mul (mul in1 (mul 1 2)) 1))) (add (mul 7 (mul (mul in1 (mul 1 2)) 1)) v7)) 7) 2) (sub (add (add v5 3) 3) (sub v6 v1))))", "initial": 111.0, "greedy": 71.0, "quick": 63.0, "strong": 63.0, "hard": true}
+{"sexpr": "(mul 5 (mul (add (add v1 0) (mul v1 1)) 7))", "initial": 17.0, "greedy": 11.0, "quick": 7.0, "strong": 7.0, "hard": true}
+{"sexpr": "(sub (sub (sub 10 2) (sub 10 2)) (sub (add v5 v5) (mul 4 in1)))", "initial": 17.0, "greedy": 11.0, "quick": 9.0, "strong": 9.0, "hard": true}
+{"sexpr": "(add (add v11 6) 4)", "initial": 5.0, "greedy": 5.0, "quick": 3.0, "strong": 3.0, "hard": true}
+{"sexpr": "(add (add 8 (mul (mul (sub (mul v10 v3) (mul v3 v10)) 2) 4)) (add (mul (mul (sub (add v1 0) (add 0 v1)) 4) 4) 9))", "initial": 39.0, "greedy": 19.0, "quick": 25.0, "strong": 17.0, "hard": true}
+{"sexpr": "(mul (mul (mul 4 (mul (sub (mul v1 8) (mul 8 v1)) 3)) 4) 2)", "initial": 27.0, "greedy": 21.0, "quick": 15.0, "strong": 13.0, "hard": true}
+{"sexpr": "(add (add 6 v14) (add v10 5))", "initial": 7.0, "greedy": 7.0, "quick": 5.0, "strong": 5.0, "hard": true}
+{"sexpr": "(add (add (add (add (mul 6 (mul v17 3)) 1) 5) 2) 4)", "initial": 17.0, "greedy": 17.0, "quick": 9.0, "strong": 7.0, "hard": true}
+{"sexpr": "(mul (add (add (sub (mul v10 v28) (mul v28 v10)) 2) 3) (add (sub 3 3) 1))", "initial": 23.0, "greedy": 15.0, "quick": 13.0, "strong": 13.0, "hard": true}
+{"sexpr": "(mul (mul (mul v12 2) 4) (mul 1 4))", "initial": 17.0, "greedy": 7.0, "quick": 5.0, "strong": 5.0, "hard": true}
+{"sexpr": "(mul (sub (add (add 5 (add (add (mul (mul 7 (mul 16 5)) (add (sub 8 8) 1)) 3) 4)) (sub (mul (add (add (mul (mul 7 (mul 16 5)) (add (sub 8 8) 1)) 3) 4) 3) (mul 3 (add (add (mul (mul 7 (mul 16 5)) (add (sub 8 8) 1)) 3) 4)))) (add (sub (mul (add (add (mul (mul 7 (mul 16 5)) (add (sub 8 8) 1)) 3) 4) 3) (mul 3 (add (add (mul (mul 7 (mul 16 5)) (add (sub 8 8) 1)) 3) 4))) (add 5 (add (add (mul (mul 7 (mul 16 5)) (add (sub 8 8) 1)) 3) 4)))) (mul (mul (mul 7 (mul 16 5)) 1) (add (sub 8 8) 1)))", "initial": 175.0, "greedy": 1.0, "quick": 63.0, "strong": 9.0, "hard": true}
+{"sexpr": "(mul (add (add v2 3) 7) (mul 4 2))", "initial": 13.0, "greedy": 7.0, "quick": 5.0, "strong": 5.0, "hard": true}
+{"sexpr": "(sub (mul (add (add v8 5) 1) (add (add 6 v13) (add (mul (mul (add v11 v11) (sub 5 5)) (add (sub 7 7) 1)) 2))) (mul (add (add 6 v13) (add (mul (mul (add v11 v11) (sub 5 5)) (add (sub 7 7) 1)) 2)) (add (add v8 5) 1)))", "initial": 63.0, "greedy": 27.0, "quick": 23.0, "strong": 19.0, "hard": true}
+{"sexpr": "(sub (add (mul (mul 1 4) 0) (mul 8 v10)) (mul (mul (mul 0 2) 1) (sub v16 (mul (add (mul (add v11 v19) (sub 8 8)) (sub (mul 3 v16) (mul v16 3))) (sub 2 2)))))", "initial": 57.0, "greedy": 5.0, "quick": 3.0, "strong": 3.0, "hard": true}
+{"sexpr": "(add (add 9 v22) (add in0 7))", "initial": 7.0, "greedy": 7.0, "quick": 5.0, "strong": 5.0, "hard": true}
+{"sexpr": "(sub (add (add (add (add 1 5) 6) (add (add 3 1) (add v4 3))) (mul (add (add (add 1 v7) (add 8 8)) (add (mul v23 0) v9)) (sub 6 6))) (add (mul (add (add (add 1 v7) (add 8 8)) (add (mul v23 0) v9)) (sub 6 6)) (add (add (add 1 5) 6) (add (add 3 1) (add v4 3)))))", "initial": 71.0, "greedy": 1.0, "quick": 13.0, "strong": 1.0, "hard": true}
+{"sexpr": "(add (add 7 (add (add 2 (mul 9 (mul 1 9))) (add (add (add 2 v14) (add v23 4)) 7))) (add (add (add 2 0) (add 2 0)) 1))", "initial": 33.0, "greedy": 15.0, "quick": 13.0, "strong": 9.0, "hard": true}
+{"sexpr": "(add (add 3 (mul (add (sub 4 v9) (sub 3 (mul (add (mul v9 (add (sub 3 3) 1)) (add (add v1 3) 6)) (sub 4 4)))) (sub 9 9))) (add (add (mul (mul v13 4) 0) (add v32 0)) 3))", "initial": 51.0, "greedy": 5.0, "quick": 5.0, "strong": 3.0, "hard": true}
+{"sexpr": "(mul (mul (add v1 0) 4) 2)", "initial": 11.0, "greedy": 5.0, "quick": 3.0, "strong": 3.0, "hard": true}
+{"sexpr": "(mul 8 (mul (mul (mul (add v1 0) 4) 2) 1))", "initial": 19.0, "greedy": 9.0, "quick": 5.0, "strong": 5.0, "hard": true}
+{"sexpr": "(mul 9 (mul (mul (mul v4 4) 2) 9))", "initial": 17.0, "greedy": 13.0, "quick": 9.0, "strong": 7.0, "hard": true}
+{"sexpr": "(mul 5 (mul v5 5))", "initial": 9.0, "greedy": 9.0, "quick": 5.0, "strong": 5.0, "hard": true}
+{"sexpr": "(sub (mul 5 (mul v5 5)) 3)", "initial": 11.0, "greedy": 11.0, "quick": 7.0, "strong": 7.0, "hard": true}
+{"sexpr": "(add (add 8 (mul v10 (mul 4 2))) (add (mul v2 (mul 2 2)) 4))", "initial": 23.0, "greedy": 11.0, "quick": 11.0, "strong": 9.0, "hard": true}
+{"sexpr": "(add (add 8 (mul v1 1)) (add (mul in1 8) 6))", "initial": 15.0, "greedy": 9.0, "quick": 7.0, "strong": 7.0, "hard": true}
+{"sexpr": "(mul (sub (add (sub (mul v2 v0) (mul v0 v2)) (add (add 8 7) 8)) (add (add (add 8 7) 8) (sub (mul v2 v0) (mul v0 v2)))) (mul 2 2))", "initial": 43.0, "greedy": 29.0, "quick": 31.0, "strong": 29.0, "hard": true}
+{"sexpr": "(mul 2 (mul (mul (mul in0 4) 4) 4))", "initial": 17.0, "greedy": 11.0, "quick": 7.0, "strong": 5.0, "hard": true}
+{"sexpr": "(mul (add (add 4 10) (add v2 6)) (add (add v13 2) 7))", "initial": 15.0, "greedy": 13.0, "quick": 11.0, "strong": 9.0, "hard": true}
+{"sexpr": "(mul (sub (add (mul in1 v9) (mul (mul v11 4) 2)) (add (mul (mul v11 4) 2) (mul in1 v9))) (mul 2 2))", "initial": 39.0, "greedy": 25.0, "quick": 23.0, "strong": 21.0, "hard": true}
+{"sexpr": "(sub (mul (mul in0 (add (sub 9 9) 1)) (sub 3 v2)) (mul (sub 3 v2) (mul in0 (add (sub 9 9) 1))))", "initial": 31.0, "greedy": 15.0, "quick": 15.0, "strong": 1.0, "hard": true}
+{"sexpr": "(mul (add (add v13 0) (add v13 0)) (mul (add (add in0 5) 9) 4))", "initial": 19.0, "greedy": 13.0, "quick": 11.0, "strong": 11.0, "hard": true}
+{"sexpr": "(mul 3 (mul v18 2))", "initial": 9.0, "greedy": 7.0, "quick": 7.0, "strong": 5.0, "hard": true}
+{"sexpr": "(add (add (add (mul 1 0) in0) 6) 9)", "initial": 11.0, "greedy": 5.0, "quick": 3.0, "strong": 3.0, "hard": true}
+{"sexpr": "(add (add 2 (sub (mul v0 2) (mul v0 2))) (add (mul (add in2 v1) (add (add 1 in0) (add 10 3))) 2))", "initial": 29.0, "greedy": 15.0, "quick": 13.0, "strong": 13.0, "hard": true}
+{"sexpr": "(add (add 5 v0) (add in0 4))", "initial": 7.0, "greedy": 7.0, "quick": 5.0, "strong": 5.0, "hard": true}
+{"sexpr": "(add (add (add (add (add (add (mul 1 0) in0) 6) 9) in1) 4) 9)", "initial": 17.0, "greedy": 11.0, "quick": 9.0, "strong": 7.0, "hard": true}
+{"sexpr": "(add (add 2 (mul (add in0 3) (sub 6 6))) (add (sub (add v7 in2) (add in2 v7)) 6))", "initial": 21.0, "greedy": 11.0, "quick": 9.0, "strong": 9.0, "hard": true}
+{"sexpr": "(add (add 2 (mul v5 v0)) (add (mul (add (sub (add (mul v7 4) (mul 10 (mul 2 2))) (add (mul 10 (mul 2 2)) (mul v7 4))) 0) (sub 9 9)) 6))", "initial": 49.0, "greedy": 9.0, "quick": 7.0, "strong": 7.0, "hard": true}
+{"sexpr": "(sub (add (mul (mul in0 4) 2) (mul v2 (mul 2 4))) (add (mul v2 (mul 2 4)) (mul (mul in0 4) 2)))", "initial": 39.0, "greedy": 19.0, "quick": 23.0, "strong": 15.0, "hard": true}
+{"sexpr": "(add (add 5 v2) (add 5 7))", "initial": 7.0, "greedy": 5.0, "quick": 5.0, "strong": 3.0, "hard": true}
+{"sexpr": "(add (mul (add v0 in1) (mul 4 4)) (mul (add (sub (add in1 v3) (add v3 in1)) (sub (add 5 16) (add 16 5))) (sub 8 8)))", "initial": 33.0, "greedy": 5.0, "quick": 7.0, "strong": 5.0, "hard": true}
+{"sexpr": "(add (add (add (add (mul (add v0 in1) (mul 4 4)) (mul (add (sub (add in1 v3) (add v3 in1)) (sub (add 5 16) (add 16 5))) (sub 8 8))) in0) 6) 5)", "initial": 39.0, "greedy": 11.0, "quick": 11.0, "strong": 9.0, "hard": true}
+{"sexpr": "(add (add 5 (mul (mul v4 (add (sub 3 3) 1)) (add (sub 2 2) 1))) (add (mul (mul 8 (mul v8 6)) (add (sub 7 7) 1)) 4))", "initial": 39.0, "greedy": 15.0, "quick": 13.0, "strong": 11.0, "hard": true}
+{"sexpr": "(add (add 3 (mul 4 (mul (mul 8 (mul v4 4)) 7))) (add (add (mul v8 (mul 1 2)) (add (add 8 in0) (add v3 6))) 7))", "initial": 39.0, "greedy": 31.0, "quick": 27.0, "strong": 25.0, "hard": true}
+{"sexpr": "(sub (mul (add (add (mul (add (add (add (mul in0 0) 3) 3) 3) 2) 2) 2) (mul (mul (mul (add (add (add (mul in0 0) 3) 3) 3) 1) 2) 2)) (mul (mul (mul (mul (add (add (add (mul in0 0) 3) 3) 3) 1) 2) 2) (add (add (mul (add (add (add (mul in0 0) 3) 3) 3) 2) 2) 2)))", "initial": 91.0, "greedy": 1.0, "quick": 19.0, "strong": 3.0, "hard": true}
+{"sexpr": "(mul (mul (add (add 6 (sub (mul (add (add (mul (add (add (add (mul in0 0) 3) 3) 3) 2) 2) 2) (mul (mul (mul (add (add (add (mul in0 0) 3) 3) 3) 1) 2) 2)) (mul (mul (mul (mul (add (add (add (mul in0 0) 3) 3) 3) 1) 2) 2) (add (add (mul (add (add (add (mul in0 0) 3) 3) 3) 2) 2) 2)))) (add 10 9)) 4) 2)", "initial": 105.0, "greedy": 1.0, "quick": 41.0, "strong": 31.0, "hard": true}
+{"sexpr": "(add (add (add (sub v0 4) 5) 9) (add (add 2 (mul v4 (add (sub 8 8) 1))) (add (mul 4 (mul 8 5)) 7)))", "initial": 31.0, "greedy": 13.0, "quick": 11.0, "strong": 11.0, "hard": true}
+{"sexpr": "(add (add 3 v5) (add v3 8))", "initial": 7.0, "greedy": 7.0, "quick": 5.0, "strong": 5.0, "hard": true}
+{"sexpr": "(sub (mul 8 v13) (mul v13 8))", "initial": 11.0, "greedy": 9.0, "quick": 1.0, "strong": 1.0, "hard": true}
+{"sexpr": "(add (add 6 v9) (add v25 6))", "initial": 7.0, "greedy": 7.0, "quick": 5.0, "strong": 5.0, "hard": true}
+{"sexpr": "(add (add (mul v2 (add (sub 8 8) 1)) 4) 8)", "initial": 13.0, "greedy": 5.0, "quick": 3.0, "strong": 3.0, "hard": true}
+{"sexpr": "(mul 3 (mul (add (add (add (add 16 5) 4) 8) 3) 5))", "initial": 17.0, "greedy": 1.0, "quick": 7.0, "strong": 1.0, "hard": true}
+{"sexpr": "(add (add 1 2) (add v33 3))", "initial": 7.0, "greedy": 5.0, "quick": 5.0, "strong": 3.0, "hard": true}
+{"sexpr": "(add (add (add v18 v27) 5) 6)", "initial": 7.0, "greedy": 7.0, "quick": 5.0, "strong": 5.0, "hard": true}
+{"sexpr": "(mul 5 (mul (sub in0 3) 4))", "initial": 11.0, "greedy": 9.0, "quick": 9.0, "strong": 7.0, "hard": true}
+{"sexpr": "(add (add (sub (mul (mul v0 (add (sub 1 1) 1)) (mul (mul 0 4) 4)) (mul (mul (mul 0 4) 4) (mul v0 (add (sub 1 1) 1)))) 6) 7)", "initial": 47.0, "greedy": 1.0, "quick": 15.0, "strong": 1.0, "hard": true}
+{"sexpr": "(add (add (add 9 (add (add 5 3) 7)) (add (mul (mul 1 (add (sub 8 8) 1)) (mul 4 2)) 6)) (mul (add (add 4 4) 8) (mul 2 2)))", "initial": 41.0, "greedy": 1.0, "quick": 11.0, "strong": 1.0, "hard": true}
+{"sexpr": "(add (add (add (add (sub (add 3 in0) (add in0 3)) 7) 3) 8) 5)", "initial": 15.0, "greedy": 15.0, "quick": 9.0, "strong": 9.0, "hard": true}
+{"sexpr": "(add (add 1 (sub (mul v1 in1) (mul in1 v1))) (add (sub v0 v1) 7))", "initial": 19.0, "greedy": 19.0, "quick": 19.0, "strong": 17.0, "hard": true}
+{"sexpr": "(mul (mul (add (add 3 (mul (mul in2 2) 4)) (add (add (add in2 7) 2) 8)) 4) 2)", "initial": 27.0, "greedy": 19.0, "quick": 17.0, "strong": 13.0, "hard": true}
+{"sexpr": "(sub (mul (sub 8 (add (add 1 (sub (mul v1 in1) (mul in1 v1))) (add (sub v0 v1) 7))) (mul (mul (mul (add (add 3 (mul (mul in2 2) 4)) (add (add (add in2 7) 2) 8)) 4) 2) (add (sub 2 2) 1))) (mul (mul (mul (mul (add (add 3 (mul (mul in2 2) 4)) (add (add (add in2 7) 2) 8)) 4) 2) (add (sub 2 2) 1)) (sub 8 (add (add 1 (sub (mul v1 in1) (mul in1 v1))) (add (sub v0 v1) 7)))))", "initial": 119.0, "greedy": 87.0, "quick": 91.0, "strong": 85.0, "hard": true}
+{"sexpr": "(add (add (add (sub v5 v7) 2) 6) (add (add (sub v5 v7) 2) 6))", "initial": 15.0, "greedy": 9.0, "quick": 7.0, "strong": 7.0, "hard": true}
+{"sexpr": "(add (add 4 (mul 8 (mul (mul v0 (add (sub 6 6) 1)) 4))) (add (mul (add (add v9 2) 9) (mul 1 2)) 9))", "initial": 35.0, "greedy": 19.0, "quick": 19.0, "strong": 13.0, "hard": true}
+{"sexpr": "(add (add (add v0 1) 7) (add (add v0 1) 7))", "initial": 11.0, "greedy": 7.0, "quick": 5.0, "strong": 5.0, "hard": true}
+{"sexpr": "(mul (mul 5 (mul v2 4)) (add (sub 5 5) 1))", "initial": 17.0, "greedy": 7.0, "quick": 7.0, "strong": 5.0, "hard": true}
+{"sexpr": "(mul (sub (mul 4 v7) (mul v7 4)) (add (sub 2 2) 1))", "initial": 19.0, "greedy": 9.0, "quick": 1.0, "strong": 1.0, "hard": true}
+{"sexpr": "(mul (mul (add (add (mul v19 2) 2) 8) 4) 4)", "initial": 17.0, "greedy": 11.0, "quick": 9.0, "strong": 7.0, "hard": true}
+{"sexpr": "(add (add (add (add v18 v18) (mul v2 (add (sub 1 1) 1))) 7) 9)", "initial": 17.0, "greedy": 9.0, "quick": 7.0, "strong": 7.0, "hard": true}
+{"sexpr": "(mul (sub (mul (mul 5 (mul 4 4)) (add (add 4 0) (add v21 8))) (mul (add (add 4 0) (add v21 8)) (mul 5 (mul 4 4)))) (mul (mul 5 (mul 1 2)) (add v21 v21)))", "initial": 57.0, "greedy": 29.0, "quick": 25.0, "strong": 25.0, "hard": true}
+{"sexpr": "(add (add 1 v30) (add v19 3))", "initial": 7.0, "greedy": 7.0, "quick": 5.0, "strong": 5.0, "hard": true}
+{"sexpr": "(add (add (sub (mul (add (mul v13 0) v23) (mul (add v32 v3) (sub 8 8))) (mul (mul (add v32 v3) (sub 8 8)) (add (mul v13 0) v23))) 3) 9)", "initial": 43.0, "greedy": 1.0, "quick": 3.0, "strong": 1.0, "hard": true}
+{"sexpr": "(mul (mul (mul v36 v4) 4) 2)", "initial": 13.0, "greedy": 9.0, "quick": 7.0, "strong": 7.0, "hard": true}
+{"sexpr": "(mul (mul (mul (mul (mul v36 v4) 4) 2) 4) 4)", "initial": 21.0, "greedy": 13.0, "quick": 13.0, "strong": 9.0, "hard": true}
+{"sexpr": "(mul (mul (mul (mul v4 4) 2) 4) 4)", "initial": 17.0, "greedy": 9.0, "quick": 7.0, "strong": 7.0, "hard": true}
+{"sexpr": "(add (add v1 7) 4)", "initial": 5.0, "greedy": 5.0, "quick": 3.0, "strong": 3.0, "hard": true}
+{"sexpr": "(add (add 8 (mul in2 (add (sub 3 3) 1))) (add (sub (mul v9 v9) (mul v9 v9)) 1))", "initial": 25.0, "greedy": 5.0, "quick": 3.0, "strong": 3.0, "hard": true}
+{"sexpr": "(mul (mul (add (add v8 6) 8) 2) 4)", "initial": 13.0, "greedy": 9.0, "quick": 5.0, "strong": 5.0, "hard": true}
+{"sexpr": "(mul (mul (mul (sub v13 0) 1) 2) 2)", "initial": 15.0, "greedy": 5.0, "quick": 5.0, "strong": 3.0, "hard": true}
+{"sexpr": "(mul (sub (mul (mul (add v0 3) (sub 4 4)) (mul v12 (mul 1 2))) (mul (mul v12 (mul 1 2)) (mul (add v0 3) (sub 4 4)))) (mul 5 (mul (mul v0 (mul 1 4)) 9)))", "initial": 63.0, "greedy": 1.0, "quick": 17.0, "strong": 1.0, "hard": true}
+{"sexpr": "(add (add (add (add 4 (sub (mul v4 v8) (mul v8 v4))) (add (mul (add v8 in0) (sub 9 9)) 5)) 4) 5)", "initial": 29.0, "greedy": 19.0, "quick": 15.0, "strong": 13.0, "hard": true}
+{"sexpr": "(sub (add (add (add 5 v19) (add v17 3)) (mul 5 (mul 10 6))) (add (mul 5 (mul 10 6)) (add (add 5 v19) (add v17 3))))", "initial": 35.0, "greedy": 19.0, "quick": 13.0, "strong": 13.0, "hard": true}
+{"sexpr": "(sub (mul (sub (add (mul 4 (add (sub 5 5) 1)) (add (add 2 5) (add in1 4))) (add (add (add 2 5) (add in1 4)) (mul 4 (add (sub 5 5) 1)))) (mul (mul (add (add 2 in1) (add in0 1)) 4) 4)) (mul (mul (mul (add (add 2 in1) (add in0 1)) 4) 4) (sub (add (mul 4 (add (sub 5 5) 1)) (add (add 2 5) (add in1 4))) (add (add (add 2 5) (add in1 4)) (mul 4 (add (sub 5 5) 1))))))", "initial": 107.0, "greedy": 59.0, "quick": 55.0, "strong": 43.0, "hard": true}
+{"sexpr": "(add (add 4 (add (add 6 v3) (add v3 8))) (add (add 2 4) 2))", "initial": 15.0, "greedy": 11.0, "quick": 7.0, "strong": 5.0, "hard": true}
+{"sexpr": "(mul (mul (mul (mul (mul v0 4) 4) 2) 4) (mul 1 2))", "initial": 25.0, "greedy": 11.0, "quick": 9.0, "strong": 5.0, "hard": true}
+{"sexpr": "(mul (add (add in0 8) 7) (mul 2 2))", "initial": 13.0, "greedy": 7.0, "quick": 5.0, "strong": 5.0, "hard": true}
+{"sexpr": "(add (add 2 (mul (mul in0 2) 2)) (add (mul (add v0 v0) (sub 5 5)) 8))", "initial": 23.0, "greedy": 9.0, "quick": 7.0, "strong": 7.0, "hard": true}
+{"sexpr": "(mul (add (mul v1 (add (add 2 (mul (mul in0 2) 2)) (add (mul (add v0 v0) (sub 5 5)) 8))) (add v1 0)) 1)", "initial": 35.0, "greedy": 15.0, "quick": 15.0, "strong": 13.0, "hard": true}
+{"sexpr": "(mul (mul (mul 1 (mul v2 2)) 2) 4)", "initial": 17.0, "greedy": 7.0, "quick": 5.0, "strong": 3.0, "hard": true}
+{"sexpr": "(add (add v12 1) 5)", "initial": 5.0, "greedy": 5.0, "quick": 3.0, "strong": 3.0, "hard": true}
+{"sexpr": "(mul (mul (mul (add (add in2 6) 7) 4) 4) (add (sub 6 6) 1))", "initial": 21.0, "greedy": 9.0, "quick": 7.0, "strong": 5.0, "hard": true}
+{"sexpr": "(mul (mul (add in1 0) 4) 2)", "initial": 11.0, "greedy": 5.0, "quick": 3.0, "strong": 3.0, "hard": true}
+{"sexpr": "(add (add (sub (add (mul (mul (mul (mul in0 (mul 4 2)) (add (sub 5 5) 1)) 4) 4) (sub (mul v1 (mul (mul in0 (mul 4 2)) (add (sub 5 5) 1))) (mul (mul (mul in0 (mul 4 2)) (add (sub 5 5) 1)) v1))) (add (sub (mul v1 (mul (mul in0 (mul 4 2)) (add (sub 5 5) 1))) (mul (mul (mul in0 (mul 4 2)) (add (sub 5 5) 1)) v1)) (mul (mul (mul (mul in0 (mul 4 2)) (add (sub 5 5) 1)) 4) 4))) 7) 4)", "initial": 143.0, "greedy": 51.0, "quick": 61.0, "strong": 45.0, "hard": true}
+{"sexpr": "(mul (mul (add (add 16 5) 3) (add (add in0 1) 7)) (add (sub 4 4) 1))", "initial": 21.0, "greedy": 9.0, "quick": 9.0, "strong": 7.0, "hard": true}
+{"sexpr": "(add (add (add (add (mul 4 0) v2) (sub 0 0)) 4) 5)", "initial": 15.0, "greedy": 5.0, "quick": 3.0, "strong": 3.0, "hard": true}
+{"sexpr": "(mul (sub (mul v6 (add (sub 5 5) 1)) (sub (add v4 v5) (add v5 v4))) (sub (mul (add (add (add (mul (add (sub 3 3) 0) 0) (mul (add v2 0) 16)) 5) 4) (sub (add v5 v1) (add v1 v5))) (mul (sub (add v5 v1) (add v1 v5)) (add (add (add (mul (add (sub 3 3) 0) 0) (mul (add v2 0) 16)) 5) 4))))", "initial": 83.0, "greedy": 47.0, "quick": 43.0, "strong": 43.0, "hard": true}
+{"sexpr": "(add (add 5 (mul (mul (mul (mul (add in0 0) 1) 1) 2) 4)) (add (mul (mul (mul (add in0 0) 1) 1) (mul 1 2)) 7))", "initial": 43.0, "greedy": 13.0, "quick": 15.0, "strong": 11.0, "hard": true}
+{"sexpr": "(add (add (add (mul (mul (mul (mul (add (mul 2 (mul in0 6)) (sub in0 in0)) (sub 7 7)) 2) 4) 1) 8) 1) (mul (sub (mul (mul (mul (add (mul 2 (mul in0 6)) (sub in0 in0)) (sub 7 7)) 2) 4) (mul (mul (mul (add (mul 2 (mul in0 6)) (sub in0 in0)) (sub 7 7)) 2) 4)) (mul 1 4)))", "initial": 99.0, "greedy": 1.0, "quick": 5.0, "strong": 1.0, "hard": true}
+{"sexpr": "(sub (add (add (add 5 (mul (mul (mul (mul (add in0 0) 1) 1) 2) 4)) (add (mul (mul (mul (add in0 0) 1) 1) (mul 1 2)) 7)) (mul (mul (mul (add (mul 2 (mul in0 6)) (sub in0 in0)) (sub 7 7)) 2) 4)) (mul (add (add 5 (mul (mul (mul (mul (add in0 0) 1) 1) 2) 4)) (add (mul (mul (mul (add in0 0) 1) 1) (mul 1 2)) 7)) 16))", "initial": 119.0, "greedy": 29.0, "quick": 53.0, "strong": 31.0, "hard": true}
+{"sexpr": "(mul (mul (mul (sub (mul v0 3) (mul 3 v0)) 2) 4) (mul 2 4))", "initial": 27.0, "greedy": 17.0, "quick": 17.0, "strong": 15.0, "hard": true}
+{"sexpr": "(add (sub (mul (mul (add v5 16) (sub 3 3)) (add (add 2 (mul (mul (mul (sub (mul v0 3) (mul 3 v0)) 2) 4) (mul 2 4))) (add 10 4))) (mul (add (add 2 (mul (mul (mul (sub (mul v0 3) (mul 3 v0)) 2) 4) (mul 2 4))) (add 10 4)) (mul (add v5 16) (sub 3 3)))) (mul (add (add v5 7) 8) (add (sub 5 5) 1)))", "initial": 105.0, "greedy": 5.0, "quick": 13.0, "strong": 3.0, "hard": true}
+{"sexpr": "(add (add (sub (add (add (add 5 v7) (add v5 4)) (add in0 in0)) (add (add in0 in0) (add (add 5 v7) (add v5 4)))) 1) 9)", "initial": 27.0, "greedy": 27.0, "quick": 25.0, "strong": 25.0, "hard": true}
+{"sexpr": "(mul (sub (add (add v1 5) 2) (add (mul v1 0) v3)) (add (sub 3 3) 1))", "initial": 21.0, "greedy": 7.0, "quick": 5.0, "strong": 5.0, "hard": true}
+{"sexpr": "(add (add 3 in1) (add 5 3))", "initial": 7.0, "greedy": 5.0, "quick": 5.0, "strong": 3.0, "hard": true}
+{"sexpr": "(sub (add 8 (add (add 3 in1) (add 5 3))) (add (add (add 3 in1) (add 5 3)) 8))", "initial": 19.0, "greedy": 15.0, "quick": 11.0, "strong": 1.0, "hard": true}
+{"sexpr": "(mul (sub (mul 8 in1) (mul in1 8)) (mul 1 4))", "initial": 19.0, "greedy": 11.0, "quick": 1.0, "strong": 1.0, "hard": true}
+{"sexpr": "(add (add (add (sub (add 8 (add (add 3 in1) (add 5 3))) (add (add (add 3 in1) (add 5 3)) 8)) (add (add 3 in1) (add 5 3))) 1) 4)", "initial": 31.0, "greedy": 25.0, "quick": 21.0, "strong": 19.0, "hard": true}
+{"sexpr": "(add (add (mul 2 (mul in0 8)) 2) 5)", "initial": 13.0, "greedy": 11.0, "quick": 7.0, "strong": 5.0, "hard": true}
+{"sexpr": "(add (add 8 (sub (add (add in2 7) 3) (add (add in2 7) 3))) (add (mul (mul (mul (mul in0 4) 2) 4) 2) 8))", "initial": 33.0, "greedy": 13.0, "quick": 13.0, "strong": 9.0, "hard": true}
+{"sexpr": "(add (sub (mul (mul 5 (mul v9 8)) (sub 4 4)) (mul (sub 4 4) (mul 5 (mul v9 8)))) (mul (sub (mul 8 v1) (mul v1 8)) (add (sub 2 2) 1)))", "initial": 51.0, "greedy": 9.0, "quick": 7.0, "strong": 1.0, "hard": true}
+{"sexpr": "(sub (mul (sub (mul 4 v7) (mul v7 4)) (mul (mul v4 2) 2)) (mul (mul (mul v4 2) 2) (sub (mul 4 v7) (mul v7 4))))", "initial": 47.0, "greedy": 35.0, "quick": 35.0, "strong": 1.0, "hard": true}
+{"sexpr": "(mul (mul (mul (mul (mul v5 2) 4) (add (sub 1 1) 1)) 2) 4)", "initial": 25.0, "greedy": 9.0, "quick": 9.0, "strong": 5.0, "hard": true}
+{"sexpr": "(add (add 9 (mul 5 (mul (mul (add v21 0) (sub 9 9)) 3))) (add (sub (add (mul (mul 4 2) 2) (mul (add v25 v22) (sub 3 3))) (add (mul (add v25 v22) (sub 3 3)) (mul (mul 4 2) 2))) 6))", "initial": 61.0, "greedy": 1.0, "quick": 9.0, "strong": 1.0, "hard": true}
+{"sexpr": "(sub (sub (mul 5 v29) (mul v29 5)) (add (add v8 9) 8))", "initial": 17.0, "greedy": 17.0, "quick": 15.0, "strong": 15.0, "hard": true}
+{"sexpr": "(add (add 6 (add (add 7 v2) (add 2 5))) (add (sub (add v0 in0) (add in0 v0)) 5))", "initial": 19.0, "greedy": 17.0, "quick": 13.0, "strong": 13.0, "hard": true}
+{"sexpr": "(add (add 8 (add (sub (add v1 2) (add v1 2)) 0)) (add v2 2))", "initial": 15.0, "greedy": 5.0, "quick": 3.0, "strong": 3.0, "hard": true}
+{"sexpr": "(mul 7 (mul v5 8))", "initial": 9.0, "greedy": 7.0, "quick": 7.0, "strong": 5.0, "hard": true}
+{"sexpr": "(mul 5 (mul (mul 3 (mul v8 2)) 4))", "initial": 17.0, "greedy": 13.0, "quick": 9.0, "strong": 7.0, "hard": true}
+{"sexpr": "(mul 5 (mul (sub (add (sub (mul 2 v11) (mul v11 2)) (mul (mul v5 2) 4)) (add (mul (mul v5 2) 4) (sub (mul 2 v11) (mul v11 2)))) 8))", "initial": 51.0, "greedy": 37.0, "quick": 35.0, "strong": 31.0, "hard": true}
+{"sexpr": "(mul (mul (mul (mul (mul (mul v9 (add (sub 4 4) 1)) (add (sub 9 9) 1)) (mul (sub (mul 16 v13) (mul v13 16)) (mul 2 2))) (mul 4 2)) 2) 2)", "initial": 55.0, "greedy": 21.0, "quick": 29.0, "strong": 19.0, "hard": true}
+{"sexpr": "(mul 5 (mul (sub (add (mul in0 2) (add 8 8)) (add (add 8 8) (mul in0 2))) 9))", "initial": 27.0, "greedy": 19.0, "quick": 15.0, "strong": 5.0, "hard": true}
+{"sexpr": "(mul (add (add (add (add 6 (add (mul 3 (add (sub 8 8) 1)) (mul 10 (mul 4 2)))) (add in0 1)) 1) 5) (add (sub 4 4) 1))", "initial": 37.0, "greedy": 9.0, "quick": 7.0, "strong": 5.0, "hard": true}
+{"sexpr": "(sub (mul (mul (mul (add (mul 3 (add (sub 8 8) 1)) (mul 10 (mul 4 2))) (mul 5 (mul (sub (add (mul in0 2) (add 8 8)) (add (add 8 8) (mul in0 2))) 9))) 4) (mul 3 (mul (mul 8 (mul 1 4)) 3))) (mul (mul 3 (mul (mul 8 (mul 1 4)) 3)) (mul (mul (add (mul 3 (add (sub 8 8) 1)) (mul 10 (mul 4 2))) (mul 5 (mul (sub (add (mul in0 2) (add 8 8)) (add (add 8 8) (mul in0 2))) 9))) 4)))", "initial": 147.0, "greedy": 59.0, "quick": 89.0, "strong": 51.0, "hard": true}
+{"sexpr": "(mul (add (add in2 4) 8) 1)", "initial": 9.0, "greedy": 5.0, "quick": 3.0, "strong": 3.0, "hard": true}
+{"sexpr": "(sub (mul (add (mul (sub in0 in0) 0) (add v6 v5)) (mul (mul 6 (mul 4 6)) (add (sub 2 2) 1))) (mul (mul (mul 6 (mul 4 6)) (add (sub 2 2) 1)) (add (mul (sub in0 in0) 0) (add v6 v5))))", "initial": 63.0, "greedy": 15.0, "quick": 15.0, "strong": 1.0, "hard": true}
+{"sexpr": "(add (add 6 (mul 1 (mul 4 2))) (add (sub v9 (sub (mul (add (mul (sub in0 in0) 0) (add v6 v5)) (mul (mul 6 (mul 4 6)) (add (sub 2 2) 1))) (mul (mul (mul 6 (mul 4 6)) (add (sub 2 2) 1)) (add (mul (sub in0 in0) 0) (add v6 v5))))) 2))", "initial": 79.0, "greedy": 21.0, "quick": 25.0, "strong": 19.0, "hard": true}
+{"sexpr": "(mul (add (add (mul 2 v5) 7) 7) (add (sub 2 2) 1))", "initial": 17.0, "greedy": 9.0, "quick": 5.0, "strong": 5.0, "hard": true}
+{"sexpr": "(mul (mul (mul 4 (mul (add v16 v21) 7)) 2) 2)", "initial": 19.0, "greedy": 15.0, "quick": 9.0, "strong": 7.0, "hard": true}
+{"sexpr": "(mul (mul (mul (mul in2 4) 4) (mul 1 4)) (mul (mul 3 (mul 4 1)) (add (sub 2 2) 1)))", "initial": 37.0, "greedy": 11.0, "quick": 9.0, "strong": 5.0, "hard": true}
+{"sexpr": "(mul 7 (mul (mul (mul in2 (mul 2 2)) (add (sub 9 9) 1)) 5))", "initial": 25.0, "greedy": 11.0, "quick": 7.0, "strong": 5.0, "hard": true}
+{"sexpr": "(mul (add (add (mul v4 (mul 2 2)) 2) 5) (add (sub 8 8) 1))", "initial": 21.0, "greedy": 7.0, "quick": 7.0, "strong": 5.0, "hard": true}
+{"sexpr": "(sub (mul 16 v19) (sub v1 v7))", "initial": 9.0, "greedy": 9.0, "quick": 7.0, "strong": 7.0, "hard": true}
+{"sexpr": "(add (add (mul (mul (mul (mul v19 4) 4) 2) 4) 6) 5)", "initial": 21.0, "greedy": 13.0, "quick": 11.0, "strong": 9.0, "hard": true}
+{"sexpr": "(mul 2 (mul v19 9))", "initial": 9.0, "greedy": 9.0, "quick": 5.0, "strong": 5.0, "hard": true}
+{"sexpr": "(add (add 7 0) (add v20 6))", "initial": 7.0, "greedy": 5.0, "quick": 3.0, "strong": 3.0, "hard": true}
+{"sexpr": "(mul 5 (mul (mul (mul in1 16) 1) 8))", "initial": 17.0, "greedy": 9.0, "quick": 5.0, "strong": 5.0, "hard": true}
+{"sexpr": "(mul (add (add (add in1 1) 5) (add (add in1 1) 5)) 1)", "initial": 15.0, "greedy": 7.0, "quick": 7.0, "strong": 5.0, "hard": true}
+{"sexpr": "(mul (sub (add (add (add (mul (add (add (add in1 1) 5) (add (add in1 1) 5)) 1) 5) 7) (mul (mul v1 2) 4)) (add (mul (mul v1 2) 4) (add (add (mul (add (add (add in1 1) 5) (add (add in1 1) 5)) 1) 5) 7))) (add (sub 1 1) 1))", "initial": 67.0, "greedy": 35.0, "quick": 31.0, "strong": 25.0, "hard": true}
+{"sexpr": "(mul (add (mul (add in0 0) 0) (add 1 1)) (mul (add (add v4 2) 2) 1))", "initial": 23.0, "greedy": 9.0, "quick": 7.0, "strong": 5.0, "hard": true}
+{"sexpr": "(sub (mul (mul (mul (mul 2 (add (sub 5 5) 1)) 4) 4) (add (add 4 (sub (mul v3 in1) (mul in1 v3))) (add (mul (add 2 3) (sub 5 5)) 3))) (mul (add (add 4 (sub (mul v3 in1) (mul in1 v3))) (add (mul (add 2 3) (sub 5 5)) 3)) (mul (mul (mul 2 (add (sub 5 5) 1)) 4) 4)))", "initial": 91.0, "greedy": 39.0, "quick": 43.0, "strong": 35.0, "hard": true}
+{"sexpr": "(sub (add (add (mul 10 2) (add (mul v0 0) v1)) (add (add (sub 8 v2) 3) 3)) (add (add (add (sub 8 v2) 3) 3) (add (mul 10 2) (add (mul v0 0) v1))))", "initial": 43.0, "greedy": 23.0, "quick": 21.0, "strong": 17.0, "hard": true}
+{"sexpr": "(mul 4 (mul (add (sub v7 (sub (add 8 16) (add 16 8))) 0) 2))", "initial": 19.0, "greedy": 7.0, "quick": 3.0, "strong": 3.0, "hard": true}
+{"sexpr": "(add (add (mul 4 (mul (mul (mul v2 4) 4) 8)) 5) 7)", "initial": 21.0, "greedy": 15.0, "quick": 9.0, "strong": 9.0, "hard": true}
+{"sexpr": "(mul (add 16 16) (mul v19 16))", "initial": 11.0, "greedy": 7.0, "quick": 7.0, "strong": 5.0, "hard": true}
+{"sexpr": "(add (add (sub (add (mul v14 (mul 1 2)) (sub v11 v7)) (add (sub v11 v7) (mul v14 (mul 1 2)))) 2) 7)", "initial": 31.0, "greedy": 19.0, "quick": 17.0, "strong": 17.0, "hard": true}
+{"sexpr": "(add (add (sub (mul v11 10) (mul 10 v11)) 5) 9)", "initial": 15.0, "greedy": 15.0, "quick": 13.0, "strong": 13.0, "hard": true}
+{"sexpr": "(add (add (sub (add (sub (mul v25 10) (mul 10 v25)) (mul v24 (add (sub 3 3) 1))) (add (mul v24 (add (sub 3 3) 1)) (sub (mul v25 10) (mul 10 v25)))) 2) 2)", "initial": 47.0, "greedy": 31.0, "quick": 29.0, "strong": 29.0, "hard": true}
+{"sexpr": "(sub (mul (add (add (sub (mul (mul (mul 2 (mul (add 0 0) 8)) 4) 2) v0) 3) 1) (add (add (add 5 5) 5) 4)) (mul (add (add (add 5 5) 5) 4) (add (add (sub (mul (mul (mul 2 (mul (add 0 0) 8)) 4) 2) v0) 3) 1)))", "initial": 71.0, "greedy": 23.0, "quick": 23.0, "strong": 19.0, "hard": true}
+{"sexpr": "(mul (sub (add (mul (add v3 0) (sub 8 8)) (mul (mul in2 2) 4)) (add (mul (mul in2 2) 4) (mul (add v3 0) (sub 8 8)))) (mul 1 4))", "initial": 47.0, "greedy": 1.0, "quick": 11.0, "strong": 1.0, "hard": true}
+{"sexpr": "(mul 3 (mul v2 3))", "initial": 9.0, "greedy": 9.0, "quick": 5.0, "strong": 5.0, "hard": true}
+{"sexpr": "(mul (mul (mul v1 (add (sub 1 1) 1)) 4) 2)", "initial": 17.0, "greedy": 5.0, "quick": 3.0, "strong": 3.0, "hard": true}
+{"sexpr": "(mul 8 (mul (sub 1 v0) 4))", "initial": 11.0, "greedy": 9.0, "quick": 7.0, "strong": 7.0, "hard": true}
+{"sexpr": "(mul (mul (mul (mul v1 (add (sub 1 1) 1)) 4) 2) (mul 2 2))", "initial": 25.0, "greedy": 7.0, "quick": 7.0, "strong": 5.0, "hard": true}
+{"sexpr": "(sub (mul 6 (mul 5 7)) (add (add 4 v8) (add 5 3)))", "initial": 17.0, "greedy": 7.0, "quick": 7.0, "strong": 5.0, "hard": true}
+{"sexpr": "(add (add 7 (mul in0 (mul 4 4))) (add (sub (mul 3 0) (mul 0 3)) 7))", "initial": 25.0, "greedy": 7.0, "quick": 5.0, "strong": 5.0, "hard": true}
+{"sexpr": "(mul 5 (mul (mul (sub (mul v14 v6) (mul v6 v14)) (add (sub 2 2) 1)) 4))", "initial": 27.0, "greedy": 17.0, "quick": 17.0, "strong": 15.0, "hard": true}
+{"sexpr": "(mul (mul (mul (sub (add v0 v12) (add v12 v0)) (mul 2 4)) 2) 4)", "initial": 23.0, "greedy": 13.0, "quick": 13.0, "strong": 11.0, "hard": true}
+{"sexpr": "(mul (add (add v0 3) 8) (add (sub 9 9) 1))", "initial": 13.0, "greedy": 5.0, "quick": 3.0, "strong": 3.0, "hard": true}
+{"sexpr": "(mul 5 (mul v2 4))", "initial": 9.0, "greedy": 7.0, "quick": 7.0, "strong": 5.0, "hard": true}
+{"sexpr": "(mul 6 (mul (mul v0 1) 8))", "initial": 13.0, "greedy": 7.0, "quick": 7.0, "strong": 5.0, "hard": true}
+{"sexpr": "(mul (mul (sub (add (sub (mul v9 v8) (mul v8 v9)) (sub (mul v2 (add v5 v9)) (mul (add v5 v9) v2))) (add (sub (mul v2 (add v5 v9)) (mul (add v5 v9) v2)) (sub (mul v9 v8) (mul v8 v9)))) 2) 2)", "initial": 63.0, "greedy": 59.0, "quick": 57.0, "strong": 57.0, "hard": true}
+{"sexpr": "(add (add 2 (add (add 9 (mul 2 (mul 1 4))) (add (sub v9 v9) 3))) (add (add (add (sub (mul v0 10) (mul 10 v0)) 8) 3) 4))", "initial": 37.0, "greedy": 19.0, "quick": 21.0, "strong": 17.0, "hard": true}
+{"sexpr": "(sub (mul (add (add 1 (sub (add 16 v10) (add v10 16))) (add (mul (add 10 v24) (sub 4 4)) 5)) (mul (mul (add (add v7 1) 2) 2) 2)) (mul (mul (mul (add (add v7 1) 2) 2) 2) (add (add 1 (sub (add 16 v10) (add v10 16))) (add (mul (add 10 v24) (sub 4 4)) 5))))", "initial": 75.0, "greedy": 47.0, "quick": 47.0, "strong": 39.0, "hard": true}
+{"sexpr": "(mul (mul (sub 5 v15) 2) 4)", "initial": 11.0, "greedy": 7.0, "quick": 7.0, "strong": 5.0, "hard": true}
+{"sexpr": "(add (add (mul v13 (mul 1 4)) 8) 2)", "initial": 13.0, "greedy": 7.0, "quick": 5.0, "strong": 5.0, "hard": true}
+{"sexpr": "(mul (add (add v9 5) 1) (add (add v8 3) 8))", "initial": 13.0, "greedy": 13.0, "quick": 9.0, "strong": 9.0, "hard": true}
+{"sexpr": "(add (add (mul in1 16) 8) 2)", "initial": 9.0, "greedy": 7.0, "quick": 7.0, "strong": 5.0, "hard": true}
+{"sexpr": "(sub (mul in1 (add (add (mul in1 16) 8) 2)) (mul (add (add (mul in1 16) 8) 2) in1))", "initial": 27.0, "greedy": 23.0, "quick": 23.0, "strong": 19.0, "hard": true}
+{"sexpr": "(mul 8 (mul in0 7))", "initial": 9.0, "greedy": 9.0, "quick": 5.0, "strong": 5.0, "hard": true}
+{"sexpr": "(sub (add (mul (mul v6 4) 2) (sub v7 1)) (add (sub v7 1) (mul (mul v6 4) 2)))", "initial": 27.0, "greedy": 19.0, "quick": 15.0, "strong": 15.0, "hard": true}
+{"sexpr": "(add (add 6 (add (add 1 8) (add v16 2))) (add (mul 10 (add (sub 8 8) 1)) 9))", "initial": 21.0, "greedy": 9.0, "quick": 7.0, "strong": 3.0, "hard": true}
+{"sexpr": "(add (add 7 (sub in1 v12)) (add (mul 4 8) 2))", "initial": 13.0, "greedy": 7.0, "quick": 7.0, "strong": 5.0, "hard": true}
+{"sexpr": "(sub (add (add (mul (add v16 5) (sub 2 2)) 3) 2) (mul 2 (mul (mul (add v11 v2) (sub 5 5)) 4)))", "initial": 31.0, "greedy": 1.0, "quick": 3.0, "strong": 1.0, "hard": true}
+{"sexpr": "(mul (sub (mul 4 (sub (mul v5 3) (mul 3 v5))) (mul (sub (mul v5 3) (mul 3 v5)) 4)) (add (sub 5 5) 1))", "initial": 39.0, "greedy": 29.0, "quick": 27.0, "strong": 27.0, "hard": true}
+{"sexpr": "(mul 7 (mul v16 9))", "initial": 9.0, "greedy": 9.0, "quick": 5.0, "strong": 5.0, "hard": true}
+{"sexpr": "(add (add (add (add (mul (mul (mul (add v9 v25) (sub 1 1)) (add (sub 2 2) 1)) (add (sub 5 5) 1)) 4) 5) 8) 2)", "initial": 33.0, "greedy": 1.0, "quick": 3.0, "strong": 1.0, "hard": true}
+{"sexpr": "(mul 3 (mul v20 9))", "initial": 9.0, "greedy": 9.0, "quick": 5.0, "strong": 5.0, "hard": true}
+{"sexpr": "(add (add 6 (sub (sub v14 v11) (sub v14 v11))) (add (mul 2 (mul (add (add v2 4) 6) 4)) 5))", "initial": 25.0, "greedy": 15.0, "quick": 9.0, "strong": 7.0, "hard": true}
+{"sexpr": "(mul 2 (mul (sub (add v11 v19) (add v19 v11)) 3))", "initial": 15.0, "greedy": 15.0, "quick": 11.0, "strong": 11.0, "hard": true}
+{"sexpr": "(sub (mul (add (add 5 (mul 10 2)) (add (mul v14 (mul 2 4)) 4)) (mul 3 (mul (sub (add v0 v7) (add v7 v0)) 3))) (mul (mul 3 (mul (sub (add v0 v7) (add v7 v0)) 3)) (add (add 5 (mul 10 2)) (add (mul v14 (mul 2 4)) 4))))", "initial": 75.0, "greedy": 51.0, "quick": 47.0, "strong": 47.0, "hard": true}
+{"sexpr": "(sub (mul (sub (add (add 6 10) (add in0 1)) (add (add in1 2) 3)) (add (add 7 (mul in0 (mul 4 4))) (add (sub (add 4 in0) (add in0 4)) 7))) (mul (add (add 7 (mul in0 (mul 4 4))) (add (sub (add 4 in0) (add in0 4)) 7)) (sub (add (add 6 10) (add in0 1)) (add (add in1 2) 3))))", "initial": 75.0, "greedy": 59.0, "quick": 55.0, "strong": 47.0, "hard": true}
+{"sexpr": "(sub (mul (mul v0 4) 4) (mul 5 (mul v0 9)))", "initial": 19.0, "greedy": 15.0, "quick": 9.0, "strong": 9.0, "hard": true}
+{"sexpr": "(mul 6 (mul (add v2 in1) 4))", "initial": 11.0, "greedy": 9.0, "quick": 7.0, "strong": 7.0, "hard": true}
+{"sexpr": "(mul 6 (mul v2 2))", "initial": 9.0, "greedy": 7.0, "quick": 7.0, "strong": 5.0, "hard": true}
+{"sexpr": "(mul 4 (mul (sub (add (add v0 9) 4) (mul (mul v8 4) 2)) 6))", "initial": 23.0, "greedy": 19.0, "quick": 11.0, "strong": 11.0, "hard": true}
+{"sexpr": "(mul (mul (mul v6 (add (sub 3 3) 1)) 2) 2)", "initial": 17.0, "greedy": 5.0, "quick": 3.0, "strong": 3.0, "hard": true}
+{"sexpr": "(mul (mul (add v5 in1) 4) 2)", "initial": 11.0, "greedy": 7.0, "quick": 5.0, "strong": 5.0, "hard": true}
+{"sexpr": "(mul (mul (mul 6 (mul (add (add v8 6) 2) 2)) 4) 2)", "initial": 21.0, "greedy": 15.0, "quick": 13.0, "strong": 9.0, "hard": true}
+{"sexpr": "(add (add 9 (mul (mul 3 8) (add (sub 1 1) 1))) (add (mul (add (add v3 3) 1) (mul 5 (mul v2 3))) 6))", "initial": 35.0, "greedy": 21.0, "quick": 21.0, "strong": 19.0, "hard": true}
+{"sexpr": "(sub (add (add (add (mul (add v6 8) (mul 4 2)) 8) 3) (mul (add v14 1) (sub 9 9))) (add (mul (add v14 1) (sub 9 9)) (add (add (mul (add v6 8) (mul 4 2)) 8) 3)))", "initial": 51.0, "greedy": 1.0, "quick": 19.0, "strong": 1.0, "hard": true}
+{"sexpr": "(mul (add (add (add (add 3 v0) (add 2 9)) 6) 6) (add (sub 3 3) 1))", "initial": 19.0, "greedy": 9.0, "quick": 7.0, "strong": 3.0, "hard": true}
+{"sexpr": "(add (add (add (mul v3 v4) 0) 2) 5)", "initial": 11.0, "greedy": 9.0, "quick": 7.0, "strong": 7.0, "hard": true}
+{"sexpr": "(mul (mul (mul (mul (mul (mul (mul v3 (mul 2 4)) 4) 4) 4) 4) 4) 2)", "initial": 33.0, "greedy": 15.0, "quick": 11.0, "strong": 11.0, "hard": true}
+{"sexpr": "(mul (add (add 1 v11) (add (sub v7 v0) 2)) (add (sub 6 6) 1))", "initial": 17.0, "greedy": 9.0, "quick": 7.0, "strong": 7.0, "hard": true}
+{"sexpr": "(mul (mul 3 (mul (mul (add (mul (add (mul (add in0 0) 0) (mul in1 1)) 0) (add (add in1 0) (add in1 0))) (add (sub 2 2) 1)) 9)) (mul 1 2))", "initial": 49.0, "greedy": 13.0, "quick": 17.0, "strong": 11.0, "hard": true}
+{"sexpr": "(add (mul (mul (mul 3 (mul (mul (add (mul (add (mul (add in0 0) 0) (mul in1 1)) 0) (add (add in1 0) (add in1 0))) (add (sub 2 2) 1)) 9)) (mul 1 2)) 0) (mul (mul 3 (mul (mul (add (mul (add (mul (add in0 0) 0) (mul in1 1)) 0) (add (add in1 0) (add in1 0))) (add (sub 2 2) 1)) 9)) (mul 1 2)))", "initial": 103.0, "greedy": 13.0, "quick": 15.0, "strong": 13.0, "hard": true}
+{"sexpr": "(sub (mul (mul (mul (mul 4 (mul 4 1)) 4) 2) (mul (add (mul 5 0) v1) (mul 4 2))) (mul (mul (add (mul 5 0) v1) (mul 4 2)) (mul (mul (mul 4 (mul 4 1)) 4) 2)))", "initial": 71.0, "greedy": 15.0, "quick": 21.0, "strong": 13.0, "hard": true}
+{"sexpr": "(mul (mul (sub (mul (mul 5 (mul in0 9)) (add v0 v1)) (mul (add v0 v1) (mul 5 (mul in0 9)))) 4) 2)", "initial": 39.0, "greedy": 35.0, "quick": 35.0, "strong": 33.0, "hard": true}
+{"sexpr": "(add (add (mul 16 v0) 8) 3)", "initial": 9.0, "greedy": 9.0, "quick": 5.0, "strong": 5.0, "hard": true}
+{"sexpr": "(add (add v11 1) 4)", "initial": 5.0, "greedy": 5.0, "quick": 3.0, "strong": 3.0, "hard": true}
+{"sexpr": "(add (add 7 (mul (add v7 (sub (mul (add 1 0) (mul v11 (mul 4 4))) (mul (mul v11 (mul 4 4)) (add 1 0)))) (sub 4 4))) (add (sub (add 2 v1) (add v1 2)) 8))", "initial": 51.0, "greedy": 11.0, "quick": 11.0, "strong": 9.0, "hard": true}
+{"sexpr": "(mul (mul (mul (mul v7 1) (mul 4 4)) 2) 2)", "initial": 21.0, "greedy": 7.0, "quick": 5.0, "strong": 5.0, "hard": true}
+{"sexpr": "(add (add 1 (mul (mul v2 4) 4)) (add (mul v4 (add (sub 2 2) 1)) 2))", "initial": 23.0, "greedy": 11.0, "quick": 11.0, "strong": 9.0, "hard": true}
+{"sexpr": "(add (add 4 (mul v12 3)) (add (sub (mul 5 5) (mul 5 5)) 8))", "initial": 21.0, "greedy": 9.0, "quick": 7.0, "strong": 7.0, "hard": true}
+{"sexpr": "(mul (mul (add (mul in1 0) v0) 2) (mul 2 2))", "initial": 19.0, "greedy": 5.0, "quick": 5.0, "strong": 3.0, "hard": true}
+{"sexpr": "(mul (add (add 16 in0) (add 16 in0)) (add (add v4 0) (add v1 (mul (mul (add 1 8) 4) 2))))", "initial": 27.0, "greedy": 13.0, "quick": 15.0, "strong": 13.0, "hard": true}
+{"sexpr": "(mul (mul (mul (mul (mul v4 2) 4) (mul v6 2)) 2) 4)", "initial": 25.0, "greedy": 15.0, "quick": 15.0, "strong": 13.0, "hard": true}
+{"sexpr": "(mul (add (add 4 3) (add v7 6)) (mul 2 4))", "initial": 15.0, "greedy": 7.0, "quick": 9.0, "strong": 5.0, "hard": true}
+{"sexpr": "(add (add v3 6) 9)", "initial": 5.0, "greedy": 5.0, "quick": 3.0, "strong": 3.0, "hard": true}
+{"sexpr": "(sub (mul (add (add (mul (mul (mul (add v6 v3) (sub 8 8)) (mul (add 5 3) (sub 2 2))) (mul 1 4)) 5) 7) (mul 1 (mul 0 6))) (mul (mul 1 (mul 0 6)) (add (add (mul (mul (mul (add v6 v3) (sub 8 8)) (mul (add 5 3) (sub 2 2))) (mul 1 4)) 5) 7)))", "initial": 91.0, "greedy": 1.0, "quick": 3.0, "strong": 1.0, "hard": true}
+{"sexpr": "(add (sub (mul 10 1) (mul 10 1)) (mul (add (add v5 8) 3) (mul v3 1)))", "initial": 25.0, "greedy": 9.0, "quick": 7.0, "strong": 7.0, "hard": true}
+{"sexpr": "(sub (add (sub (mul (mul v9 0) (mul (add v9 1) (sub 8 8))) (mul (mul (add v9 1) (sub 8 8)) (mul v9 0))) (add (add 6 (mul (mul (mul (mul 10 (add (sub 2 2) 1)) 4) 4) (add (sub 9 9) 1))) (add (mul v9 (add (sub 4 4) 1)) 5))) (add (add (add 6 (mul (mul (mul (mul 10 (add (sub 2 2) 1)) 4) 4) (add (sub 9 9) 1))) (add (mul v9 (add (sub 4 4) 1)) 5)) (sub (mul (mul v9 0) (mul (add v9 1) (sub 8 8))) (mul (mul (add v9 1) (sub 8 8)) (mul v9 0)))))", "initial": 151.0, "greedy": 1.0, "quick": 29.0, "strong": 1.0, "hard": true}
+{"sexpr": "(add (add (sub (add v12 v3) (add v3 v12)) 1) 4)", "initial": 11.0, "greedy": 11.0, "quick": 9.0, "strong": 9.0, "hard": true}
+{"sexpr": "(mul 5 (mul (sub (sub v8 v13) (sub 8 v10)) 3))", "initial": 15.0, "greedy": 15.0, "quick": 11.0, "strong": 11.0, "hard": true}
+{"sexpr": "(mul 9 (mul (add (add (add (add (mul v0 (mul 2 4)) 3) 9) 3) 6) 2))", "initial": 25.0, "greedy": 17.0, "quick": 13.0, "strong": 11.0, "hard": true}
+{"sexpr": "(add (add 6 (mul (mul in0 2) 4)) (add (add (add v0 5) 3) 3))", "initial": 19.0, "greedy": 15.0, "quick": 13.0, "strong": 9.0, "hard": true}
+{"sexpr": "(add (add 4 (sub (mul (sub (mul in2 v5) (mul v5 in2)) (sub in1 in1)) (mul (sub in1 in1) (sub (mul in2 v5) (mul v5 in2))))) (add (mul (mul (add (add v5 9) 4) 4) 4) 1))", "initial": 53.0, "greedy": 13.0, "quick": 15.0, "strong": 7.0, "hard": true}
+{"sexpr": "(add (add (add (add (add v0 3) 2) 0) 9) 7)", "initial": 11.0, "greedy": 9.0, "quick": 7.0, "strong": 3.0, "hard": true}
+{"sexpr": "(sub (add (add (add 6 (mul 5 (mul 0 9))) (add (sub (mul 16 v6) (mul v6 16)) 8)) (mul (add 8 v7) 1)) (add (mul (add 8 v7) 1) (add (add 6 (mul 5 (mul 0 9))) (add (sub (mul 16 v6) (mul v6 16)) 8))))", "initial": 67.0, "greedy": 35.0, "quick": 35.0, "strong": 1.0, "hard": true}
+{"sexpr": "(sub (add (add v3 4) 4) (mul v7 (mul 1 2)))", "initial": 15.0, "greedy": 9.0, "quick": 7.0, "strong": 7.0, "hard": true}
+{"sexpr": "(mul (mul (sub (add 5 in2) (add in2 5)) 4) 4)", "initial": 15.0, "greedy": 11.0, "quick": 11.0, "strong": 9.0, "hard": true}
+{"sexpr": "(mul (sub (add (sub (add v0 (add (mul 0 0) 16)) (add (add (mul 0 0) 16) v0)) (mul v2 (add (sub 7 7) 1))) (add (mul v2 (add (sub 7 7) 1)) (sub (add v0 (add (mul 0 0) 16)) (add (add (mul 0 0) 16) v0)))) (mul 1 4))", "initial": 67.0, "greedy": 21.0, "quick": 23.0, "strong": 21.0, "hard": true}
+{"sexpr": "(add (add (sub (add v3 1) (add 1 v3)) 8) 5)", "initial": 11.0, "greedy": 11.0, "quick": 9.0, "strong": 9.0, "hard": true}
+{"sexpr": "(mul 2 (mul (sub (add (sub (add 16 4) (add 4 16)) (add (add 8 v4) (add v7 2))) (add (add (add 8 v4) (add v7 2)) (sub (add 16 4) (add 4 16)))) 3))", "initial": 39.0, "greedy": 1.0, "quick": 21.0, "strong": 1.0, "hard": true}
+{"sexpr": "(sub (mul (mul (mul in0 2) 2) (add (add 2 7) 5)) (mul (add (add 2 7) 5) (mul (mul in0 2) 2)))", "initial": 35.0, "greedy": 19.0, "quick": 11.0, "strong": 11.0, "hard": true}
+{"sexpr": "(add (add v1 5) 3)", "initial": 5.0, "greedy": 5.0, "quick": 3.0, "strong": 3.0, "hard": true}
+{"sexpr": "(mul (sub (mul (mul v3 (mul 2 2)) (add 5 8)) (mul (add 5 8) (mul v3 (mul 2 2)))) (add (sub 7 7) 1))", "initial": 39.0, "greedy": 15.0, "quick": 13.0, "strong": 13.0, "hard": true}
+{"sexpr": "(add (add v17 2) 9)", "initial": 5.0, "greedy": 5.0, "quick": 3.0, "strong": 3.0, "hard": true}
+{"sexpr": "(add (add (add (add 1 (mul 5 (add (sub 2 2) 1))) (add (mul (add v30 5) (sub 8 8)) 7)) 1) 8)", "initial": 27.0, "greedy": 1.0, "quick": 7.0, "strong": 1.0, "hard": true}
+{"sexpr": "(add (add (sub (add (sub (mul 16 in0) (mul in0 16)) (mul v3 (mul 2 2))) (add (mul v3 (mul 2 2)) (sub (mul 16 in0) (mul in0 16)))) 1) 8)", "initial": 47.0, "greedy": 31.0, "quick": 3.0, "strong": 1.0, "hard": true}
+{"sexpr": "(mul 4 (mul v7 3))", "initial": 9.0, "greedy": 9.0, "quick": 5.0, "strong": 5.0, "hard": true}
+{"sexpr": "(mul (mul (sub (mul (sub 1 v0) 16) (mul 16 (sub 1 v0))) (mul 4 (mul (mul (add (sub v12 8) (add v8 0)) (sub 2 2)) 4))) (mul (add (add 2 v8) (add v2 7)) (add (add 4 v2) (add 1 1))))", "initial": 59.0, "greedy": 1.0, "quick": 17.0, "strong": 1.0, "hard": true}
+{"sexpr": "(mul (mul (add (add v3 7) 7) 4) 2)", "initial": 13.0, "greedy": 9.0, "quick": 7.0, "strong": 5.0, "hard": true}
+{"sexpr": "(sub (mul 16 v11) (mul v11 16))", "initial": 11.0, "greedy": 9.0, "quick": 1.0, "strong": 1.0, "hard": true}
+{"sexpr": "(add (add 5 in0) (add 2 7))", "initial": 7.0, "greedy": 5.0, "quick": 5.0, "strong": 3.0, "hard": true}
+{"sexpr": "(add (add (sub (mul (add (add (add (mul 1 0) in1) 0) (add (add (mul 1 0) in1) 0)) (mul 1 4)) (mul (add (add 5 in0) (add 2 7)) (add (sub 2 2) 1))) 1) 9)", "initial": 47.0, "greedy": 15.0, "quick": 13.0, "strong": 13.0, "hard": true}
+{"sexpr": "(add (add 2 (sub (mul (add (add v0 1) 2) (mul (add v3 4) (sub 1 1))) (mul (mul (add v3 4) (sub 1 1)) (add (add v0 1) 2)))) (add (sub (add (mul in1 0) v4) (add 16 16)) 1))", "initial": 51.0, "greedy": 7.0, "quick": 13.0, "strong": 5.0, "hard": true}
+{"sexpr": "(mul 6 (mul (add (add 6 (mul 3 (mul 1 1))) (add (mul 0 (mul 2 4)) 9)) 7))", "initial": 31.0, "greedy": 1.0, "quick": 7.0, "strong": 1.0, "hard": true}
+{"sexpr": "(sub (mul (mul (sub (add (add v8 v8) v4) (add v4 (add v8 v8))) (add (sub 9 9) 1)) (add (sub 1 v1) 0)) (mul (add (sub 1 v1) 0) (mul (sub (add (add v8 v8) v4) (add v4 (add v8 v8))) (add (sub 9 9) 1))))", "initial": 55.0, "greedy": 35.0, "quick": 35.0, "strong": 1.0, "hard": true}
+{"sexpr": "(add (add 6 (mul 3 (mul (mul 0 (add (sub 1 1) 1)) 1))) (add (mul (mul 8 (mul 2 2)) (add (sub 2 2) 1)) 6))", "initial": 39.0, "greedy": 1.0, "quick": 9.0, "strong": 1.0, "hard": true}
+{"sexpr": "(mul (mul 4 v19) (mul 2 2))", "initial": 13.0, "greedy": 7.0, "quick": 5.0, "strong": 3.0, "hard": true}
+{"sexpr": "(mul (mul (mul v6 v21) 4) 2)", "initial": 13.0, "greedy": 9.0, "quick": 7.0, "strong": 7.0, "hard": true}
+{"sexpr": "(mul 6 (mul (mul (mul 4 (mul v9 8)) (add (sub 8 8) 1)) 3))", "initial": 25.0, "greedy": 15.0, "quick": 9.0, "strong": 7.0, "hard": true}
+{"sexpr": "(add (mul (add (mul (add 10 10) 0) (add (add v7 8) 8)) 0) (mul (mul 4 v15) 1))", "initial": 27.0, "greedy": 5.0, "quick": 3.0, "strong": 3.0, "hard": true}
+{"sexpr": "(mul (add (add (sub (add 8 in0) (add in0 8)) 9) 8) (add (sub 6 6) 1))", "initial": 19.0, "greedy": 11.0, "quick": 9.0, "strong": 9.0, "hard": true}
+{"sexpr": "(sub (add (mul (add (add (sub (add 8 in0) (add in0 8)) 9) 8) (add (sub 6 6) 1)) in0) (add in0 (mul (add (add (sub (add 8 in0) (add in0 8)) 9) 8) (add (sub 6 6) 1))))", "initial": 43.0, "greedy": 27.0, "quick": 23.0, "strong": 23.0, "hard": true}
+{"sexpr": "(add (add 6 (mul (add (add 10 0) (sub 10 10)) (sub 9 9))) (add (sub (add (mul 7 (mul in0 2)) (mul (mul in1 4) 4)) (add (mul (mul in1 4) 4) (mul 7 (mul in0 2)))) 9))", "initial": 57.0, "greedy": 31.0, "quick": 35.0, "strong": 27.0, "hard": true}
+{"sexpr": "(sub (mul in2 (add (add 6 (mul (add (add 10 0) (sub 10 10)) (sub 9 9))) (add (sub (add (mul 7 (mul in0 2)) (mul (mul in1 4) 4)) (add (mul (mul in1 4) 4) (mul 7 (mul in0 2)))) 9))) (mul (add (add 6 (mul (add (add 10 0) (sub 10 10)) (sub 9 9))) (add (sub (add (mul 7 (mul in0 2)) (mul (mul in1 4) 4)) (add (mul (mul in1 4) 4) (mul 7 (mul in0 2)))) 9)) in2))", "initial": 123.0, "greedy": 71.0, "quick": 75.0, "strong": 59.0, "hard": true}
+{"sexpr": "(mul 3 (mul (sub (add (add v1 0) (mul 1 (add (sub 4 4) 1))) (add (mul 1 (add (sub 4 4) 1)) (add v1 0))) 6))", "initial": 35.0, "greedy": 15.0, "quick": 11.0, "strong": 5.0, "hard": true}
+{"sexpr": "(mul (mul (mul 9 (mul in0 3)) 2) 4)", "initial": 17.0, "greedy": 13.0, "quick": 7.0, "strong": 7.0, "hard": true}
+{"sexpr": "(mul 5 (mul (mul (mul 7 (mul in2 9)) (add (sub 1 1) 1)) 9))", "initial": 25.0, "greedy": 17.0, "quick": 9.0, "strong": 5.0, "hard": true}
+{"sexpr": "(mul (mul (add (add 6 (sub (mul in1 v7) (mul v7 in1))) (add (sub (add v8 0) (add 0 v8)) 2)) 2) 2)", "initial": 31.0, "greedy": 19.0, "quick": 17.0, "strong": 17.0, "hard": true}
+{"sexpr": "(mul (mul 3 (mul (sub (add (mul (mul (add (add 6 (sub (mul in1 v7) (mul v7 in1))) (add (sub (add v8 0) (add 0 v8)) 2)) 2) 2) 10) (add 10 (mul (mul (add (add 6 (sub (mul in1 v7) (mul v7 in1))) (add (sub (add v8 0) (add 0 v8)) 2)) 2) 2))) 1)) (mul 1 4))", "initial": 83.0, "greedy": 49.0, "quick": 53.0, "strong": 45.0, "hard": true}
+{"sexpr": "(sub (mul (mul 6 (mul (mul (mul v15 2) 4) 8)) (mul (add (add v7 7) 9) (add (sub 2 2) 1))) (mul (mul (add (add v7 7) 9) (add (sub 2 2) 1)) (mul 6 (mul (mul (mul v15 2) 4) 8))))", "initial": 67.0, "greedy": 39.0, "quick": 39.0, "strong": 31.0, "hard": true}
+{"sexpr": "(add (add (add (add 5 (sub (mul 10 5) (mul 5 10))) (add (mul v2 (add (sub 3 3) 1)) 1)) 5) 2)", "initial": 29.0, "greedy": 9.0, "quick": 9.0, "strong": 3.0, "hard": true}
+{"sexpr": "(sub (sub (mul (mul 3 (add (sub 9 9) 1)) (add (add 8 1) 8)) (mul (add (add 8 1) 8) (mul 3 (add (sub 9 9) 1)))) (add (add 6 (mul v3 (mul 2 2))) (add (sub (mul v12 in2) (mul in2 v12)) 8)))", "initial": 61.0, "greedy": 21.0, "quick": 23.0, "strong": 19.0, "hard": true}
+{"sexpr": "(sub (mul (sub (mul 16 in1) (mul in1 16)) (mul 8 (mul 4 8))) (mul (mul 8 (mul 4 8)) (sub (mul 16 in1) (mul in1 16))))", "initial": 47.0, "greedy": 27.0, "quick": 27.0, "strong": 1.0, "hard": true}
+{"sexpr": "(sub (add (mul (mul in2 2) 4) (add v0 3)) (add (add v0 3) (mul (mul in2 2) 4)))", "initial": 27.0, "greedy": 19.0, "quick": 19.0, "strong": 15.0, "hard": true}
+{"sexpr": "(add (add (sub (add 10 v2) in2) 4) 3)", "initial": 9.0, "greedy": 9.0, "quick": 7.0, "strong": 7.0, "hard": true}
+{"sexpr": "(sub (mul 8 v1) (mul v1 8))", "initial": 11.0, "greedy": 9.0, "quick": 1.0, "strong": 1.0, "hard": true}
+{"sexpr": "(sub (add (add (mul (mul v8 in1) 0) (add 10 0)) (mul 2 (mul (sub (add v1 v2) (add v2 v1)) 4))) (add (mul 2 (mul (sub (add v1 v2) (add v2 v1)) 4)) (add (mul (mul v8 in1) 0) (add 10 0))))", "initial": 59.0, "greedy": 31.0, "quick": 27.0, "strong": 1.0, "hard": true}
+{"sexpr": "(mul (sub (add (add (add 8 8) 4) (sub (mul v4 0) (mul 0 v4))) (add (sub (mul v4 0) (mul 0 v4)) (add (add 8 8) 4))) (sub (add (sub (mul v11 v1) (mul v1 v11)) (mul 8 (mul 1 4))) (add (mul 8 (mul 1 4)) (sub (mul v11 v1) (mul v1 v11)))))", "initial": 81.0, "greedy": 1.0, "quick": 33.0, "strong": 1.0, "hard": true}
+{"sexpr": "(add (add (sub (add 2 v2) (add v2 2)) 8) 4)", "initial": 11.0, "greedy": 11.0, "quick": 9.0, "strong": 9.0, "hard": true}
+{"sexpr": "(add (add in1 4) 8)", "initial": 5.0, "greedy": 5.0, "quick": 3.0, "strong": 3.0, "hard": true}
+{"sexpr": "(add (add 7 (sub (add (add (mul in1 v7) (sub 10 v12)) 0) (add 0 (add (mul in1 v7) (sub 10 v12))))) (add (sub (mul v12 16) (mul 16 v12)) 6))", "initial": 39.0, "greedy": 13.0, "quick": 13.0, "strong": 1.0, "hard": true}
+{"sexpr": "(add (add (mul 5 (mul in2 9)) (add (add in1 6) 1)) (mul (add in0 0) (mul 2 4)))", "initial": 27.0, "greedy": 19.0, "quick": 17.0, "strong": 13.0, "hard": true}
+{"sexpr": "(mul 5 (mul (sub (mul 5 in0) (mul in0 5)) 2))", "initial": 19.0, "greedy": 17.0, "quick": 17.0, "strong": 15.0, "hard": true}
+{"sexpr": "(mul (add (add 9 (mul (add v0 2) (sub 2 2))) (add (sub (mul 2 in2) (mul in2 2)) 6)) (add (sub 1 1) 1))", "initial": 33.0, "greedy": 13.0, "quick": 11.0, "strong": 1.0, "hard": true}
+{"sexpr": "(mul (add (add 7 (mul in2 (add (sub 6 6) 1))) (add (mul in1 v2) 5)) (mul 2 4))", "initial": 27.0, "greedy": 13.0, "quick": 11.0, "strong": 11.0, "hard": true}
+{"sexpr": "(add (mul 0 (add (sub 5 5) 1)) (add (add v7 2) 8))", "initial": 15.0, "greedy": 5.0, "quick": 3.0, "strong": 3.0, "hard": true}
+{"sexpr": "(mul (sub (mul (mul in1 (mul 1 2)) (add (add 8 in1) (add in1 6))) (mul (add (add 8 in1) (add in1 6)) (mul in1 (mul 1 2)))) (mul 1 2))", "initial": 47.0, "greedy": 29.0, "quick": 31.0, "strong": 25.0, "hard": true}
+{"sexpr": "(mul (mul (mul in0 v0) (add (add 10 3) 5)) (sub (add (mul in1 in0) (sub (mul in0 1) (mul 1 in0))) (add (sub (mul in0 1) (mul 1 in0)) (mul in1 in0))))", "initial": 51.0, "greedy": 1.0, "quick": 23.0, "strong": 1.0, "hard": true}
+{"sexpr": "(add (add (add (add v0 4) 5) 7) 6)", "initial": 9.0, "greedy": 9.0, "quick": 3.0, "strong": 3.0, "hard": true}
+{"sexpr": "(add (add 5 (mul 4 (mul v0 8))) (add (mul (add (add (sub 4 v3) (sub (mul v0 0) (mul 0 v0))) in1) (sub 3 3)) 8))", "initial": 37.0, "greedy": 11.0, "quick": 9.0, "strong": 7.0, "hard": true}
+{"sexpr": "(add (add (sub (mul (add (sub 4 v3) (sub (mul v0 0) (mul 0 v0))) 8) (mul 8 (add (sub 4 v3) (sub (mul v0 0) (mul 0 v0))))) 1) 5)", "initial": 43.0, "greedy": 17.0, "quick": 17.0, "strong": 1.0, "hard": true}
+{"sexpr": "(add (add (add (mul v1 1) 8) 6) 0)", "initial": 11.0, "greedy": 5.0, "quick": 3.0, "strong": 3.0, "hard": true}
+{"sexpr": "(add (add 9 v8) (add v0 9))", "initial": 7.0, "greedy": 7.0, "quick": 5.0, "strong": 5.0, "hard": true}
+{"sexpr": "(add (add 8 2) (add v5 3))", "initial": 7.0, "greedy": 5.0, "quick": 3.0, "strong": 3.0, "hard": true}
+{"sexpr": "(mul (sub (mul (mul (mul v12 2) 2) (mul 10 (mul 4 2))) (mul (mul 10 (mul 4 2)) (mul (mul v12 2) 2))) (add (sub 2 2) 1))", "initial": 51.0, "greedy": 19.0, "quick": 19.0, "strong": 15.0, "hard": true}
+{"sexpr": "(mul (mul (mul 1 (mul v1 1)) (add (sub 9 9) 1)) (add (add 3 (mul v14 (add (sub 1 1) 1))) (add (mul 2 (mul 16 3)) 6)))", "initial": 43.0, "greedy": 9.0, "quick": 11.0, "strong": 9.0, "hard": true}
+{"sexpr": "(mul (add (add (sub 10 v2) 4) 6) 4)", "initial": 11.0, "greedy": 9.0, "quick": 9.0, "strong": 7.0, "hard": true}
+{"sexpr": "(mul (add (add 5 (mul (add in0 0) (sub 7 7))) (add (mul in0 (mul 4 4)) 6)) (mul 4 2))", "initial": 31.0, "greedy": 9.0, "quick": 9.0, "strong": 7.0, "hard": true}
+{"sexpr": "(mul 4 (mul (sub (add (add v0 4) 7) (mul v2 2)) 1))", "initial": 19.0, "greedy": 13.0, "quick": 11.0, "strong": 9.0, "hard": true}
+{"sexpr": "(sub (add (mul (mul (sub (add 8 in0) (add in0 8)) 2) 4) (add (add (add (add 1 16) (add v2 8)) 7) 6)) (add (add (add (add (add 1 16) (add v2 8)) 7) 6) (mul (mul (sub (add 8 in0) (add in0 8)) 2) 4)))", "initial": 55.0, "greedy": 43.0, "quick": 37.0, "strong": 37.0, "hard": true}
+{"sexpr": "(add (add 9 (add (add 5 v2) (add in0 3))) (add (sub (add v7 0) (add 0 v7)) 5))", "initial": 19.0, "greedy": 11.0, "quick": 9.0, "strong": 7.0, "hard": true}
+{"sexpr": "(add (add 2 in1) (add 1 5))", "initial": 7.0, "greedy": 5.0, "quick": 5.0, "strong": 3.0, "hard": true}
+{"sexpr": "(add (add (add (add in1 v2) 0) 3) 3)", "initial": 9.0, "greedy": 7.0, "quick": 5.0, "strong": 5.0, "hard": true}
+{"sexpr": "(mul 5 (mul v2 8))", "initial": 9.0, "greedy": 7.0, "quick": 7.0, "strong": 5.0, "hard": true}
+{"sexpr": "(add (add (mul 2 (mul (add (mul 0 0) v0) 5)) 3) 7)", "initial": 19.0, "greedy": 13.0, "quick": 7.0, "strong": 7.0, "hard": true}
+{"sexpr": "(mul (mul (add (add (add (mul 5 0) in1) 9) 5) 2) 2)", "initial": 19.0, "greedy": 9.0, "quick": 5.0, "strong": 5.0, "hard": true}
+{"sexpr": "(add (add 4 (mul (sub in1 8) 1)) (add (sub (mul (add (add in0 9) 5) (mul 5 (mul in0 1))) (mul (mul 5 (mul in0 1)) (add (add in0 9) 5))) 2))", "initial": 47.0, "greedy": 35.0, "quick": 31.0, "strong": 31.0, "hard": true}
+{"sexpr": "(mul (sub (add (add (add 8 (mul in1 in1)) (add (mul in1 in1) 3)) (mul 4 (mul (add (add 4 (mul (sub in1 8) 1)) (add (sub (mul (add (add in0 9) 5) (mul 5 (mul in0 1))) (mul (mul 5 (mul in0 1)) (add (add in0 9) 5))) 2)) 7))) (add (mul 4 (mul (add (add 4 (mul (sub in1 8) 1)) (add (sub (mul (add (add in0 9) 5) (mul 5 (mul in0 1))) (mul (mul 5 (mul in0 1)) (add (add in0 9) 5))) 2)) 7)) (add (add 8 (mul in1 in1)) (add (mul in1 in1) 3)))) (add (sub 5 5) 1))", "initial": 151.0, "greedy": 119.0, "quick": 119.0, "strong": 107.0, "hard": true}
+{"sexpr": "(add (add 7 (mul (mul (add (add in1 7) 5) 4) 4)) (add (mul (mul 4 (mul 8 3)) (add (add 3 4) 2)) 6))", "initial": 35.0, "greedy": 13.0, "quick": 21.0, "strong": 11.0, "hard": true}
+{"sexpr": "(mul (sub (add v1 v12) (mul 16 v2)) (add (add (add 10 v12) 7) 1))", "initial": 19.0, "greedy": 19.0, "quick": 15.0, "strong": 15.0, "hard": true}
+{"sexpr": "(mul (add (add (add v5 7) 8) (add v4 0)) 1)", "initial": 13.0, "greedy": 7.0, "quick": 5.0, "strong": 5.0, "hard": true}
+{"sexpr": "(mul (mul (mul (mul (add (add (add v5 7) 8) (add v4 0)) 1) (add (sub 6 6) 1)) 2) 4)", "initial": 29.0, "greedy": 11.0, "quick": 11.0, "strong": 7.0, "hard": true}
+{"sexpr": "(mul (mul (sub (mul (sub (add v10 1) (add 1 v10)) (mul v13 (add (sub 3 3) 1))) (mul (mul v13 (add (sub 3 3) 1)) (sub (add v10 1) (add 1 v10)))) 2) 4)", "initial": 47.0, "greedy": 27.0, "quick": 27.0, "strong": 1.0, "hard": true}
+{"sexpr": "(add (add 2 v0) (add in0 7))", "initial": 7.0, "greedy": 7.0, "quick": 5.0, "strong": 5.0, "hard": true}
+{"sexpr": "(add (add (mul (add (add 2 v0) (add in0 7)) in0) 2) 8)", "initial": 15.0, "greedy": 15.0, "quick": 13.0, "strong": 13.0, "hard": true}
+{"sexpr": "(mul (mul (sub v0 2) 16) (add (add (sub v1 v1) 8) 3))", "initial": 17.0, "greedy": 9.0, "quick": 9.0, "strong": 7.0, "hard": true}
+{"sexpr": "(mul (mul 5 (mul 4 4)) (mul v2 4))", "initial": 17.0, "greedy": 7.0, "quick": 7.0, "strong": 5.0, "hard": true}
+{"sexpr": "(add (add 8 (add (add 2 (mul v1 v1)) (add (sub 8 8) 2))) (add (mul (mul (mul 5 2) 2) (add (sub 7 7) 1)) 6))", "initial": 35.0, "greedy": 13.0, "quick": 13.0, "strong": 9.0, "hard": true}
+{"sexpr": "(add (add (mul v8 2) 2) 9)", "initial": 9.0, "greedy": 7.0, "quick": 7.0, "strong": 5.0, "hard": true}
+{"sexpr": "(mul (mul (mul (mul (mul v13 2) 2) (add (sub 2 2) 1)) 2) 4)", "initial": 25.0, "greedy": 9.0, "quick": 7.0, "strong": 5.0, "hard": true}
+{"sexpr": "(mul 5 (mul (add (sub v0 v3) 0) 3))", "initial": 13.0, "greedy": 11.0, "quick": 11.0, "strong": 7.0, "hard": true}
+{"sexpr": "(add (add (mul (add (mul 16 0) v7) 1) 2) 8)", "initial": 15.0, "greedy": 5.0, "quick": 3.0, "strong": 3.0, "hard": true}
+{"sexpr": "(sub (mul (mul 9 (mul (mul (mul v3 4) 4) 7)) (mul 3 (mul (sub (mul v3 2) (mul 2 v3)) 7))) (mul (mul 3 (mul (sub (mul v3 2) (mul 2 v3)) 7)) (mul 9 (mul (mul (mul v3 4) 4) 7))))", "initial": 79.0, "greedy": 67.0, "quick": 65.0, "strong": 59.0, "hard": true}
+{"sexpr": "(mul 2 (mul (add (add (add (add 6 v27) (add v31 7)) 9) 5) 7))", "initial": 19.0, "greedy": 19.0, "quick": 11.0, "strong": 11.0, "hard": true}
+{"sexpr": "(mul 7 (mul (mul (mul v5 4) 4) 9))", "initial": 17.0, "greedy": 13.0, "quick": 11.0, "strong": 5.0, "hard": true}
+{"sexpr": "(sub (add (mul v18 4) (mul v18 4)) (add (add (add (add v4 8) 9) 7) 1))", "initial": 21.0, "greedy": 15.0, "quick": 13.0, "strong": 9.0, "hard": true}
+{"sexpr": "(add (add (sub (mul (mul v0 (mul 1 4)) (sub (mul v12 v17) (mul v17 v12))) (mul (sub (mul v12 v17) (mul v17 v12)) (mul v0 (mul 1 4)))) 5) 3)", "initial": 51.0, "greedy": 39.0, "quick": 37.0, "strong": 37.0, "hard": true}
+{"sexpr": "(add (mul (add (add v9 7) 9) 1) (mul (add (add v9 7) 9) 1))", "initial": 19.0, "greedy": 7.0, "quick": 7.0, "strong": 5.0, "hard": true}
+{"sexpr": "(sub (add (add (add 4 (add v44 v7)) (add (mul (add v44 v3) (sub 4 4)) 3)) (sub (add (sub (mul 5 2) (mul 2 5)) (mul v11 1)) (add (mul v11 1) (sub (mul 5 2) (mul 2 5))))) (add (sub (add (sub (mul 5 2) (mul 2 5)) (mul v11 1)) (add (mul v11 1) (sub (mul 5 2) (mul 2 5)))) (add (add 4 (add v44 v7)) (add (mul (add v44 v3) (sub 4 4)) 3))))", "initial": 107.0, "greedy": 1.0, "quick": 23.0, "strong": 15.0, "hard": true}
+{"sexpr": "(sub (add (mul v25 0) 3) (add (add v48 1) 4))", "initial": 13.0, "greedy": 7.0, "quick": 5.0, "strong": 5.0, "hard": true}
+{"sexpr": "(mul 3 (mul (add (add v41 0) (add v41 0)) 4))", "initial": 15.0, "greedy": 9.0, "quick": 9.0, "strong": 7.0, "hard": true}
+{"sexpr": "(mul (mul (add v3 v2) 4) 4)", "initial": 11.0, "greedy": 7.0, "quick": 7.0, "strong": 5.0, "hard": true}
+{"sexpr": "(sub (mul (add (mul v2 16) (mul v2 16)) (mul (mul 1 (add (sub 6 6) 1)) (mul 4 4))) (mul (mul (mul 1 (add (sub 6 6) 1)) (mul 4 4)) (add (mul v2 16) (mul v2 16))))", "initial": 63.0, "greedy": 17.0, "quick": 19.0, "strong": 1.0, "hard": true}
+{"sexpr": "(sub (mul (mul in0 4) 2) (mul 6 (mul v9 6)))", "initial": 19.0, "greedy": 15.0, "quick": 9.0, "strong": 9.0, "hard": true}
+{"sexpr": "(sub (mul (mul v12 2) 4) (mul (add in1 in0) (sub 2 2)))", "initial": 19.0, "greedy": 5.0, "quick": 5.0, "strong": 3.0, "hard": true}
+{"sexpr": "(add (add (mul (add v11 0) (add v5 v5)) 2) 5)", "initial": 13.0, "greedy": 11.0, "quick": 9.0, "strong": 9.0, "hard": true}
+{"sexpr": "(sub (mul (mul (mul (add (add 2 in1) (add 4 8)) 4) 2) (add (add (mul v8 v10) 3) 7)) (mul (add (add (mul v8 v10) 3) 7) (mul (mul (add (add 2 in1) (add 4 8)) 4) 2)))", "initial": 55.0, "greedy": 43.0, "quick": 39.0, "strong": 35.0, "hard": true}
+{"sexpr": "(sub (add (add (add v9 7) 8) (sub (mul v4 v7) (mul v7 v4))) (add (sub (mul v4 v7) (mul v7 v4)) (add (add v9 7) 8)))", "initial": 35.0, "greedy": 35.0, "quick": 33.0, "strong": 31.0, "hard": true}
+{"sexpr": "(mul (mul 3 (mul (mul v15 (mul 1 2)) 8)) (mul 4 4))", "initial": 25.0, "greedy": 11.0, "quick": 11.0, "strong": 7.0, "hard": true}
+{"sexpr": "(add (add 6 (mul (sub (mul v18 v10) (mul v10 v18)) (add (add v7 8) 8))) (add (add (add (mul (mul v15 4) 2) 5) 2) 8))", "initial": 37.0, "greedy": 33.0, "quick": 29.0, "strong": 27.0, "hard": true}
+{"sexpr": "(sub (add (mul (mul (mul v21 (mul 4 2)) 4) 4) (add (add (add v2 v7) 5) 7)) (add (add (add (add v2 v7) 5) 7) (mul (mul (mul v21 (mul 4 2)) 4) 4)))", "initial": 51.0, "greedy": 31.0, "quick": 27.0, "strong": 23.0, "hard": true}
+{"sexpr": "(sub (add (add v0 1) 8) (mul in0 in1))", "initial": 11.0, "greedy": 11.0, "quick": 9.0, "strong": 9.0, "hard": true}
+{"sexpr": "(add (add 4 v0) (add in0 6))", "initial": 7.0, "greedy": 7.0, "quick": 5.0, "strong": 5.0, "hard": true}
+{"sexpr": "(mul 5 (mul (mul v0 (add (sub 2 2) 1)) 9))", "initial": 17.0, "greedy": 9.0, "quick": 5.0, "strong": 5.0, "hard": true}
+{"sexpr": "(add (add 2 in1) (add v10 3))", "initial": 7.0, "greedy": 7.0, "quick": 5.0, "strong": 5.0, "hard": true}
+{"sexpr": "(sub (mul (add (add (add (mul 16 0) v3) 5) 9) (mul (mul 1 (add (sub 9 9) 1)) (sub (add v3 v5) (add v5 v3)))) (mul (mul (mul 1 (add (sub 9 9) 1)) (sub (add v3 v5) (add v5 v3))) (add (add (add (mul 16 0) v3) 5) 9)))", "initial": 67.0, "greedy": 31.0, "quick": 31.0, "strong": 1.0, "hard": true}
+{"sexpr": "(add (add (add v0 2) 3) 0)", "initial": 7.0, "greedy": 5.0, "quick": 3.0, "strong": 3.0, "hard": true}
+{"sexpr": "(add (add 7 (mul (mul 8 2) 2)) (add (add (add in1 9) 7) 3))", "initial": 19.0, "greedy": 9.0, "quick": 9.0, "strong": 5.0, "hard": true}
+{"sexpr": "(add (add (add (mul 3 0) in1) 5) 6)", "initial": 11.0, "greedy": 5.0, "quick": 3.0, "strong": 3.0, "hard": true}
+{"sexpr": "(mul (add (add (add (mul 3 0) in1) 5) 6) (add (sub 8 8) 1))", "initial": 19.0, "greedy": 5.0, "quick": 3.0, "strong": 3.0, "hard": true}
+{"sexpr": "(add (add 3 (sub 0 v4)) (add (mul (mul v4 2) 4) 3))", "initial": 17.0, "greedy": 13.0, "quick": 13.0, "strong": 9.0, "hard": true}
+{"sexpr": "(mul (mul (add (add 4 v5) (add v8 1)) 4) 2)", "initial": 15.0, "greedy": 11.0, "quick": 11.0, "strong": 7.0, "hard": true}
+{"sexpr": "(sub (mul 4 (mul (add (add 9 v7) (add 0 8)) 5)) (mul (add (mul 3 0) v13) (add (sub 3 3) 1)))", "initial": 31.0, "greedy": 15.0, "quick": 13.0, "strong": 9.0, "hard": true}
+{"sexpr": "(add (add 3 v16) (add v5 5))", "initial": 7.0, "greedy": 7.0, "quick": 5.0, "strong": 5.0, "hard": true}
+{"sexpr": "(add (add 7 in1) (add v19 5))", "initial": 7.0, "greedy": 7.0, "quick": 5.0, "strong": 5.0, "hard": true}
+{"sexpr": "(mul (mul 9 (mul (mul v22 v4) 7)) (add (sub 4 4) 1))", "initial": 21.0, "greedy": 13.0, "quick": 9.0, "strong": 9.0, "hard": true}
+{"sexpr": "(mul (mul (mul (sub (add v3 4) (add 4 v3)) (add in1 in1)) 4) 2)", "initial": 21.0, "greedy": 17.0, "quick": 15.0, "strong": 15.0, "hard": true}
+{"sexpr": "(add (add (mul (mul in1 v23) (add (sub 4 4) 1)) 7) 7)", "initial": 17.0, "greedy": 9.0, "quick": 7.0, "strong": 7.0, "hard": true}
+{"sexpr": "(mul (mul (mul v0 (mul 1 2)) 2) 2)", "initial": 17.0, "greedy": 7.0, "quick": 5.0, "strong": 3.0, "hard": true}
+{"sexpr": "(sub (sub (add (add (add 8 5) 3) (add (add 4 v20) (add 5 7))) (add (add (add 4 v20) (add 5 7)) (add (add 8 5) 3))) (mul (add (add 7 v20) (add 10 2)) (add (sub 2 2) 1)))", "initial": 43.0, "greedy": 21.0, "quick": 21.0, "strong": 13.0, "hard": true}
+{"sexpr": "(mul (mul (add (add (mul v13 (mul 1 4)) 8) 4) 4) 4)", "initial": 21.0, "greedy": 11.0, "quick": 9.0, "strong": 7.0, "hard": true}
+{"sexpr": "(add (add 1 (mul v13 (add (sub 4 4) 1))) (add (add (add v3 5) 3) 6))", "initial": 19.0, "greedy": 11.0, "quick": 9.0, "strong": 5.0, "hard": true}
+{"sexpr": "(add (add (mul 2 (mul (sub (add (mul (mul (mul (add (sub (mul in0 in0) (mul in0 in0)) (sub (add (mul 4 (mul 5 8)) 4) (add 4 (mul 4 (mul 5 8))))) (sub 5 5)) (add (sub 9 9) 1)) (add (sub 1 1) 1)) (mul 4 (mul 5 8))) (add (mul 4 (mul 5 8)) (mul (mul (mul (add (sub (mul in0 in0) (mul in0 in0)) (sub (add (mul 4 (mul 5 8)) 4) (add 4 (mul 4 (mul 5 8))))) (sub 5 5)) (add (sub 9 9) 1)) (add (sub 1 1) 1)))) 8)) 4) 8)", "initial": 147.0, "greedy": 1.0, "quick": 9.0, "strong": 1.0, "hard": true}
+{"sexpr": "(add (mul 6 (mul in2 3)) (sub (mul 3 in0) (mul in0 3)))", "initial": 21.0, "greedy": 21.0, "quick": 17.0, "strong": 17.0, "hard": true}
+{"sexpr": "(sub (mul (mul 8 (add (sub 3 3) 1)) (sub 10 in2)) (mul (sub 10 in2) (mul 8 (add (sub 3 3) 1))))", "initial": 31.0, "greedy": 13.0, "quick": 1.0, "strong": 1.0, "hard": true}
+{"sexpr": "(add (add 7 2) (add in2 8))", "initial": 7.0, "greedy": 5.0, "quick": 3.0, "strong": 3.0, "hard": true}
+{"sexpr": "(sub (mul (mul (add (add v4 1) 3) (mul 4 4)) (sub (mul (add (add 9 in1) (add v1 6)) (mul (mul v4 2) 2)) (mul (mul (mul v4 2) 2) (add (add 9 in1) (add v1 6))))) (mul (sub (mul (add (add 9 in1) (add v1 6)) (mul (mul v4 2) 2)) (mul (mul (mul v4 2) 2) (add (add 9 in1) (add v1 6)))) (mul (add (add v4 1) 3) (mul 4 4))))", "initial": 111.0, "greedy": 83.0, "quick": 87.0, "strong": 71.0, "hard": true}
+{"sexpr": "(mul (mul v12 2) 2)", "initial": 9.0, "greedy": 5.0, "quick": 5.0, "strong": 3.0, "hard": true}
+{"sexpr": "(sub (add (mul (mul (add (add v0 7) 2) 2) 2) (mul (add v6 16) 1)) (add (mul (add v6 16) 1) (mul (mul (add (add v0 7) 2) 2) 2)))", "initial": 43.0, "greedy": 27.0, "quick": 19.0, "strong": 19.0, "hard": true}
+{"sexpr": "(sub (mul (mul in0 (add (sub 1 1) 1)) (add (add 4 in0) (add in0 6))) (mul (add (add 4 in0) (add in0 6)) (mul in0 (add (sub 1 1) 1))))", "initial": 39.0, "greedy": 23.0, "quick": 23.0, "strong": 1.0, "hard": true}
+{"sexpr": "(mul (mul (mul 3 (mul (sub (mul (mul in0 (add (sub 1 1) 1)) (add (add 4 in0) (add in0 6))) (mul (add (add 4 in0) (add in0 6)) (mul in0 (add (sub 1 1) 1)))) 5)) 2) 2)", "initial": 55.0, "greedy": 35.0, "quick": 37.0, "strong": 27.0, "hard": true}
+{"sexpr": "(mul (mul (sub (add 2 v0) (add v0 2)) 4) 2)", "initial": 15.0, "greedy": 11.0, "quick": 9.0, "strong": 9.0, "hard": true}
+{"sexpr": "(mul (add (add (mul (mul in0 4) 4) 9) 9) (mul 2 2))", "initial": 21.0, "greedy": 11.0, "quick": 9.0, "strong": 7.0, "hard": true}
+{"sexpr": "(add (add 7 (mul (sub (add v12 4) (add 4 v12)) (sub v3 v6))) (add (mul (mul 16 v7) (mul 4 2)) 1))", "initial": 31.0, "greedy": 25.0, "quick": 25.0, "strong": 21.0, "hard": true}
+{"sexpr": "(add (add 7 (mul 2 (mul (add (add v3 1) 6) 3))) (add (mul (add (add 16 7) 8) (sub v0 v0)) 9))", "initial": 29.0, "greedy": 17.0, "quick": 13.0, "strong": 9.0, "hard": true}
+{"sexpr": "(add (add 3 (mul 4 v4)) (add (sub in1 in1) 4))", "initial": 13.0, "greedy": 9.0, "quick": 7.0, "strong": 5.0, "hard": true}
+{"sexpr": "(mul (mul (mul v2 2) 2) 2)", "initial": 13.0, "greedy": 7.0, "quick": 3.0, "strong": 3.0, "hard": true}
+{"sexpr": "(add (add 9 (mul v10 (mul 2 4))) (add (add (mul v6 0) 16) 5))", "initial": 21.0, "greedy": 7.0, "quick": 7.0, "strong": 5.0, "hard": true}
+{"sexpr": "(mul (add (add (mul (mul v3 2) 2) 9) 1) (mul 2 4))", "initial": 21.0, "greedy": 11.0, "quick": 11.0, "strong": 7.0, "hard": true}
+{"sexpr": "(mul 9 (mul (mul 4 (mul (mul in2 (mul 4 2)) 9)) 2))", "initial": 25.0, "greedy": 17.0, "quick": 11.0, "strong": 5.0, "hard": true}
+{"sexpr": "(sub (add (mul (sub (mul v4 v5) (mul v5 v4)) (mul 5 (mul v7 6))) (mul (add (mul 2 (mul 1 2)) (mul 2 (mul 1 2))) (sub v2 (mul 2 (mul 1 2))))) (add (mul (add (mul 2 (mul 1 2)) (mul 2 (mul 1 2))) (sub v2 (mul 2 (mul 1 2)))) (mul (sub (mul v4 v5) (mul v5 v4)) (mul 5 (mul v7 6)))))", "initial": 115.0, "greedy": 63.0, "quick": 63.0, "strong": 59.0, "hard": true}
+{"sexpr": "(mul (mul (mul v6 2) 2) (add (sub 2 2) 1))", "initial": 17.0, "greedy": 5.0, "quick": 5.0, "strong": 3.0, "hard": true}
+{"sexpr": "(add (add 8 (mul 7 (mul (sub (mul (mul (mul (mul v6 2) 2) (add (sub 2 2) 1)) 8) (mul 8 (mul (mul (mul v6 2) 2) (add (sub 2 2) 1)))) 2))) (add (mul (mul 5 (add (sub 3 3) 1)) (add (sub 4 4) 1)) 5))", "initial": 73.0, "greedy": 27.0, "quick": 35.0, "strong": 23.0, "hard": true}
+{"sexpr": "(add (add v7 7) 8)", "initial": 5.0, "greedy": 5.0, "quick": 3.0, "strong": 3.0, "hard": true}
+{"sexpr": "(sub (add (add (sub v17 in2) (add v0 v0)) (mul (mul (mul v14 (mul 2 2)) 4) 2)) (add (mul (mul (mul v14 (mul 2 2)) 4) 2) (add (sub v17 in2) (add v0 v0))))", "initial": 51.0, "greedy": 31.0, "quick": 35.0, "strong": 27.0, "hard": true}
+{"sexpr": "(mul (add (add v7 7) 8) v1)", "initial": 9.0, "greedy": 9.0, "quick": 7.0, "strong": 7.0, "hard": true}
+{"sexpr": "(add (add 2 v24) (add in0 7))", "initial": 7.0, "greedy": 7.0, "quick": 5.0, "strong": 5.0, "hard": true}
+{"sexpr": "(add (add 6 (mul (add (sub (mul 10 v16) (mul v16 10)) (sub (add v20 4) (add 4 v20))) (sub 1 1))) (add (mul (mul (mul (mul v11 4) 2) 2) 2) 1))", "initial": 47.0, "greedy": 13.0, "quick": 13.0, "strong": 9.0, "hard": true}
+{"sexpr": "(add (add (mul (sub v15 v9) (add (sub 3 3) 1)) 4) 1)", "initial": 15.0, "greedy": 7.0, "quick": 5.0, "strong": 5.0, "hard": true}
+{"sexpr": "(mul 4 (mul in0 2))", "initial": 9.0, "greedy": 7.0, "quick": 5.0, "strong": 3.0, "hard": true}
+{"sexpr": "(add (add 6 (sub 1 (mul (add (mul (mul (add (mul 4 (mul in0 2)) 4) (sub 5 5)) (mul 2 4)) (mul (mul (sub (mul (mul 4 (mul in0 2)) 0) (mul 0 (mul 4 (mul in0 2)))) 2) 4)) (sub 9 9)))) (add (sub (mul (mul 4 (mul in0 2)) (mul 4 (mul in0 2))) (mul (mul 4 (mul in0 2)) (mul 4 (mul in0 2)))) 2))", "initial": 117.0, "greedy": 1.0, "quick": 5.0, "strong": 1.0, "hard": true}
+{"sexpr": "(sub (add (add (mul (mul (add (add 2 6) 8) 4) 2) 16) (add v1 0)) (add (add v1 0) (add (mul (mul (add (add 2 6) 8) 4) 2) 16)))", "initial": 39.0, "greedy": 7.0, "quick": 27.0, "strong": 7.0, "hard": true}
+{"sexpr": "(mul 1 (mul (mul (add v7 0) (mul 3 (mul v4 5))) 7))", "initial": 23.0, "greedy": 17.0, "quick": 17.0, "strong": 13.0, "hard": true}
+{"sexpr": "(mul (sub (mul (sub (add in0 v0) (add v0 in0)) (add (add 6 v1) (add v13 1))) (mul (add (add 6 v1) (add v13 1)) (sub (add in0 v0) (add v0 in0)))) (add (sub 6 6) 1))", "initial": 43.0, "greedy": 35.0, "quick": 31.0, "strong": 31.0, "hard": true}
+{"sexpr": "(add (add (mul 3 (mul (sub (mul v6 2) (mul 2 v6)) 7)) 1) 4)", "initial": 23.0, "greedy": 21.0, "quick": 17.0, "strong": 15.0, "hard": true}
+{"sexpr": "(add (add (add v17 6) 3) 0)", "initial": 7.0, "greedy": 5.0, "quick": 3.0, "strong": 3.0, "hard": true}
+{"sexpr": "(add (add (mul 7 (mul v5 5)) 1) 7)", "initial": 13.0, "greedy": 13.0, "quick": 7.0, "strong": 7.0, "hard": true}
+{"sexpr": "(sub (mul (add (add in0 7) 1) (mul 6 (mul v15 8))) (mul (mul 6 (mul v15 8)) (add (add in0 7) 1)))", "initial": 35.0, "greedy": 31.0, "quick": 31.0, "strong": 27.0, "hard": true}
+{"sexpr": "(mul (add (add v1 5) 7) (mul 1 2))", "initial": 13.0, "greedy": 7.0, "quick": 5.0, "strong": 5.0, "hard": true}
+{"sexpr": "(add (add (add (sub v2 in2) 9) 8) 0)", "initial": 9.0, "greedy": 7.0, "quick": 5.0, "strong": 5.0, "hard": true}
+{"sexpr": "(mul (add (add in1 9) 4) (mul 16 1))", "initial": 13.0, "greedy": 7.0, "quick": 7.0, "strong": 5.0, "hard": true}
+{"sexpr": "(mul (mul (add v2 v11) 2) 2)", "initial": 11.0, "greedy": 7.0, "quick": 7.0, "strong": 5.0, "hard": true}
+{"sexpr": "(mul 7 (mul (mul in2 (add (sub 7 7) 1)) 8))", "initial": 17.0, "greedy": 7.0, "quick": 7.0, "strong": 5.0, "hard": true}
+{"sexpr": "(sub (mul (mul (mul (mul v2 v11) 2) 2) (mul (sub v7 v15) (mul v0 1))) (mul (mul (sub v7 v15) (mul v0 1)) (mul (mul (mul v2 v11) 2) 2)))", "initial": 55.0, "greedy": 39.0, "quick": 39.0, "strong": 37.0, "hard": true}
+{"sexpr": "(sub (sub (mul (add v3 0) (sub (mul v10 v13) (mul v13 v10))) (mul (sub (mul v10 v13) (mul v13 v10)) (add v3 0))) (add (add 6 (mul 9 (mul v7 2))) (add (sub (mul v13 v13) (mul v13 v13)) 8)))", "initial": 61.0, "greedy": 43.0, "quick": 41.0, "strong": 39.0, "hard": true}
+{"sexpr": "(sub (add (mul (mul (mul in0 2) 2) (add (sub 3 3) 1)) (mul (mul (mul 4 (mul 3 3)) 4) 2)) (add (mul (mul (mul 4 (mul 3 3)) 4) 2) (mul (mul (mul in0 2) 2) (add (sub 3 3) 1))))", "initial": 71.0, "greedy": 15.0, "quick": 15.0, "strong": 11.0, "hard": true}
+{"sexpr": "(sub (add (sub (mul in0 4) (mul 4 in0)) (add (add 4 8) (add in1 6))) (add (add (add 4 8) (add in1 6)) (sub (mul in0 4) (mul 4 in0))))", "initial": 39.0, "greedy": 31.0, "quick": 15.0, "strong": 1.0, "hard": true}
+{"sexpr": "(mul (mul (add (sub in1 in1) (add (mul v1 0) 5)) (add (mul in0 1) (mul 5 8))) (mul 1 4))", "initial": 33.0, "greedy": 9.0, "quick": 9.0, "strong": 7.0, "hard": true}
+{"sexpr": "(mul (mul 4 in0) (mul 8 3))", "initial": 13.0, "greedy": 9.0, "quick": 5.0, "strong": 5.0, "hard": true}
+{"sexpr": "(add (add 6 (mul (add v1 8) (sub 1 1))) (add (mul v1 (mul 4 4)) 7))", "initial": 23.0, "greedy": 7.0, "quick": 7.0, "strong": 5.0, "hard": true}
+{"sexpr": "(sub (mul (mul 2 (mul 2 4)) (sub 0 v5)) (mul (sub 0 v5) (mul 2 (mul 2 4))))", "initial": 31.0, "greedy": 13.0, "quick": 1.0, "strong": 1.0, "hard": true}
+{"sexpr": "(add (add (mul 5 (mul v2 4)) 6) 7)", "initial": 13.0, "greedy": 11.0, "quick": 9.0, "strong": 7.0, "hard": true}
+{"sexpr": "(mul (mul (sub in1 in2) 2) 2)", "initial": 11.0, "greedy": 7.0, "quick": 7.0, "strong": 5.0, "hard": true}
+{"sexpr": "(add (add (mul 3 v1) 2) 3)", "initial": 9.0, "greedy": 9.0, "quick": 7.0, "strong": 7.0, "hard": true}
+{"sexpr": "(mul (add v4 (add (add v0 6) 9)) (add v3 (add (add v0 6) 9)))", "initial": 17.0, "greedy": 17.0, "quick": 13.0, "strong": 13.0, "hard": true}
+{"sexpr": "(sub (mul (add (add v6 5) 3) (mul v8 1)) (mul (mul v8 1) (add (add v6 5) 3)))", "initial": 27.0, "greedy": 19.0, "quick": 1.0, "strong": 1.0, "hard": true}
+{"sexpr": "(mul 9 (mul (sub (add 5 v2) (add v2 5)) 3))", "initial": 15.0, "greedy": 15.0, "quick": 11.0, "strong": 11.0, "hard": true}
+{"sexpr": "(mul (mul (sub (mul (sub (add in0 (add v8 1)) (add (add v8 1) in0)) (mul v9 (mul 1 4))) (mul (mul v9 (mul 1 4)) (sub (add in0 (add v8 1)) (add (add v8 1) in0)))) 4) 4)", "initial": 55.0, "greedy": 39.0, "quick": 39.0, "strong": 37.0, "hard": true}
+{"sexpr": "(add (sub (add 5 v1) (add v1 5)) (mul (mul in2 2) 2))", "initial": 17.0, "greedy": 13.0, "quick": 13.0, "strong": 11.0, "hard": true}
+{"sexpr": "(add (mul (add (add (sub (add 5 v1) (add v1 5)) (mul (mul in2 2) 2)) (mul 1 (mul v0 2))) (sub 9 9)) (add (add 2 16) (add in1 1)))", "initial": 41.0, "greedy": 5.0, "quick": 5.0, "strong": 3.0, "hard": true}
+{"sexpr": "(sub (mul (sub (add (mul (add (mul (mul (mul v0 (add (sub 6 6) 1)) 2) 4) (add (add (mul 4 2) 3) 1)) (sub 6 6)) v6) (add v6 (mul (add (mul (mul (mul v0 (add (sub 6 6) 1)) 2) 4) (add (add (mul 4 2) 3) 1)) (sub 6 6)))) (mul 4 4)) (mul 9 (mul (add (add 16 1) 9) 6)))", "initial": 93.0, "greedy": 1.0, "quick": 9.0, "strong": 1.0, "hard": true}
+{"sexpr": "(mul (add (add 1 v4) (add 5 2)) (mul 4 2))", "initial": 15.0, "greedy": 7.0, "quick": 7.0, "strong": 5.0, "hard": true}
+{"sexpr": "(add (add (mul 4 (mul v0 5)) 1) 8)", "initial": 13.0, "greedy": 13.0, "quick": 7.0, "strong": 7.0, "hard": true}
+{"sexpr": "(mul 2 (mul (sub (add (add (add 0 8) 1) (mul in0 (mul 4 4))) (add (mul in0 (mul 4 4)) (add (add 0 8) 1))) 2))", "initial": 39.0, "greedy": 17.0, "quick": 19.0, "strong": 13.0, "hard": true}
+{"sexpr": "(sub (mul (add (add 9 2) (add (mul 2 (mul (sub (add (add (add 0 8) 1) (mul in0 (mul 4 4))) (add (mul in0 (mul 4 4)) (add (add 0 8) 1))) 2)) 7)) (mul (mul 5 2) 2)) (mul (mul (mul 5 2) 2) (add (add 9 2) (add (mul 2 (mul (sub (add (add (add 0 8) 1) (mul in0 (mul 4 4))) (add (mul in0 (mul 4 4)) (add (add 0 8) 1))) 2)) 7))))", "initial": 115.0, "greedy": 51.0, "quick": 51.0, "strong": 47.0, "hard": true}
+{"sexpr": "(add (mul 2 (mul (sub (add (add (add 0 8) 1) (mul in0 (mul 4 4))) (add (mul in0 (mul 4 4)) (add (add 0 8) 1))) 2)) 3)", "initial": 41.0, "greedy": 19.0, "quick": 17.0, "strong": 15.0, "hard": true}
+{"sexpr": "(sub (mul (mul (mul (mul (mul (mul (add (add (add 4 8) 7) (add (add 3 0) (add in1 2))) (sub 3 3)) 4) 4) 1) 16) (mul (add 5 5) (add (sub 2 2) 1))) (mul (mul (add 5 5) (add (sub 2 2) 1)) (mul (mul (mul (mul (mul (add (add (add 4 8) 7) (add (add 3 0) (add in1 2))) (sub 3 3)) 4) 4) 1) 16)))", "initial": 99.0, "greedy": 1.0, "quick": 3.0, "strong": 1.0, "hard": true}
+{"sexpr": "(mul 9 (mul (add (add (add v0 3) 4) 0) 9))", "initial": 15.0, "greedy": 13.0, "quick": 7.0, "strong": 7.0, "hard": true}
+{"sexpr": "(mul 5 (mul (add v10 3) 5))", "initial": 11.0, "greedy": 11.0, "quick": 7.0, "strong": 7.0, "hard": true}
+{"sexpr": "(add (add (sub (add (sub (mul (mul 9 (mul (add (add (add v0 3) 4) 0) 9)) v9) (mul v9 (mul 9 (mul (add (add (add v0 3) 4) 0) 9)))) (mul v3 (add (sub 4 4) 1))) (add (mul v3 (add (sub 4 4) 1)) (sub (mul (mul 9 (mul (add (add (add v0 3) 4) 0) 9)) v9) (mul v9 (mul 9 (mul (add (add (add v0 3) 4) 0) 9)))))) 7) 4)", "initial": 103.0, "greedy": 79.0, "quick": 77.0, "strong": 69.0, "hard": true}
+{"sexpr": "(sub (add v8 (mul 5 (mul (add v10 3) 5))) (add (mul 5 (mul (add v10 3) 5)) v8))", "initial": 27.0, "greedy": 27.0, "quick": 19.0, "strong": 19.0, "hard": true}
+{"sexpr": "(mul (add (mul (add (add v6 9) 4) 0) (add (add in0 2) 8)) (mul 1 4))", "initial": 23.0, "greedy": 7.0, "quick": 5.0, "strong": 5.0, "hard": true}
+{"sexpr": "(add (add (sub (mul 3 v15) (mul v15 3)) 1) 8)", "initial": 15.0, "greedy": 15.0, "quick": 13.0, "strong": 13.0, "hard": true}
+{"sexpr": "(add (add 5 (mul (mul in0 4) 2)) (add (add in2 in2) 1))", "initial": 17.0, "greedy": 13.0, "quick": 11.0, "strong": 9.0, "hard": true}
+{"sexpr": "(sub (add (mul (add (add 7 8) (add (add (add 5 (mul (mul in0 4) 2)) (add (add in2 in2) 1)) 6)) (mul 2 4)) (mul 1 (mul (add (add in1 9) 8) 3))) (add (mul 1 (mul (add (add in1 9) 8) 3)) (mul (add (add 7 8) (add (add (add 5 (mul (mul in0 4) 2)) (add (add in2 in2) 1)) 6)) (mul 2 4))))", "initial": 91.0, "greedy": 59.0, "quick": 59.0, "strong": 51.0, "hard": true}
+{"sexpr": "(sub (add (mul (sub (add in2 v3) (add v3 in2)) (mul 4 4)) (add (add 6 (mul in1 (add (sub 1 1) 1))) (add (add (add 8 in0) (add 16 1)) 5))) (add (add (add 6 (mul in1 (add (sub 1 1) 1))) (add (add (add 8 in0) (add 16 1)) 5)) (mul (sub (add in2 v3) (add v3 in2)) (mul 4 4))))", "initial": 75.0, "greedy": 43.0, "quick": 43.0, "strong": 41.0, "hard": true}
+{"sexpr": "(add (add 9 v5) (add 1 9))", "initial": 7.0, "greedy": 5.0, "quick": 5.0, "strong": 3.0, "hard": true}
+{"sexpr": "(add (add (mul (mul in0 3) 1) 2) 2)", "initial": 13.0, "greedy": 9.0, "quick": 7.0, "strong": 7.0, "hard": true}
+{"sexpr": "(sub (add (mul 6 (mul (mul 10 in2) 2)) (add (add (mul v0 16) 8) 2)) (add (add (add (mul v0 16) 8) 2) (mul 6 (mul (mul 10 in2) 2))))", "initial": 47.0, "greedy": 39.0, "quick": 37.0, "strong": 29.0, "hard": true}
+{"sexpr": "(mul 3 (mul (add (add (add 2 0) 1) 6) 5))", "initial": 15.0, "greedy": 1.0, "quick": 5.0, "strong": 1.0, "hard": true}
+{"sexpr": "(add (add (mul (mul (sub (mul v17 v1) (mul v1 v17)) 2) 2) 1) 4)", "initial": 23.0, "greedy": 19.0, "quick": 15.0, "strong": 15.0, "hard": true}
+{"sexpr": "(mul (mul (mul in1 (add (sub 8 8) 1)) 2) 4)", "initial": 17.0, "greedy": 5.0, "quick": 3.0, "strong": 3.0, "hard": true}
+{"sexpr": "(mul 4 (mul (sub (add (sub (mul (add (add 4 4) (add 16 8)) (mul (mul (mul in1 (add (sub 8 8) 1)) 2) 4)) (mul (mul (mul (mul in1 (add (sub 8 8) 1)) 2) 4) (add (add 4 4) (add 16 8)))) (mul 5 (mul in1 8))) (add (mul 5 (mul in1 8)) (sub (mul (add (add 4 4) (add 16 8)) (mul (mul (mul in1 (add (sub 8 8) 1)) 2) 4)) (mul (mul (mul (mul in1 (add (sub 8 8) 1)) 2) 4) (add (add 4 4) (add 16 8)))))) 2))", "initial": 139.0, "greedy": 61.0, "quick": 67.0, "strong": 47.0, "hard": true}
+{"sexpr": "(mul (sub (mul (mul v9 (add (sub 6 6) 1)) (sub v1 v8)) (mul (sub v1 v8) (mul v9 (add (sub 6 6) 1)))) (mul 2 2))", "initial": 39.0, "greedy": 17.0, "quick": 17.0, "strong": 1.0, "hard": true}
+{"sexpr": "(mul (add (add v8 1) 7) (add (sub 6 6) 1))", "initial": 13.0, "greedy": 5.0, "quick": 3.0, "strong": 3.0, "hard": true}
+{"sexpr": "(add (add 7 1) (add v0 9))", "initial": 7.0, "greedy": 5.0, "quick": 3.0, "strong": 3.0, "hard": true}
+{"sexpr": "(mul 9 (mul v10 3))", "initial": 9.0, "greedy": 9.0, "quick": 5.0, "strong": 5.0, "hard": true}
+{"sexpr": "(mul (add (add 6 1) (add v12 9)) (add (sub 8 8) 1))", "initial": 15.0, "greedy": 5.0, "quick": 3.0, "strong": 3.0, "hard": true}
+{"sexpr": "(mul 8 (mul v8 1))", "initial": 9.0, "greedy": 5.0, "quick": 3.0, "strong": 3.0, "hard": true}
+{"sexpr": "(sub (add 5 (mul 8 (mul v8 1))) (add (mul 8 (mul v8 1)) 5))", "initial": 23.0, "greedy": 15.0, "quick": 11.0, "strong": 11.0, "hard": true}
+{"sexpr": "(add (add (mul (mul v6 (mul 4 4)) (mul 4 4)) 6) 4)", "initial": 21.0, "greedy": 9.0, "quick": 7.0, "strong": 7.0, "hard": true}
+{"sexpr": "(sub (mul (mul (mul (mul (mul v18 2) 4) 2) 2) (mul 8 (mul (add (add 3 v20) (add 1 9)) 3))) (mul (mul 8 (mul (add (add 3 v20) (add 1 9)) 3)) (mul (mul (mul (mul v18 2) 4) 2) 2)))", "initial": 71.0, "greedy": 51.0, "quick": 55.0, "strong": 43.0, "hard": true}
+{"sexpr": "(mul (mul (add (mul (mul in2 16) 0) (mul in1 1)) 4) 4)", "initial": 23.0, "greedy": 5.0, "quick": 5.0, "strong": 3.0, "hard": true}
+{"sexpr": "(add (add 2 (mul (add (mul in0 v2) (add (add v4 8) 8)) (sub 3 3))) (add (add (add (mul (mul v4 2) 2) 8) 3) 4))", "initial": 35.0, "greedy": 13.0, "quick": 13.0, "strong": 7.0, "hard": true}
+{"sexpr": "(mul (mul 5 (mul 1 2)) (mul v2 (mul 4 2)))", "initial": 21.0, "greedy": 7.0, "quick": 5.0, "strong": 5.0, "hard": true}
+{"sexpr": "(mul (add (add (sub (mul v0 v3) (mul v3 v0)) 5) 3) (mul 1 4))", "initial": 23.0, "greedy": 17.0, "quick": 17.0, "strong": 15.0, "hard": true}
+{"sexpr": "(mul (sub (mul (mul 7 (mul v8 2)) (add (add v6 4) 5)) (mul (add (add v6 4) 5) (mul 7 (mul v8 2)))) (mul 4 4))", "initial": 43.0, "greedy": 33.0, "quick": 29.0, "strong": 29.0, "hard": true}
+{"sexpr": "(mul 9 (mul (sub (mul v0 in0) (mul in0 v0)) 6))", "initial": 19.0, "greedy": 19.0, "quick": 15.0, "strong": 15.0, "hard": true}
+{"sexpr": "(add (add (mul in1 16) 3) 3)", "initial": 9.0, "greedy": 7.0, "quick": 5.0, "strong": 5.0, "hard": true}
+{"sexpr": "(mul (mul (add (add 3 (mul 16 1)) (add (add (add 5 9) 4) 7)) 4) 2)", "initial": 23.0, "greedy": 1.0, "quick": 5.0, "strong": 1.0, "hard": true}
+{"sexpr": "(mul (mul (add (mul 8 (mul v0 1)) (mul 16 (add (sub 9 9) 1))) 4) 2)", "initial": 27.0, "greedy": 11.0, "quick": 9.0, "strong": 7.0, "hard": true}
+{"sexpr": "(add (add 4 (mul 8 (mul (mul v10 (add (sub 4 4) 1)) 8))) (add (mul (add (add (mul v13 0) 8) (mul 1 (mul 1 2))) (sub 6 6)) 5))", "initial": 45.0, "greedy": 11.0, "quick": 13.0, "strong": 7.0, "hard": true}
+{"sexpr": "(sub (add (mul (mul (mul in2 2) 4) (mul 2 2)) (mul 5 (mul (mul (add v10 in2) (sub 5 5)) 1))) (add (mul 5 (mul (mul (add v10 in2) (sub 5 5)) 1)) (mul (mul (mul in2 2) 4) (mul 2 2))))", "initial": 71.0, "greedy": 1.0, "quick": 21.0, "strong": 1.0, "hard": true}
+{"sexpr": "(sub (mul (mul v13 (add (sub 3 3) 1)) (mul (sub (add (mul (mul (mul in2 2) 4) (mul 2 2)) (mul 5 (mul (mul (add v10 in2) (sub 5 5)) 1))) (add (mul 5 (mul (mul (add v10 in2) (sub 5 5)) 1)) (mul (mul (mul in2 2) 4) (mul 2 2)))) (mul 1 4))) (mul (mul (sub (add (mul (mul (mul in2 2) 4) (mul 2 2)) (mul 5 (mul (mul (add v10 in2) (sub 5 5)) 1))) (add (mul 5 (mul (mul (add v10 in2) (sub 5 5)) 1)) (mul (mul (mul in2 2) 4) (mul 2 2)))) (mul 1 4)) (mul v13 (add (sub 3 3) 1))))", "initial": 183.0, "greedy": 1.0, "quick": 65.0, "strong": 17.0, "hard": true}
+{"sexpr": "(add (add 2 (mul 3 (mul v0 8))) (add (mul v7 (mul 2 2)) 6))", "initial": 23.0, "greedy": 15.0, "quick": 17.0, "strong": 13.0, "hard": true}
+{"sexpr": "(mul (mul v17 2) 4)", "initial": 9.0, "greedy": 5.0, "quick": 5.0, "strong": 3.0, "hard": true}
+{"sexpr": "(add (add v6 5) 1)", "initial": 5.0, "greedy": 5.0, "quick": 3.0, "strong": 3.0, "hard": true}
+{"sexpr": "(add (add (sub v9 v1) 8) 9)", "initial": 7.0, "greedy": 7.0, "quick": 5.0, "strong": 5.0, "hard": true}
+{"sexpr": "(mul (mul (sub (add (mul v14 (mul 1 4)) (add (add 3 v8) (add in0 4))) (add (add (add 3 v8) (add in0 4)) (mul v14 (mul 1 4)))) 2) 4)", "initial": 43.0, "greedy": 27.0, "quick": 27.0, "strong": 25.0, "hard": true}
+{"sexpr": "(add (add v14 7) 2)", "initial": 5.0, "greedy": 5.0, "quick": 3.0, "strong": 3.0, "hard": true}
+{"sexpr": "(add (add (add (mul v0 v1) 0) 4) 3)", "initial": 11.0, "greedy": 9.0, "quick": 7.0, "strong": 7.0, "hard": true}
+{"sexpr": "(sub (add (mul (mul (mul v20 2) 4) (mul 1 2)) (add (mul (mul v18 8) 0) (add (mul v0 0) 2))) (add (add (mul (mul v18 8) 0) (add (mul v0 0) 2)) (mul (mul (mul v20 2) 4) (mul 1 2))))", "initial": 71.0, "greedy": 19.0, "quick": 19.0, "strong": 1.0, "hard": true}
+{"sexpr": "(mul 9 (mul (mul 4 (mul (sub (add (mul (mul (mul v20 2) 4) (mul 1 2)) (add (mul (mul v18 8) 0) (add (mul v0 0) 2))) (add (add (mul (mul v18 8) 0) (add (mul v0 0) 2)) (mul (mul (mul v20 2) 4) (mul 1 2)))) 7)) 4))", "initial": 87.0, "greedy": 33.0, "quick": 35.0, "strong": 13.0, "hard": true}
+{"sexpr": "(add (add 9 1) (add in2 2))", "initial": 7.0, "greedy": 5.0, "quick": 3.0, "strong": 3.0, "hard": true}
+{"sexpr": "(mul 2 (mul (sub (mul (sub (add (mul (add in1 5) (sub 4 4)) (mul 7 (mul in1 2))) (add (mul 7 (mul in1 2)) (mul (add in1 5) (sub 4 4)))) (add (add 9 1) (add in2 2))) (mul (add (add 9 1) (add in2 2)) (sub (add (mul (add in1 5) (sub 4 4)) (mul 7 (mul in1 2))) (add (mul 7 (mul in1 2)) (mul (add in1 5) (sub 4 4)))))) 1))", "initial": 107.0, "greedy": 1.0, "quick": 57.0, "strong": 1.0, "hard": true}
+{"sexpr": "(mul (add (add in2 3) 2) (add (add in0 5) 9))", "initial": 13.0, "greedy": 13.0, "quick": 9.0, "strong": 9.0, "hard": true}
+{"sexpr": "(sub (add (add (add 6 (mul v1 8)) (add (add (add in0 4) 8) 6)) (mul (add (mul (mul 0 2) 2) (add (mul (add (add in2 3) 2) (add (add in0 5) 9)) 0)) (sub 4 4))) (add (mul (add (mul (mul 0 2) 2) (add (mul (add (add in2 3) 2) (add (add in0 5) 9)) 0)) (sub 4 4)) (add (add 6 (mul v1 8)) (add (add (add in0 4) 8) 6))))", "initial": 95.0, "greedy": 1.0, "quick": 27.0, "strong": 1.0, "hard": true}
+{"sexpr": "(add (add 8 (add (add in0 5) 1)) (add (mul v8 4) 9))", "initial": 15.0, "greedy": 13.0, "quick": 13.0, "strong": 9.0, "hard": true}
+{"sexpr": "(mul (sub (mul (add (add v11 6) 6) (sub (add v7 v2) (add v2 v7))) (mul (sub (add v7 v2) (add v2 v7)) (add (add v11 6) 6))) (add (sub 2 2) 1))", "initial": 39.0, "greedy": 31.0, "quick": 27.0, "strong": 27.0, "hard": true}
+{"sexpr": "(mul 9 (mul (sub (add v13 v14) (add v14 v13)) 8))", "initial": 15.0, "greedy": 13.0, "quick": 11.0, "strong": 11.0, "hard": true}
+{"sexpr": "(mul (mul 3 (mul (mul 2 (mul v3 2)) 7)) (mul 2 2))", "initial": 25.0, "greedy": 17.0, "quick": 17.0, "strong": 7.0, "hard": true}
+{"sexpr": "(add (add 2 (mul (add v3 v16) (sub 9 9))) (add (mul (mul (add (mul (mul (mul (add v4 v4) (sub 9 9)) 2) 4) (sub (mul (add (add 1 9) 8) (mul v13 v7)) (mul (mul v13 v7) (add (add 1 9) 8)))) (sub 9 9)) (mul 4 2)) 9))", "initial": 73.0, "greedy": 1.0, "quick": 5.0, "strong": 1.0, "hard": true}
+{"sexpr": "(sub (mul 2 v2) (mul v2 2))", "initial": 11.0, "greedy": 9.0, "quick": 1.0, "strong": 1.0, "hard": true}
+{"sexpr": "(mul (mul (mul (add v0 0) (mul (mul v13 4) 2)) 2) 2)", "initial": 23.0, "greedy": 13.0, "quick": 13.0, "strong": 11.0, "hard": true}
+{"sexpr": "(add (add 8 v6) (add 8 8))", "initial": 7.0, "greedy": 5.0, "quick": 3.0, "strong": 3.0, "hard": true}
+{"sexpr": "(add (add 4 v1) (add v22 2))", "initial": 7.0, "greedy": 7.0, "quick": 5.0, "strong": 5.0, "hard": true}
+{"sexpr": "(mul (mul (add v30 v21) 2) 4)", "initial": 11.0, "greedy": 7.0, "quick": 5.0, "strong": 5.0, "hard": true}
+{"sexpr": "(mul (sub (mul (sub (mul 4 v33) (mul v33 4)) (mul (mul 1 2) 4)) (mul (mul (mul 1 2) 4) (sub (mul 4 v33) (mul v33 4)))) (add (sub 9 9) 1))", "initial": 55.0, "greedy": 25.0, "quick": 25.0, "strong": 3.0, "hard": true}
+{"sexpr": "(sub (add (mul (mul (mul 3 4) 4) (mul v6 4)) (mul 3 (mul (add v14 v11) 8))) (add (mul 3 (mul (add v14 v11) 8)) (mul (mul (mul 3 4) 4) (mul v6 4))))", "initial": 59.0, "greedy": 35.0, "quick": 31.0, "strong": 27.0, "hard": true}
+{"sexpr": "(mul (mul (add (add v32 0) (add v32 0)) 4) 4)", "initial": 15.0, "greedy": 7.0, "quick": 5.0, "strong": 5.0, "hard": true}
+{"sexpr": "(mul (add (add (add (add 9 4) (add (mul (mul 0 (mul 2 4)) (add (sub 4 4) 1)) 1)) 1) 1) (add (sub 6 6) 1))", "initial": 35.0, "greedy": 1.0, "quick": 3.0, "strong": 1.0, "hard": true}
+{"sexpr": "(mul 8 (mul (mul (mul 5 (mul in0 1)) (add (sub 3 3) 1)) 9))", "initial": 25.0, "greedy": 13.0, "quick": 11.0, "strong": 5.0, "hard": true}
+{"sexpr": "(sub (mul (mul in1 (add (sub 6 6) 1)) (mul 9 (mul in0 8))) (mul (mul 9 (mul in0 8)) (mul in1 (add (sub 6 6) 1))))", "initial": 43.0, "greedy": 23.0, "quick": 23.0, "strong": 1.0, "hard": true}
+{"sexpr": "(add (add 9 v0) (add 16 9))", "initial": 7.0, "greedy": 5.0, "quick": 5.0, "strong": 3.0, "hard": true}
+{"sexpr": "(mul 1 (mul (mul 5 (mul (mul 1 (mul (mul (add (add (add 9 v0) (add 16 9)) in1) (sub 2 2)) 9)) 3)) 5))", "initial": 39.0, "greedy": 1.0, "quick": 5.0, "strong": 1.0, "hard": true}
+{"sexpr": "(mul (mul (add (add 9 v0) (add 16 9)) 1) (mul v0 1))", "initial": 19.0, "greedy": 9.0, "quick": 9.0, "strong": 7.0, "hard": true}
+{"sexpr": "(add (add 4 (add (add 8 (mul 5 (mul 1 2))) (add (add (add v0 8) 9) 1))) (add (add (add v5 v5) (add v5 v5)) 8))", "initial": 31.0, "greedy": 19.0, "quick": 19.0, "strong": 17.0, "hard": true}
+{"sexpr": "(mul (mul (mul (mul (sub (mul v1 (mul 1 4)) (mul v7 v0)) (add (sub 4 4) 1)) (add (sub 3 3) 1)) 2) 2)", "initial": 39.0, "greedy": 13.0, "quick": 13.0, "strong": 11.0, "hard": true}
+{"sexpr": "(sub (mul (mul v2 v0) (add (add 1 v7) (add (mul (mul (mul (mul (sub (mul v1 (mul 1 4)) (mul v7 v0)) (add (sub 4 4) 1)) (add (sub 3 3) 1)) 2) 2) 4))) (mul (add (add 1 v7) (add (mul (mul (mul (mul (sub (mul v1 (mul 1 4)) (mul v7 v0)) (add (sub 4 4) 1)) (add (sub 3 3) 1)) 2) 2) 4)) (mul v2 v0)))", "initial": 107.0, "greedy": 55.0, "quick": 71.0, "strong": 51.0, "hard": true}
+{"sexpr": "(sub (mul (mul 6 (mul 5 1)) (add (mul (mul (mul (mul (sub (mul v1 (mul 1 4)) (mul v7 v0)) (add (sub 4 4) 1)) (add (sub 3 3) 1)) 2) 2) (mul (mul (mul (mul (sub (mul v1 (mul 1 4)) (mul v7 v0)) (add (sub 4 4) 1)) (add (sub 3 3) 1)) 2) 2))) (mul (add (mul (mul (mul (mul (sub (mul v1 (mul 1 4)) (mul v7 v0)) (add (sub 4 4) 1)) (add (sub 3 3) 1)) 2) 2) (mul (mul (mul (mul (sub (mul v1 (mul 1 4)) (mul v7 v0)) (add (sub 4 4) 1)) (add (sub 3 3) 1)) 2) 2)) (mul 6 (mul 5 1))))", "initial": 183.0, "greedy": 39.0, "quick": 39.0, "strong": 35.0, "hard": true}
+{"sexpr": "(add (add 2 (mul v18 (add (sub 4 4) 1))) (add (add (add v2 3) 9) 7))", "initial": 19.0, "greedy": 11.0, "quick": 9.0, "strong": 5.0, "hard": true}
+{"sexpr": "(sub (mul 6 (mul (mul v26 1) 8)) (add (sub v22 v14) (add v3 0)))", "initial": 21.0, "greedy": 13.0, "quick": 11.0, "strong": 11.0, "hard": true}
+{"sexpr": "(sub (add (sub (add in1 5) (add 5 in1)) (add (add 5 8) 3)) (add (add (add 5 8) 3) (sub (add in1 5) (add 5 in1))))", "initial": 27.0, "greedy": 19.0, "quick": 19.0, "strong": 1.0, "hard": true}
+{"sexpr": "(mul (mul (sub (add (add in1 16) (mul 2 (add (sub 2 2) 1))) (add (mul 2 (add (sub 2 2) 1)) (add in1 16))) 4) 4)", "initial": 35.0, "greedy": 15.0, "quick": 17.0, "strong": 11.0, "hard": true}
+{"sexpr": "(add (sub (mul v2 1) (mul v2 1)) (add (add (add v1 8) 7) (mul in1 5)))", "initial": 23.0, "greedy": 11.0, "quick": 11.0, "strong": 9.0, "hard": true}
+{"sexpr": "(add (add 5 (sub (mul v1 16) (mul v1 16))) (add (sub (add (mul 2 (mul v3 7)) (sub (mul 8 (add 0 0)) (mul (add 0 0) 8))) (add (sub (mul 8 (add 0 0)) (mul (add 0 0) 8)) (mul 2 (mul v3 7)))) 6))", "initial": 67.0, "greedy": 1.0, "quick": 21.0, "strong": 1.0, "hard": true}
+{"sexpr": "(add (add 6 5) (add v8 2))", "initial": 7.0, "greedy": 5.0, "quick": 3.0, "strong": 3.0, "hard": true}
+{"sexpr": "(add (add 7 (add (add in1 2) 7)) (add (mul 16 in0) 6))", "initial": 15.0, "greedy": 15.0, "quick": 13.0, "strong": 9.0, "hard": true}
+{"sexpr": "(add (add 5 (add (add 4 (mul (add (mul 2 4) (sub (add in1 in1) (add in1 in1))) (sub 5 5))) (add in1 3))) (add (add (add 6 16) (add 1 1)) 9))", "initial": 37.0, "greedy": 9.0, "quick": 9.0, "strong": 5.0, "hard": true}
+{"sexpr": "(add (add 2 v7) (add 5 1))", "initial": 7.0, "greedy": 5.0, "quick": 5.0, "strong": 3.0, "hard": true}
+{"sexpr": "(sub (add (add (mul v9 0) in2) (sub (add 1 v1) (add v1 1))) (add (sub (add 1 v1) (add v1 1)) (add (mul v9 0) in2)))", "initial": 31.0, "greedy": 19.0, "quick": 1.0, "strong": 1.0, "hard": true}
+{"sexpr": "(mul 7 (mul (mul (add (add in1 5) 5) (add (sub 4 4) 1)) 8))", "initial": 21.0, "greedy": 11.0, "quick": 9.0, "strong": 7.0, "hard": true}
+{"sexpr": "(add (add 6 (mul 1 (mul (add (add v8 8) 2) 1))) (add (mul (add (mul 1 v2) (mul 2 (mul 16 8))) (sub 1 1)) 9))", "initial": 39.0, "greedy": 9.0, "quick": 7.0, "strong": 5.0, "hard": true}
+{"sexpr": "(add (add 2 (sub (add 10 8) (add 8 10))) (add (mul (add in0 1) (sub 3 3)) 4))", "initial": 21.0, "greedy": 1.0, "quick": 3.0, "strong": 1.0, "hard": true}
+{"sexpr": "(sub (add (mul 6 (mul (add (add in1 7) 9) 5)) (add (add 5 (mul (add 1 4) (sub 2 2))) (add (sub (add (add (add 10 3) 8) 4) (add 4 (add (add 10 3) 8))) 5))) (add (add (add 5 (mul (add 1 4) (sub 2 2))) (add (sub (add (add (add 10 3) 8) 4) (add 4 (add (add 10 3) 8))) 5)) (mul 6 (mul (add (add in1 7) 9) 5))))", "initial": 87.0, "greedy": 31.0, "quick": 45.0, "strong": 23.0, "hard": true}
+{"sexpr": "(sub (mul (add v4 v4) (add (add 7 5) (add in0 3))) (mul (add (add 7 5) (add in0 3)) (add v4 v4)))", "initial": 27.0, "greedy": 23.0, "quick": 19.0, "strong": 19.0, "hard": true}
+{"sexpr": "(sub (add (mul (mul (mul (mul v4 2) 2) 4) 2) (mul 6 (mul (sub in2 v9) 6))) (add (mul 6 (mul (sub in2 v9) 6)) (mul (mul (mul (mul v4 2) 2) 4) 2)))", "initial": 59.0, "greedy": 43.0, "quick": 35.0, "strong": 27.0, "hard": true}
+{"sexpr": "(add (add v12 8) 7)", "initial": 5.0, "greedy": 5.0, "quick": 3.0, "strong": 3.0, "hard": true}
+{"sexpr": "(add (add 9 16) (add v0 6))", "initial": 7.0, "greedy": 5.0, "quick": 3.0, "strong": 3.0, "hard": true}
+{"sexpr": "(add (add 6 (sub (add (mul 16 16) (mul (mul v7 2) 2)) (add (mul (mul v7 2) 2) (mul 16 16)))) (add (mul (mul (add (add v7 3) 4) 4) 2) 4))", "initial": 49.0, "greedy": 29.0, "quick": 23.0, "strong": 21.0, "hard": true}
+{"sexpr": "(add (add 8 (mul (add (mul (add v10 4) (sub 4 4)) (mul (add 4 in0) (sub 7 7))) (sub 2 2))) (add (sub (sub v17 2) (mul 5 (mul v15 4))) 7))", "initial": 43.0, "greedy": 15.0, "quick": 13.0, "strong": 13.0, "hard": true}
+{"sexpr": "(sub (mul (sub (mul v21 v17) (mul v17 v21)) (add (mul v22 0) 4)) (mul (add (mul v22 0) 4) (sub (mul v21 v17) (mul v17 v21))))", "initial": 43.0, "greedy": 29.0, "quick": 27.0, "strong": 27.0, "hard": true}
+{"sexpr": "(add (add 6 (add (mul (sub 1 4) 0) (add v3 v3))) (add (mul (mul in2 (add (sub 6 6) 1)) (mul 2 2)) 2))", "initial": 33.0, "greedy": 11.0, "quick": 13.0, "strong": 9.0, "hard": true}
+{"sexpr": "(add (sub (mul (mul v9 (mul 4 2)) (sub (mul 0 4) (mul 4 0))) (mul (sub (mul 0 4) (mul 4 0)) (mul v9 (mul 4 2)))) (sub (mul (mul v11 (add (sub 6 6) 1)) (mul (mul 5 2) 2)) (mul (mul (mul 5 2) 2) (mul v11 (add (sub 6 6) 1)))))", "initial": 91.0, "greedy": 11.0, "quick": 21.0, "strong": 11.0, "hard": true}
+{"sexpr": "(mul (mul 8 (mul (mul v21 (add (sub 9 9) 1)) 4)) (mul 4 (mul (mul (add v30 v31) (sub 1 1)) 9)))", "initial": 37.0, "greedy": 1.0, "quick": 5.0, "strong": 1.0, "hard": true}
+{"sexpr": "(mul (mul (sub (sub (add v6 v18) (add v18 v6)) (sub (add v4 v10) (add v10 v4))) 2) 4)", "initial": 23.0, "greedy": 19.0, "quick": 17.0, "strong": 17.0, "hard": true}
+{"sexpr": "(mul 7 (mul (sub (add (mul 9 (mul 16 8)) (add (add v32 2) 6)) (add (add (add v32 2) 6) (mul 9 (mul 16 8)))) 6))", "initial": 39.0, "greedy": 23.0, "quick": 19.0, "strong": 11.0, "hard": true}
+{"sexpr": "(add (add 8 16) (add (mul (mul 4 1) (add (mul (sub (add 10 in0) (add in0 10)) 0) 2)) 9))", "initial": 27.0, "greedy": 1.0, "quick": 5.0, "strong": 1.0, "hard": true}
+{"sexpr": "(add (add 4 (mul (mul (sub (add 10 in0) (add in0 10)) (add (sub 9 9) 1)) (mul 2 4))) (add (sub (add (add (add (sub (add 10 in0) (add in0 10)) 9) 8) (mul 6 (mul in0 9))) (add (mul 6 (mul in0 9)) (add (add (sub (add 10 in0) (add in0 10)) 9) 8))) 8))", "initial": 71.0, "greedy": 57.0, "quick": 57.0, "strong": 49.0, "hard": true}
+{"sexpr": "(mul (mul (add (add (mul (mul 3 4) 2) 7) 5) 2) 4)", "initial": 21.0, "greedy": 1.0, "quick": 5.0, "strong": 1.0, "hard": true}
+{"sexpr": "(add (add (add in2 1) 5) (add in0 in0))", "initial": 9.0, "greedy": 9.0, "quick": 7.0, "strong": 7.0, "hard": true}
+{"sexpr": "(add (add (add (add (mul v1 0) v2) 6) 5) (add (add (add (mul v1 0) v2) 6) 5))", "initial": 23.0, "greedy": 7.0, "quick": 5.0, "strong": 5.0, "hard": true}
+{"sexpr": "(add (add 4 (add (add (mul (add (mul (mul (mul (sub 5 5) 16) (mul 2 2)) (add (sub 9 9) 1)) (sub v0 v0)) (add (sub 9 9) 1)) 7) 4)) (add (mul (add (add v0 0) v6) (mul 2 4)) 8))", "initial": 57.0, "greedy": 9.0, "quick": 25.0, "strong": 11.0, "hard": true}
+{"sexpr": "(add (add 4 (mul (add (sub (mul (add (add 1 3) 9) (mul 4 4)) in1) 0) (add (sub 6 6) 1))) (add (mul (mul 7 (mul v0 9)) (add (sub 9 9) 1)) 9))", "initial": 47.0, "greedy": 17.0, "quick": 21.0, "strong": 13.0, "hard": true}
+{"sexpr": "(add (add 8 (add (add (sub in0 in0) 4) 9)) (add (mul (mul (add 2 v5) (sub 7 7)) (add (sub 5 5) 1)) 1))", "initial": 29.0, "greedy": 1.0, "quick": 3.0, "strong": 1.0, "hard": true}
+{"sexpr": "(mul 3 (mul (mul 7 (mul in0 7)) 6))", "initial": 17.0, "greedy": 17.0, "quick": 9.0, "strong": 5.0, "hard": true}
+{"sexpr": "(mul (sub (add (sub (mul (mul (mul in0 8) 16) v15) (mul v15 (mul (mul in0 8) 16))) (mul 2 (mul v19 3))) (add (mul 2 (mul v19 3)) (sub (mul (mul (mul in0 8) 16) v15) (mul v15 (mul (mul in0 8) 16))))) (add (sub 4 4) 1))", "initial": 83.0, "greedy": 59.0, "quick": 59.0, "strong": 51.0, "hard": true}
+{"sexpr": "(add (add 2 (mul (mul (add (mul 0 0) v16) (mul v16 10)) (add (sub 8 8) 1))) (add (sub v18 v16) 6))", "initial": 31.0, "greedy": 17.0, "quick": 17.0, "strong": 15.0, "hard": true}
+{"sexpr": "(mul 9 (mul v2 9))", "initial": 9.0, "greedy": 9.0, "quick": 5.0, "strong": 5.0, "hard": true}
+{"sexpr": "(sub (mul (mul (mul (mul v38 v37) 4) 2) (mul (mul v8 (mul 4 4)) (mul v23 (mul 2 4)))) (mul (mul (mul v8 (mul 4 4)) (mul v23 (mul 2 4))) (mul (mul (mul v38 v37) 4) 2)))", "initial": 75.0, "greedy": 43.0, "quick": 43.0, "strong": 41.0, "hard": true}
+{"sexpr": "(mul 5 (mul (mul (mul v30 2) 2) 3))", "initial": 17.0, "greedy": 13.0, "quick": 11.0, "strong": 5.0, "hard": true}
+{"sexpr": "(add (add 5 v13) (add 8 7))", "initial": 7.0, "greedy": 5.0, "quick": 5.0, "strong": 3.0, "hard": true}
+{"sexpr": "(add (add (add (add (add (add v24 6) 1) 4) 5) 5) 6)", "initial": 13.0, "greedy": 13.0, "quick": 5.0, "strong": 5.0, "hard": true}
+{"sexpr": "(sub (add (add (add 5 10) (add 10 2)) (mul v17 4)) (add (mul v17 4) (add (add 5 10) (add 10 2))))", "initial": 27.0, "greedy": 11.0, "quick": 13.0, "strong": 11.0, "hard": true}
+{"sexpr": "(add (add 8 (mul in0 (mul 2 4))) (add (add (add in1 1) 1) 3))", "initial": 19.0, "greedy": 13.0, "quick": 13.0, "strong": 9.0, "hard": true}
+{"sexpr": "(mul 5 (mul v0 5))", "initial": 9.0, "greedy": 9.0, "quick": 5.0, "strong": 5.0, "hard": true}
+{"sexpr": "(mul (mul (add (add 7 v4) (add v6 1)) (mul 1 4)) (mul 2 2))", "initial": 23.0, "greedy": 11.0, "quick": 11.0, "strong": 7.0, "hard": true}
+{"sexpr": "(mul 3 (mul (add (add (add (add 6 5) (add (mul (mul (add (add 7 v4) (add v6 1)) (mul 1 4)) (mul 2 2)) 2)) 7) 3) 4))", "initial": 41.0, "greedy": 25.0, "quick": 25.0, "strong": 15.0, "hard": true}
+{"sexpr": "(add (add 1 (sub (mul v3 in0) (mul in0 v3))) (add (add (add 9 4) (add (sub (mul v5 v8) (mul v8 v5)) 2)) 3))", "initial": 33.0, "greedy": 31.0, "quick": 29.0, "strong": 27.0, "hard": true}
+{"sexpr": "(mul (mul (mul (mul (sub (add v4 v3) (add v3 v4)) 4) 4) 4) 4)", "initial": 23.0, "greedy": 15.0, "quick": 15.0, "strong": 11.0, "hard": true}
+{"sexpr": "(add (add 8 (add (sub in0 in0) 0)) (add (mul (mul v0 1) (add (add in0 5) 1)) 9))", "initial": 23.0, "greedy": 13.0, "quick": 13.0, "strong": 9.0, "hard": true}
+{"sexpr": "(add (add (mul 3 (mul (mul 4 (mul (add (add 8 (add (sub in0 in0) 0)) (add (mul (mul v0 1) (add (add in0 5) 1)) 9)) 1)) 3)) 6) 7)", "initial": 43.0, "greedy": 29.0, "quick": 21.0, "strong": 21.0, "hard": true}
+{"sexpr": "(add (add 5 (add v0 3)) (add (sub 16 in0) 1))", "initial": 11.0, "greedy": 11.0, "quick": 11.0, "strong": 9.0, "hard": true}
+{"sexpr": "(mul (mul (mul v7 (add (sub 2 2) 1)) 2) 4)", "initial": 17.0, "greedy": 5.0, "quick": 3.0, "strong": 3.0, "hard": true}
+{"sexpr": "(mul 6 (mul (sub (mul v2 in0) (mul in0 v2)) 8))", "initial": 19.0, "greedy": 17.0, "quick": 17.0, "strong": 15.0, "hard": true}
+{"sexpr": "(add (add 6 (mul (mul 6 (mul (sub (mul v2 in0) (mul in0 v2)) 8)) (mul 2 2))) (add (add (add 2 16) (add v1 3)) 9))", "initial": 39.0, "greedy": 29.0, "quick": 25.0, "strong": 25.0, "hard": true}
+{"sexpr": "(add (add 9 (mul (mul 8 (mul in0 8)) (mul 2 2))) (add (add (add (mul 16 (mul 4 2)) 9) 3) 6))", "initial": 35.0, "greedy": 13.0, "quick": 15.0, "strong": 11.0, "hard": true}
+{"sexpr": "(sub (add (add (add (mul (mul 16 2) 2) 5) 5) (sub (mul (mul (add v15 0) (sub 2 2)) (add (add v2 5) 6)) (mul (add (add v2 5) 6) (mul (add v15 0) (sub 2 2))))) (add (sub (mul (mul (add v15 0) (sub 2 2)) (add (add v2 5) 6)) (mul (add (add v2 5) 6) (mul (add v15 0) (sub 2 2)))) (add (add (mul (mul 16 2) 2) 5) 5)))", "initial": 99.0, "greedy": 1.0, "quick": 7.0, "strong": 5.0, "hard": true}
+{"sexpr": "(mul 3 (mul (add (add v11 7) 8) 5))", "initial": 13.0, "greedy": 13.0, "quick": 7.0, "strong": 7.0, "hard": true}
+{"sexpr": "(sub (mul v15 2) (mul 2 v15))", "initial": 11.0, "greedy": 9.0, "quick": 1.0, "strong": 1.0, "hard": true}
+{"sexpr": "(mul (mul (add (mul (add (mul (mul (add (add (add 7 (mul (add (mul (add in0 in0) (sub 7 7)) in0) (sub 6 6))) (add (sub (mul (mul (add in0 in0) (sub 7 7)) in0) (mul in0 (mul (add in0 in0) (sub 7 7)))) 2)) (add (add (mul 6 (mul (mul (add in0 in0) (sub 7 7)) 3)) 9) 2)) (sub 4 4)) 0) (mul (add (add (mul 8 (mul 10 2)) 4) 6) (add (sub 4 4) 1))) 0) (sub (mul (mul (add (add 0 7) 4) 4) 2) (mul (mul (add in0 in0) (sub 7 7)) (mul 2 4)))) 2) 2)", "initial": 147.0, "greedy": 1.0, "quick": 11.0, "strong": 1.0, "hard": true}
+{"sexpr": "(mul (add (add v0 1) 2) (mul 2 4))", "initial": 13.0, "greedy": 7.0, "quick": 5.0, "strong": 5.0, "hard": true}
+{"sexpr": "(add (add (add (add v0 v0) 5) 9) 0)", "initial": 9.0, "greedy": 7.0, "quick": 5.0, "strong": 5.0, "hard": true}
+{"sexpr": "(mul (mul (mul (add (add (add (add v0 v0) 5) 9) 0) 2) 4) (add (sub 4 4) 1))", "initial": 25.0, "greedy": 11.0, "quick": 9.0, "strong": 7.0, "hard": true}
+{"sexpr": "(add (add 9 (sub (add (add (add (add v0 v0) 5) 9) 0) 0)) (add (mul (mul (mul (mul (add (add (add (add v0 v0) 5) 9) 0) 2) 4) (add (sub 4 4) 1)) (add (sub 3 3) 1)) 3))", "initial": 49.0, "greedy": 23.0, "quick": 25.0, "strong": 21.0, "hard": true}
+{"sexpr": "(add (add (mul 1 (mul v3 3)) 1) 7)", "initial": 13.0, "greedy": 9.0, "quick": 7.0, "strong": 7.0, "hard": true}
+{"sexpr": "(add (add (mul (mul (mul v4 4) 2) (mul 2 4)) 2) 1)", "initial": 21.0, "greedy": 11.0, "quick": 9.0, "strong": 7.0, "hard": true}
+{"sexpr": "(mul (add (mul (add (add v8 5) 7) 0) (add (mul 8 0) v2)) (add (add (add (add 10 5) 9) 7) 5))", "initial": 29.0, "greedy": 5.0, "quick": 7.0, "strong": 5.0, "hard": true}
+{"sexpr": "(mul (mul (mul v6 2) 4) (mul 2 4))", "initial": 17.0, "greedy": 7.0, "quick": 7.0, "strong": 5.0, "hard": true}
+{"sexpr": "(mul (mul (sub (add (add (add v2 3) 7) (mul v1 (mul 4 2))) (add (mul v1 (mul 4 2)) (add (add v2 3) 7))) 4) 4)", "initial": 39.0, "greedy": 23.0, "quick": 19.0, "strong": 17.0, "hard": true}
+{"sexpr": "(add (mul (sub (add v15 v13) (add v13 v15)) (add (add 2 v3) (add 16 9))) (sub (mul (mul (add in0 in0) (sub 4 4)) (mul in0 (mul 4 4))) (mul (mul in0 (mul 4 4)) (mul (add in0 in0) (sub 4 4)))))", "initial": 61.0, "greedy": 15.0, "quick": 23.0, "strong": 13.0, "hard": true}
+{"sexpr": "(mul (mul v4 (mul 2 2)) (mul 1 2))", "initial": 17.0, "greedy": 5.0, "quick": 3.0, "strong": 3.0, "hard": true}
+{"sexpr": "(mul (mul (sub (add 1 v10) (add v10 1)) 2) 4)", "initial": 15.0, "greedy": 11.0, "quick": 9.0, "strong": 9.0, "hard": true}
+{"sexpr": "(mul 3 (mul (mul (mul v12 (add (sub 7 7) 1)) (mul 2 2)) 6))", "initial": 25.0, "greedy": 11.0, "quick": 5.0, "strong": 5.0, "hard": true}
+{"sexpr": "(mul 9 (mul (add (add 4 (add 1 0)) (add (mul (add 0 v20) (sub 3 3)) 5)) 5))", "initial": 25.0, "greedy": 1.0, "quick": 9.0, "strong": 1.0, "hard": true}
+{"sexpr": "(mul 5 (mul (sub (add 4 v10) (add v10 4)) 6))", "initial": 15.0, "greedy": 15.0, "quick": 11.0, "strong": 11.0, "hard": true}
+{"sexpr": "(sub (add (add (mul in0 (add (sub 1 1) 1)) 1) 3) (sub (mul (sub (mul 1 in0) (mul in0 1)) (mul (add in0 in0) (sub 6 6))) (mul (mul (add in0 in0) (sub 6 6)) (sub (mul 1 in0) (mul in0 1)))))", "initial": 61.0, "greedy": 5.0, "quick": 5.0, "strong": 3.0, "hard": true}
+{"sexpr": "(mul 9 (mul v0 7))", "initial": 9.0, "greedy": 9.0, "quick": 5.0, "strong": 5.0, "hard": true}
+{"sexpr": "(add (add (add (mul v8 0) v5) 4) 4)", "initial": 11.0, "greedy": 5.0, "quick": 3.0, "strong": 3.0, "hard": true}
+{"sexpr": "(add (add (add (add (mul (mul in1 4) 4) 9) 7) 9) 6)", "initial": 17.0, "greedy": 13.0, "quick": 5.0, "strong": 5.0, "hard": true}
+{"sexpr": "(sub (add (add (add (sub (mul in2 8) (mul 8 in2)) 4) 6) (mul (sub (add 4 (add in2 in2)) (add (add in2 in2) 4)) (add (sub 4 4) 1))) (add (mul (sub (add 4 (add in2 in2)) (add (add in2 in2) 4)) (add (sub 4 4) 1)) (add (add (sub (mul in2 8) (mul 8 in2)) 4) 6)))", "initial": 71.0, "greedy": 51.0, "quick": 51.0, "strong": 29.0, "hard": true}
+{"sexpr": "(mul (mul 3 (mul v0 9)) (mul 1 2))", "initial": 17.0, "greedy": 11.0, "quick": 7.0, "strong": 5.0, "hard": true}
+{"sexpr": "(add (add 1 v0) (add v1 6))", "initial": 7.0, "greedy": 7.0, "quick": 5.0, "strong": 5.0, "hard": true}
+{"sexpr": "(add (sub (mul (add (add 2 v5) (add v2 4)) (mul v8 2)) (mul (mul v8 2) (add (add 2 v5) (add v2 4)))) (sub (mul (mul 2 (mul v7 1)) (mul v0 5)) (mul (mul v0 5) (mul 2 (mul v7 1)))))", "initial": 67.0, "greedy": 55.0, "quick": 53.0, "strong": 49.0, "hard": true}
+{"sexpr": "(mul (add (add 1 (mul (mul v6 4) 2)) (add (add (add 10 9) 4) 4)) (add (sub 9 9) 1))", "initial": 27.0, "greedy": 9.0, "quick": 11.0, "strong": 5.0, "hard": true}
+{"sexpr": "(mul 3 (mul (mul v10 (mul 2 2)) 9))", "initial": 17.0, "greedy": 11.0, "quick": 5.0, "strong": 5.0, "hard": true}
+{"sexpr": "(sub (mul (mul 1 (mul 4 2)) (add (add in0 7) 9)) (mul (add (add in0 7) 9) (mul 1 (mul 4 2))))", "initial": 35.0, "greedy": 17.0, "quick": 13.0, "strong": 1.0, "hard": true}
+{"sexpr": "(mul (sub (add in0 (sub (mul (mul 1 (mul 4 2)) (add (add in0 7) 9)) (mul (add (add in0 7) 9) (mul 1 (mul 4 2))))) (add (sub (mul (mul 1 (mul 4 2)) (add (add in0 7) 9)) (mul (add (add in0 7) 9) (mul 1 (mul 4 2)))) in0)) (mul in0 (mul 2 2)))", "initial": 87.0, "greedy": 45.0, "quick": 39.0, "strong": 37.0, "hard": true}
+{"sexpr": "(mul (mul (sub (add in0 (sub (mul (mul 1 (mul 4 2)) (add (add in0 7) 9)) (mul (add (add in0 7) 9) (mul 1 (mul 4 2))))) (add (sub (mul (mul 1 (mul 4 2)) (add (add in0 7) 9)) (mul (add (add in0 7) 9) (mul 1 (mul 4 2)))) in0)) (mul in0 (mul 2 2))) (add (sub 8 8) 1))", "initial": 95.0, "greedy": 45.0, "quick": 41.0, "strong": 37.0, "hard": true}
+{"sexpr": "(sub (mul (mul (mul in1 (mul 4 2)) (add (sub 8 8) 1)) (mul 3 (mul (mul 3 (mul v0 2)) 2))) (mul (mul 3 (mul (mul 3 (mul v0 2)) 2)) (mul (mul in1 (mul 4 2)) (add (sub 8 8) 1))))", "initial": 75.0, "greedy": 39.0, "quick": 39.0, "strong": 1.0, "hard": true}
+{"sexpr": "(sub (add (mul 7 (mul (mul 4 (add (sub 8 8) 1)) 1)) (sub (mul (mul (add 8 in1) (sub 2 2)) (mul (mul v1 2) 2)) (mul (mul (mul v1 2) 2) (mul (add 8 in1) (sub 2 2))))) (add (sub (mul (mul (add 8 in1) (sub 2 2)) (mul (mul v1 2) 2)) (mul (mul (mul v1 2) 2) (mul (add 8 in1) (sub 2 2)))) (mul 7 (mul (mul 4 (add (sub 8 8) 1)) 1))))", "initial": 123.0, "greedy": 1.0, "quick": 15.0, "strong": 1.0, "hard": true}
+{"sexpr": "(add (add 8 (mul (add in2 3) (sub 7 7))) (add (add v0 8) 5))", "initial": 17.0, "greedy": 7.0, "quick": 5.0, "strong": 3.0, "hard": true}
+{"sexpr": "(add (add v8 5) 6)", "initial": 5.0, "greedy": 5.0, "quick": 3.0, "strong": 3.0, "hard": true}
+{"sexpr": "(mul (mul (mul (sub (mul 16 v6) (mul v6 16)) 4) 4) (add (sub 5 5) 1))", "initial": 27.0, "greedy": 13.0, "quick": 1.0, "strong": 1.0, "hard": true}
+{"sexpr": "(mul (add (add (mul (mul in1 4) 4) 7) 8) (add (sub 7 7) 1))", "initial": 21.0, "greedy": 9.0, "quick": 7.0, "strong": 5.0, "hard": true}
+{"sexpr": "(sub (add (mul 4 (mul (mul 4 (mul v2 9)) 3)) (mul 9 (mul (mul v0 in2) 8))) (add (mul 9 (mul (mul v0 in2) 8)) (mul 4 (mul (mul 4 (mul v2 9)) 3))))", "initial": 63.0, "greedy": 59.0, "quick": 51.0, "strong": 35.0, "hard": true}
+{"sexpr": "(add (add 1 in1) (add in2 6))", "initial": 7.0, "greedy": 7.0, "quick": 5.0, "strong": 5.0, "hard": true}
+{"sexpr": "(add (add 2 2) (add v1 4))", "initial": 7.0, "greedy": 5.0, "quick": 3.0, "strong": 3.0, "hard": true}
+{"sexpr": "(mul 5 (mul (add (add (mul 10 0) (add v0 0)) (add (mul 10 0) (add v0 0))) 4))", "initial": 27.0, "greedy": 9.0, "quick": 9.0, "strong": 7.0, "hard": true}
+{"sexpr": "(sub (mul (mul (mul (sub (add 2 v4) (add v4 2)) 4) 2) (sub (mul (add 2 v4) (sub 4 4)) (add v9 v9))) (mul (sub (mul (add 2 v4) (sub 4 4)) (add v9 v9)) (mul (mul (sub (add 2 v4) (add v4 2)) 4) 2)))", "initial": 63.0, "greedy": 39.0, "quick": 37.0, "strong": 37.0, "hard": true}
+{"sexpr": "(add (add 3 v6) (add v20 6))", "initial": 7.0, "greedy": 7.0, "quick": 5.0, "strong": 5.0, "hard": true}
+{"sexpr": "(mul (mul (add (add 6 16) (add v16 4)) 2) 2)", "initial": 15.0, "greedy": 9.0, "quick": 5.0, "strong": 5.0, "hard": true}
+{"sexpr": "(mul (mul (add (add 2 v6) (add v22 7)) 2) 4)", "initial": 15.0, "greedy": 11.0, "quick": 11.0, "strong": 7.0, "hard": true}
+{"sexpr": "(mul (add (add (sub (mul v12 16) (mul 16 v12)) 1) 7) (mul 2 (mul (mul v0 (add (sub 6 6) 1)) 7)))", "initial": 35.0, "greedy": 25.0, "quick": 23.0, "strong": 21.0, "hard": true}
+{"sexpr": "(sub (add (sub (mul v9 2) (mul 2 v9)) (add v21 3)) (add (add v21 3) (sub (mul v9 2) (mul 2 v9))))", "initial": 31.0, "greedy": 27.0, "quick": 23.0, "strong": 1.0, "hard": true}
+{"sexpr": "(add (mul (add v12 0) (add (sub 6 6) 1)) (mul (sub (add (mul (add (add (sub (mul v12 16) (mul 16 v12)) 1) 7) (mul 2 (mul (mul v0 (add (sub 6 6) 1)) 7))) v8) (add v8 (mul (add (add (sub (mul v12 16) (mul 16 v12)) 1) 7) (mul 2 (mul (mul v0 (add (sub 6 6) 1)) 7))))) (mul 2 4)))", "initial": 95.0, "greedy": 59.0, "quick": 55.0, "strong": 51.0, "hard": true}
+{"sexpr": "(add (add 7 4) (add v2 5))", "initial": 7.0, "greedy": 5.0, "quick": 3.0, "strong": 3.0, "hard": true}
+{"sexpr": "(add (add (mul (mul (mul v20 4) 2) (add (sub 5 5) 1)) 6) 5)", "initial": 21.0, "greedy": 9.0, "quick": 7.0, "strong": 7.0, "hard": true}
+{"sexpr": "(add (add 2 (mul (mul (add 2 8) (sub 5 5)) (add (sub 1 1) 1))) (add (add (add (add v22 7) 4) (add v5 v7)) 7))", "initial": 31.0, "greedy": 13.0, "quick": 13.0, "strong": 11.0, "hard": true}
+{"sexpr": "(add (add 4 (add (add (mul v13 v14) 7) 8)) (add (mul (add (add (sub (mul (add (mul v14 1) (mul v14 1)) (mul (add (add (add v27 8) 2) (sub (mul v24 v6) (mul v6 v24))) (sub 3 3))) (mul (mul (add (add (add v27 8) 2) (sub (mul v24 v6) (mul v6 v24))) (sub 3 3)) (add (mul v14 1) (mul v14 1)))) 9) 8) (add (sub 4 4) 1)) 4))", "initial": 101.0, "greedy": 13.0, "quick": 19.0, "strong": 15.0, "hard": true}
+{"sexpr": "(mul (sub (add 5 v12) (add v12 5)) (add (add 5 3) (add v2 9)))", "initial": 17.0, "greedy": 15.0, "quick": 13.0, "strong": 13.0, "hard": true}
+{"sexpr": "(add (add 1 (mul (mul (mul v21 4) 2) (mul 4 2))) (add (sub (add v8 0) (add v8 0)) 3))", "initial": 29.0, "greedy": 11.0, "quick": 11.0, "strong": 9.0, "hard": true}
+{"sexpr": "(mul (mul v32 4) 2)", "initial": 9.0, "greedy": 5.0, "quick": 5.0, "strong": 3.0, "hard": true}
+{"sexpr": "(sub (mul (mul (sub (add 3 (mul (sub in0 in0) 8)) (add (mul (sub in0 in0) 8) 3)) 4) 4) (mul (sub 5 5) 1))", "initial": 35.0, "greedy": 1.0, "quick": 7.0, "strong": 1.0, "hard": true}
+{"sexpr": "(mul 5 (mul (mul 6 (mul v3 5)) 2))", "initial": 17.0, "greedy": 15.0, "quick": 13.0, "strong": 5.0, "hard": true}
+{"sexpr": "(add (add 3 (add in0 in0)) (add (add (add 7 (mul v2 (add (sub 3 3) 1))) (add v2 9)) 8))", "initial": 23.0, "greedy": 15.0, "quick": 15.0, "strong": 13.0, "hard": true}
+{"sexpr": "(mul (add (add 4 v4) (add 0 6)) (add (sub 6 6) 1))", "initial": 15.0, "greedy": 5.0, "quick": 3.0, "strong": 3.0, "hard": true}
+{"sexpr": "(mul 9 (mul (add (add 1 in2) (add in0 5)) 1))", "initial": 15.0, "greedy": 11.0, "quick": 11.0, "strong": 9.0, "hard": true}
+{"sexpr": "(add (add 5 (mul 5 (mul (mul (add 4 v5) (sub 2 2)) 9))) (add (mul (mul in0 (add (sub 1 1) 1)) (add (sub 8 8) 1)) 7))", "initial": 39.0, "greedy": 5.0, "quick": 9.0, "strong": 3.0, "hard": true}
+{"sexpr": "(add (add (add (add (mul v0 (add (sub 4 4) 1)) 3) 1) 8) 4)", "initial": 17.0, "greedy": 9.0, "quick": 5.0, "strong": 3.0, "hard": true}
+{"sexpr": "(mul 7 (mul (add (add 7 (mul (mul v7 4) 4)) (add (add (add 4 v0) (add v0 6)) 5)) 7))", "initial": 29.0, "greedy": 25.0, "quick": 23.0, "strong": 19.0, "hard": true}
+{"sexpr": "(sub (add (add (add 7 5) (add v15 3)) (add (add v10 6) 5)) (add (add (add v10 6) 5) (add (add 7 5) (add v15 3))))", "initial": 27.0, "greedy": 23.0, "quick": 19.0, "strong": 17.0, "hard": true}
+{"sexpr": "(add (add (add (add 9 (sub v6 in0)) (add (mul (sub (add (add (add 7 5) (add v15 3)) (add (add v10 6) 5)) (add (add (add v10 6) 5) (add (add 7 5) (add v15 3)))) v12) 6)) 8) 3)", "initial": 43.0, "greedy": 39.0, "quick": 35.0, "strong": 35.0, "hard": true}
+{"sexpr": "(add (add (add (mul 4 0) v8) 9) 5)", "initial": 11.0, "greedy": 5.0, "quick": 3.0, "strong": 3.0, "hard": true}
