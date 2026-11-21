@@ -223,3 +223,48 @@ early stop: no better score for 15 rounds
 Latest checkpoint: checkpoints/asm_v4_builtin_s1/latest.pt
 
 === 2026-11-21 21:33:29 6. after: trained AlphaZero (best.pt) vs MCTS
+Engine     Budget  Runs  Improvement  best-known  transitions   Seconds
+AlphaZero      10   314        49.4%         32%          9.1    0.0492
+MCTS           10   314        54.4%         43%         74.1    0.2030
+AlphaZero      25   314        55.2%         51%         23.0    0.1065
+MCTS           25   314        58.0%         63%        170.9    0.4561
+AlphaZero      50   314        58.2%         67%         45.5    0.1862
+MCTS           50   314        59.1%         73%        315.0    0.8317
+AlphaZero     100   314        60.1%         85%         89.6    0.3364
+MCTS          100   314        59.9%         81%        582.5    1.5313
+
+=== 2026-11-21 21:52:54 7. extra v3 runs: 
+
+=== 2026-11-21 21:52:54 done. Summary: checkpoints/summary_asm_v4_builtin_s1.txt
+
+=== 2026-11-21 21:52:54 1. environment
+torch 2.15.0+cpu
+Learn-R: /root/rlges/Learn-R (?)
+
+=== 2026-11-21 21:52:56 2. Learn-R corpus and learned rules
+rule set: RLGES_ASM_LEARNED=none
+keeping the committed corpus (10999 train terms)
+
+=== 2026-11-21 21:52:56 3. tests
+=========================== short test summary info ============================
+SKIPPED [1] tests/test_modal_app.py:3: could not import 'modal': No module named 'modal'
+164 passed, 1 skipped in 28.08s
+
+=== 2026-11-21 21:53:29 4. before: untrained AlphaZero vs MCTS on held-out Learn-R terms
+Engine     Budget  Runs  Improvement  best-known  transitions   Seconds
+AlphaZero      10   314        47.3%         29%         10.0    0.0240
+MCTS           10   314        54.4%         43%         74.1    0.2067
+AlphaZero      25   314        54.6%         49%         25.5    0.0498
+MCTS           25   314        58.0%         63%        170.9    0.4647
+AlphaZero      50   314        57.9%         66%         51.6    0.0900
+MCTS           50   314        59.1%         72%        315.0    0.8429
+AlphaZero     100   314        59.2%         78%        101.8    0.1670
+MCTS          100   314        59.9%         80%        582.5    1.5425
+
+=== 2026-11-21 21:53:29 5. train AlphaZero on asm -> checkpoints/asm_v4_builtin_s2
+round 0: loss=1.8788 policy=1.8646 value=0.0142 samples=2960 eval_cost=2.43 score=0.4948 best=0.4948 (332.04s play, 105.04s train)
+round 1: loss=1.8298 policy=1.8244 value=0.0053 samples=2855 eval_cost=2.43 score=0.5106 best=0.5106 (267.04s play, 92.23s train)
+round 2: loss=1.8086 policy=1.8032 value=0.0053 samples=2797 eval_cost=2.43 score=0.5271 best=0.5271 (261.07s play, 91.38s train)
+round 3: loss=1.8133 policy=1.8090 value=0.0043 samples=2880 eval_cost=2.43 score=0.5212 best=0.5271 (410.24s play, 94.11s train)
+round 4: loss=1.8109 policy=1.8064 value=0.0045 samples=2976 eval_cost=2.43 score=0.5088 best=0.5271 (303.86s play, 91.87s train)
+round 5: loss=1.8131 policy=1.8087 value=0.0044 samples=2977 eval_cost=2.43 score=0.5399 best=0.5399 (388.86s play, 94.0s train)
