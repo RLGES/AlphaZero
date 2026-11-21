@@ -342,3 +342,22 @@ def test_random_program_length_override():
 
     source = random_program(Random(3), 20, style="hard")
     assert len([line for line in source.splitlines() if " = " in line]) >= 20
+
+
+def test_merge_rules_prefixes_later_rounds_and_skips_repeats():
+    import importlib.util
+    from pathlib import Path
+
+    path = Path(__file__).parent.parent / "scripts" / "merge_rules.py"
+    spec = importlib.util.spec_from_file_location("merge_rules", path)
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    r1 = {"accepted": [{"name": "llm_0_a", "lhs": "(a)", "rhs": "b"}]}
+    r2 = {
+        "accepted": [
+            {"name": "llm_0_a", "lhs": "(a)", "rhs": "b"},
+            {"name": "llm_1_c", "lhs": "(c)", "rhs": "d"},
+        ]
+    }
+    merged = module.merge([r1, r2])
+    assert [r["name"] for r in merged] == ["llm_0_a", "r2_llm_1_c"]

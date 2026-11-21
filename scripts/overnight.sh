@@ -30,6 +30,11 @@ SEED="${SEED:-0}"            # training seed (night 3 repeats each arm with 3 se
 HELDOUT="${HELDOUT:-100}"    # held-out terms scored each round to pick best.pt
 PATIENCE="${PATIENCE:-12}"   # early stop after this many rounds without a better score
 GENERATED="${GENERATED:-50}" # generated terms per seed in the before/after reports
+SIMS="${SIMS:-96}"           # search simulations per self-play move
+LR="${LR:-1e-3}"             # learning rate
+HIDDEN="${HIDDEN:-192}" LAYERS="${LAYERS:-5}"
+ROUNDS="${ROUNDS:-100}"
+INIT="${INIT:-}"             # continue from this checkpoint's network (run 4 fine-tuning)
 if [[ -n "${QUICK:-}" ]]; then
   RUN="quick_${RUN}"
   TRAIN=(--rounds 2 --games 8 --sims 8 --max-moves 10 --steps 5 --hidden 32 --layers 1
@@ -38,9 +43,10 @@ if [[ -n "${QUICK:-}" ]]; then
   EXTRA_TRAIN=(--rounds 1 --games 4 --sims 4 --steps 2 --hidden 16 --layers 1 --heldout 3
                --eval-iterations 5)
 else
-  TRAIN=(--rounds 100 --games 256 --sims 96 --max-moves 40 --depth 3,6 --steps 400
-         --batch-size 128 --hidden 192 --layers 5 --heldout "$HELDOUT" --eval-iterations 25
-         --patience "$PATIENCE" --seed "$SEED")
+  TRAIN=(--rounds "$ROUNDS" --games 256 --sims "$SIMS" --max-moves 40 --depth 3,6 --steps 400
+         --batch-size 128 --hidden "$HIDDEN" --layers "$LAYERS" --heldout "$HELDOUT"
+         --eval-iterations 25 --patience "$PATIENCE" --seed "$SEED" --lr "$LR")
+  [[ -n "$INIT" ]] && TRAIN+=(--init "$INIT")
   EVAL=(--budgets 10,25,50,100 --seeds 2 --generated "$GENERATED")
   EXTRA_TRAIN=(--rounds 60 --games 256 --sims 128 --max-moves 40 --depth 3,7 --steps 400
                --batch-size 128 --hidden 192 --layers 5 --heldout 100 --eval-iterations 25 --patience 8)
@@ -50,7 +56,9 @@ SUMMARY="checkpoints/summary_$RUN.txt"
 mkdir -p "$OUT"
 LOG=checkpoints/overnight.log
 exec > >(tee -a "$LOG") 2>&1
-caffeinate -i -s -w $$ &  # no idle or system sleep while this script runs
+if command -v caffeinate > /dev/null; then
+  caffeinate -i -s -w $$ &  # macOS: no idle or system sleep while this script runs
+fi
 
 step() { echo; echo "=== $(date '+%F %T') $*"; }
 
