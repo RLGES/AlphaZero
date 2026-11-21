@@ -425,4 +425,31 @@ def test_egglog_table_pairs_alphazero_with_egglog(tmp_path, monkeypatch, capsys)
     )
     assert module.main(["--set", "heldout", "arm=none:checkpoints/run_s*"]) == 0
     row = capsys.readouterr().out.splitlines()[-1]
-    assert row.startswith("| arm | 1 | 10 | 70.0 | 55.0 | 70.0 | +0.0")
+    assert row.startswith("| arm | 1 | 10 | 70.0 | 55.0 | 70.0 | — | — | +0.0")
+    write(
+        "checkpoints/final_egglogmcts_none_heldout.csv",
+        [("a", "egglog+MCTS", 10, 90), ("b", "egglog+MCTS", 10, 55)],
+    )
+    write(
+        "checkpoints/run_s0/final_heldout_hybrid.csv",
+        [("a", "egglog+AlphaZero", 10, 92), ("b", "egglog+AlphaZero", 10, 60)],
+    )
+    assert module.main(["--set", "heldout", "arm=none:checkpoints/run_s*"]) == 0
+    row = capsys.readouterr().out.splitlines()[-1]
+    assert "| 72.5 | 76.0 |" in row
+    assert row.endswith("| +6.0 [+2.0, +10.0] | +3.5 [+2.0, +5.0] |")
+
+
+def test_final_eval_hybrid_never_worse_than_egglog():
+    pytest.importorskip("egglog")
+    from benchmarks.asm import final_eval
+    from benchmarks.asm.term import Expr
+
+    x, y = Var("x"), Var("y")
+    term = Expr("add", (Expr("mul", (x, Const(8))), Expr("sub", (y, y))))
+    (egglog_row,) = final_eval._evaluate(("t", term, "egglog", (5,)))
+    rows = final_eval._evaluate(("t", term, "egglog+mcts", (5, 10)))
+    assert [r["engine"] for r in rows] == ["egglog+MCTS", "egglog+MCTS"]
+    for row in rows:
+        assert row["initial_cost"] == egglog_row["initial_cost"]
+        assert row["final_cost"] <= egglog_row["final_cost"]

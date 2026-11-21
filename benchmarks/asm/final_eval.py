@@ -13,7 +13,10 @@ been trained with it. Test sets:
 MCTS does not depend on the network, so it runs once per rule set and test set
 (cached in ``checkpoints/final_mcts_<rules>_<set>.csv``); so does the egglog
 equality-saturation baseline (``checkpoints/final_egglog_<rules>_<set>.csv``, one
-row per term with budget 0; ``scripts/egglog_table.py`` compares it). Each run gets
+row per term with budget 0; ``scripts/egglog_table.py`` compares it). Hybrids start
+the search from egglog's extracted term: egglog + MCTS once per rule set
+(``final_egglogmcts_<rules>_<set>.csv``) and egglog + AlphaZero per run
+(``<run>/final_<set>_hybrid.csv``); their costs count from the original term. Each run gets
 ``<run>/final_<set>.csv`` with its AlphaZero rows plus the cached MCTS rows, in the
 ``eval_after.csv`` format, so ``scripts/ablation_table.py --csv final_<set>.csv``
 builds the table. Finished files are kept, so a rerun only does what is missing.
@@ -95,8 +98,9 @@ def _network(checkpoint: str):
 
 
 def _evaluate(job: tuple[str, Expr, str | None, tuple[int, ...]]) -> list[dict]:
-    """All budgets for one term: MCTS when checkpoint is None, egglog when it is
-    "egglog" (one row, budget 0), else AlphaZero."""
+    """All budgets for one term. ``checkpoint`` picks the engine: None is MCTS,
+    "egglog" is egglog (one row, budget 0), "egglog+mcts" and "egglog+az:<path>"
+    search from egglog's result, and any other value is an AlphaZero checkpoint."""
     from src.api import rewrite_detailed
     from src.engines.alphazero.config import AlphaZeroConfig
     from src.engines.egglog import EgglogConfig
@@ -107,6 +111,8 @@ def _evaluate(job: tuple[str, Expr, str | None, tuple[int, ...]]) -> list[dict]:
     name, term, checkpoint, budgets = job
     language = AsmLanguage()
     rows = []
+    if checkpoint in ("egglog+mcts",) or (checkpoint or "").startswith("egglog+az:"):
+        return _hybrid(name, term, checkpoint, budgets)
     if checkpoint == "egglog":
         budgets = (0,)
     for budget in budgets:
@@ -130,6 +136,44 @@ def _evaluate(job: tuple[str, Expr, str | None, tuple[int, ...]]) -> list[dict]:
                 "transitions": stats.get("transitions", ""),
                 "states": stats.get("states_explored", ""),
                 "seconds": result.wall_time,
+            }
+        )
+    return rows
+
+
+def _hybrid(name: str, term: Expr, checkpoint: str, budgets: tuple[int, ...]) -> list[dict]:
+    """egglog first, then MCTS or AlphaZero from its extracted term."""
+    from src.api import rewrite_detailed
+    from src.engines.alphazero.config import AlphaZeroConfig
+    from src.engines.egglog import EgglogConfig
+    from src.engines.mcts import MCTSConfig
+
+    from .language import AsmLanguage
+
+    language = AsmLanguage()
+    first = rewrite_detailed(language, term, EgglogConfig())
+    engine = "egglog+MCTS" if checkpoint == "egglog+mcts" else "egglog+AlphaZero"
+    rows = []
+    for budget in budgets:
+        if checkpoint == "egglog+mcts":
+            config = MCTSConfig(iterations=budget, seed=0)
+        else:
+            path = checkpoint.split(":", 1)[1]
+            config = AlphaZeroConfig(iterations=budget, seed=0, network=_network(path))
+        second = rewrite_detailed(language, first.final_term, config)
+        initial, final = first.initial_cost, min(second.final_cost, first.final_cost)
+        rows.append(
+            {
+                "term": name,
+                "engine": engine,
+                "budget": budget,
+                "seed": 0,
+                "initial_cost": initial,
+                "final_cost": final,
+                "improvement": 100 * (initial - final) / initial if initial else 0.0,
+                "transitions": second.statistics.get("transitions", ""),
+                "states": second.statistics.get("states_explored", ""),
+                "seconds": first.wall_time + second.wall_time,
             }
         )
     return rows
@@ -186,6 +230,11 @@ def evaluate_runs(
         if not egglog_cache.exists():
             log(f"{set_name}: egglog on {len(terms)} terms, rules {label}")
             _write(egglog_cache, _run_jobs([(n, t, "egglog", budgets) for n, t in terms], workers))
+        hybrid_cache = CHECKPOINTS / f"final_egglogmcts_{label}_{set_name}{tag}.csv"
+        if not hybrid_cache.exists():
+            log(f"{set_name}: egglog + MCTS on {len(terms)} terms, rules {label}")
+            jobs = [(n, t, "egglog+mcts", budgets) for n, t in terms]
+            _write(hybrid_cache, _run_jobs(jobs, workers))
         for run in runs:
             out = run / f"final_{set_name}{tag}.csv"
             if out.exists():
@@ -194,6 +243,13 @@ def evaluate_runs(
             log(f"{set_name}: {run.name} AlphaZero on {len(terms)} terms")
             jobs = [(n, t, str(run / "best.pt"), budgets) for n, t in terms]
             _write(out, _run_jobs(jobs, workers) + mcts)
+        for run in runs:
+            out = run / f"final_{set_name}_hybrid{tag}.csv"
+            if out.exists():
+                continue
+            log(f"{set_name}: {run.name} egglog + AlphaZero on {len(terms)} terms")
+            jobs = [(n, t, f"egglog+az:{run / 'best.pt'}", budgets) for n, t in terms]
+            _write(out, _run_jobs(jobs, workers))
 
 
 def main(argv: list[str] | None = None) -> int:
