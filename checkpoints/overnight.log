@@ -1,0 +1,64 @@
+
+=== 2026-11-21 08:31:06 1. environment
+torch 2.15.0+cpu
+Learn-R: /root/Projects/RLGES/Learn-R (?)
+
+=== 2026-11-21 08:31:08 2. Learn-R corpus and learned rules
+rule set: RLGES_ASM_LEARNED=none
+keeping the committed corpus (9365 train terms)
+
+=== 2026-11-21 08:31:08 3. tests
+=========================== short test summary info ============================
+SKIPPED [1] tests/test_modal_app.py:3: could not import 'modal': No module named 'modal'
+161 passed, 1 skipped in 20.55s
+
+=== 2026-11-21 08:31:31 4. before: untrained AlphaZero vs MCTS on held-out Learn-R terms
+Engine     Budget  Runs  Improvement  best-known  transitions   Seconds
+AlphaZero       5    12        57.7%         67%          4.5    0.0082
+MCTS            5    12        64.2%        100%         26.1    0.0595
+
+=== 2026-11-21 08:31:32 5. train AlphaZero on asm -> checkpoints/quick_smoke_a
+round 0: loss=2.0943 policy=2.0019 value=0.0924 samples=54 eval_cost=4.14 score=0.2713 best=0.2713 (4.83s play, 0.3s train)
+round 1: loss=1.8245 policy=1.7497 value=0.0749 samples=30 eval_cost=4.14 score=0.2963 best=0.2963 (3.37s play, 0.42s train)
+Latest checkpoint: checkpoints/quick_smoke_a/latest.pt
+
+=== 2026-11-21 08:31:46 6. after: trained AlphaZero (best.pt) vs MCTS
+Engine     Budget  Runs  Improvement  best-known  transitions   Seconds
+AlphaZero       5    12        32.3%         25%          4.8    0.0242
+MCTS            5    12        64.2%        100%         26.1    0.0501
+
+=== 2026-11-21 08:31:49 7. extra v3 runs: 
+
+=== 2026-11-21 08:31:49 done. Summary: checkpoints/summary_quick_smoke_a.txt
+
+=== 2026-11-21 08:31:49 1. environment
+torch 2.15.0+cpu
+Learn-R: /root/Projects/RLGES/Learn-R (?)
+
+=== 2026-11-21 08:31:51 2. Learn-R corpus and learned rules
+rule set: RLGES_ASM_LEARNED=none
+keeping the committed corpus (9365 train terms)
+
+=== 2026-11-21 08:31:51 3. tests
+=========================== short test summary info ============================
+SKIPPED [1] tests/test_modal_app.py:3: could not import 'modal': No module named 'modal'
+161 passed, 1 skipped in 21.62s
+
+=== 2026-11-21 08:32:15 4. before: untrained AlphaZero vs MCTS on held-out Learn-R terms
+Engine     Budget  Runs  Improvement  best-known  transitions   Seconds
+AlphaZero       5    12        57.7%         67%          4.5    0.0073
+MCTS            5    12        64.2%        100%         26.1    0.0520
+
+=== 2026-11-21 08:32:16 5. train AlphaZero on asm -> checkpoints/quick_smoke_b
+round 0: loss=2.0696 policy=1.9414 value=0.1282 samples=54 eval_cost=4.43 score=0.2588 best=0.2588 (4.92s play, 0.18s train)
+round 1: loss=1.7509 policy=1.6572 value=0.0937 samples=35 eval_cost=3.86 score=0.1933 best=0.2588 (3.36s play, 0.32s train)
+Latest checkpoint: checkpoints/quick_smoke_b/latest.pt
+
+=== 2026-11-21 08:32:30 6. after: trained AlphaZero (best.pt) vs MCTS
+Engine     Budget  Runs  Improvement  best-known  transitions   Seconds
+AlphaZero       5    12        28.4%         25%          4.8    0.0225
+MCTS            5    12        64.2%        100%         26.1    0.0579
+
+=== 2026-11-21 08:32:33 7. extra v3 runs: 
+
+=== 2026-11-21 08:32:33 done. Summary: checkpoints/summary_quick_smoke_b.txt
