@@ -281,3 +281,64 @@ def test_control_flow_splits_into_exact_basic_blocks():
     assert blocks[1] == {"cmp0": Var("i"), "cmp1": Const(3)}
     s, i = Var("s"), Var("i")
     assert blocks[2] == {"s": B("add", s, B("mul", i, Const(2))), "i": B("add", i, Const(1))}
+
+
+def test_rank_rules_loads_only_cost_lowering_rules():
+    from benchmarks.asm.discover import rank_rules
+
+    def rule(lhs, rhs, lhs_cost, rhs_cost, seed_matches):
+        return {
+            "name": lhs,
+            "lhs": lhs,
+            "rhs": rhs,
+            "lhs_cost": lhs_cost,
+            "rhs_cost": rhs_cost,
+            "seed_matches": seed_matches,
+        }
+
+    verified = [
+        rule("(shl ?x 1)", "(mul ?x 2)", 3, 5, 100),
+        rule("(mod ?x 4)", "(and ?x 3)", 12, 3, 2),
+        rule("(sub (add ?x ?y) ?z)", "(add ?x (sub ?y ?z))", 5, 5, 6),
+        rule("(div ?x 1)", "?x", 12, 1, 2),
+    ]
+    accepted, rest = rank_rules(verified, max_accepted=1)
+    assert [r["lhs"] for r in accepted] == ["(div ?x 1)"]
+    assert accepted[0]["name"].startswith("llm_0_")
+    assert [r["lhs"] for r in rest] == ["(shl ?x 1)", "(sub (add ?x ?y) ?z)", "(mod ?x 4)"]
+
+
+def test_final_eval_sets_and_rule_guard(tmp_path, monkeypatch):
+    import json
+
+    from benchmarks.asm import final_eval
+
+    def write(name, sexprs):
+        (tmp_path / name).write_text("".join(json.dumps({"sexpr": s}) + "\n" for s in sexprs))
+
+    write("train.jsonl", ["(add r0 0)"])
+    write("test.jsonl", ["(mul r1 1)", "(mul r1 1)"])
+    write("cf_test.jsonl", ["(sub r2 r2)"])
+    write("stress_test.jsonl", ["(add r0 0)", "(mul r1 1)", "(xor r3 r3)"])
+    monkeypatch.setattr(final_eval, "CORPUS_DIR", tmp_path)
+    sets = final_eval.test_sets()
+    assert [name for name, _ in sets["heldout"]] == ["heldout/0000", "heldout/0001"]
+    assert len(sets["stress"]) == 1  # the two corpus terms are dropped
+
+    checkpoints = tmp_path / "checkpoints"
+    run = checkpoints / "asm_v3_llm_s0"
+    run.mkdir(parents=True)
+    (checkpoints / "summary_asm_v3_llm_s0.txt").write_text(
+        "Overnight summary: asm_v3_llm_s0, rules some/rules.json (2026-10-25 09:02:49)\n"
+    )
+    monkeypatch.setattr(final_eval, "CHECKPOINTS", checkpoints)
+    monkeypatch.setenv("RLGES_ASM_LEARNED", "none")
+    with pytest.raises(SystemExit, match="trained with rules"):
+        final_eval.evaluate_runs([run], ["heldout"], (10,), workers=1, log=lambda _: None)
+
+
+def test_random_program_length_override():
+    from benchmarks.asm.learnr_bridge import random_program
+
+    source = random_program(Random(3), 20, style="hard")
+    assert len([line for line in source.splitlines() if " = " in line]) >= 20

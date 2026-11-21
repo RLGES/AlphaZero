@@ -241,6 +241,8 @@ def export_corpus(
     workers: int = 1,
     control_flow: float = 0.0,
     prefix: str = "",
+    statements: tuple[int, int] | None = None,
+    max_nodes: int | None = None,
 ) -> dict[str, int]:
     """Write ``train.jsonl``/``test.jsonl``.
 
@@ -249,9 +251,11 @@ def export_corpus(
     greedy/quick/strong costs with each term. ``control_flow`` > 0 writes
     if/while programs split into basic blocks; ``prefix`` names the files
     (``cf_`` keeps them beside the straight-line corpus, see ``generator``).
+    ``statements`` (lo, hi) and ``max_nodes`` override the program length and
+    the largest term kept, e.g. for a stress set of programs longer than training.
     """
     out_dir.mkdir(parents=True, exist_ok=True)
-    max_nodes = 150 if style == "hard" else 80
+    max_nodes = max_nodes or (150 if style == "hard" else 80)
     splits = {"train": (train_programs, seed), "test": (test_programs, seed + 104_729)}
     collected: dict[str, list[Expr]] = {}
     for split, (count, split_seed) in splits.items():
@@ -259,7 +263,8 @@ def export_corpus(
         terms: list[Expr] = []
         seen = set()
         for _ in range(count):
-            source = random_program(rng, style=style, control_flow=control_flow)
+            length = rng.randint(*statements) if statements else None
+            source = random_program(rng, length, style=style, control_flow=control_flow)
             for term in program_terms(source, learnr_path, max_nodes, blocks=control_flow > 0):
                 if term not in seen:
                     seen.add(term)
@@ -296,6 +301,13 @@ def export_corpus(
     return {split: len(terms) for split, terms in collected.items()}
 
 
+def _int_range(text: str) -> tuple[int, int]:
+    lo, hi = (int(part) for part in text.split(","))
+    if not 0 < lo <= hi:
+        raise argparse.ArgumentTypeError(f"expected lo,hi with 0 < lo <= hi, got {text!r}")
+    return lo, hi
+
+
 def export_programs(learnr_path: str | Path, out: Path = PROGRAMS_PATH) -> dict:
     """Compile Learn-R's own test programs into held-out benchmark terms."""
     programs = {}
@@ -321,6 +333,10 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--workers", type=int, default=1)
     parser.add_argument("--control-flow", type=float, default=0.0, help="Share of if/while")
     parser.add_argument("--prefix", default="", help="Corpus file prefix, e.g. cf_")
+    parser.add_argument(
+        "--statements", type=_int_range, default=None, help="Program length range, e.g. 15,28"
+    )
+    parser.add_argument("--max-nodes", type=int, default=None, help="Largest term kept")
     args = parser.parse_args(argv)
     counts = export_corpus(
         args.learnr,
@@ -332,6 +348,8 @@ def main(argv: list[str] | None = None) -> int:
         workers=args.workers,
         control_flow=args.control_flow,
         prefix=args.prefix,
+        statements=args.statements,
+        max_nodes=args.max_nodes,
     )
     programs = export_programs(args.learnr)
     print(f"corpus terms: {counts}; Learn-R test programs: {sorted(programs)}")
