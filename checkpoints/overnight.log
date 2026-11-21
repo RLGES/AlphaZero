@@ -212,3 +212,14 @@ round 22: loss=1.7514 policy=1.7465 value=0.0049 samples=3119 eval_cost=2.43 sco
 round 23: loss=1.7471 policy=1.7423 value=0.0047 samples=2739 eval_cost=2.43 score=0.5394 best=0.5441 (338.09s play, 87.77s train)
 round 24: loss=1.7444 policy=1.7398 value=0.0047 samples=2889 eval_cost=2.43 score=0.5386 best=0.5441 (288.32s play, 90.37s train)
 round 25: loss=1.7367 policy=1.7320 value=0.0047 samples=3061 eval_cost=2.43 score=0.5341 best=0.5441 (288.02s play, 86.73s train)
+round 26: loss=1.7352 policy=1.7307 value=0.0045 samples=3001 eval_cost=2.43 score=0.5375 best=0.5441 (339.58s play, 87.4s train)
+round 27: loss=1.7394 policy=1.7349 value=0.0045 samples=2864 eval_cost=2.43 score=0.5311 best=0.5441 (280.83s play, 90.57s train)
+round 28: loss=1.7309 policy=1.7264 value=0.0045 samples=2854 eval_cost=2.43 score=0.5333 best=0.5441 (286.69s play, 88.81s train)
+round 29: loss=1.7362 policy=1.7318 value=0.0044 samples=2908 eval_cost=2.43 score=0.5318 best=0.5441 (397.38s play, 90.88s train)
+round 30: loss=1.7287 policy=1.7244 value=0.0043 samples=2586 eval_cost=2.43 score=0.5377 best=0.5441 (226.79s play, 88.88s train)
+round 31: loss=1.7259 policy=1.7215 value=0.0044 samples=2996 eval_cost=2.43 score=0.5376 best=0.5441 (352.11s play, 88.68s train)
+round 32: loss=1.7240 policy=1.7198 value=0.0042 samples=2945 eval_cost=2.43 score=0.5386 best=0.5441 (349.52s play, 87.96s train)
+early stop: no better score for 15 rounds
+Latest checkpoint: checkpoints/asm_v4_builtin_s1/latest.pt
+
+=== 2026-11-21 21:33:29 6. after: trained AlphaZero (best.pt) vs MCTS
