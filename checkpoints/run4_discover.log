@@ -10,3 +10,6 @@ round 3: 20 rules loaded
 60 rules -> benchmarks/asm/learned_rules_qwen123.json
 60 rules -> benchmarks/asm/learned_rules_qwen_all.json
 === 2026-11-21 19:53:21 round 4: rules loaded benchmarks/asm/learned_rules_qwen123.json, 200 prompts
+round 4: 20 rules loaded
+80 rules -> benchmarks/asm/learned_rules_qwen_all.json
+=== 2026-11-21 23:20:09 discovery done: 80 rules in learned_rules_qwen_all.json
