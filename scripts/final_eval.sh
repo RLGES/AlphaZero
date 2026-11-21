@@ -7,7 +7,7 @@
 #
 #   TAG=v4 ARMS="builtin=none llm=<rules>" scripts/final_eval.sh   # another run's arms
 #
-# Tables: checkpoints/final_<TAG>_heldout.md, checkpoints/final_<TAG>_stress.md
+# Tables: checkpoints/final_<TAG>_{heldout,stress}.md and final_<TAG>_{heldout,stress}_egglog.md
 set -euo pipefail
 cd "$(dirname "$0")/.."
 
@@ -31,8 +31,19 @@ for arm in "${arms[@]}"; do
     --runs "$pattern" --workers "$WORKERS" ${LIMIT:+--limit "$LIMIT"}
 done
 
+egg_specs=()
+for arm in "${arms[@]}"; do
+  name="${arm%%=*}" rules="${arm#*=}"
+  label=none
+  [[ "$rules" != none ]] && label="$(basename "$rules" .json)"
+  egg_specs+=("$name=$label:checkpoints/asm_${TAG}_${name}_s*")
+done
+
 for set in heldout stress; do
+  [[ -z "${LIMIT:-}" ]] && .venv/bin/python scripts/egglog_table.py --set "$set" "${egg_specs[@]}" \
+    > "checkpoints/final_${TAG}_${set}_egglog.md" 2>/dev/null || true
   .venv/bin/python scripts/ablation_table.py --csv "final_${set}${LIMIT:+_limit$LIMIT}.csv" "${specs[@]}" \
     > "checkpoints/final_${TAG}_$set.md" 2>/dev/null || true
   echo "=== $set"; cat "checkpoints/final_${TAG}_$set.md"
+  [[ -f "checkpoints/final_${TAG}_${set}_egglog.md" ]] && cat "checkpoints/final_${TAG}_${set}_egglog.md"
 done

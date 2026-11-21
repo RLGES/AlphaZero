@@ -30,6 +30,11 @@ class AsmLanguage(TreeLanguage[Expr]):
             pending.extend(node.args)
         return total
 
+    def egglog_adapter(self):
+        from .egglog_adapter import AsmAdapter
+
+        return AsmAdapter()
+
     def node_label(self, term: Expr) -> str:
         if term.op == "var":
             return "var"

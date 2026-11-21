@@ -361,3 +361,68 @@ def test_merge_rules_prefixes_later_rounds_and_skips_repeats():
     }
     merged = module.merge([r1, r2])
     assert [r["name"] for r in merged] == ["llm_0_a", "r2_llm_1_c"]
+
+
+def test_egglog_adapter_is_sound_and_folds_32_bit():
+    pytest.importorskip("egglog")
+    from random import Random
+
+    from benchmarks.asm.language import AsmLanguage
+    from benchmarks.asm.term import Expr, evaluate
+    from src.api import rewrite_detailed
+    from src.engines.egglog import EgglogConfig
+
+    language = AsmLanguage()
+    x, y = Var("x"), Var("y")
+    cases = [
+        Expr("sub", (Expr("mul", (x, y)), Expr("mul", (y, x)))),  # x*y - y*x -> 0
+        Expr("mul", (Const(0xFFFF_FFFF), Const(0xFFFF_FFFF))),  # folds to 1 (mod 2^32)
+        Expr("add", (Expr("shl", (x, Const(33))), Expr("div", (y, Const(0))))),
+        Expr("mod", (Expr("neg", (Const(5),)), Const(7))),
+    ]
+    rng = Random(0)
+    for term in cases:
+        result = rewrite_detailed(language, term, EgglogConfig())
+        assert result.final_cost <= result.initial_cost
+        for _ in range(50):
+            env = {"x": rng.getrandbits(32), "y": rng.getrandbits(32)}
+            assert evaluate(result.final_term, env) == evaluate(term, env)
+    assert rewrite_detailed(language, cases[0], EgglogConfig()).final_term == Const(0)
+    assert rewrite_detailed(language, cases[1], EgglogConfig()).final_term == Const(1)
+
+
+def test_egglog_table_pairs_alphazero_with_egglog(tmp_path, monkeypatch, capsys):
+    import csv
+    import importlib.util
+    from pathlib import Path
+
+    path = Path(__file__).parent.parent / "scripts" / "egglog_table.py"
+    spec = importlib.util.spec_from_file_location("egglog_table", path)
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    monkeypatch.chdir(tmp_path)
+    (tmp_path / "checkpoints" / "run_s0").mkdir(parents=True)
+    fields = ["term", "engine", "budget", "improvement"]
+
+    def write(name, rows):
+        with open(name, "w", newline="") as handle:
+            writer = csv.DictWriter(handle, fieldnames=fields)
+            writer.writeheader()
+            writer.writerows(dict(zip(fields, row)) for row in rows)
+
+    write(
+        "checkpoints/final_egglog_none_heldout.csv",
+        [("a", "egglog", 0, 90), ("b", "egglog", 0, 50)],
+    )
+    write(
+        "checkpoints/run_s0/final_heldout.csv",
+        [
+            ("a", "AlphaZero", 10, 80),
+            ("b", "AlphaZero", 10, 60),
+            ("a", "MCTS", 10, 70),
+            ("b", "MCTS", 10, 40),
+        ],
+    )
+    assert module.main(["--set", "heldout", "arm=none:checkpoints/run_s*"]) == 0
+    row = capsys.readouterr().out.splitlines()[-1]
+    assert row.startswith("| arm | 1 | 10 | 70.0 | 55.0 | 70.0 | +0.0")

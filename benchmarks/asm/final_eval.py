@@ -11,7 +11,9 @@ been trained with it. Test sets:
   minus any term that also appears in a corpus file
 
 MCTS does not depend on the network, so it runs once per rule set and test set
-(cached in ``checkpoints/final_mcts_<rules>_<set>.csv``). Each run gets
+(cached in ``checkpoints/final_mcts_<rules>_<set>.csv``); so does the egglog
+equality-saturation baseline (``checkpoints/final_egglog_<rules>_<set>.csv``, one
+row per term with budget 0; ``scripts/egglog_table.py`` compares it). Each run gets
 ``<run>/final_<set>.csv`` with its AlphaZero rows plus the cached MCTS rows, in the
 ``eval_after.csv`` format, so ``scripts/ablation_table.py --csv final_<set>.csv``
 builds the table. Finished files are kept, so a rerun only does what is missing.
@@ -93,9 +95,11 @@ def _network(checkpoint: str):
 
 
 def _evaluate(job: tuple[str, Expr, str | None, tuple[int, ...]]) -> list[dict]:
-    """All budgets for one term: MCTS when checkpoint is None, else AlphaZero."""
+    """All budgets for one term: MCTS when checkpoint is None, egglog when it is
+    "egglog" (one row, budget 0), else AlphaZero."""
     from src.api import rewrite_detailed
     from src.engines.alphazero.config import AlphaZeroConfig
+    from src.engines.egglog import EgglogConfig
     from src.engines.mcts import MCTSConfig
 
     from .language import AsmLanguage
@@ -103,8 +107,12 @@ def _evaluate(job: tuple[str, Expr, str | None, tuple[int, ...]]) -> list[dict]:
     name, term, checkpoint, budgets = job
     language = AsmLanguage()
     rows = []
+    if checkpoint == "egglog":
+        budgets = (0,)
     for budget in budgets:
-        if checkpoint is None:
+        if checkpoint == "egglog":
+            config = EgglogConfig()
+        elif checkpoint is None:
             config = MCTSConfig(iterations=budget, seed=0)
         else:
             config = AlphaZeroConfig(iterations=budget, seed=0, network=_network(checkpoint))
@@ -174,6 +182,10 @@ def evaluate_runs(
             log(f"{set_name}: MCTS on {len(terms)} terms, rules {label}")
             _write(cache, _run_jobs([(n, t, None, budgets) for n, t in terms], workers))
         mcts = _load(cache)
+        egglog_cache = CHECKPOINTS / f"final_egglog_{label}_{set_name}{tag}.csv"
+        if not egglog_cache.exists():
+            log(f"{set_name}: egglog on {len(terms)} terms, rules {label}")
+            _write(egglog_cache, _run_jobs([(n, t, "egglog", budgets) for n, t in terms], workers))
         for run in runs:
             out = run / f"final_{set_name}{tag}.csv"
             if out.exists():
