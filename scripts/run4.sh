@@ -9,6 +9,8 @@
 # 3. llmft arm: continue each llm seed from its best.pt with a lower learning rate and
 #    twice the self-play simulations, to get past the round-35-45 plateau of night 3.
 # 4. final evaluation of every arm on all held-out and stress terms (as night 3).
+# 5. llmbig: a larger network (256 hidden, 6 layers) on every rule, seed 0, then the
+#    final evaluation again (finished arms are not recomputed).
 # Same training settings as night 3 otherwise (HELDOUT 300, PATIENCE 15, GENERATED 150).
 # Runs: checkpoints/asm_v4_<arm>_s<seed>. Log: checkpoints/run4.log.
 set -euo pipefail
@@ -39,6 +41,7 @@ train() {  # train <arm> <rules> <seed> [VAR=value ...]
 table() {
   .venv/bin/python scripts/ablation_table.py builtin='checkpoints/asm_v4_builtin_s*' \
     llm='checkpoints/asm_v4_llm_s*' llmft='checkpoints/asm_v4_llmft_s*' \
+    llmbig='checkpoints/asm_v4_llmbig_s*' \
     > checkpoints/ablation_v4.md 2> /dev/null || true
 }
 
@@ -68,4 +71,9 @@ done
 
 echo "=== $(date '+%F %T') final evaluation"
 TAG=v4 ARMS="builtin=none llm=$ALL llmft=$ALL" scripts/final_eval.sh
+
+train llmbig "$ALL" "${SEEDS%% *}" WORKERS=7 HIDDEN=256 LAYERS=6
+table
+echo "=== $(date '+%F %T') final evaluation with llmbig"
+TAG=v4 ARMS="builtin=none llm=$ALL llmft=$ALL llmbig=$ALL" scripts/final_eval.sh
 echo "=== $(date '+%F %T') run 4 done"
