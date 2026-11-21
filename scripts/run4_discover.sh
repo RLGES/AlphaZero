@@ -14,6 +14,11 @@ cd "$(dirname "$0")/.."
 
 PY=.venv/bin/python
 D=benchmarks/asm
+# Optional local LLM settings (not committed), e.g. for Ollama on a CPU server:
+#   RLGES_LLM_URL=http://localhost:11434/v1 RLGES_LLM_MODEL=qwen2.5-coder:7b RLGES_LLM_TIMEOUT=900
+if [[ -f checkpoints/llm.env ]]; then
+  set -a; source checkpoints/llm.env; set +a
+fi
 URL="${RLGES_LLM_URL:-http://localhost:1234/v1}"
 MIN_NEW="${MIN_NEW:-3}"   # stop iterating once a round adds fewer rules than this
 

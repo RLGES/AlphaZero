@@ -13,7 +13,8 @@ result in themselves; ``AsmLanguage`` loads ``accepted`` when pointed at it via
     python -m benchmarks.asm.discover --prompts 150 --out benchmarks/asm/learned_rules_qwen.json
 
 The server is any OpenAI-compatible endpoint (LM Studio by default):
-``RLGES_LLM_URL`` (http://localhost:1234/v1) and ``RLGES_LLM_MODEL``.
+``RLGES_LLM_URL`` (http://localhost:1234/v1), ``RLGES_LLM_MODEL`` and ``RLGES_LLM_TIMEOUT``
+(seconds per request, default 180).
 """
 
 from __future__ import annotations
@@ -346,6 +347,7 @@ def main(argv: list[str] | None = None) -> int:
         return 0
     url = os.environ.get("RLGES_LLM_URL", DEFAULT_URL)
     model = os.environ.get("RLGES_LLM_MODEL", DEFAULT_MODEL)
+    timeout = float(os.environ.get("RLGES_LLM_TIMEOUT", 180))  # CPU-only servers need more
     models = check_server(url)
     if model not in models:
         raise SystemExit(f"model {model!r} not served at {url}; available: {models}")
@@ -362,7 +364,7 @@ def main(argv: list[str] | None = None) -> int:
     ]
     print(f"{len(seeds)} stuck seed terms; asking {model} at {url}", flush=True)
     report = discover(
-        http_complete(url, model),
+        http_complete(url, model, timeout),
         seeds,
         args.prompts,
         temperature=args.temperature,
