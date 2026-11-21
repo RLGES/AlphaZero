@@ -219,6 +219,7 @@ def discover(
     max_accepted: int = 20,
     seed: int = 0,
     prove: bool = True,
+    known_rules: Sequence[tuple[str, str]] = (),
     log: Callable[[str], None] = print,
 ) -> dict:
     rng = Random(seed)
@@ -235,7 +236,10 @@ def discover(
         except Exception as exc:  # one failed request must not stop the run
             return index, chosen, "", f"{type(exc).__name__}: {exc}"
 
-    known = {_canonical(parse_pattern(lhs), parse_pattern(rhs)) for _, lhs, rhs in PATTERN_RULES}
+    known = {
+        _canonical(parse_pattern(lhs), parse_pattern(rhs))
+        for lhs, rhs in [(lhs, rhs) for _, lhs, rhs in PATTERN_RULES] + list(known_rules)
+    }
     stats: Counter = Counter()
     verified, rejected = [], []
     check_rng = Random(seed + 1)
@@ -276,18 +280,35 @@ def discover(
     for rule in verified:
         rule["seed_matches"] = usage[rule["lhs"], rule["rhs"]]
         rule["lowers_cost"] = rule["rhs_cost"] < rule["lhs_cost"]
-    # Load the rules most likely to matter: those that fire on stuck terms, then cheaper ones.
-    ranked = sorted(verified, key=lambda r: (-r["seed_matches"], r["rhs_cost"] - r["lhs_cost"]))
-    accepted = [
-        {**rule, "name": f"llm_{i}_{re.sub(r'[^a-z0-9_]', '', rule['name'].lower())[:24]}"}
-        for i, rule in enumerate(ranked[:max_accepted])
-    ]
+    accepted, not_loaded = rank_rules(verified, max_accepted)
     return {
         "stats": dict(stats),
         "accepted": accepted,
-        "verified_not_loaded": ranked[max_accepted:],
+        "verified_not_loaded": not_loaded,
         "rejected": rejected,
     }
+
+
+def rank_rules(verified: list[dict], max_accepted: int) -> tuple[list[dict], list[dict]]:
+    """Split verified rules into (loaded, not loaded).
+
+    Only cost-lowering rules are loaded: cost-neutral and cost-raising ones mostly
+    undo built-in rules (``shl x 1 -> mul x 2`` reverses strength reduction) and
+    only widen the action space. Among those, rules that fire on stuck terms come
+    first, then the biggest saving.
+    """
+    lowering = sorted(
+        (rule for rule in verified if rule["rhs_cost"] < rule["lhs_cost"]),
+        key=lambda r: (-r["seed_matches"], r["rhs_cost"] - r["lhs_cost"]),
+    )
+    loaded = lowering[:max_accepted]
+    accepted = [
+        {**rule, "name": f"llm_{i}_{re.sub(r'[^a-z0-9_]', '', rule['name'].lower())[:24]}"}
+        for i, rule in enumerate(loaded)
+    ]
+    chosen = {(rule["lhs"], rule["rhs"]) for rule in loaded}
+    rest = [rule for rule in verified if (rule["lhs"], rule["rhs"]) not in chosen]
+    return accepted, sorted(rest, key=lambda r: (-r["seed_matches"], r["rhs_cost"] - r["lhs_cost"]))
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -298,7 +319,31 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--workers", type=int, default=4)
     parser.add_argument("--max-accepted", type=int, default=20)
     parser.add_argument("--out", type=Path, default=DEFAULT_OUT)
+    parser.add_argument("--seed", type=int, default=0, help="Seed for seed terms and prompts")
+    parser.add_argument(
+        "--known",
+        type=Path,
+        action="append",
+        default=[],
+        help="Earlier report whose verified rules count as duplicates (repeatable)",
+    )
+    parser.add_argument(
+        "--rerank", action="store_true", help="Re-select the loaded rules in --out without the LLM"
+    )
     args = parser.parse_args(argv)
+    if args.rerank:
+        report = json.loads(args.out.read_text())
+        verified = [
+            {**rule, "name": re.sub(r"^llm_\d+_", "", rule["name"])}
+            for rule in report["accepted"] + report["verified_not_loaded"]
+        ]
+        report["accepted"], report["verified_not_loaded"] = rank_rules(verified, args.max_accepted)
+        args.out.write_text(json.dumps(report, indent=2) + "\n")
+        for rule in report["accepted"]:
+            print(
+                f"  {rule['lhs']} -> {rule['rhs']}  (cost {rule['lhs_cost']}->{rule['rhs_cost']})"
+            )
+        return 0
     url = os.environ.get("RLGES_LLM_URL", DEFAULT_URL)
     model = os.environ.get("RLGES_LLM_MODEL", DEFAULT_MODEL)
     models = check_server(url)
@@ -308,7 +353,13 @@ def main(argv: list[str] | None = None) -> int:
 
     if not z3_available():
         raise SystemExit("z3-solver is not installed; install it to prove rules")
-    seeds = stuck_terms(args.seeds)
+    seeds = stuck_terms(args.seeds, seed=args.seed)
+    known_rules = [
+        (rule["lhs"], rule["rhs"])
+        for path in args.known
+        for key in ("accepted", "verified_not_loaded")
+        for rule in json.loads(path.read_text())[key]
+    ]
     print(f"{len(seeds)} stuck seed terms; asking {model} at {url}", flush=True)
     report = discover(
         http_complete(url, model),
@@ -317,6 +368,8 @@ def main(argv: list[str] | None = None) -> int:
         temperature=args.temperature,
         workers=args.workers,
         max_accepted=args.max_accepted,
+        seed=args.seed,
+        known_rules=known_rules,
         log=lambda line: print(line, flush=True),
     )
     report = {"model": model, "url": url, "temperature": args.temperature, **report}

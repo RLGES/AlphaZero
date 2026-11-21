@@ -25,7 +25,9 @@ def test_generator_deterministic_valid_and_held_out(suite_name):
 
 
 @pytest.mark.parametrize("suite_name", GENERATOR_SUITES)
-def test_depth_bounds_size(suite_name):
+def test_depth_bounds_size(suite_name, monkeypatch):
+    # asm corpus terms are whole compiled programs, so only its synthetic terms honour depth.
+    monkeypatch.setattr("benchmarks.asm.generator.CORPUS_SHARE", 0.0)
     language = load_suite(suite_name).language
     terms = generate(suite_name, Random(2), 20, depth=(1, 2))
     # Each grammar level may add one planted wrapper level, so depth <= 2 * 2 + 1.
