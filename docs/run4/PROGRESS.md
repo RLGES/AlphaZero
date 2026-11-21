@@ -5,7 +5,7 @@
 > - **Commits:** sumeettummarmatti <sumeettummarmatti@gmail.com>, no Claude trailers.
 > - **Pushing:** `git -c credential.helper= -c 'credential.helper=!gh auth git-credential' push`. Plain `git push` returns 403.
 
-## ▶ RESUME HERE (last updated 2026-11-22 ~00:13 IST)
+## ▶ RESUME HERE (last updated 2026-11-22 ~01:19 IST)
 
 **Run 4 is in progress on the Vultr server.**
 - Server: `ssh <server>`; work dir `/root/rlges`.
@@ -72,3 +72,4 @@
 - 11-21 22:13 IST: builtin_s0 round 50, score 0.544, best 0.552 (round 39; patience 15 -> stops ~round 54, then s1). Discovery round 2 done: 89 verified, total 40 accepted rules (qwen_all). Round 3 at 5/200. No errors.
 - 11-21 23:13 IST: builtin_s0 FINISHED (55 rounds, best 0.552). report_after (314 held-out): AZ vs MCTS @10 50.6/54.4%, @25 56.0/58.0, @50 58.3/59.1, @100 59.8/59.9; best-known @100 AZ 83% vs MCTS 81%, AZ ~6.5x fewer transitions. builtin_s1 started (round 0: 0.502). Discovery round 3 at 70/200, 31 verified. No errors.
 - 11-22 00:13 IST: builtin_s1 round 8, best 0.536. Discovery round 3 at 129/200, 48 verified. No errors.
+- 11-22 01:19 IST: builtin_s1 round 17, best 0.544 (ahead of s0 at the same round). Discovery round 3 at 196/200, 71 verified. No errors. ETA: main results ~Tue 24 Nov 06:00 IST, all incl. llmbig ~Tue 17:00.
