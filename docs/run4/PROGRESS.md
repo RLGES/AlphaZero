@@ -57,3 +57,6 @@
 - 11-21 ~16:30 IST: added the egglog baseline for asm (commit 11ca813, deployed; final_eval writes final_v4_*_egglog.md).
   - Pilot on 100 held-out terms with built-in rules: egglog 86.4% vs MCTS@100 71.8%. egglog was never worse on a term; 0.15 s per term; all outputs equivalent on random-input checks.
   - egglog already beats night 3's best AZ (79.2%). Raised with the user: the report must show this honestly; AZ's edge is fewer rewrites. Next idea: RL-guided saturation.
+- 11-21 ~16:50 IST: control-flow corpus rebuilt identical to night 3 (cf_train 8,172). Stress set building.
+  - Added hybrids to the final evaluation (27414c2, deployed): egglog+MCTS (per rule set) and egglog+AZ (per run).
+  - egglog_table shows every method alone and combined, with paired CIs for AZ−egglog, egglog+AZ−egglog and egglog+AZ−egglog+MCTS. Output: checkpoints/final_v4_{heldout,stress}_egglog.md.
