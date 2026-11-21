@@ -1,0 +1,328 @@
+{
+  "sources": [
+    "learned_rules_qwen.json"
+  ],
+  "note": "accepted = every round's accepted rules (round k > 1 names prefixed rk_)",
+  "accepted": [
+    {
+      "name": "llm_0_div_zero_replace",
+      "lhs": "(div ?m 0)",
+      "rhs": "0",
+      "lhs_cost": 12,
+      "rhs_cost": 1,
+      "prompt": 148,
+      "seeds": [
+        "(div 0 (neg (div r0 r3)))",
+        "(shr (div (mod (load (or r1 r2)) 0) (shl (shl (mod r1 4) (shl r0 r2)) 1)) 1)",
+        "(shr (and (shl (div (mul r1 r0) (load (and r2 r0))) 2) r0) (neg (add (mul r0 r0) (xor r2 r0))))",
+        "(div (not (neg (shl (not (mod r1 0)) (sub (not (neg (sub r3 r0))) -2)))) (div (div (shl r1 r0) (add -1 r3)) (xor (neg r1) (neg (not (add r0 2))))))"
+      ],
+      "seed_matches": 9,
+      "lowers_cost": true
+    },
+    {
+      "name": "llm_1_mod_const_self",
+      "lhs": "(mod ?x ?x)",
+      "rhs": "0",
+      "lhs_cost": 12,
+      "rhs_cost": 1,
+      "prompt": 124,
+      "seeds": [
+        "(shl (shr (sub (div r0 r3) 1) (div (shr r3 255) (mod 2 r0))) 3)",
+        "(mod (load (mul (div (load r3) (div (shr r1 r0) 8)) (neg (not (mul (add r0 r3) (sub r0 r3)))))) (shr (or (div r1 r2) (div r2 r1)) -1))",
+        "(load (shl (shl (sub (div (sub 1 r3) 32) (shl (div (neg r2) (sub 2 r2)) 3)) (shl (shr (add (mul (shr (or r1 1) 2) r2) 0) (mul (xor 2 r3) (add r1 r0))) 3)) 1))",
+        "(div (shr (shl (not (shl (div r1 r0) 1)) 2) (xor (or r3 r1) (xor r3 3))) (not (div (mod r0 r0) 0)))"
+      ],
+      "seed_matches": 7,
+      "lowers_cost": true
+    },
+    {
+      "name": "llm_2_sub_neg",
+      "lhs": "(sub ?x (neg ?y))",
+      "rhs": "(add ?x ?y)",
+      "lhs_cost": 4,
+      "rhs_cost": 3,
+      "prompt": 79,
+      "seeds": [
+        "(add in0 (shl (sub (add 1 (add in2 (add 6 (add in0 9)))) (add 6 (add (add in0 9) (add 1 in2)))) 2))",
+        "(mod (load (mul (div (load r3) (div (shr r1 r0) 8)) (neg (not (mul (add r0 r3) (sub r0 r3)))))) (shr (or (div r1 r2) (div r2 r1)) -1))",
+        "(shl (add (shr (mod r1 r1) (shr 16 r3)) (xor (div r3 r3) -8)) 1)",
+        "(shl (shl (shl (mod 4 r1) 1) 1) (shl (shr 3 r0) 4))"
+      ],
+      "seed_matches": 3,
+      "lowers_cost": true
+    },
+    {
+      "name": "llm_3_mod_0",
+      "lhs": "(mod ?x 0)",
+      "rhs": "0",
+      "lhs_cost": 12,
+      "rhs_cost": 1,
+      "prompt": 9,
+      "seeds": [
+        "(load (div (shl (xor (shr (shr r1 r1) 4) (neg (not (shl (shr (and 2 r2) 2) (not (neg (mod r3 16))))))) 2) (add (shr (sub r0 r3) (load (or 1 r3))) (shr -5 (shl (mul 255 r0) 2)))))",
+        "(add (add 8 (add 9 (mul (add (add (mul 3 (mul in0 5)) 5) 1) 1))) 0)",
+        "(div (mod (shl (mul 8 r0) r1) (div (mul -1 r0) (or r2 r0))) (shl (mod (sub (and r0 r3) (xor 4 r0)) (or r2 (or 255 (and r2 2)))) 3))",
+        "(shl (add (add (add 8 (mul 45 v8)) (mul 72 v4)) 2) 2)"
+      ],
+      "seed_matches": 2,
+      "lowers_cost": true
+    },
+    {
+      "name": "llm_4_constant_fold",
+      "lhs": "(div ?x 1)",
+      "rhs": "?x",
+      "lhs_cost": 12,
+      "rhs_cost": 1,
+      "prompt": 0,
+      "seeds": [
+        "(sub (mul (add 25 in1) (shl in1 2)) (mul (shl in1 2) (add 25 in1)))",
+        "(neg (not (shl (mul (add (mul r3 r3) (or r1 255)) (div r2 (shr r1 2))) (xor (shl (or 3 r2) 1) (xor 255 r0)))))",
+        "(add (add in0 (add 8 (mul 12 (shl in1 1)))) (add (sub (add 3 in0) (add in0 3)) 8))",
+        "(shl (shl (add (shl (mul (sub (add in1 2) (add 2 in1)) 4) 4) 11) 3) 4)"
+      ],
+      "seed_matches": 1,
+      "lowers_cost": true
+    },
+    {
+      "name": "llm_5_merge_add_sub",
+      "lhs": "(sub (add ?x ?y) ?y)",
+      "rhs": "?x",
+      "lhs_cost": 5,
+      "rhs_cost": 1,
+      "prompt": 3,
+      "seeds": [
+        "(shr (mul r1 (mul r0 (add r2 r1))) (and (sub r0 1) (xor r2 4)))",
+        "(mod (shl (sub 3 (or (or r1 255) r0)) 4) (mod (not (or r3 r0)) (xor (add r1 1) (shr 255 r3))))",
+        "(shl (sub (add (add (add (add 7 v1) v2) 3) (sub (add v0 2) (add 2 v0))) (add (add (add (sub (add v0 2) (add 2 v0)) (add 7 v1)) v2) 3)) 2)",
+        "(sub (add (add 8 (shl (shl in0 4) 2)) (add 3 (add 15 (add (mul in0 8) 4)))) (add (add (shl (shl in0 4) 2) (add (add 3 15) (add (mul in0 8) 4))) 8))"
+      ],
+      "seed_matches": 1,
+      "lowers_cost": true
+    },
+    {
+      "name": "llm_6_neg_mul_const",
+      "lhs": "(mul ?x -1)",
+      "rhs": "(neg ?x)",
+      "lhs_cost": 5,
+      "rhs_cost": 2,
+      "prompt": 83,
+      "seeds": [
+        "(shl (shl (mod (div r0 r3) (mod r3 r3)) (mul (xor r0 r1) 7)) 1)",
+        "(div 0 (neg (div r0 r3)))",
+        "(sub (add (add 8 (shl (shl in0 4) 2)) (add 3 (add 15 (add (mul in0 8) 4)))) (add (add (shl (shl in0 4) 2) (add (add 3 15) (add (mul in0 8) 4))) 8))",
+        "(neg (shl (xor (shl (mod r2 r3) (mul r2 r0)) (sub -250 (mul r0 r0))) 1))"
+      ],
+      "seed_matches": 1,
+      "lowers_cost": true
+    },
+    {
+      "name": "llm_7_shl_sub_cancel",
+      "lhs": "(sub (shl ?x ?a) (shl ?y ?a))",
+      "rhs": "(shl (sub ?x ?y) ?a)",
+      "lhs_cost": 7,
+      "rhs_cost": 5,
+      "prompt": 93,
+      "seeds": [
+        "(shl (sub (mul (shl in0 1) (shl in0 3)) (mul (shl in0 3) (shl in0 1))) 2)",
+        "(shr (shr (sub 3 (neg r0)) (sub (shl r3 3) 15)) (not (neg (div r2 r1))))",
+        "(add 5 (sub (sub (mul 9 (shl in2 3)) (mul (mul 3 (shl in2 3)) 3)) 8))",
+        "(neg (mod (or (neg (mod r1 r1)) (add (add r2 8) (div r0 r2))) (and (mul 7 (mod 0 r1)) (div 0 (shl (shl r0 8) 2)))))"
+      ],
+      "seed_matches": 1,
+      "lowers_cost": true
+    },
+    {
+      "name": "llm_8_neg_add_cancel",
+      "lhs": "(add (neg ?x) ?y)",
+      "rhs": "(sub ?y ?x)",
+      "lhs_cost": 4,
+      "rhs_cost": 3,
+      "prompt": 105,
+      "seeds": [
+        "(sub (add (add (sub (add in0 in1) (add in1 in0)) 8) 5) (add 13 (sub (add in0 in1) (add in1 in0))))",
+        "(div (div (mod (shl (div (and r1 r3) -1) 1) (add (xor r1 r3) (shr r2 8))) (shl (mul (sub (mod r1 8) 256) (xor (shl (shl (xor r2 r3) 1) 2) (shr r3 8))) 2)) 8)",
+        "(add (add 0 (sub (add (shl in1 3) in1) (add in1 (shl in1 3)))) (mul in1 3))",
+        "(div 0 (neg (div r0 r3)))"
+      ],
+      "seed_matches": 1,
+      "lowers_cost": true
+    },
+    {
+      "name": "llm_9_mod_add_cancel",
+      "lhs": "(sub (mod ?a ?b) (mod ?a ?b))",
+      "rhs": "0",
+      "lhs_cost": 25,
+      "rhs_cost": 1,
+      "prompt": 22,
+      "seeds": [
+        "(neg (not (mod (xor (mod r3 r0) (shr r0 8)) (shr (shl (mod r3 r0) 3) (shl (add r0 r2) 1)))))",
+        "(div (mod (shl (add -256 (add r0 r1)) 1) (add (shl r3 1) -8)) (or (mul (xor -1 r0) (xor r3 r0)) (neg (shr r2 r0))))",
+        "(add (add 19 (add 3 (add (add 9 in0) (add in0 7)))) (add (add (add 9 in0) (add in0 7)) 7))",
+        "(mod (sub (xor (shr 4 r0) (div r1 r1)) (load (shr -5 (and r0 r2)))) (sub (sub (mul r2 3) (mod r2 -1)) (or (add 4 r2) (and 8 r0))))"
+      ],
+      "seed_matches": 0,
+      "lowers_cost": true
+    },
+    {
+      "name": "llm_10_mod_div_cancel",
+      "lhs": "(mod (div ?x ?y) 1)",
+      "rhs": "0",
+      "lhs_cost": 23,
+      "rhs_cost": 1,
+      "prompt": 32,
+      "seeds": [
+        "(not (neg (shl (shr (div (xor r3 r2) 0) (mod (div r0 r1) (div 0 r1))) 1)))",
+        "(shl (and (load (xor (add 8 r0) (sub r2 2))) (div (xor r3 r2) 0)) (or (or (shl (or -3 (mul r0 r2)) 1) r0) (not (neg (mod r1 8)))))",
+        "(add (add 0 (sub (add (shl in1 3) in1) (add in1 (shl in1 3)))) (mul in1 3))",
+        "(shl (shl (load (and (div (shl (and r0 r3) 1) (mod r3 r0)) (mod (shl r2 8) (div 4 r0)))) (or (not (load (shr r0 r1))) (xor (not r0) (sub r1 r0)))) 1)"
+      ],
+      "seed_matches": 0,
+      "lowers_cost": true
+    },
+    {
+      "name": "llm_11_mod_const_div",
+      "lhs": "(div (mod ?x 1) ?y)",
+      "rhs": "0",
+      "lhs_cost": 23,
+      "rhs_cost": 1,
+      "prompt": 81,
+      "seeds": [
+        "(shl (and (shl (shl (xor r3 r2) 1) 1) (div (load (sub r0 2)) (shr 8 r2))) 1)",
+        "(shl (shr (div (mod 0 (sub r1 r0)) 8) (div (shr r3 r3) (or r0 3))) 4)",
+        "(load (shl (shl (sub (div (sub 1 r3) 32) (shl (div (neg r2) (sub 2 r2)) 3)) (shl (shr (add (mul (shr (or r1 1) 2) r2) 0) (mul (xor 2 r3) (add r1 r0))) 3)) 1))",
+        "(div (mod (shl (add -256 (add r0 r1)) 1) (add (shl r3 1) -8)) (or (mul (xor -1 r0) (xor r3 r0)) (neg (shr r2 r0))))"
+      ],
+      "seed_matches": 0,
+      "lowers_cost": true
+    },
+    {
+      "name": "llm_12_mod_div_cancel",
+      "lhs": "(div (mod ?x ?d) ?d)",
+      "rhs": "0",
+      "lhs_cost": 23,
+      "rhs_cost": 1,
+      "prompt": 146,
+      "seeds": [
+        "(add 2 (add 6 (sub (add 0 (sub (mul in0 5) (mul 5 in0))) (add (sub (mul in0 5) (mul 5 in0)) 0))))",
+        "(shl (shr (sub (div r0 r3) 1) (div (shr r3 255) (mod 2 r0))) 3)",
+        "(mul 56 (sub (add (mul 3 (mul v3 9)) (mul in1 v1)) (add (mul in1 v1) (mul 3 (mul v3 9)))))",
+        "(add (sub (mul (add 2 in0) 3) (mul 3 (add 2 in0))) 20)"
+      ],
+      "seed_matches": 0,
+      "lowers_cost": true
+    },
+    {
+      "name": "llm_13_factor_out_common_terms",
+      "lhs": "(sub (add (mul (add 0 ?x) ?y) (mul (add 0 ?z) ?y)) (add (mul (add 0 ?x) ?y) (mul (add 0 ?w) ?y)))",
+      "rhs": "(mul ?y (sub (add ?x ?z) (add ?x ?w)))",
+      "lhs_cost": 31,
+      "rhs_cost": 11,
+      "prompt": 10,
+      "seeds": [
+        "(sub (mul (add 25 in1) (shl in1 2)) (mul (shl in1 2) (add 25 in1)))",
+        "(load (add (not (shl (mul (or 16 r2) 0) (not (and (xor 4 r0) (or 3 r1))))) 0))",
+        "(sub (add (mul (mul 4 2) (shl (add 0 3) 3)) (mul 2 640)) (add (mul 2 640) (mul (mul 4 2) (shl (add 0 3) 3))))",
+        "(mul (div (mod r1 r2) (not r1)) (not (shl (or r2 r3) 1)))"
+      ],
+      "seed_matches": 0,
+      "lowers_cost": true
+    },
+    {
+      "name": "llm_14_mod_mul_cancel",
+      "lhs": "(sub (mul (mod ?x ?y) ?z) (mul (mod ?x ?y) ?w))",
+      "rhs": "(mul (mod ?x ?y) (sub ?z ?w))",
+      "lhs_cost": 33,
+      "rhs_cost": 18,
+      "prompt": 113,
+      "seeds": [
+        "(and (neg (not (xor (add (not (neg (or r0 r2))) (shr (not r2) 2)) 32))) (add (mul (mod r2 r0) (shl (sub 3 r0) 3)) (sub (shl r2 r3) (shr (and 8 r3) 2))))",
+        "(load (shl (shl (sub (div (sub 1 r3) 32) (shl (div (neg r2) (sub 2 r2)) 3)) (shl (shr (add (mul (shr (or r1 1) 2) r2) 0) (mul (xor 2 r3) (add r1 r0))) 3)) 1))",
+        "(mul (mul (mul (add (add (mul 7 (mul in2 5)) in0) 15) 7) in2) 5)",
+        "(add 2 (add 6 (sub (add 0 (sub (mul in0 5) (mul 5 in0))) (add (sub (mul in0 5) (mul 5 in0)) 0))))"
+      ],
+      "seed_matches": 0,
+      "lowers_cost": true
+    },
+    {
+      "name": "llm_15_mod_and_not",
+      "lhs": "(mod (and ?x ?y) 0)",
+      "rhs": "0",
+      "lhs_cost": 14,
+      "rhs_cost": 1,
+      "prompt": 44,
+      "seeds": [
+        "(add 10 (mul (mul 3 (sub (mul in0 in1) (mul in1 in0))) 5))",
+        "(sub (add (add 8 (shl (shl in0 4) 2)) (add 3 (add 15 (add (mul in0 8) 4)))) (add (add (shl (shl in0 4) 2) (add (add 3 15) (add (mul in0 8) 4))) 8))",
+        "(div (not (neg (shl (not (mod r1 0)) (sub (not (neg (sub r3 r0))) -2)))) (div (div (shl r1 r0) (add -1 r3)) (xor (neg r1) (neg (not (add r0 2))))))",
+        "(shl (div (shl (shr r2 8) 19) (div (or (neg (not (or r3 3))) (mul r1 r3)) 8)) 1)"
+      ],
+      "seed_matches": 0,
+      "lowers_cost": true
+    },
+    {
+      "name": "llm_16_factor_sub",
+      "lhs": "(sub (add (mul ?x ?y) ?z) (mul ?x ?y))",
+      "rhs": "?z",
+      "lhs_cost": 13,
+      "rhs_cost": 1,
+      "prompt": 141,
+      "seeds": [
+        "(add (sub (mul (add 2 in0) 3) (mul 3 (add 2 in0))) 20)",
+        "(add (load 0) (load (and (div (and (and r3 r2) (mod r0 r0)) 16) (shl (mul r3 255) (shl (div r3 r2) 1)))))",
+        "(add (mul 5 (mul (add (add 2 (add (add 8 in0) 19)) (add (add (add 7 in0) (add in0 3)) 3)) 9)) 10)",
+        "(shl (mod 8 (or r0 r3)) (div 258 (sub r0 r2)))"
+      ],
+      "seed_matches": 0,
+      "lowers_cost": true
+    },
+    {
+      "name": "llm_17_constant_fold",
+      "lhs": "(mod ?x 1)",
+      "rhs": "0",
+      "lhs_cost": 12,
+      "rhs_cost": 1,
+      "prompt": 0,
+      "seeds": [
+        "(sub (mul (add 25 in1) (shl in1 2)) (mul (shl in1 2) (add 25 in1)))",
+        "(neg (not (shl (mul (add (mul r3 r3) (or r1 255)) (div r2 (shr r1 2))) (xor (shl (or 3 r2) 1) (xor 255 r0)))))",
+        "(add (add in0 (add 8 (mul 12 (shl in1 1)))) (add (sub (add 3 in0) (add in0 3)) 8))",
+        "(shl (shl (add (shl (mul (sub (add in1 2) (add 2 in1)) 4) 4) 11) 3) 4)"
+      ],
+      "seed_matches": 0,
+      "lowers_cost": true
+    },
+    {
+      "name": "llm_18_add_mul_cancel",
+      "lhs": "(add (mul ?x ?y) (neg (mul ?x ?y)))",
+      "rhs": "0",
+      "lhs_cost": 12,
+      "rhs_cost": 1,
+      "prompt": 39,
+      "seeds": [
+        "(load (shr (shl (xor (mul r0 r1) (or r0 r3)) 2) (xor (mod r3 4) (not r1))))",
+        "(shl (shr (div (mod 0 (sub r1 r0)) 8) (div (shr r3 r3) (or r0 3))) 4)",
+        "(add 2 (add 6 (sub (add 0 (sub (mul in0 5) (mul 5 in0))) (add (sub (mul in0 5) (mul 5 in0)) 0))))",
+        "(sub (shl (mul (div r0 r1) r0) 1) -1)"
+      ],
+      "seed_matches": 0,
+      "lowers_cost": true
+    },
+    {
+      "name": "llm_19_shl_and_mod",
+      "lhs": "(mod (and (shl ?x 3) 7) 4)",
+      "rhs": "(and (shl ?x 3) 7)",
+      "lhs_cost": 16,
+      "rhs_cost": 5,
+      "prompt": 47,
+      "seeds": [
+        "(shl (mul (shl (shl (xor 0 (mul (shl 2 r0) (sub r3 255))) 1) 2) (shl (shl (and (shl (shl r1 3) 1) (mod (and 4 r0) (add r1 -1))) 1) 2)) 1)",
+        "(mul (shl (mul (mul (add (div r2 r3) (shl (or r3 255) 1)) 2) 2) 0) (shr (mod (mul 8 r0) (or r3 -1)) (load (div (div 255 r1) (shr (shl r0 r0) 1)))))",
+        "(add (add 8 (add 9 (mul (add (add (mul 3 (mul in0 5)) 5) 1) 1))) 0)",
+        "(shl (div (shr (shl r2 r0) 2) (add (shr r0 r2) (sub r1 r2))) (shr 3 (sub (shl (add 16 r0) 3) (neg (not (div 16 r3))))))"
+      ],
+      "seed_matches": 0,
+      "lowers_cost": true
+    }
+  ]
+}

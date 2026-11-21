@@ -5,7 +5,7 @@
 > - **Commits:** sumeettummarmatti <sumeettummarmatti@gmail.com>, no Claude trailers.
 > - **Pushing:** `git -c credential.helper= -c 'credential.helper=!gh auth git-credential' push`. Plain `git push` returns 403.
 
-## ▶ RESUME HERE (last updated 2026-11-21 ~16:22 IST)
+## ▶ RESUME HERE (last updated 2026-11-21 ~19:13 IST)
 
 **Run 4 is in progress on the Vultr server.**
 - Server: `ssh <server>`; work dir `/root/rlges`.
@@ -64,3 +64,6 @@
   - Data done at 10:16 UTC: all corpora identical to night 3 (train 10,999 / test 911 / cf 8,172 / 811 / stress 824).
   - Run 4 started 10:16. Discovery round 1 at 26/150 prompts, ~1 min/prompt on Ollama, 20 verified so far.
   - builtin_s0 training: ~7.5 min/round; round 1 score 0.513.
+- 11-21 17:15 IST: builtin_s0 at round 8, best 0.539 (night 3 builtin plateaued ~0.55). Discovery round 1 at 79/150 prompts, 58 verified. No errors. Hourly routine script: scratchpad hourly.sh.
+- 11-21 18:13 IST: builtin_s0 at round 16, score 0.531, best 0.539 (unchanged since round 8; patience 15 may stop it around round 23). Discovery round 1 at 139/150 prompts, 97 verified. No errors.
+- 11-21 19:13 IST: builtin_s0 round 25, score 0.543, new best 0.545. Discovery round 1 done: 105 verified, 20 accepted rules -> learned_rules_qwen.json. Round 2 at 38/200 prompts (19 verified). No errors.

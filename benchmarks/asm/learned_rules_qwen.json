@@ -1,0 +1,6038 @@
+{
+  "model": "qwen2.5-coder:7b",
+  "url": "http://localhost:11434/v1",
+  "temperature": 0.8,
+  "stats": {
+    "prompts": 150,
+    "proposals": 723,
+    "duplicate": 216,
+    "accepted": 105,
+    "unknown operator or arity": 87,
+    "unsound (random 32-bit test)": 216,
+    "unparseable": 93,
+    "unsound (z3 unknown)": 3,
+    "right side uses unbound variables": 2,
+    "no-op": 1
+  },
+  "accepted": [
+    {
+      "name": "llm_0_div_zero_replace",
+      "lhs": "(div ?m 0)",
+      "rhs": "0",
+      "lhs_cost": 12,
+      "rhs_cost": 1,
+      "prompt": 148,
+      "seeds": [
+        "(div 0 (neg (div r0 r3)))",
+        "(shr (div (mod (load (or r1 r2)) 0) (shl (shl (mod r1 4) (shl r0 r2)) 1)) 1)",
+        "(shr (and (shl (div (mul r1 r0) (load (and r2 r0))) 2) r0) (neg (add (mul r0 r0) (xor r2 r0))))",
+        "(div (not (neg (shl (not (mod r1 0)) (sub (not (neg (sub r3 r0))) -2)))) (div (div (shl r1 r0) (add -1 r3)) (xor (neg r1) (neg (not (add r0 2))))))"
+      ],
+      "seed_matches": 9,
+      "lowers_cost": true
+    },
+    {
+      "name": "llm_1_mod_const_self",
+      "lhs": "(mod ?x ?x)",
+      "rhs": "0",
+      "lhs_cost": 12,
+      "rhs_cost": 1,
+      "prompt": 124,
+      "seeds": [
+        "(shl (shr (sub (div r0 r3) 1) (div (shr r3 255) (mod 2 r0))) 3)",
+        "(mod (load (mul (div (load r3) (div (shr r1 r0) 8)) (neg (not (mul (add r0 r3) (sub r0 r3)))))) (shr (or (div r1 r2) (div r2 r1)) -1))",
+        "(load (shl (shl (sub (div (sub 1 r3) 32) (shl (div (neg r2) (sub 2 r2)) 3)) (shl (shr (add (mul (shr (or r1 1) 2) r2) 0) (mul (xor 2 r3) (add r1 r0))) 3)) 1))",
+        "(div (shr (shl (not (shl (div r1 r0) 1)) 2) (xor (or r3 r1) (xor r3 3))) (not (div (mod r0 r0) 0)))"
+      ],
+      "seed_matches": 7,
+      "lowers_cost": true
+    },
+    {
+      "name": "llm_2_sub_neg",
+      "lhs": "(sub ?x (neg ?y))",
+      "rhs": "(add ?x ?y)",
+      "lhs_cost": 4,
+      "rhs_cost": 3,
+      "prompt": 79,
+      "seeds": [
+        "(add in0 (shl (sub (add 1 (add in2 (add 6 (add in0 9)))) (add 6 (add (add in0 9) (add 1 in2)))) 2))",
+        "(mod (load (mul (div (load r3) (div (shr r1 r0) 8)) (neg (not (mul (add r0 r3) (sub r0 r3)))))) (shr (or (div r1 r2) (div r2 r1)) -1))",
+        "(shl (add (shr (mod r1 r1) (shr 16 r3)) (xor (div r3 r3) -8)) 1)",
+        "(shl (shl (shl (mod 4 r1) 1) 1) (shl (shr 3 r0) 4))"
+      ],
+      "seed_matches": 3,
+      "lowers_cost": true
+    },
+    {
+      "name": "llm_3_mod_0",
+      "lhs": "(mod ?x 0)",
+      "rhs": "0",
+      "lhs_cost": 12,
+      "rhs_cost": 1,
+      "prompt": 9,
+      "seeds": [
+        "(load (div (shl (xor (shr (shr r1 r1) 4) (neg (not (shl (shr (and 2 r2) 2) (not (neg (mod r3 16))))))) 2) (add (shr (sub r0 r3) (load (or 1 r3))) (shr -5 (shl (mul 255 r0) 2)))))",
+        "(add (add 8 (add 9 (mul (add (add (mul 3 (mul in0 5)) 5) 1) 1))) 0)",
+        "(div (mod (shl (mul 8 r0) r1) (div (mul -1 r0) (or r2 r0))) (shl (mod (sub (and r0 r3) (xor 4 r0)) (or r2 (or 255 (and r2 2)))) 3))",
+        "(shl (add (add (add 8 (mul 45 v8)) (mul 72 v4)) 2) 2)"
+      ],
+      "seed_matches": 2,
+      "lowers_cost": true
+    },
+    {
+      "name": "llm_4_constant_fold",
+      "lhs": "(div ?x 1)",
+      "rhs": "?x",
+      "lhs_cost": 12,
+      "rhs_cost": 1,
+      "prompt": 0,
+      "seeds": [
+        "(sub (mul (add 25 in1) (shl in1 2)) (mul (shl in1 2) (add 25 in1)))",
+        "(neg (not (shl (mul (add (mul r3 r3) (or r1 255)) (div r2 (shr r1 2))) (xor (shl (or 3 r2) 1) (xor 255 r0)))))",
+        "(add (add in0 (add 8 (mul 12 (shl in1 1)))) (add (sub (add 3 in0) (add in0 3)) 8))",
+        "(shl (shl (add (shl (mul (sub (add in1 2) (add 2 in1)) 4) 4) 11) 3) 4)"
+      ],
+      "seed_matches": 1,
+      "lowers_cost": true
+    },
+    {
+      "name": "llm_5_merge_add_sub",
+      "lhs": "(sub (add ?x ?y) ?y)",
+      "rhs": "?x",
+      "lhs_cost": 5,
+      "rhs_cost": 1,
+      "prompt": 3,
+      "seeds": [
+        "(shr (mul r1 (mul r0 (add r2 r1))) (and (sub r0 1) (xor r2 4)))",
+        "(mod (shl (sub 3 (or (or r1 255) r0)) 4) (mod (not (or r3 r0)) (xor (add r1 1) (shr 255 r3))))",
+        "(shl (sub (add (add (add (add 7 v1) v2) 3) (sub (add v0 2) (add 2 v0))) (add (add (add (sub (add v0 2) (add 2 v0)) (add 7 v1)) v2) 3)) 2)",
+        "(sub (add (add 8 (shl (shl in0 4) 2)) (add 3 (add 15 (add (mul in0 8) 4)))) (add (add (shl (shl in0 4) 2) (add (add 3 15) (add (mul in0 8) 4))) 8))"
+      ],
+      "seed_matches": 1,
+      "lowers_cost": true
+    },
+    {
+      "name": "llm_6_neg_mul_const",
+      "lhs": "(mul ?x -1)",
+      "rhs": "(neg ?x)",
+      "lhs_cost": 5,
+      "rhs_cost": 2,
+      "prompt": 83,
+      "seeds": [
+        "(shl (shl (mod (div r0 r3) (mod r3 r3)) (mul (xor r0 r1) 7)) 1)",
+        "(div 0 (neg (div r0 r3)))",
+        "(sub (add (add 8 (shl (shl in0 4) 2)) (add 3 (add 15 (add (mul in0 8) 4)))) (add (add (shl (shl in0 4) 2) (add (add 3 15) (add (mul in0 8) 4))) 8))",
+        "(neg (shl (xor (shl (mod r2 r3) (mul r2 r0)) (sub -250 (mul r0 r0))) 1))"
+      ],
+      "seed_matches": 1,
+      "lowers_cost": true
+    },
+    {
+      "name": "llm_7_shl_sub_cancel",
+      "lhs": "(sub (shl ?x ?a) (shl ?y ?a))",
+      "rhs": "(shl (sub ?x ?y) ?a)",
+      "lhs_cost": 7,
+      "rhs_cost": 5,
+      "prompt": 93,
+      "seeds": [
+        "(shl (sub (mul (shl in0 1) (shl in0 3)) (mul (shl in0 3) (shl in0 1))) 2)",
+        "(shr (shr (sub 3 (neg r0)) (sub (shl r3 3) 15)) (not (neg (div r2 r1))))",
+        "(add 5 (sub (sub (mul 9 (shl in2 3)) (mul (mul 3 (shl in2 3)) 3)) 8))",
+        "(neg (mod (or (neg (mod r1 r1)) (add (add r2 8) (div r0 r2))) (and (mul 7 (mod 0 r1)) (div 0 (shl (shl r0 8) 2)))))"
+      ],
+      "seed_matches": 1,
+      "lowers_cost": true
+    },
+    {
+      "name": "llm_8_neg_add_cancel",
+      "lhs": "(add (neg ?x) ?y)",
+      "rhs": "(sub ?y ?x)",
+      "lhs_cost": 4,
+      "rhs_cost": 3,
+      "prompt": 105,
+      "seeds": [
+        "(sub (add (add (sub (add in0 in1) (add in1 in0)) 8) 5) (add 13 (sub (add in0 in1) (add in1 in0))))",
+        "(div (div (mod (shl (div (and r1 r3) -1) 1) (add (xor r1 r3) (shr r2 8))) (shl (mul (sub (mod r1 8) 256) (xor (shl (shl (xor r2 r3) 1) 2) (shr r3 8))) 2)) 8)",
+        "(add (add 0 (sub (add (shl in1 3) in1) (add in1 (shl in1 3)))) (mul in1 3))",
+        "(div 0 (neg (div r0 r3)))"
+      ],
+      "seed_matches": 1,
+      "lowers_cost": true
+    },
+    {
+      "name": "llm_9_mod_add_cancel",
+      "lhs": "(sub (mod ?a ?b) (mod ?a ?b))",
+      "rhs": "0",
+      "lhs_cost": 25,
+      "rhs_cost": 1,
+      "prompt": 22,
+      "seeds": [
+        "(neg (not (mod (xor (mod r3 r0) (shr r0 8)) (shr (shl (mod r3 r0) 3) (shl (add r0 r2) 1)))))",
+        "(div (mod (shl (add -256 (add r0 r1)) 1) (add (shl r3 1) -8)) (or (mul (xor -1 r0) (xor r3 r0)) (neg (shr r2 r0))))",
+        "(add (add 19 (add 3 (add (add 9 in0) (add in0 7)))) (add (add (add 9 in0) (add in0 7)) 7))",
+        "(mod (sub (xor (shr 4 r0) (div r1 r1)) (load (shr -5 (and r0 r2)))) (sub (sub (mul r2 3) (mod r2 -1)) (or (add 4 r2) (and 8 r0))))"
+      ],
+      "seed_matches": 0,
+      "lowers_cost": true
+    },
+    {
+      "name": "llm_10_mod_div_cancel",
+      "lhs": "(mod (div ?x ?y) 1)",
+      "rhs": "0",
+      "lhs_cost": 23,
+      "rhs_cost": 1,
+      "prompt": 32,
+      "seeds": [
+        "(not (neg (shl (shr (div (xor r3 r2) 0) (mod (div r0 r1) (div 0 r1))) 1)))",
+        "(shl (and (load (xor (add 8 r0) (sub r2 2))) (div (xor r3 r2) 0)) (or (or (shl (or -3 (mul r0 r2)) 1) r0) (not (neg (mod r1 8)))))",
+        "(add (add 0 (sub (add (shl in1 3) in1) (add in1 (shl in1 3)))) (mul in1 3))",
+        "(shl (shl (load (and (div (shl (and r0 r3) 1) (mod r3 r0)) (mod (shl r2 8) (div 4 r0)))) (or (not (load (shr r0 r1))) (xor (not r0) (sub r1 r0)))) 1)"
+      ],
+      "seed_matches": 0,
+      "lowers_cost": true
+    },
+    {
+      "name": "llm_11_mod_const_div",
+      "lhs": "(div (mod ?x 1) ?y)",
+      "rhs": "0",
+      "lhs_cost": 23,
+      "rhs_cost": 1,
+      "prompt": 81,
+      "seeds": [
+        "(shl (and (shl (shl (xor r3 r2) 1) 1) (div (load (sub r0 2)) (shr 8 r2))) 1)",
+        "(shl (shr (div (mod 0 (sub r1 r0)) 8) (div (shr r3 r3) (or r0 3))) 4)",
+        "(load (shl (shl (sub (div (sub 1 r3) 32) (shl (div (neg r2) (sub 2 r2)) 3)) (shl (shr (add (mul (shr (or r1 1) 2) r2) 0) (mul (xor 2 r3) (add r1 r0))) 3)) 1))",
+        "(div (mod (shl (add -256 (add r0 r1)) 1) (add (shl r3 1) -8)) (or (mul (xor -1 r0) (xor r3 r0)) (neg (shr r2 r0))))"
+      ],
+      "seed_matches": 0,
+      "lowers_cost": true
+    },
+    {
+      "name": "llm_12_mod_div_cancel",
+      "lhs": "(div (mod ?x ?d) ?d)",
+      "rhs": "0",
+      "lhs_cost": 23,
+      "rhs_cost": 1,
+      "prompt": 146,
+      "seeds": [
+        "(add 2 (add 6 (sub (add 0 (sub (mul in0 5) (mul 5 in0))) (add (sub (mul in0 5) (mul 5 in0)) 0))))",
+        "(shl (shr (sub (div r0 r3) 1) (div (shr r3 255) (mod 2 r0))) 3)",
+        "(mul 56 (sub (add (mul 3 (mul v3 9)) (mul in1 v1)) (add (mul in1 v1) (mul 3 (mul v3 9)))))",
+        "(add (sub (mul (add 2 in0) 3) (mul 3 (add 2 in0))) 20)"
+      ],
+      "seed_matches": 0,
+      "lowers_cost": true
+    },
+    {
+      "name": "llm_13_factor_out_common_terms",
+      "lhs": "(sub (add (mul (add 0 ?x) ?y) (mul (add 0 ?z) ?y)) (add (mul (add 0 ?x) ?y) (mul (add 0 ?w) ?y)))",
+      "rhs": "(mul ?y (sub (add ?x ?z) (add ?x ?w)))",
+      "lhs_cost": 31,
+      "rhs_cost": 11,
+      "prompt": 10,
+      "seeds": [
+        "(sub (mul (add 25 in1) (shl in1 2)) (mul (shl in1 2) (add 25 in1)))",
+        "(load (add (not (shl (mul (or 16 r2) 0) (not (and (xor 4 r0) (or 3 r1))))) 0))",
+        "(sub (add (mul (mul 4 2) (shl (add 0 3) 3)) (mul 2 640)) (add (mul 2 640) (mul (mul 4 2) (shl (add 0 3) 3))))",
+        "(mul (div (mod r1 r2) (not r1)) (not (shl (or r2 r3) 1)))"
+      ],
+      "seed_matches": 0,
+      "lowers_cost": true
+    },
+    {
+      "name": "llm_14_mod_mul_cancel",
+      "lhs": "(sub (mul (mod ?x ?y) ?z) (mul (mod ?x ?y) ?w))",
+      "rhs": "(mul (mod ?x ?y) (sub ?z ?w))",
+      "lhs_cost": 33,
+      "rhs_cost": 18,
+      "prompt": 113,
+      "seeds": [
+        "(and (neg (not (xor (add (not (neg (or r0 r2))) (shr (not r2) 2)) 32))) (add (mul (mod r2 r0) (shl (sub 3 r0) 3)) (sub (shl r2 r3) (shr (and 8 r3) 2))))",
+        "(load (shl (shl (sub (div (sub 1 r3) 32) (shl (div (neg r2) (sub 2 r2)) 3)) (shl (shr (add (mul (shr (or r1 1) 2) r2) 0) (mul (xor 2 r3) (add r1 r0))) 3)) 1))",
+        "(mul (mul (mul (add (add (mul 7 (mul in2 5)) in0) 15) 7) in2) 5)",
+        "(add 2 (add 6 (sub (add 0 (sub (mul in0 5) (mul 5 in0))) (add (sub (mul in0 5) (mul 5 in0)) 0))))"
+      ],
+      "seed_matches": 0,
+      "lowers_cost": true
+    },
+    {
+      "name": "llm_15_mod_and_not",
+      "lhs": "(mod (and ?x ?y) 0)",
+      "rhs": "0",
+      "lhs_cost": 14,
+      "rhs_cost": 1,
+      "prompt": 44,
+      "seeds": [
+        "(add 10 (mul (mul 3 (sub (mul in0 in1) (mul in1 in0))) 5))",
+        "(sub (add (add 8 (shl (shl in0 4) 2)) (add 3 (add 15 (add (mul in0 8) 4)))) (add (add (shl (shl in0 4) 2) (add (add 3 15) (add (mul in0 8) 4))) 8))",
+        "(div (not (neg (shl (not (mod r1 0)) (sub (not (neg (sub r3 r0))) -2)))) (div (div (shl r1 r0) (add -1 r3)) (xor (neg r1) (neg (not (add r0 2))))))",
+        "(shl (div (shl (shr r2 8) 19) (div (or (neg (not (or r3 3))) (mul r1 r3)) 8)) 1)"
+      ],
+      "seed_matches": 0,
+      "lowers_cost": true
+    },
+    {
+      "name": "llm_16_factor_sub",
+      "lhs": "(sub (add (mul ?x ?y) ?z) (mul ?x ?y))",
+      "rhs": "?z",
+      "lhs_cost": 13,
+      "rhs_cost": 1,
+      "prompt": 141,
+      "seeds": [
+        "(add (sub (mul (add 2 in0) 3) (mul 3 (add 2 in0))) 20)",
+        "(add (load 0) (load (and (div (and (and r3 r2) (mod r0 r0)) 16) (shl (mul r3 255) (shl (div r3 r2) 1)))))",
+        "(add (mul 5 (mul (add (add 2 (add (add 8 in0) 19)) (add (add (add 7 in0) (add in0 3)) 3)) 9)) 10)",
+        "(shl (mod 8 (or r0 r3)) (div 258 (sub r0 r2)))"
+      ],
+      "seed_matches": 0,
+      "lowers_cost": true
+    },
+    {
+      "name": "llm_17_constant_fold",
+      "lhs": "(mod ?x 1)",
+      "rhs": "0",
+      "lhs_cost": 12,
+      "rhs_cost": 1,
+      "prompt": 0,
+      "seeds": [
+        "(sub (mul (add 25 in1) (shl in1 2)) (mul (shl in1 2) (add 25 in1)))",
+        "(neg (not (shl (mul (add (mul r3 r3) (or r1 255)) (div r2 (shr r1 2))) (xor (shl (or 3 r2) 1) (xor 255 r0)))))",
+        "(add (add in0 (add 8 (mul 12 (shl in1 1)))) (add (sub (add 3 in0) (add in0 3)) 8))",
+        "(shl (shl (add (shl (mul (sub (add in1 2) (add 2 in1)) 4) 4) 11) 3) 4)"
+      ],
+      "seed_matches": 0,
+      "lowers_cost": true
+    },
+    {
+      "name": "llm_18_add_mul_cancel",
+      "lhs": "(add (mul ?x ?y) (neg (mul ?x ?y)))",
+      "rhs": "0",
+      "lhs_cost": 12,
+      "rhs_cost": 1,
+      "prompt": 39,
+      "seeds": [
+        "(load (shr (shl (xor (mul r0 r1) (or r0 r3)) 2) (xor (mod r3 4) (not r1))))",
+        "(shl (shr (div (mod 0 (sub r1 r0)) 8) (div (shr r3 r3) (or r0 3))) 4)",
+        "(add 2 (add 6 (sub (add 0 (sub (mul in0 5) (mul 5 in0))) (add (sub (mul in0 5) (mul 5 in0)) 0))))",
+        "(sub (shl (mul (div r0 r1) r0) 1) -1)"
+      ],
+      "seed_matches": 0,
+      "lowers_cost": true
+    },
+    {
+      "name": "llm_19_shl_and_mod",
+      "lhs": "(mod (and (shl ?x 3) 7) 4)",
+      "rhs": "(and (shl ?x 3) 7)",
+      "lhs_cost": 16,
+      "rhs_cost": 5,
+      "prompt": 47,
+      "seeds": [
+        "(shl (mul (shl (shl (xor 0 (mul (shl 2 r0) (sub r3 255))) 1) 2) (shl (shl (and (shl (shl r1 3) 1) (mod (and 4 r0) (add r1 -1))) 1) 2)) 1)",
+        "(mul (shl (mul (mul (add (div r2 r3) (shl (or r3 255) 1)) 2) 2) 0) (shr (mod (mul 8 r0) (or r3 -1)) (load (div (div 255 r1) (shr (shl r0 r0) 1)))))",
+        "(add (add 8 (add 9 (mul (add (add (mul 3 (mul in0 5)) 5) 1) 1))) 0)",
+        "(shl (div (shr (shl r2 r0) 2) (add (shr r0 r2) (sub r1 r2))) (shr 3 (sub (shl (add 16 r0) 3) (neg (not (div 16 r3))))))"
+      ],
+      "seed_matches": 0,
+      "lowers_cost": true
+    }
+  ],
+  "verified_not_loaded": [
+    {
+      "name": "sub_const_negate",
+      "lhs": "(sub ?x ?y)",
+      "rhs": "(add ?x (neg ?y))",
+      "lhs_cost": 3,
+      "rhs_cost": 4,
+      "prompt": 7,
+      "seeds": [
+        "(sub (shl (add in1 (add v0 11)) 3) (add 5 (add 7 (mul 40 v2))))",
+        "(and (xor (shl (sub 2 r0) 3) (load r0)) (load (neg (div (or r3 255) 8))))",
+        "(add 5 (sub (sub (mul 9 (shl in2 3)) (mul (mul 3 (shl in2 3)) 3)) 8))",
+        "(sub (shl (mul (div r0 r1) r0) 1) -1)"
+      ],
+      "seed_matches": 113,
+      "lowers_cost": false
+    },
+    {
+      "name": "shl_double",
+      "lhs": "(shl ?x 2)",
+      "rhs": "(mul ?x 4)",
+      "lhs_cost": 3,
+      "rhs_cost": 5,
+      "prompt": 38,
+      "seeds": [
+        "(load (add (not (shl (mul (or 16 r2) 0) (not (and (xor 4 r0) (or 3 r1))))) 0))",
+        "(mod (mod (and r0 r2) 6) (and (div r2 16) 20))",
+        "(sub (add (add (mul 3 v1) 85) 1) (add (add 1 (mul 3 v1)) 85))",
+        "(add 5 (sub (sub (mul 9 (shl in2 3)) (mul (mul 3 (shl in2 3)) 3)) 8))"
+      ],
+      "seed_matches": 40,
+      "lowers_cost": false
+    },
+    {
+      "name": "simplify_sub_add",
+      "lhs": "(sub (add ?x ?y) (add ?z ?a))",
+      "rhs": "(add (sub ?x ?z) (sub ?y ?a))",
+      "lhs_cost": 7,
+      "rhs_cost": 7,
+      "prompt": 10,
+      "seeds": [
+        "(sub (mul (add 25 in1) (shl in1 2)) (mul (shl in1 2) (add 25 in1)))",
+        "(load (add (not (shl (mul (or 16 r2) 0) (not (and (xor 4 r0) (or 3 r1))))) 0))",
+        "(sub (add (mul (mul 4 2) (shl (add 0 3) 3)) (mul 2 640)) (add (mul 2 640) (mul (mul 4 2) (shl (add 0 3) 3))))",
+        "(mul (div (mod r1 r2) (not r1)) (not (shl (or r2 r3) 1)))"
+      ],
+      "seed_matches": 24,
+      "lowers_cost": false
+    },
+    {
+      "name": "shl_mul",
+      "lhs": "(mul ?x (shl ?y ?z))",
+      "rhs": "(shl (mul ?x ?y) ?z)",
+      "lhs_cost": 7,
+      "rhs_cost": 7,
+      "prompt": 37,
+      "seeds": [
+        "(mul 2 (shl (sub (shl (shl (or 0 (and (or r3 0) (and 255 r3))) 0) 1) (neg (not 0))) 1))",
+        "(sub (mul 96 (shl (shl in1 2) 1)) (mul (shl in1 2) 192))",
+        "(shr (mul r1 (mul r0 (add r2 r1))) (and (sub r0 1) (xor r2 4)))",
+        "(shl (and (shl (shl (xor r3 r2) 1) 1) (div (load (sub r0 2)) (shr 8 r2))) 1)"
+      ],
+      "seed_matches": 20,
+      "lowers_cost": false
+    },
+    {
+      "name": "binom_sub",
+      "lhs": "(sub (mul ?x ?y) (mul ?z ?w))",
+      "rhs": "(add (mul ?x ?y) (neg (mul ?z ?w)))",
+      "lhs_cost": 11,
+      "rhs_cost": 12,
+      "prompt": 15,
+      "seeds": [
+        "(sub (shl (mul (div r0 r1) r0) 1) -1)",
+        "(add (sub (mul (add 2 in0) 3) (mul 3 (add 2 in0))) 20)",
+        "(shr (sub (shl (xor (neg (not (and r0 r2))) (add 16 r3)) 1) (mod (load r2) 512)) 2)",
+        "(mod (load (mul (div (load r3) (div (shr r1 r0) 8)) (neg (not (mul (add r0 r3) (sub r0 r3)))))) (shr (or (div r1 r2) (div r2 r1)) -1))"
+      ],
+      "seed_matches": 19,
+      "lowers_cost": false
+    },
+    {
+      "name": "left_shl_distribute",
+      "lhs": "(shl (add ?x ?y) ?z)",
+      "rhs": "(add (shl ?x ?z) (shl ?y ?z))",
+      "lhs_cost": 5,
+      "rhs_cost": 7,
+      "prompt": 64,
+      "seeds": [
+        "(mod (shl (sub 3 (or (or r1 255) r0)) 4) (mod (not (or r3 r0)) (xor (add r1 1) (shr 255 r3))))",
+        "(sub (add (add 8 (add (add 5 (add in0 (add in1 1))) 4)) (shl (shl (shl in0 1) 1) 1)) (add (add (add (add (add 5 in0) (add in1 1)) 4) (shl (shl (shl in0 1) 1) 1)) 8))",
+        "(sub (sub (add (add (add (mul 14 v0) (mul 4 (shl in1 2))) 7) 4) (add (add (add (mul 4 (shl in1 2)) 7) 4) (mul 14 v0))) 0)",
+        "(not (neg (shl (shr (div (xor r3 r2) 0) (mod (div r0 r1) (div 0 r1))) 1)))"
+      ],
+      "seed_matches": 15,
+      "lowers_cost": false
+    },
+    {
+      "name": "shl_mul",
+      "lhs": "(mul (shl ?x ?a) ?b)",
+      "rhs": "(shl (mul ?x ?b) ?a)",
+      "lhs_cost": 7,
+      "rhs_cost": 7,
+      "prompt": 45,
+      "seeds": [
+        "(sub (mul (shl (shl in1 2) 4) (mul in2 7)) (shl (mul (mul in2 7) (shl in1 2)) 4))",
+        "(and (shl (load (div r0 1)) (xor r3 (div r1 r1))) (mod 2 (div (mul r2 r0) (load r1))))",
+        "(shl (add (mul (shl r3 4) (shr (sub r0 r1) (xor r0 r3))) (xor (and -2147483648 (div 255 r2)) r3)) 4)",
+        "(neg (shl (xor (shl (mod r2 r3) (mul r2 r0)) (sub -250 (mul r0 r0))) 1))"
+      ],
+      "seed_matches": 14,
+      "lowers_cost": false
+    },
+    {
+      "name": "nested_add_fact",
+      "lhs": "(add (add ?a ?b) (add ?c ?d))",
+      "rhs": "(add (add ?a ?c) (add ?b ?d))",
+      "lhs_cost": 7,
+      "rhs_cost": 7,
+      "prompt": 62,
+      "seeds": [
+        "(add (add (add (add (add (add (add in0 5) 2) 5) 4) (add (add 5 (shl in0 3)) (add (mul in0 12) 5))) 9) 7)",
+        "(load (div (shl (xor (shr (shr r1 r1) 4) (neg (not (shl (shr (and 2 r2) 2) (not (neg (mod r3 16))))))) 2) (add (shr (sub r0 r3) (load (or 1 r3))) (shr -5 (shl (mul 255 r0) 2)))))",
+        "(shr (mul r1 (mul r0 (add r2 r1))) (and (sub r0 1) (xor r2 4)))",
+        "(add (div (shr (mul (shl (div (shr (sub r1 3) 0) 0) 1) (sub 8 (shl (shl r0 255) 1))) 0) 0) (shl 0 3))"
+      ],
+      "seed_matches": 14,
+      "lowers_cost": false
+    },
+    {
+      "name": "shl_mul_to_add",
+      "lhs": "(mul (shl ?x ?y) ?z)",
+      "rhs": "(add (shl (mul ?x ?z) ?y) 0)",
+      "lhs_cost": 7,
+      "rhs_cost": 9,
+      "prompt": 61,
+      "seeds": [
+        "(div 0 (neg (div r0 r3)))",
+        "(mul (shl (mul (mul (add (div r2 r3) (shl (or r3 255) 1)) 2) 2) 0) (shr (mod (mul 8 r0) (or r3 -1)) (load (div (div 255 r1) (shr (shl r0 r0) 1)))))",
+        "(shl (and (shl (shl (xor r3 r2) 1) 1) (div (load (sub r0 2)) (shr 8 r2))) 1)",
+        "(shr (and (shl (div (mul r1 r0) (load (and r2 r0))) 2) r0) (neg (add (mul r0 r0) (xor r2 r0))))"
+      ],
+      "seed_matches": 14,
+      "lowers_cost": false
+    },
+    {
+      "name": "factor_add",
+      "lhs": "(mul (add ?x ?y) ?z)",
+      "rhs": "(add (mul ?x ?z) (mul ?y ?z))",
+      "lhs_cost": 7,
+      "rhs_cost": 11,
+      "prompt": 23,
+      "seeds": [
+        "(add (add 19 (add 3 (add (add 9 in0) (add in0 7)))) (add (add (add 9 in0) (add in0 7)) 7))",
+        "(shl (and (shl (shl (xor r3 r2) 1) 1) (div (load (sub r0 2)) (shr 8 r2))) 1)",
+        "(mul 56 (sub (add (mul 3 (mul v3 9)) (mul in1 v1)) (add (mul in1 v1) (mul 3 (mul v3 9)))))",
+        "(div (shr (mod (sub r3 1) (load (shl r3 1))) (xor (sub r2 r0) (or r0 r3))) (and (mul 16 (mul r2 8)) (and (shl r0 3) (shr (shr (shl r1 2) 1) (load (mul 3 r0))))))"
+      ],
+      "seed_matches": 14,
+      "lowers_cost": false
+    },
+    {
+      "name": "double_mul",
+      "lhs": "(mul (mul ?x ?y) ?z)",
+      "rhs": "(mul ?y (mul ?x ?z))",
+      "lhs_cost": 9,
+      "rhs_cost": 9,
+      "prompt": 35,
+      "seeds": [
+        "(mod (shl (add (add (div 8 r2) (shl (shl (shr 1 r2) 1) 1)) (xor (shl (add r1 r1) 1) (shl r3 1))) 4) (add (shr (mul 6 (mul r1 r0)) 1) (load (xor 4 (add 16 r1)))))",
+        "(add (add (add (add (add (mul 4 144) 8) 9) 1) 2) (sub (add 0 in1) in1))",
+        "(div (shr (shl (not (shl (div r1 r0) 1)) 2) (xor (or r3 r1) (xor r3 3))) (not (div (mod r0 r0) 0)))",
+        "(sub (mul 96 (shl (shl in1 2) 1)) (mul (shl in1 2) 192))"
+      ],
+      "seed_matches": 9,
+      "lowers_cost": false
+    },
+    {
+      "name": "shl_exp",
+      "lhs": "(shl (and ?a ?b) ?c)",
+      "rhs": "(and (shl ?a ?c) (shl ?b ?c))",
+      "lhs_cost": 5,
+      "rhs_cost": 7,
+      "prompt": 138,
+      "seeds": [
+        "(shl (sub (add (add (add (add 7 v1) v2) 3) (sub (add v0 2) (add 2 v0))) (add (add (add (sub (add v0 2) (add 2 v0)) (add 7 v1)) v2) 3)) 2)",
+        "(and (shl (load (div r0 1)) (xor r3 (div r1 r1))) (mod 2 (div (mul r2 r0) (load r1))))",
+        "(mul 2 (shl (sub (shl (shl (or 0 (and (or r3 0) (and 255 r3))) 0) 1) (neg (not 0))) 1))",
+        "(shl (and (not (neg (or 5 r0))) (and (shl (not (neg (or (sub 4 r0) (mul r1 r3)))) (not (add r1 r2))) (mul 16843009 (not (neg r3))))) 1)"
+      ],
+      "seed_matches": 9,
+      "lowers_cost": false
+    },
+    {
+      "name": "xor_shift_left",
+      "lhs": "(shl (xor ?a ?b) 1)",
+      "rhs": "(xor (shl ?a 1) (shl ?b 1))",
+      "lhs_cost": 5,
+      "rhs_cost": 7,
+      "prompt": 26,
+      "seeds": [
+        "(shr (sub (shl (xor (neg (not (and r0 r2))) (add 16 r3)) 1) (mod (load r2) 512)) 2)",
+        "(shl (shr (sub (div r0 r3) 1) (div (shr r3 255) (mod 2 r0))) 3)",
+        "(add 5 (sub (sub (mul 9 (shl in2 3)) (mul (mul 3 (shl in2 3)) 3)) 8))",
+        "(mod (load (load (load (div (sub r0 r2) 0)))) (sub (and (or r1 r0) (and r1 4)) (shl (mod (shl (not r2) 1) (shl r3 r2)) 4)))"
+      ],
+      "seed_matches": 7,
+      "lowers_cost": false
+    },
+    {
+      "name": "sub_mul",
+      "lhs": "(mul ?x (sub ?y ?z))",
+      "rhs": "(sub (mul ?x ?y) (mul ?x ?z))",
+      "lhs_cost": 7,
+      "rhs_cost": 11,
+      "prompt": 121,
+      "seeds": [
+        "(sub (mul -6 (add (add 6 (add (add in1 in1) 3)) 3)) (mul (add (add 6 (add (add in1 in1) 3)) 3) -6))",
+        "(shl (add (add (add 8 (mul 45 v8)) (mul 72 v4)) 2) 2)",
+        "(shl (add (shr (mod r1 r1) (shr 16 r3)) (xor (div r3 r3) -8)) 1)",
+        "(sub (load (mul (or r1 -1) (shr r1 255))) (mul (load (shr 8 r0)) (add r2 r3)))"
+      ],
+      "seed_matches": 6,
+      "lowers_cost": false
+    },
+    {
+      "name": "add_self",
+      "lhs": "(add ?x ?x)",
+      "rhs": "(mul ?x 2)",
+      "lhs_cost": 3,
+      "rhs_cost": 5,
+      "prompt": 36,
+      "seeds": [
+        "(shl (shl (load (and (div (shl (and r0 r3) 1) (mod r3 r0)) (mod (shl r2 8) (div 4 r0)))) (or (not (load (shr r0 r1))) (xor (not r0) (sub r1 r0)))) 1)",
+        "(sub (add (add (mul 3 v1) 85) 1) (add (add 1 (mul 3 v1)) 85))",
+        "(div (not (neg (shl (not (mod r1 0)) (sub (not (neg (sub r3 r0))) -2)))) (div (div (shl r1 r0) (add -1 r3)) (xor (neg r1) (neg (not (add r0 2))))))",
+        "(shl (add in0 (add (shl (sub (add 10 in0) (add in0 10)) 4) (add 6 2))) 3)"
+      ],
+      "seed_matches": 4,
+      "lowers_cost": false
+    },
+    {
+      "name": "factor_add",
+      "lhs": "(mul (add ?x ?y) (add ?z ?w))",
+      "rhs": "(add (mul ?x ?z) (add (mul ?x ?w) (add (mul ?y ?z) (mul ?y ?w))))",
+      "lhs_cost": 9,
+      "rhs_cost": 23,
+      "prompt": 144,
+      "seeds": [
+        "(or (xor r2 (shl r1 r0)) (load (mod r1 r3)))",
+        "(neg (not (mod (xor (mod r3 r0) (shr r0 8)) (shr (shl (mod r3 r0) 3) (shl (add r0 r2) 1)))))",
+        "(not (neg (shl (shr (load (div (div r0 0) 8)) (shr (load 2) (mod r1 r3))) (shl (mod (shl (and r0 3) 1) (shr (shl r2 r3) (shr r2 r0))) 2))))",
+        "(neg (not (shl (mul (add (mul r3 r3) (or r1 255)) (div r2 (shr r1 2))) (xor (shl (or 3 r2) 1) (xor 255 r0)))))"
+      ],
+      "seed_matches": 4,
+      "lowers_cost": false
+    },
+    {
+      "name": "xor_commutativity",
+      "lhs": "(xor ?x (xor ?y ?z))",
+      "rhs": "(xor (xor ?x ?y) ?z)",
+      "lhs_cost": 5,
+      "rhs_cost": 5,
+      "prompt": 6,
+      "seeds": [
+        "(load (div (shl (xor (shr (shr r1 r1) 4) (neg (not (shl (shr (and 2 r2) 2) (not (neg (mod r3 16))))))) 2) (add (shr (sub r0 r3) (load (or 1 r3))) (shr -5 (shl (mul 255 r0) 2)))))",
+        "(add (add (add (add (add (add (add in0 5) 2) 5) 4) (add (add 5 (shl in0 3)) (add (mul in0 12) 5))) 9) 7)",
+        "(add (add 19 (add 3 (add (add 9 in0) (add in0 7)))) (add (add (add 9 in0) (add in0 7)) 7))",
+        "(and (neg (not (xor (add (not (neg (or r0 r2))) (shr (not r2) 2)) 32))) (add (mul (mod r2 r0) (shl (sub 3 r0) 3)) (sub (shl r2 r3) (shr (and 8 r3) 2))))"
+      ],
+      "seed_matches": 3,
+      "lowers_cost": false
+    },
+    {
+      "name": "sub_const",
+      "lhs": "(sub ?x -1)",
+      "rhs": "(add ?x 1)",
+      "lhs_cost": 3,
+      "rhs_cost": 3,
+      "prompt": 97,
+      "seeds": [
+        "(or (sub (and 2 r1) (shl (div 0 r2) 3)) (shl (shl (sub r2 r3) (sub r0 r2)) 2))",
+        "(sub (add (add (sub (add in0 in1) (add in1 in0)) 8) 5) (add 13 (sub (add in0 in1) (add in1 in0))))",
+        "(div (div (mod (shl (div (and r1 r3) -1) 1) (add (xor r1 r3) (shr r2 8))) (shl (mul (sub (mod r1 8) 256) (xor (shl (shl (xor r2 r3) 1) 2) (shr r3 8))) 2)) 8)",
+        "(shl (shl (add (shl (mul (sub (add in1 2) (add 2 in1)) 4) 4) 11) 3) 4)"
+      ],
+      "seed_matches": 2,
+      "lowers_cost": false
+    },
+    {
+      "name": "not_and_not",
+      "lhs": "(not (and ?x ?y))",
+      "rhs": "(or (not ?x) (not ?y))",
+      "lhs_cost": 4,
+      "rhs_cost": 5,
+      "prompt": 31,
+      "seeds": [
+        "(shr (neg (not (div 0 (div (add 4 r0) (mod 4 r0))))) 2)",
+        "(div 0 (shl (not (shr r1 3)) (div (neg r1) 16)))",
+        "(div (mod (shl (add -256 (add r0 r1)) 1) (add (shl r3 1) -8)) (or (mul (xor -1 r0) (xor r3 r0)) (neg (shr r2 r0))))",
+        "(shl (shr (sub (div r0 r3) 1) (div (shr r3 255) (mod 2 r0))) 3)"
+      ],
+      "seed_matches": 2,
+      "lowers_cost": false
+    },
+    {
+      "name": "or_and_cancel",
+      "lhs": "(and (or ?x ?y) ?z)",
+      "rhs": "(or (and ?x ?z) (and ?y ?z))",
+      "lhs_cost": 5,
+      "rhs_cost": 7,
+      "prompt": 69,
+      "seeds": [
+        "(add (sub (mul (add 2 in0) 3) (mul 3 (add 2 in0))) 20)",
+        "(shl (mod 8 (or r0 r3)) (div 258 (sub r0 r2)))",
+        "(add (load 0) (load (and (div (and (and r3 r2) (mod r0 r0)) 16) (shl (mul r3 255) (shl (div r3 r2) 1)))))",
+        "(mul 2 (shl (sub (shl (shl (or 0 (and (or r3 0) (and 255 r3))) 0) 1) (neg (not 0))) 1))"
+      ],
+      "seed_matches": 2,
+      "lowers_cost": false
+    },
+    {
+      "name": "dist_sub_mul",
+      "lhs": "(mul (sub ?x ?y) ?z)",
+      "rhs": "(sub (mul ?x ?z) (mul ?y ?z))",
+      "lhs_cost": 7,
+      "rhs_cost": 11,
+      "prompt": 60,
+      "seeds": [
+        "(add (add 8 (add 9 (mul (add (add (mul 3 (mul in0 5)) 5) 1) 1))) 0)",
+        "(add (add 19 (add 3 (add (add 9 in0) (add in0 7)))) (add (add (add 9 in0) (add in0 7)) 7))",
+        "(not (neg (shl (shr (load (div (div r0 0) 8)) (shr (load 2) (mod r1 r3))) (shl (mod (shl (and r0 3) 1) (shr (shl r2 r3) (shr r2 r0))) 2))))",
+        "(or (shl (neg (not (shr r2 r0))) (shr 255 r0)) (sub (shl (or r3 r0) 1) 255))"
+      ],
+      "seed_matches": 2,
+      "lowers_cost": false
+    },
+    {
+      "name": "commutative_add",
+      "lhs": "(add (shl ?x 2) ?y)",
+      "rhs": "(add ?y (shl ?x 2))",
+      "lhs_cost": 5,
+      "rhs_cost": 5,
+      "prompt": 33,
+      "seeds": [
+        "(sub (mul (shl (shl in1 2) 4) (mul in2 7)) (shl (mul (mul in2 7) (shl in1 2)) 4))",
+        "(shr (shr (sub 3 (neg r0)) (sub (shl r3 3) 15)) (not (neg (div r2 r1))))",
+        "(add (div (shr (mul (shl (div (shr (sub r1 3) 0) 0) 1) (sub 8 (shl (shl r0 255) 1))) 0) 0) (shl 0 3))",
+        "(mul (div (mod r1 r2) (not r1)) (not (shl (or r2 r3) 1)))"
+      ],
+      "seed_matches": 1,
+      "lowers_cost": false
+    },
+    {
+      "name": "mul_const_shift_inj",
+      "lhs": "(mul ?a (shl (load ?c) ?k))",
+      "rhs": "(shl (mul ?a (load ?c)) ?k)",
+      "lhs_cost": 11,
+      "rhs_cost": 11,
+      "prompt": 71,
+      "seeds": [
+        "(sub (sub (add (shl v12 3) (add v12 v12)) (add v12 (add (shl v12 3) v12))) (shl (add v10 v6) 3))",
+        "(div 0 (neg (div r0 r3)))",
+        "(or (shl (and (xor (shl r2 r3) (shl (div r2 r1) 2)) (add (add r1 8) (div r1 r2))) 3) (load (add (sub -1 r1) (mod r1 255))))",
+        "(sub (mul (add 25 in1) (shl in1 2)) (mul (shl in1 2) (add 25 in1)))"
+      ],
+      "seed_matches": 1,
+      "lowers_cost": false
+    },
+    {
+      "name": "double_and_simplify",
+      "lhs": "(and (and ?x ?y) ?z)",
+      "rhs": "(and ?z (and ?x ?y))",
+      "lhs_cost": 5,
+      "rhs_cost": 5,
+      "prompt": 98,
+      "seeds": [
+        "(shl (shl (load (and (div (shl (and r0 r3) 1) (mod r3 r0)) (mod (shl r2 8) (div 4 r0)))) (or (not (load (shr r0 r1))) (xor (not r0) (sub r1 r0)))) 1)",
+        "(shl (and (not (neg (or 5 r0))) (and (shl (not (neg (or (sub 4 r0) (mul r1 r3)))) (not (add r1 r2))) (mul 16843009 (not (neg r3))))) 1)",
+        "(shl (div (shl (shr r2 8) 19) (div (or (neg (not (or r3 3))) (mul r1 r3)) 8)) 1)",
+        "(load (mul (or (neg r3) (mod r2 r2)) (shl (load (div 255 r1)) 4)))"
+      ],
+      "seed_matches": 1,
+      "lowers_cost": false
+    },
+    {
+      "name": "double_mul",
+      "lhs": "(mul (mul ?x ?y) 2)",
+      "rhs": "(add (mul ?x ?y) (mul ?x ?y))",
+      "lhs_cost": 9,
+      "rhs_cost": 11,
+      "prompt": 2,
+      "seeds": [
+        "(shl (add (mul (shl r3 4) (shr (sub r0 r1) (xor r0 r3))) (xor (and -2147483648 (div 255 r2)) r3)) 4)",
+        "(neg (sub (div (shl r1 r1) (mod 0 r1)) (shl (shl (or r2 8) (mul -1 r1)) 1)))",
+        "(add (sub (mul (add 2 in0) 3) (mul 3 (add 2 in0))) 20)",
+        "(sub (sub (add (shl v12 3) (add v12 v12)) (add v12 (add (shl v12 3) v12))) (shl (add v10 v6) 3))"
+      ],
+      "seed_matches": 1,
+      "lowers_cost": false
+    },
+    {
+      "name": "and_const_mask",
+      "lhs": "(and ?x (or ?y ?z))",
+      "rhs": "(or (and ?x ?y) (and ?x ?z))",
+      "lhs_cost": 5,
+      "rhs_cost": 7,
+      "prompt": 113,
+      "seeds": [
+        "(and (neg (not (xor (add (not (neg (or r0 r2))) (shr (not r2) 2)) 32))) (add (mul (mod r2 r0) (shl (sub 3 r0) 3)) (sub (shl r2 r3) (shr (and 8 r3) 2))))",
+        "(load (shl (shl (sub (div (sub 1 r3) 32) (shl (div (neg r2) (sub 2 r2)) 3)) (shl (shr (add (mul (shr (or r1 1) 2) r2) 0) (mul (xor 2 r3) (add r1 r0))) 3)) 1))",
+        "(mul (mul (mul (add (add (mul 7 (mul in2 5)) in0) 15) 7) in2) 5)",
+        "(add 2 (add 6 (sub (add 0 (sub (mul in0 5) (mul 5 in0))) (add (sub (mul in0 5) (mul 5 in0)) 0))))"
+      ],
+      "seed_matches": 1,
+      "lowers_cost": false
+    },
+    {
+      "name": "sub_mul_const",
+      "lhs": "(mul (add ?x ?y) 2)",
+      "rhs": "(add (mul ?x 2) (mul ?y 2))",
+      "lhs_cost": 7,
+      "rhs_cost": 11,
+      "prompt": 89,
+      "seeds": [
+        "(neg (not (mod (xor (mod r3 r0) (shr r0 8)) (shr (shl (mod r3 r0) 3) (shl (add r0 r2) 1)))))",
+        "(sub (load (mul (or r1 -1) (shr r1 255))) (mul (load (shr 8 r0)) (add r2 r3)))",
+        "(mul 56 (sub (add (mul 3 (mul v3 9)) (mul in1 v1)) (add (mul in1 v1) (mul 3 (mul v3 9)))))",
+        "(xor (sub 4 (shr (and r0 3) r1)) (shr (xor (mod 0 r1) (sub r1 r3)) (shl (load (or 8 r2)) (mul -1 r0))))"
+      ],
+      "seed_matches": 1,
+      "lowers_cost": false
+    },
+    {
+      "name": "div_shift",
+      "lhs": "(div ?x (shl 1 ?y))",
+      "rhs": "(shr ?x ?y)",
+      "lhs_cost": 14,
+      "rhs_cost": 3,
+      "prompt": 52,
+      "seeds": [
+        "(neg (mod (or (neg (mod r1 r1)) (add (add r2 8) (div r0 r2))) (and (mul 7 (mod 0 r1)) (div 0 (shl (shl r0 8) 2)))))",
+        "(load (load (mod 255 r0)))",
+        "(div 0 (shl (not (shr r1 3)) (div (neg r1) 16)))",
+        "(sub (load (mul (or r1 -1) (shr r1 255))) (mul (load (shr 8 r0)) (add r2 r3)))"
+      ],
+      "seed_matches": 0,
+      "lowers_cost": true
+    },
+    {
+      "name": "xor_div_reduce",
+      "lhs": "(div (xor ?a ?b) 2)",
+      "rhs": "(shr (xor ?a ?b) 1)",
+      "lhs_cost": 14,
+      "rhs_cost": 5,
+      "prompt": 119,
+      "seeds": [
+        "(neg (mod (or (neg (mod r1 r1)) (add (add r2 8) (div r0 r2))) (and (mul 7 (mod 0 r1)) (div 0 (shl (shl r0 8) 2)))))",
+        "(sub (mul (add 25 in1) (shl in1 2)) (mul (shl in1 2) (add 25 in1)))",
+        "(or (xor r2 (shl r1 r0)) (load (mod r1 r3)))",
+        "(mul 2 (shl (sub (shl (shl (or 0 (and (or r3 0) (and 255 r3))) 0) 1) (neg (not 0))) 1))"
+      ],
+      "seed_matches": 0,
+      "lowers_cost": true
+    },
+    {
+      "name": "mod_constant",
+      "lhs": "(mod ?x 2)",
+      "rhs": "(and ?x 1)",
+      "lhs_cost": 12,
+      "rhs_cost": 3,
+      "prompt": 130,
+      "seeds": [
+        "(mod (shl (add (add (div 8 r2) (shl (shl (shr 1 r2) 1) 1)) (xor (shl (add r1 r1) 1) (shl r3 1))) 4) (add (shr (mul 6 (mul r1 r0)) 1) (load (xor 4 (add 16 r1)))))",
+        "(shl (shr (sub (div r0 r3) 1) (div (shr r3 255) (mod 2 r0))) 3)",
+        "(and (shl (load (div r0 1)) (xor r3 (div r1 r1))) (mod 2 (div (mul r2 r0) (load r1))))",
+        "(shl (sub (add (add (add (add 7 v1) v2) 3) (sub (add v0 2) (add 2 v0))) (add (add (add (sub (add v0 2) (add 2 v0)) (add 7 v1)) v2) 3)) 2)"
+      ],
+      "seed_matches": 0,
+      "lowers_cost": true
+    },
+    {
+      "name": "mod_16_identity",
+      "lhs": "(div (mod ?x 256) 16)",
+      "rhs": "(shr (mod ?x 256) 4)",
+      "lhs_cost": 23,
+      "rhs_cost": 14,
+      "prompt": 132,
+      "seeds": [
+        "(load (mul (or (neg r3) (mod r2 r2)) (shl (load (div 255 r1)) 4)))",
+        "(or (shl (sub r2 3) (load (load 4))) (mod (load (mul r3 r3)) (div (mod 2 r0) 16)))",
+        "(mul (shl (load (neg r1)) 1) (neg (load (shl r1 r2))))",
+        "(add 2 (add 6 (sub (add 0 (sub (mul in0 5) (mul 5 in0))) (add (sub (mul in0 5) (mul 5 in0)) 0))))"
+      ],
+      "seed_matches": 0,
+      "lowers_cost": true
+    },
+    {
+      "name": "shl_add_cancel",
+      "lhs": "(add (shl ?x ?y) (sub ?x (shl ?x ?y)))",
+      "rhs": "?x",
+      "lhs_cost": 9,
+      "rhs_cost": 1,
+      "prompt": 88,
+      "seeds": [
+        "(mul 2 (shl (sub (shl (shl (or 0 (and (or r3 0) (and 255 r3))) 0) 1) (neg (not 0))) 1))",
+        "(sub (add (mul (mul 4 2) (shl (add 0 3) 3)) (mul 2 640)) (add (mul 2 640) (mul (mul 4 2) (shl (add 0 3) 3))))",
+        "(or (shl (and (xor (shl r2 r3) (shl (div r2 r1) 2)) (add (add r1 8) (div r1 r2))) 3) (load (add (sub -1 r1) (mod r1 255))))",
+        "(div (mod (shl (add -256 (add r0 r1)) 1) (add (shl r3 1) -8)) (or (mul (xor -1 r0) (xor r3 r0)) (neg (shr r2 r0))))"
+      ],
+      "seed_matches": 0,
+      "lowers_cost": true
+    },
+    {
+      "name": "cancel_sub_add",
+      "lhs": "(sub (add ?x ?y) (add ?x ?y))",
+      "rhs": "0",
+      "lhs_cost": 7,
+      "rhs_cost": 1,
+      "prompt": 27,
+      "seeds": [
+        "(shr (sub (shl (xor (neg (not (and r0 r2))) (add 16 r3)) 1) (mod (load r2) 512)) 2)",
+        "(sub (add (mul (mul 4 2) (shl (add 0 3) 3)) (mul 2 640)) (add (mul 2 640) (mul (mul 4 2) (shl (add 0 3) 3))))",
+        "(load (load (mod 255 r0)))",
+        "(sub (mul 96 (shl (shl in1 2) 1)) (mul (shl in1 2) 192))"
+      ],
+      "seed_matches": 0,
+      "lowers_cost": true
+    },
+    {
+      "name": "sub_add_same",
+      "lhs": "(sub (add ?x 10) (add ?x 10))",
+      "rhs": "0",
+      "lhs_cost": 7,
+      "rhs_cost": 1,
+      "prompt": 79,
+      "seeds": [
+        "(add in0 (shl (sub (add 1 (add in2 (add 6 (add in0 9)))) (add 6 (add (add in0 9) (add 1 in2)))) 2))",
+        "(mod (load (mul (div (load r3) (div (shr r1 r0) 8)) (neg (not (mul (add r0 r3) (sub r0 r3)))))) (shr (or (div r1 r2) (div r2 r1)) -1))",
+        "(shl (add (shr (mod r1 r1) (shr 16 r3)) (xor (div r3 r3) -8)) 1)",
+        "(shl (shl (shl (mod 4 r1) 1) 1) (shl (shr 3 r0) 4))"
+      ],
+      "seed_matches": 0,
+      "lowers_cost": true
+    },
+    {
+      "name": "add_sub_same",
+      "lhs": "(sub (add ?x ?y) ?x)",
+      "rhs": "?y",
+      "lhs_cost": 5,
+      "rhs_cost": 1,
+      "prompt": 0,
+      "seeds": [
+        "(sub (mul (add 25 in1) (shl in1 2)) (mul (shl in1 2) (add 25 in1)))",
+        "(neg (not (shl (mul (add (mul r3 r3) (or r1 255)) (div r2 (shr r1 2))) (xor (shl (or 3 r2) 1) (xor 255 r0)))))",
+        "(add (add in0 (add 8 (mul 12 (shl in1 1)))) (add (sub (add 3 in0) (add in0 3)) 8))",
+        "(shl (shl (add (shl (mul (sub (add in1 2) (add 2 in1)) 4) 4) 11) 3) 4)"
+      ],
+      "seed_matches": 0,
+      "lowers_cost": true
+    },
+    {
+      "name": "add_mul_distribute",
+      "lhs": "(add (mul ?x ?y) (mul ?x ?z))",
+      "rhs": "(mul ?x (add ?y ?z))",
+      "lhs_cost": 11,
+      "rhs_cost": 7,
+      "prompt": 6,
+      "seeds": [
+        "(load (div (shl (xor (shr (shr r1 r1) 4) (neg (not (shl (shr (and 2 r2) 2) (not (neg (mod r3 16))))))) 2) (add (shr (sub r0 r3) (load (or 1 r3))) (shr -5 (shl (mul 255 r0) 2)))))",
+        "(add (add (add (add (add (add (add in0 5) 2) 5) 4) (add (add 5 (shl in0 3)) (add (mul in0 12) 5))) 9) 7)",
+        "(add (add 19 (add 3 (add (add 9 in0) (add in0 7)))) (add (add (add 9 in0) (add in0 7)) 7))",
+        "(and (neg (not (xor (add (not (neg (or r0 r2))) (shr (not r2) 2)) 32))) (add (mul (mod r2 r0) (shl (sub 3 r0) 3)) (sub (shl r2 r3) (shr (and 8 r3) 2))))"
+      ],
+      "seed_matches": 0,
+      "lowers_cost": true
+    },
+    {
+      "name": "sub_add_cancel",
+      "lhs": "(add (sub ?x ?y) ?y)",
+      "rhs": "?x",
+      "lhs_cost": 5,
+      "rhs_cost": 1,
+      "prompt": 8,
+      "seeds": [
+        "(or (sub (and 2 r1) (shl (div 0 r2) 3)) (shl (shl (sub r2 r3) (sub r0 r2)) 2))",
+        "(shl (add (add (add 8 (mul 45 v8)) (mul 72 v4)) 2) 2)",
+        "(mod (sub (xor (shr 4 r0) (div r1 r1)) (load (shr -5 (and r0 r2)))) (sub (sub (mul r2 3) (mod r2 -1)) (or (add 4 r2) (and 8 r0))))",
+        "(load (mul (or (neg r3) (mod r2 r2)) (shl (load (div 255 r1)) 4)))"
+      ],
+      "seed_matches": 0,
+      "lowers_cost": true
+    },
+    {
+      "name": "pow2_mul",
+      "lhs": "(mul ?x (shl 1 ?n))",
+      "rhs": "(shl ?x ?n)",
+      "lhs_cost": 7,
+      "rhs_cost": 3,
+      "prompt": 15,
+      "seeds": [
+        "(sub (shl (mul (div r0 r1) r0) 1) -1)",
+        "(add (sub (mul (add 2 in0) 3) (mul 3 (add 2 in0))) 20)",
+        "(shr (sub (shl (xor (neg (not (and r0 r2))) (add 16 r3)) 1) (mod (load r2) 512)) 2)",
+        "(mod (load (mul (div (load r3) (div (shr r1 r0) 8)) (neg (not (mul (add r0 r3) (sub r0 r3)))))) (shr (or (div r1 r2) (div r2 r1)) -1))"
+      ],
+      "seed_matches": 0,
+      "lowers_cost": true
+    },
+    {
+      "name": "factor_add",
+      "lhs": "(add (mul ?x ?z) (mul ?y ?z))",
+      "rhs": "(mul (add ?x ?y) ?z)",
+      "lhs_cost": 11,
+      "rhs_cost": 7,
+      "prompt": 18,
+      "seeds": [
+        "(add (mul 5 (mul (add (add 2 (add (add 8 in0) 19)) (add (add (add 7 in0) (add in0 3)) 3)) 9)) 10)",
+        "(div (div (mod (shl (div (and r1 r3) -1) 1) (add (xor r1 r3) (shr r2 8))) (shl (mul (sub (mod r1 8) 256) (xor (shl (shl (xor r2 r3) 1) 2) (shr r3 8))) 2)) 8)",
+        "(sub (mul (shl (shl in1 2) 4) (mul in2 7)) (shl (mul (mul in2 7) (shl in1 2)) 4))",
+        "(shl (and (not (neg (or 5 r0))) (and (shl (not (neg (or (sub 4 r0) (mul r1 r3)))) (not (add r1 r2))) (mul 16843009 (not (neg r3))))) 1)"
+      ],
+      "seed_matches": 0,
+      "lowers_cost": true
+    },
+    {
+      "name": "xor_and_cancel",
+      "lhs": "(and ?x (or ?x ?y))",
+      "rhs": "?x",
+      "lhs_cost": 5,
+      "rhs_cost": 1,
+      "prompt": 30,
+      "seeds": [
+        "(div (shr (mod (sub r3 1) (load (shl r3 1))) (xor (sub r2 r0) (or r0 r3))) (and (mul 16 (mul r2 8)) (and (shl r0 3) (shr (shr (shl r1 2) 1) (load (mul 3 r0))))))",
+        "(or (shl (load (shr r1 r0)) (load (mul r1 r3))) (sub (shl (and r2 4) 1) (shl (and 16 r0) 1)))",
+        "(add (add 19 (add 3 (add (add 9 in0) (add in0 7)))) (add (add (add 9 in0) (add in0 7)) 7))",
+        "(neg (not (shl (mul (add (mul r3 r3) (or r1 255)) (div r2 (shr r1 2))) (xor (shl (or 3 r2) 1) (xor 255 r0)))))"
+      ],
+      "seed_matches": 0,
+      "lowers_cost": true
+    },
+    {
+      "name": "sub_add_cancel",
+      "lhs": "(sub (add ?x ?y) (add ?x ?z))",
+      "rhs": "(sub ?y ?z)",
+      "lhs_cost": 7,
+      "rhs_cost": 3,
+      "prompt": 39,
+      "seeds": [
+        "(load (shr (shl (xor (mul r0 r1) (or r0 r3)) 2) (xor (mod r3 4) (not r1))))",
+        "(shl (shr (div (mod 0 (sub r1 r0)) 8) (div (shr r3 r3) (or r0 3))) 4)",
+        "(add 2 (add 6 (sub (add 0 (sub (mul in0 5) (mul 5 in0))) (add (sub (mul in0 5) (mul 5 in0)) 0))))",
+        "(sub (shl (mul (div r0 r1) r0) 1) -1)"
+      ],
+      "seed_matches": 0,
+      "lowers_cost": true
+    },
+    {
+      "name": "sub_mul_distribute",
+      "lhs": "(sub (mul ?x ?y) (mul ?x ?z))",
+      "rhs": "(mul ?x (sub ?y ?z))",
+      "lhs_cost": 11,
+      "rhs_cost": 7,
+      "prompt": 50,
+      "seeds": [
+        "(load (load (mod 255 r0)))",
+        "(not (neg (shl (shr (load (div (div r0 0) 8)) (shr (load 2) (mod r1 r3))) (shl (mod (shl (and r0 3) 1) (shr (shl r2 r3) (shr r2 r0))) 2))))",
+        "(load (div (shl (xor (shr (shr r1 r1) 4) (neg (not (shl (shr (and 2 r2) 2) (not (neg (mod r3 16))))))) 2) (add (shr (sub r0 r3) (load (or 1 r3))) (shr -5 (shl (mul 255 r0) 2)))))",
+        "(sub (sub (add (shl v12 3) (add v12 v12)) (add v12 (add (shl v12 3) v12))) (shl (add v10 v6) 3))"
+      ],
+      "seed_matches": 0,
+      "lowers_cost": true
+    },
+    {
+      "name": "mul_add_distrib",
+      "lhs": "(add (mul ?x ?y) (mul ?y ?z))",
+      "rhs": "(mul ?y (add ?x ?z))",
+      "lhs_cost": 11,
+      "rhs_cost": 7,
+      "prompt": 55,
+      "seeds": [
+        "(sub (load (mul (or r1 -1) (shr r1 255))) (mul (load (shr 8 r0)) (add r2 r3)))",
+        "(shl (and (load (xor (add 8 r0) (sub r2 2))) (div (xor r3 r2) 0)) (or (or (shl (or -3 (mul r0 r2)) 1) r0) (not (neg (mod r1 8)))))",
+        "(or (sub (and 2 r1) (shl (div 0 r2) 3)) (shl (shl (sub r2 r3) (sub r0 r2)) 2))",
+        "(shr (mul r1 (mul r0 (add r2 r1))) (and (sub r0 1) (xor r2 4)))"
+      ],
+      "seed_matches": 0,
+      "lowers_cost": true
+    },
+    {
+      "name": "sub_add_inverse",
+      "lhs": "(add ?x (sub ?y ?x))",
+      "rhs": "?y",
+      "lhs_cost": 5,
+      "rhs_cost": 1,
+      "prompt": 55,
+      "seeds": [
+        "(sub (load (mul (or r1 -1) (shr r1 255))) (mul (load (shr 8 r0)) (add r2 r3)))",
+        "(shl (and (load (xor (add 8 r0) (sub r2 2))) (div (xor r3 r2) 0)) (or (or (shl (or -3 (mul r0 r2)) 1) r0) (not (neg (mod r1 8)))))",
+        "(or (sub (and 2 r1) (shl (div 0 r2) 3)) (shl (shl (sub r2 r3) (sub r0 r2)) 2))",
+        "(shr (mul r1 (mul r0 (add r2 r1))) (and (sub r0 1) (xor r2 4)))"
+      ],
+      "seed_matches": 0,
+      "lowers_cost": true
+    },
+    {
+      "name": "commutative_add_mul",
+      "lhs": "(add (mul ?x ?y) (mul ?z ?x))",
+      "rhs": "(mul ?x (add ?y ?z))",
+      "lhs_cost": 11,
+      "rhs_cost": 7,
+      "prompt": 71,
+      "seeds": [
+        "(sub (sub (add (shl v12 3) (add v12 v12)) (add v12 (add (shl v12 3) v12))) (shl (add v10 v6) 3))",
+        "(div 0 (neg (div r0 r3)))",
+        "(or (shl (and (xor (shl r2 r3) (shl (div r2 r1) 2)) (add (add r1 8) (div r1 r2))) 3) (load (add (sub -1 r1) (mod r1 255))))",
+        "(sub (mul (add 25 in1) (shl in1 2)) (mul (shl in1 2) (add 25 in1)))"
+      ],
+      "seed_matches": 0,
+      "lowers_cost": true
+    },
+    {
+      "name": "xor_commutative",
+      "lhs": "(xor (xor ?x ?y) ?x)",
+      "rhs": "?y",
+      "lhs_cost": 5,
+      "rhs_cost": 1,
+      "prompt": 74,
+      "seeds": [
+        "(sub (mul (shl (sub (add in0 v0) (add v0 in0)) 3) 76) (mul 608 (sub (add in0 v0) (add v0 in0))))",
+        "(or (shl (sub r2 3) (load (load 4))) (mod (load (mul r3 r3)) (div (mod 2 r0) 16)))",
+        "(mod (load (mul (div (load r3) (div (shr r1 r0) 8)) (neg (not (mul (add r0 r3) (sub r0 r3)))))) (shr (or (div r1 r2) (div r2 r1)) -1))",
+        "(mul (div (mod r1 r2) (not r1)) (not (shl (or r2 r3) 1)))"
+      ],
+      "seed_matches": 0,
+      "lowers_cost": true
+    },
+    {
+      "name": "inner_add_cancel",
+      "lhs": "(add (sub ?x 3) 3)",
+      "rhs": "?x",
+      "lhs_cost": 5,
+      "rhs_cost": 1,
+      "prompt": 82,
+      "seeds": [
+        "(add (add in0 (add 8 (mul 12 (shl in1 1)))) (add (sub (add 3 in0) (add in0 3)) 8))",
+        "(shl (sub (add (add (add (add 7 v1) v2) 3) (sub (add v0 2) (add 2 v0))) (add (add (add (sub (add v0 2) (add 2 v0)) (add 7 v1)) v2) 3)) 2)",
+        "(sub (add (add 8 (shl (shl in0 4) 2)) (add 3 (add 15 (add (mul in0 8) 4)))) (add (add (shl (shl in0 4) 2) (add (add 3 15) (add (mul in0 8) 4))) 8))",
+        "(sub (mul (shl (shl in1 2) 4) (mul in2 7)) (shl (mul (mul in2 7) (shl in1 2)) 4))"
+      ],
+      "seed_matches": 0,
+      "lowers_cost": true
+    },
+    {
+      "name": "sub_add_cancel",
+      "lhs": "(add (sub ?x 2) 2)",
+      "rhs": "?x",
+      "lhs_cost": 5,
+      "rhs_cost": 1,
+      "prompt": 82,
+      "seeds": [
+        "(add (add in0 (add 8 (mul 12 (shl in1 1)))) (add (sub (add 3 in0) (add in0 3)) 8))",
+        "(shl (sub (add (add (add (add 7 v1) v2) 3) (sub (add v0 2) (add 2 v0))) (add (add (add (sub (add v0 2) (add 2 v0)) (add 7 v1)) v2) 3)) 2)",
+        "(sub (add (add 8 (shl (shl in0 4) 2)) (add 3 (add 15 (add (mul in0 8) 4)))) (add (add (shl (shl in0 4) 2) (add (add 3 15) (add (mul in0 8) 4))) 8))",
+        "(sub (mul (shl (shl in1 2) 4) (mul in2 7)) (shl (mul (mul in2 7) (shl in1 2)) 4))"
+      ],
+      "seed_matches": 0,
+      "lowers_cost": true
+    },
+    {
+      "name": "identities_with_negate",
+      "lhs": "(neg (add ?x (neg ?x)))",
+      "rhs": "0",
+      "lhs_cost": 5,
+      "rhs_cost": 1,
+      "prompt": 99,
+      "seeds": [
+        "(sub (add (add (mul 3 v1) 85) 1) (add (add 1 (mul 3 v1)) 85))",
+        "(mul 8 (shl (sub 0 (mul 7 (mul 0 (add (add 0 (add (sub (mul in0 5) (mul 5 in0)) 2)) 4)))) 2))",
+        "(neg (shr (shl (mul (xor r1 r2) (mul (mul r0 3) (xor (shl (shl (sub r3 r2) 1) 2) 0))) 1) (and (mod (load r3) (mod r2 r1)) (shr (shl (xor 255 r0) 3) (div r3 r1)))))",
+        "(sub (shl (mul (div r0 r1) r0) 1) -1)"
+      ],
+      "seed_matches": 0,
+      "lowers_cost": true
+    },
+    {
+      "name": "sub_mul_cancel",
+      "lhs": "(add (sub (mul ?x ?y) ?z) ?z)",
+      "rhs": "(mul ?x ?y)",
+      "lhs_cost": 9,
+      "rhs_cost": 5,
+      "prompt": 108,
+      "seeds": [
+        "(sub (add (add v2 6) (mul 64 v27)) (add (mul 64 v27) (add v2 6)))",
+        "(mod (shl (sub 3 (or (or r1 255) r0)) 4) (mod (not (or r3 r0)) (xor (add r1 1) (shr 255 r3))))",
+        "(shl (shr (div (mod 0 (sub r1 r0)) 8) (div (shr r3 r3) (or r0 3))) 4)",
+        "(add in0 (shl (sub (add 1 (add in2 (add 6 (add in0 9)))) (add 6 (add (add in0 9) (add 1 in2)))) 2))"
+      ],
+      "seed_matches": 0,
+      "lowers_cost": true
+    },
+    {
+      "name": "factor_add",
+      "lhs": "(add (mul ?x ?y) (mul ?z ?y))",
+      "rhs": "(mul ?y (add ?x ?z))",
+      "lhs_cost": 11,
+      "rhs_cost": 7,
+      "prompt": 121,
+      "seeds": [
+        "(sub (mul -6 (add (add 6 (add (add in1 in1) 3)) 3)) (mul (add (add 6 (add (add in1 in1) 3)) 3) -6))",
+        "(shl (add (add (add 8 (mul 45 v8)) (mul 72 v4)) 2) 2)",
+        "(shl (add (shr (mod r1 r1) (shr 16 r3)) (xor (div r3 r3) -8)) 1)",
+        "(sub (load (mul (or r1 -1) (shr r1 255))) (mul (load (shr 8 r0)) (add r2 r3)))"
+      ],
+      "seed_matches": 0,
+      "lowers_cost": true
+    },
+    {
+      "name": "add_and_cancel",
+      "lhs": "(and (or ?x ?y) ?y)",
+      "rhs": "?y",
+      "lhs_cost": 5,
+      "rhs_cost": 1,
+      "prompt": 122,
+      "seeds": [
+        "(sub (sub (add (add (add (mul 14 v0) (mul 4 (shl in1 2))) 7) 4) (add (add (add (mul 4 (shl in1 2)) 7) 4) (mul 14 v0))) 0)",
+        "(shl (shl (xor (neg (not (sub (shr 8 r2) (div r2 r2)))) (xor (div r3 255) (and 2 r0))) 1) 1)",
+        "(sub (add (add v2 6) (mul 64 v27)) (add (mul 64 v27) (add v2 6)))",
+        "(and (xor (shl (sub 2 r0) 3) (load r0)) (load (neg (div (or r3 255) 8))))"
+      ],
+      "seed_matches": 0,
+      "lowers_cost": true
+    },
+    {
+      "name": "sub_and_cancel",
+      "lhs": "(or (and ?x ?y) ?y)",
+      "rhs": "?y",
+      "lhs_cost": 5,
+      "rhs_cost": 1,
+      "prompt": 122,
+      "seeds": [
+        "(sub (sub (add (add (add (mul 14 v0) (mul 4 (shl in1 2))) 7) 4) (add (add (add (mul 4 (shl in1 2)) 7) 4) (mul 14 v0))) 0)",
+        "(shl (shl (xor (neg (not (sub (shr 8 r2) (div r2 r2)))) (xor (div r3 255) (and 2 r0))) 1) 1)",
+        "(sub (add (add v2 6) (mul 64 v27)) (add (mul 64 v27) (add v2 6)))",
+        "(and (xor (shl (sub 2 r0) 3) (load r0)) (load (neg (div (or r3 255) 8))))"
+      ],
+      "seed_matches": 0,
+      "lowers_cost": true
+    },
+    {
+      "name": "xor_double",
+      "lhs": "(xor ?x (xor ?x ?y))",
+      "rhs": "?y",
+      "lhs_cost": 5,
+      "rhs_cost": 1,
+      "prompt": 130,
+      "seeds": [
+        "(mod (shl (add (add (div 8 r2) (shl (shl (shr 1 r2) 1) 1)) (xor (shl (add r1 r1) 1) (shl r3 1))) 4) (add (shr (mul 6 (mul r1 r0)) 1) (load (xor 4 (add 16 r1)))))",
+        "(shl (shr (sub (div r0 r3) 1) (div (shr r3 255) (mod 2 r0))) 3)",
+        "(and (shl (load (div r0 1)) (xor r3 (div r1 r1))) (mod 2 (div (mul r2 r0) (load r1))))",
+        "(shl (sub (add (add (add (add 7 v1) v2) 3) (sub (add v0 2) (add 2 v0))) (add (add (add (sub (add v0 2) (add 2 v0)) (add 7 v1)) v2) 3)) 2)"
+      ],
+      "seed_matches": 0,
+      "lowers_cost": true
+    },
+    {
+      "name": "add_neg_cancel",
+      "lhs": "(add ?x (neg ?x))",
+      "rhs": "0",
+      "lhs_cost": 4,
+      "rhs_cost": 1,
+      "prompt": 43,
+      "seeds": [
+        "(shr (shr (sub 3 (neg r0)) (sub (shl r3 3) 15)) (not (neg (div r2 r1))))",
+        "(sub (mul -6 (add (add 6 (add (add in1 in1) 3)) 3)) (mul (add (add 6 (add (add in1 in1) 3)) 3) -6))",
+        "(mul 2 (shl (sub (shl (shl (or 0 (and (or r3 0) (and 255 r3))) 0) 1) (neg (not 0))) 1))",
+        "(add (sub (mul (add 2 in0) 3) (mul 3 (add 2 in0))) 20)"
+      ],
+      "seed_matches": 0,
+      "lowers_cost": true
+    },
+    {
+      "name": "simplify_mul_const",
+      "lhs": "(mul ?x (add 0 ?y))",
+      "rhs": "(mul ?x ?y)",
+      "lhs_cost": 7,
+      "rhs_cost": 5,
+      "prompt": 10,
+      "seeds": [
+        "(sub (mul (add 25 in1) (shl in1 2)) (mul (shl in1 2) (add 25 in1)))",
+        "(load (add (not (shl (mul (or 16 r2) 0) (not (and (xor 4 r0) (or 3 r1))))) 0))",
+        "(sub (add (mul (mul 4 2) (shl (add 0 3) 3)) (mul 2 640)) (add (mul 2 640) (mul (mul 4 2) (shl (add 0 3) 3))))",
+        "(mul (div (mod r1 r2) (not r1)) (not (shl (or r2 r3) 1)))"
+      ],
+      "seed_matches": 0,
+      "lowers_cost": true
+    },
+    {
+      "name": "xor_double_neg",
+      "lhs": "(xor ?x (neg (neg ?y)))",
+      "rhs": "(xor ?x ?y)",
+      "lhs_cost": 5,
+      "rhs_cost": 3,
+      "prompt": 18,
+      "seeds": [
+        "(add (mul 5 (mul (add (add 2 (add (add 8 in0) 19)) (add (add (add 7 in0) (add in0 3)) 3)) 9)) 10)",
+        "(div (div (mod (shl (div (and r1 r3) -1) 1) (add (xor r1 r3) (shr r2 8))) (shl (mul (sub (mod r1 8) 256) (xor (shl (shl (xor r2 r3) 1) 2) (shr r3 8))) 2)) 8)",
+        "(sub (mul (shl (shl in1 2) 4) (mul in2 7)) (shl (mul (mul in2 7) (shl in1 2)) 4))",
+        "(shl (and (not (neg (or 5 r0))) (and (shl (not (neg (or (sub 4 r0) (mul r1 r3)))) (not (add r1 r2))) (mul 16843009 (not (neg r3))))) 1)"
+      ],
+      "seed_matches": 0,
+      "lowers_cost": true
+    },
+    {
+      "name": "shift_left_add",
+      "lhs": "(add (shl ?x ?y) (shl ?z ?y))",
+      "rhs": "(shl (add ?x ?z) ?y)",
+      "lhs_cost": 7,
+      "rhs_cost": 5,
+      "prompt": 34,
+      "seeds": [
+        "(and 0 (mul (div (shr (sub (shl (shl r1 r0) 2) (shl r3 r2)) (div (add r1 -1) (shl (xor r2 4) 1))) 8) (add (sub (mul -1 r2) (mul 4 r2)) (not (neg (div (xor r3 r2) r2))))))",
+        "(div (shr (mod (sub r3 1) (load (shl r3 1))) (xor (sub r2 r0) (or r0 r3))) (and (mul 16 (mul r2 8)) (and (shl r0 3) (shr (shr (shl r1 2) 1) (load (mul 3 r0))))))",
+        "(div 0 (neg (div r0 r3)))",
+        "(sub (add (add (sub (add in0 in1) (add in1 in0)) 8) 5) (add 13 (sub (add in0 in1) (add in1 in0))))"
+      ],
+      "seed_matches": 0,
+      "lowers_cost": true
+    },
+    {
+      "name": "and_shl_or",
+      "lhs": "(or (and ?x (shl ?y ?z)) (and ?x ?y))",
+      "rhs": "(and ?x (or ?y (shl ?y ?z)))",
+      "lhs_cost": 9,
+      "rhs_cost": 7,
+      "prompt": 34,
+      "seeds": [
+        "(and 0 (mul (div (shr (sub (shl (shl r1 r0) 2) (shl r3 r2)) (div (add r1 -1) (shl (xor r2 4) 1))) 8) (add (sub (mul -1 r2) (mul 4 r2)) (not (neg (div (xor r3 r2) r2))))))",
+        "(div (shr (mod (sub r3 1) (load (shl r3 1))) (xor (sub r2 r0) (or r0 r3))) (and (mul 16 (mul r2 8)) (and (shl r0 3) (shr (shr (shl r1 2) 1) (load (mul 3 r0))))))",
+        "(div 0 (neg (div r0 r3)))",
+        "(sub (add (add (sub (add in0 in1) (add in1 in0)) 8) 5) (add 13 (sub (add in0 in1) (add in1 in0))))"
+      ],
+      "seed_matches": 0,
+      "lowers_cost": true
+    },
+    {
+      "name": "factor_mul",
+      "lhs": "(add (mul (add ?x ?y) ?z) 0)",
+      "rhs": "(mul (add ?x ?y) ?z)",
+      "lhs_cost": 9,
+      "rhs_cost": 7,
+      "prompt": 68,
+      "seeds": [
+        "(add (add 8 (add 9 (mul (add (add (mul 3 (mul in0 5)) 5) 1) 1))) 0)",
+        "(mul (div (mod r1 r2) (not r1)) (not (shl (or r2 r3) 1)))",
+        "(sub (add (add (mul 3 v1) 85) 1) (add (add 1 (mul 3 v1)) 85))",
+        "(shl (add (add (add 8 (mul 45 v8)) (mul 72 v4)) 2) 2)"
+      ],
+      "seed_matches": 0,
+      "lowers_cost": true
+    },
+    {
+      "name": "identity_shift",
+      "lhs": "(or (shl ?x ?y) 0)",
+      "rhs": "(shl ?x ?y)",
+      "lhs_cost": 5,
+      "rhs_cost": 3,
+      "prompt": 82,
+      "seeds": [
+        "(add (add in0 (add 8 (mul 12 (shl in1 1)))) (add (sub (add 3 in0) (add in0 3)) 8))",
+        "(shl (sub (add (add (add (add 7 v1) v2) 3) (sub (add v0 2) (add 2 v0))) (add (add (add (sub (add v0 2) (add 2 v0)) (add 7 v1)) v2) 3)) 2)",
+        "(sub (add (add 8 (shl (shl in0 4) 2)) (add 3 (add 15 (add (mul in0 8) 4)))) (add (add (shl (shl in0 4) 2) (add (add 3 15) (add (mul in0 8) 4))) 8))",
+        "(sub (mul (shl (shl in1 2) 4) (mul in2 7)) (shl (mul (mul in2 7) (shl in1 2)) 4))"
+      ],
+      "seed_matches": 0,
+      "lowers_cost": true
+    },
+    {
+      "name": "shl_const",
+      "lhs": "(shl ?x 32)",
+      "rhs": "?x",
+      "lhs_cost": 3,
+      "rhs_cost": 1,
+      "prompt": 94,
+      "seeds": [
+        "(add (load 0) (load (and (div (and (and r3 r2) (mod r0 r0)) 16) (shl (mul r3 255) (shl (div r3 r2) 1)))))",
+        "(mul 56 (sub (add (mul 3 (mul v3 9)) (mul in1 v1)) (add (mul in1 v1) (mul 3 (mul v3 9)))))",
+        "(and 0 (mul (div (shr (sub (shl (shl r1 r0) 2) (shl r3 r2)) (div (add r1 -1) (shl (xor r2 4) 1))) 8) (add (sub (mul -1 r2) (mul 4 r2)) (not (neg (div (xor r3 r2) r2))))))",
+        "(add (div (shr (mul (shl (div (shr (sub r1 3) 0) 0) 1) (sub 8 (shl (shl r0 255) 1))) 0) 0) (shl 0 3))"
+      ],
+      "seed_matches": 0,
+      "lowers_cost": true
+    },
+    {
+      "name": "and_const",
+      "lhs": "(and ?x -1)",
+      "rhs": "?x",
+      "lhs_cost": 3,
+      "rhs_cost": 1,
+      "prompt": 94,
+      "seeds": [
+        "(add (load 0) (load (and (div (and (and r3 r2) (mod r0 r0)) 16) (shl (mul r3 255) (shl (div r3 r2) 1)))))",
+        "(mul 56 (sub (add (mul 3 (mul v3 9)) (mul in1 v1)) (add (mul in1 v1) (mul 3 (mul v3 9)))))",
+        "(and 0 (mul (div (shr (sub (shl (shl r1 r0) 2) (shl r3 r2)) (div (add r1 -1) (shl (xor r2 4) 1))) 8) (add (sub (mul -1 r2) (mul 4 r2)) (not (neg (div (xor r3 r2) r2))))))",
+        "(add (div (shr (mul (shl (div (shr (sub r1 3) 0) 0) 1) (sub 8 (shl (shl r0 255) 1))) 0) 0) (shl 0 3))"
+      ],
+      "seed_matches": 0,
+      "lowers_cost": true
+    },
+    {
+      "name": "shl_and",
+      "lhs": "(and (shl ?x ?y) (shl ?z ?y))",
+      "rhs": "(shl (and ?x ?z) ?y)",
+      "lhs_cost": 7,
+      "rhs_cost": 5,
+      "prompt": 121,
+      "seeds": [
+        "(sub (mul -6 (add (add 6 (add (add in1 in1) 3)) 3)) (mul (add (add 6 (add (add in1 in1) 3)) 3) -6))",
+        "(shl (add (add (add 8 (mul 45 v8)) (mul 72 v4)) 2) 2)",
+        "(shl (add (shr (mod r1 r1) (shr 16 r3)) (xor (div r3 r3) -8)) 1)",
+        "(sub (load (mul (or r1 -1) (shr r1 255))) (mul (load (shr 8 r0)) (add r2 r3)))"
+      ],
+      "seed_matches": 0,
+      "lowers_cost": true
+    },
+    {
+      "name": "and_const_with_or",
+      "lhs": "(or (and ?x ?a) (and ?x ?b))",
+      "rhs": "(and ?x (or ?a ?b))",
+      "lhs_cost": 7,
+      "rhs_cost": 5,
+      "prompt": 128,
+      "seeds": [
+        "(shl (div (shr (shl r2 r0) 2) (add (shr r0 r2) (sub r1 r2))) (shr 3 (sub (shl (add 16 r0) 3) (neg (not (div 16 r3))))))",
+        "(or (shl (and (xor (shl r2 r3) (shl (div r2 r1) 2)) (add (add r1 8) (div r1 r2))) 3) (load (add (sub -1 r1) (mod r1 255))))",
+        "(div (shr (shl (not (shl (div r1 r0) 1)) 2) (xor (or r3 r1) (xor r3 3))) (not (div (mod r0 r0) 0)))",
+        "(div 0 (xor (shl r3 1) (shl (div r0 0) 1)))"
+      ],
+      "seed_matches": 0,
+      "lowers_cost": true
+    },
+    {
+      "name": "div_add_cancel",
+      "lhs": "(add (div ?x ?y) 0)",
+      "rhs": "(div ?x ?y)",
+      "lhs_cost": 14,
+      "rhs_cost": 12,
+      "prompt": 140,
+      "seeds": [
+        "(shl (shl (shl (mod 4 r1) 1) 1) (shl (shr 3 r0) 4))",
+        "(load (add (not (shl (mul (or 16 r2) 0) (not (and (xor 4 r0) (or 3 r1))))) 0))",
+        "(shl (add in0 (add (shl (sub (add 10 in0) (add in0 10)) 4) (add 6 2))) 3)",
+        "(div (shr (shl (not (shl (div r1 r0) 1)) 2) (xor (or r3 r1) (xor r3 3))) (not (div (mod r0 r0) 0)))"
+      ],
+      "seed_matches": 0,
+      "lowers_cost": true
+    },
+    {
+      "name": "add_neg_cancel",
+      "lhs": "(sub ?x (neg ?x))",
+      "rhs": "(shl ?x 1)",
+      "lhs_cost": 4,
+      "rhs_cost": 3,
+      "prompt": 40,
+      "seeds": [
+        "(div (mod (shl (add -256 (add r0 r1)) 1) (add (shl r3 1) -8)) (or (mul (xor -1 r0) (xor r3 r0)) (neg (shr r2 r0))))",
+        "(sub (mul (add 25 in1) (shl in1 2)) (mul (shl in1 2) (add 25 in1)))",
+        "(shr (div (mod (load (or r1 r2)) 0) (shl (shl (mod r1 4) (shl r0 r2)) 1)) 1)",
+        "(shl (add in0 (add (shl (sub (add 10 in0) (add in0 10)) 4) (add 6 2))) 3)"
+      ],
+      "seed_matches": 0,
+      "lowers_cost": true
+    },
+    {
+      "name": "neg_not_identities",
+      "lhs": "(or (not ?x) (not ?y))",
+      "rhs": "(not (and ?x ?y))",
+      "lhs_cost": 5,
+      "rhs_cost": 4,
+      "prompt": 132,
+      "seeds": [
+        "(load (mul (or (neg r3) (mod r2 r2)) (shl (load (div 255 r1)) 4)))",
+        "(or (shl (sub r2 3) (load (load 4))) (mod (load (mul r3 r3)) (div (mod 2 r0) 16)))",
+        "(mul (shl (load (neg r1)) 1) (neg (load (shl r1 r2))))",
+        "(add 2 (add 6 (sub (add 0 (sub (mul in0 5) (mul 5 in0))) (add (sub (mul in0 5) (mul 5 in0)) 0))))"
+      ],
+      "seed_matches": 0,
+      "lowers_cost": true
+    },
+    {
+      "name": "or_cancel",
+      "lhs": "(and (or ?x ?y) (not ?x))",
+      "rhs": "(not (or ?x (not ?y)))",
+      "lhs_cost": 6,
+      "rhs_cost": 5,
+      "prompt": 144,
+      "seeds": [
+        "(or (xor r2 (shl r1 r0)) (load (mod r1 r3)))",
+        "(neg (not (mod (xor (mod r3 r0) (shr r0 8)) (shr (shl (mod r3 r0) 3) (shl (add r0 r2) 1)))))",
+        "(not (neg (shl (shr (load (div (div r0 0) 8)) (shr (load 2) (mod r1 r3))) (shl (mod (shl (and r0 3) 1) (shr (shl r2 r3) (shr r2 r0))) 2))))",
+        "(neg (not (shl (mul (add (mul r3 r3) (or r1 255)) (div r2 (shr r1 2))) (xor (shl (or 3 r2) 1) (xor 255 r0)))))"
+      ],
+      "seed_matches": 0,
+      "lowers_cost": true
+    },
+    {
+      "name": "shl_const",
+      "lhs": "(shl ?x 32)",
+      "rhs": "(shr ?x 0)",
+      "lhs_cost": 3,
+      "rhs_cost": 3,
+      "prompt": 13,
+      "seeds": [
+        "(add (div (shl (mul r0 r2) 1) 16) (mod (div r2 3) (load (and r0 r1))))",
+        "(shr (sub (shl (xor (neg (not (and r0 r2))) (add 16 r3)) 1) (mod (load r2) 512)) 2)",
+        "(shl (sub (add (add (add (add 7 v1) v2) 3) (sub (add v0 2) (add 2 v0))) (add (add (add (sub (add v0 2) (add 2 v0)) (add 7 v1)) v2) 3)) 2)",
+        "(shr (mod (mod r2 r2) (load (or r1 8))) (mul r0 120))"
+      ],
+      "seed_matches": 0,
+      "lowers_cost": false
+    },
+    {
+      "name": "add_mul_const",
+      "lhs": "(mul ?x (add 256 256))",
+      "rhs": "(shl (mul ?x 256) 1)",
+      "lhs_cost": 7,
+      "rhs_cost": 7,
+      "prompt": 29,
+      "seeds": [
+        "(shr (sub (shl (xor (neg (not (and r0 r2))) (add 16 r3)) 1) (mod (load r2) 512)) 2)",
+        "(neg (shl (xor (shl (mod r2 r3) (mul r2 r0)) (sub -250 (mul r0 r0))) 1))",
+        "(shl (shl (mod (div r0 r3) (mod r3 r3)) (mul (xor r0 r1) 7)) 1)",
+        "(shr (mod (mod r2 r2) (load (or r1 8))) (mul r0 120))"
+      ],
+      "seed_matches": 0,
+      "lowers_cost": false
+    },
+    {
+      "name": "sub_add_cancel",
+      "lhs": "(sub (add ?x ?y) (sub ?z ?w))",
+      "rhs": "(add (sub ?x ?z) (add ?y ?w))",
+      "lhs_cost": 7,
+      "rhs_cost": 7,
+      "prompt": 29,
+      "seeds": [
+        "(shr (sub (shl (xor (neg (not (and r0 r2))) (add 16 r3)) 1) (mod (load r2) 512)) 2)",
+        "(neg (shl (xor (shl (mod r2 r3) (mul r2 r0)) (sub -250 (mul r0 r0))) 1))",
+        "(shl (shl (mod (div r0 r3) (mod r3 r3)) (mul (xor r0 r1) 7)) 1)",
+        "(shr (mod (mod r2 r2) (load (or r1 8))) (mul r0 120))"
+      ],
+      "seed_matches": 0,
+      "lowers_cost": false
+    },
+    {
+      "name": "and_or_distrib",
+      "lhs": "(or (and ?x ?y) ?z)",
+      "rhs": "(or ?z (and ?x ?y))",
+      "lhs_cost": 5,
+      "rhs_cost": 5,
+      "prompt": 54,
+      "seeds": [
+        "(load (add (not (shl (mul (or 16 r2) 0) (not (and (xor 4 r0) (or 3 r1))))) 0))",
+        "(div (mod (shl (mul 8 r0) r1) (div (mul -1 r0) (or r2 r0))) (shl (mod (sub (and r0 r3) (xor 4 r0)) (or r2 (or 255 (and r2 2)))) 3))",
+        "(sub (and (mod (or r1 r2) (div r3 r2)) (div (div r0 r1) (div (mul r1 -1) 8))) (and (sub 0 (mul r1 r2)) (xor (not r0) (and r2 255))))",
+        "(mod (load (load (load (div (sub r0 r2) 0)))) (sub (and (or r1 r0) (and r1 4)) (shl (mod (shl (not r2) 1) (shl r3 r2)) 4)))"
+      ],
+      "seed_matches": 0,
+      "lowers_cost": false
+    },
+    {
+      "name": "xor_assoc",
+      "lhs": "(xor (xor ?x ?y) ?z)",
+      "rhs": "(xor ?x (xor ?y ?z))",
+      "lhs_cost": 5,
+      "rhs_cost": 5,
+      "prompt": 96,
+      "seeds": [
+        "(shl (shl (add (shl (mul (sub (add in1 2) (add 2 in1)) 4) 4) 11) 3) 4)",
+        "(shl (add (mul (shl r3 4) (shr (sub r0 r1) (xor r0 r3))) (xor (and -2147483648 (div 255 r2)) r3)) 4)",
+        "(sub (shl (add in1 (add v0 11)) 3) (add 5 (add 7 (mul 40 v2))))",
+        "(not (div (shr (or r2 2) (mul r0 r3)) (and 512 (load (xor r3 16)))))"
+      ],
+      "seed_matches": 0,
+      "lowers_cost": false
+    },
+    {
+      "name": "shl_sub_const",
+      "lhs": "(sub (add (shl ?x 5) ?a) (add ?b (shl ?c 3)))",
+      "rhs": "(sub (add (shl ?x 5) ?a) (add (shl ?c 3) ?b))",
+      "lhs_cost": 11,
+      "rhs_cost": 11,
+      "prompt": 113,
+      "seeds": [
+        "(and (neg (not (xor (add (not (neg (or r0 r2))) (shr (not r2) 2)) 32))) (add (mul (mod r2 r0) (shl (sub 3 r0) 3)) (sub (shl r2 r3) (shr (and 8 r3) 2))))",
+        "(load (shl (shl (sub (div (sub 1 r3) 32) (shl (div (neg r2) (sub 2 r2)) 3)) (shl (shr (add (mul (shr (or r1 1) 2) r2) 0) (mul (xor 2 r3) (add r1 r0))) 3)) 1))",
+        "(mul (mul (mul (add (add (mul 7 (mul in2 5)) in0) 15) 7) in2) 5)",
+        "(add 2 (add 6 (sub (add 0 (sub (mul in0 5) (mul 5 in0))) (add (sub (mul in0 5) (mul 5 in0)) 0))))"
+      ],
+      "seed_matches": 0,
+      "lowers_cost": false
+    },
+    {
+      "name": "expose_constant",
+      "lhs": "(add (sub ?x 1) ?y)",
+      "rhs": "(add ?x (sub ?y 1))",
+      "lhs_cost": 5,
+      "rhs_cost": 5,
+      "prompt": 125,
+      "seeds": [
+        "(shl (div (shr (shl r2 r0) 2) (add (shr r0 r2) (sub r1 r2))) (shr 3 (sub (shl (add 16 r0) 3) (neg (not (div 16 r3))))))",
+        "(sub (add (mul (mul 4 2) (shl (add 0 3) 3)) (mul 2 640)) (add (mul 2 640) (mul (mul 4 2) (shl (add 0 3) 3))))",
+        "(add (add 7 (add (add (shl (add (add (add (add 1 (shl (shl in2 1) 2)) (add (sub (mul in0 in2) (mul in2 in0)) 5)) 9) 6) 4) 3) 6)) (add (add in0 6) 7))",
+        "(add 10 (mul (mul 3 (sub (mul in0 in1) (mul in1 in0))) 5))"
+      ],
+      "seed_matches": 0,
+      "lowers_cost": false
+    },
+    {
+      "name": "pull_out_common_factor",
+      "lhs": "(mul (add (shl ?x 2) 3) 4)",
+      "rhs": "(add (mul (shl ?x 2) 4) 12)",
+      "lhs_cost": 9,
+      "rhs_cost": 9,
+      "prompt": 125,
+      "seeds": [
+        "(shl (div (shr (shl r2 r0) 2) (add (shr r0 r2) (sub r1 r2))) (shr 3 (sub (shl (add 16 r0) 3) (neg (not (div 16 r3))))))",
+        "(sub (add (mul (mul 4 2) (shl (add 0 3) 3)) (mul 2 640)) (add (mul 2 640) (mul (mul 4 2) (shl (add 0 3) 3))))",
+        "(add (add 7 (add (add (shl (add (add (add (add 1 (shl (shl in2 1) 2)) (add (sub (mul in0 in2) (mul in2 in0)) 5)) 9) 6) 4) 3) 6)) (add (add in0 6) 7))",
+        "(add 10 (mul (mul 3 (sub (mul in0 in1) (mul in1 in0))) 5))"
+      ],
+      "seed_matches": 0,
+      "lowers_cost": false
+    },
+    {
+      "name": "negate_mul",
+      "lhs": "(neg (mul ?x ?y))",
+      "rhs": "(mul (neg ?x) ?y)",
+      "lhs_cost": 6,
+      "rhs_cost": 6,
+      "prompt": 127,
+      "seeds": [
+        "(sub (mul 160 (shl (shl (shl in1 1) 2) 2)) (mul (shl (shl in1 1) 2) 640))",
+        "(add (add (add (add (add (add (add in0 5) 2) 5) 4) (add (add 5 (shl in0 3)) (add (mul in0 12) 5))) 9) 7)",
+        "(shl (shl (load (and (div (shl (and r0 r3) 1) (mod r3 r0)) (mod (shl r2 8) (div 4 r0)))) (or (not (load (shr r0 r1))) (xor (not r0) (sub r1 r0)))) 1)",
+        "(neg (mod (or (neg (mod r1 r1)) (add (add r2 8) (div r0 r2))) (and (mul 7 (mod 0 r1)) (div 0 (shl (shl r0 8) 2)))))"
+      ],
+      "seed_matches": 0,
+      "lowers_cost": false
+    },
+    {
+      "name": "add_const_to_mul",
+      "lhs": "(mul ?x (add ?y 1))",
+      "rhs": "(add (mul ?x ?y) ?x)",
+      "lhs_cost": 7,
+      "rhs_cost": 7,
+      "prompt": 128,
+      "seeds": [
+        "(shl (div (shr (shl r2 r0) 2) (add (shr r0 r2) (sub r1 r2))) (shr 3 (sub (shl (add 16 r0) 3) (neg (not (div 16 r3))))))",
+        "(or (shl (and (xor (shl r2 r3) (shl (div r2 r1) 2)) (add (add r1 8) (div r1 r2))) 3) (load (add (sub -1 r1) (mod r1 255))))",
+        "(div (shr (shl (not (shl (div r1 r0) 1)) 2) (xor (or r3 r1) (xor r3 3))) (not (div (mod r0 r0) 0)))",
+        "(div 0 (xor (shl r3 1) (shl (div r0 0) 1)))"
+      ],
+      "seed_matches": 0,
+      "lowers_cost": false
+    },
+    {
+      "name": "sub_const_from_mul",
+      "lhs": "(mul ?x (sub ?y 1))",
+      "rhs": "(sub (mul ?x ?y) ?x)",
+      "lhs_cost": 7,
+      "rhs_cost": 7,
+      "prompt": 128,
+      "seeds": [
+        "(shl (div (shr (shl r2 r0) 2) (add (shr r0 r2) (sub r1 r2))) (shr 3 (sub (shl (add 16 r0) 3) (neg (not (div 16 r3))))))",
+        "(or (shl (and (xor (shl r2 r3) (shl (div r2 r1) 2)) (add (add r1 8) (div r1 r2))) 3) (load (add (sub -1 r1) (mod r1 255))))",
+        "(div (shr (shl (not (shl (div r1 r0) 1)) 2) (xor (or r3 r1) (xor r3 3))) (not (div (mod r0 r0) 0)))",
+        "(div 0 (xor (shl r3 1) (shl (div r0 0) 1)))"
+      ],
+      "seed_matches": 0,
+      "lowers_cost": false
+    },
+    {
+      "name": "double_add",
+      "lhs": "(add (add ?x ?y) ?y)",
+      "rhs": "(add (mul 2 ?y) ?x)",
+      "lhs_cost": 5,
+      "rhs_cost": 7,
+      "prompt": 50,
+      "seeds": [
+        "(load (load (mod 255 r0)))",
+        "(not (neg (shl (shr (load (div (div r0 0) 8)) (shr (load 2) (mod r1 r3))) (shl (mod (shl (and r0 3) 1) (shr (shl r2 r3) (shr r2 r0))) 2))))",
+        "(load (div (shl (xor (shr (shr r1 r1) 4) (neg (not (shl (shr (and 2 r2) 2) (not (neg (mod r3 16))))))) 2) (add (shr (sub r0 r3) (load (or 1 r3))) (shr -5 (shl (mul 255 r0) 2)))))",
+        "(sub (sub (add (shl v12 3) (add v12 v12)) (add v12 (add (shl v12 3) v12))) (shl (add v10 v6) 3))"
+      ],
+      "seed_matches": 0,
+      "lowers_cost": false
+    },
+    {
+      "name": "assoc_mul",
+      "lhs": "(mul (add ?x (mul ?y ?z)) ?w)",
+      "rhs": "(add (mul ?x ?w) (mul (mul ?y ?z) ?w))",
+      "lhs_cost": 11,
+      "rhs_cost": 15,
+      "prompt": 33,
+      "seeds": [
+        "(sub (mul (shl (shl in1 2) 4) (mul in2 7)) (shl (mul (mul in2 7) (shl in1 2)) 4))",
+        "(shr (shr (sub 3 (neg r0)) (sub (shl r3 3) 15)) (not (neg (div r2 r1))))",
+        "(add (div (shr (mul (shl (div (shr (sub r1 3) 0) 0) 1) (sub 8 (shl (shl r0 255) 1))) 0) 0) (shl 0 3))",
+        "(mul (div (mod r1 r2) (not r1)) (not (shl (or r2 r3) 1)))"
+      ],
+      "seed_matches": 0,
+      "lowers_cost": false
+    },
+    {
+      "name": "shl_mul_assoc",
+      "lhs": "(mul (add (shl ?x 1) (shl ?y 2)) 3)",
+      "rhs": "(add (shl (mul ?x 3) 1) (shl (mul ?y 3) 2))",
+      "lhs_cost": 11,
+      "rhs_cost": 15,
+      "prompt": 47,
+      "seeds": [
+        "(shl (mul (shl (shl (xor 0 (mul (shl 2 r0) (sub r3 255))) 1) 2) (shl (shl (and (shl (shl r1 3) 1) (mod (and 4 r0) (add r1 -1))) 1) 2)) 1)",
+        "(mul (shl (mul (mul (add (div r2 r3) (shl (or r3 255) 1)) 2) 2) 0) (shr (mod (mul 8 r0) (or r3 -1)) (load (div (div 255 r1) (shr (shl r0 r0) 1)))))",
+        "(add (add 8 (add 9 (mul (add (add (mul 3 (mul in0 5)) 5) 1) 1))) 0)",
+        "(shl (div (shr (shl r2 r0) 2) (add (shr r0 r2) (sub r1 r2))) (shr 3 (sub (shl (add 16 r0) 3) (neg (not (div 16 r3))))))"
+      ],
+      "seed_matches": 0,
+      "lowers_cost": false
+    },
+    {
+      "name": "add_mul_2",
+      "lhs": "(mul 2 (add ?x ?y))",
+      "rhs": "(add (mul 2 ?x) (mul 2 ?y))",
+      "lhs_cost": 7,
+      "rhs_cost": 11,
+      "prompt": 146,
+      "seeds": [
+        "(add 2 (add 6 (sub (add 0 (sub (mul in0 5) (mul 5 in0))) (add (sub (mul in0 5) (mul 5 in0)) 0))))",
+        "(shl (shr (sub (div r0 r3) 1) (div (shr r3 255) (mod 2 r0))) 3)",
+        "(mul 56 (sub (add (mul 3 (mul v3 9)) (mul in1 v1)) (add (mul in1 v1) (mul 3 (mul v3 9)))))",
+        "(add (sub (mul (add 2 in0) 3) (mul 3 (add 2 in0))) 20)"
+      ],
+      "seed_matches": 0,
+      "lowers_cost": false
+    },
+    {
+      "name": "sub_mul_2",
+      "lhs": "(mul -2 (sub ?x ?y))",
+      "rhs": "(sub (mul -2 ?x) (mul -2 ?y))",
+      "lhs_cost": 7,
+      "rhs_cost": 11,
+      "prompt": 146,
+      "seeds": [
+        "(add 2 (add 6 (sub (add 0 (sub (mul in0 5) (mul 5 in0))) (add (sub (mul in0 5) (mul 5 in0)) 0))))",
+        "(shl (shr (sub (div r0 r3) 1) (div (shr r3 255) (mod 2 r0))) 3)",
+        "(mul 56 (sub (add (mul 3 (mul v3 9)) (mul in1 v1)) (add (mul in1 v1) (mul 3 (mul v3 9)))))",
+        "(add (sub (mul (add 2 in0) 3) (mul 3 (add 2 in0))) 20)"
+      ],
+      "seed_matches": 0,
+      "lowers_cost": false
+    }
+  ],
+  "rejected": [
+    {
+      "name": "constant_fold",
+      "lhs": "(add ?x 0)",
+      "rhs": "?x",
+      "prompt": 0,
+      "reason": "duplicate"
+    },
+    {
+      "name": "constant_fold",
+      "lhs": "(mul ?x 1)",
+      "rhs": "?x",
+      "prompt": 0,
+      "reason": "duplicate"
+    },
+    {
+      "name": "shl_shr_fold",
+      "lhs": "(shr (shl ?x ?y) ?z)",
+      "rhs": "(and (shr ?x (?sub ?y ?z)) 31)",
+      "prompt": 1,
+      "reason": "unknown operator or arity"
+    },
+    {
+      "name": "neg_neg_cancel",
+      "lhs": "(neg (neg ?x))",
+      "rhs": "?x",
+      "prompt": 1,
+      "reason": "duplicate"
+    },
+    {
+      "name": "div_div_fold",
+      "lhs": "(div (div ?x ?y) ?y)",
+      "rhs": "(div ?x (mul ?y ?y))",
+      "prompt": 1,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "mod_mod_fold",
+      "lhs": "(mod (mod ?x ?y) ?y)",
+      "rhs": "(mod ?x (mul ?y ?y))",
+      "prompt": 1,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "double_add",
+      "lhs": "(add (add ?x ?x) ?y)",
+      "rhs": "(shl ?x 1)",
+      "prompt": 2,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "abs_sub",
+      "lhs": "(sub (max ?x ?y) ?y)",
+      "rhs": "(max ?x ?y)",
+      "prompt": 2,
+      "reason": "unknown operator or arity"
+    },
+    {
+      "name": "div_shift_cancel",
+      "lhs": "(div (mul ?x (add (shl ?v 3) 1)) (shl ?v 3))",
+      "rhs": "?x",
+      "prompt": 2,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "mod_sub_zero",
+      "lhs": "(sub ?x (mod ?x ?y))",
+      "rhs": "0",
+      "prompt": 2,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "split_mul_add",
+      "lhs": "(add (mul ?x ?y) (sub ?z ?x))",
+      "rhs": "(add (mul ?x ?y) ?z)",
+      "prompt": 3,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "commutate_div_and_mul",
+      "lhs": "(div (mul ?x ?y) ?x)",
+      "rhs": "?y",
+      "prompt": 3,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "shift_and_add",
+      "lhs": "(add (shl ?x 1) ?x)",
+      "rhs": "(shl ?x 2)",
+      "prompt": 3,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "extract_modulus",
+      "lhs": "(mod (shl ?x 4) (mul 16 ?a))",
+      "rhs": "(and (shl ?x 4) 15)",
+      "prompt": 3,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "shift_const",
+      "lhs": "(or ?x (shl ?x (const k)))",
+      "rhs": "(or (shl ?x (const k)) ?x)",
+      "prompt": 4,
+      "reason": "unparseable"
+    },
+    {
+      "name": "mod_shift",
+      "lhs": "(and ?x (div (sub ?y 1) (shl 2 ?k)))",
+      "rhs": "(and (shift_left ?x (sub ?k 1)) (not (add 0 (const 1))))",
+      "prompt": 4,
+      "reason": "unknown operator or arity"
+    },
+    {
+      "name": "xor_shift_const",
+      "lhs": "(xor (or (shl ?x k) ?y) (shl ?x m))",
+      "rhs": "(xor (and (sub (shl ?x k) (or (add ?y (const 1)) (const -1))) (const 0xfffffffffffffffffffffffffffffffe)) (and (xor (shl 256 (const 2)) (or (add ?y (const 1)) (const -1))) (const 0xfffffffffffffffffffffffffffffffe))))",
+      "prompt": 4,
+      "reason": "unparseable"
+    },
+    {
+      "name": "double_shift",
+      "lhs": "(div (add ?x ?y) (shl 2 ?k))",
+      "rhs": "(shr (div (or (add ?x (const 1)) (const -1)) (or (add ?y (const 1)) (const -1))) (sub k 1))",
+      "prompt": 4,
+      "reason": "unparseable"
+    },
+    {
+      "name": "mod_shift_const",
+      "lhs": "(and ?x (div (sub ?y 1) (shl (const k) ?m)))",
+      "rhs": "(and (shift_left ?x (sub m 1)) (not (add 0 (const 1))))",
+      "prompt": 4,
+      "reason": "unparseable"
+    },
+    {
+      "name": "distribute_and",
+      "lhs": "(and (add ?x ?y) ?z)",
+      "rhs": "(and ?x ?z) (and ?y ?z)",
+      "prompt": 5,
+      "reason": "unparseable"
+    },
+    {
+      "name": "commutative_add",
+      "lhs": "(add ?x ?y)",
+      "rhs": "(add ?y ?x)",
+      "prompt": 5,
+      "reason": "duplicate"
+    },
+    {
+      "name": "associative_add",
+      "lhs": "(add (add ?x ?y) ?z)",
+      "rhs": "(add ?x (add ?y ?z))",
+      "prompt": 5,
+      "reason": "duplicate"
+    },
+    {
+      "name": "distribute_or",
+      "lhs": "(or (add ?x ?y) ?z)",
+      "rhs": "(or ?x ?z) (or ?y ?z)",
+      "prompt": 5,
+      "reason": "unparseable"
+    },
+    {
+      "name": "associative_mul",
+      "lhs": "(mul (mul ?x ?y) ?z)",
+      "rhs": "(mul ?x (mul ?y ?z))",
+      "prompt": 5,
+      "reason": "duplicate"
+    },
+    {
+      "name": "shl_const",
+      "lhs": "(shl ?x ?c)",
+      "rhs": "(add ?x (shl ?x 1))",
+      "prompt": 6,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "load_unnecessary",
+      "lhs": "(div (mul (mod ?x ?c) (neg ?x)) (load 4))",
+      "rhs": "(div (mul (mod ?x ?c) (neg ?x)) 4)",
+      "prompt": 6,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "shr_const",
+      "lhs": "(shr ?x ?c)",
+      "rhs": "(sub (shl ?x (- 32 ?c)) ?x)",
+      "prompt": 6,
+      "reason": "unknown operator or arity"
+    },
+    {
+      "name": "shl_const",
+      "lhs": "(shl ?x (?y))",
+      "rhs": "(shl (mod ?x 32) (?y))",
+      "prompt": 7,
+      "reason": "unknown operator or arity"
+    },
+    {
+      "name": "mul_add_distributive",
+      "lhs": "(add (mul ?x ?y) (mul ?x ?z))",
+      "rhs": "(mul ?x (add ?y ?z))",
+      "prompt": 7,
+      "reason": "duplicate"
+    },
+    {
+      "name": "xor_same_term",
+      "lhs": "(xor ?x ?x)",
+      "rhs": "0",
+      "prompt": 7,
+      "reason": "duplicate"
+    },
+    {
+      "name": "shl_const_mul",
+      "lhs": "(mul (shl ?x (?y)) ?z)",
+      "rhs": "(shl ?x (+ ?y (?z)))",
+      "prompt": 7,
+      "reason": "unknown operator or arity"
+    },
+    {
+      "name": "mod_add",
+      "lhs": "(add (load ?a) (mod ?b ?c))",
+      "rhs": "(mod (add ?a (shl ?b (sub 32 (log2 ?c)))) ?c)",
+      "prompt": 8,
+      "reason": "unknown operator or arity"
+    },
+    {
+      "name": "shl_sub",
+      "lhs": "(sub (shl ?x ?y) (shl ?x (sub ?y 1)))",
+      "rhs": "(shr ?x (sub 1 ?y))",
+      "prompt": 8,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "xor_const",
+      "lhs": "(xor ?x ?const)",
+      "rhs": "(?x ^ ?const)",
+      "prompt": 8,
+      "reason": "unparseable"
+    },
+    {
+      "name": "load_mul",
+      "lhs": "(mul (load ?a) (load ?b))",
+      "rhs": "(load (* ?a ?b))",
+      "prompt": 8,
+      "reason": "unknown operator or arity"
+    },
+    {
+      "name": "load_const",
+      "lhs": "(load ?x)",
+      "rhs": "?x",
+      "prompt": 9,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "div_by_1",
+      "lhs": "(div ?x 1)",
+      "rhs": "?x",
+      "prompt": 9,
+      "reason": "duplicate"
+    },
+    {
+      "name": "shl_neg_shr",
+      "lhs": "(shr (neg ( shl ?x ?y)))",
+      "rhs": "(neg (shr ?x ?y))",
+      "prompt": 9,
+      "reason": "unknown operator or arity"
+    },
+    {
+      "name": "double_div_mod",
+      "lhs": "(div (mod ?x ?y) ?z)",
+      "rhs": "(mod (div ?x ?z) (mod ?y ?z))",
+      "prompt": 9,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "expand_mul_add",
+      "lhs": "(add (mul ?x ?y) (mul ?x ?z))",
+      "rhs": "(mul ?x (add ?y ?z))",
+      "prompt": 10,
+      "reason": "duplicate"
+    },
+    {
+      "name": "cancel_double_neg",
+      "lhs": "(neg (neg ?x))",
+      "rhs": "?x",
+      "prompt": 10,
+      "reason": "duplicate"
+    },
+    {
+      "name": "factor_mul",
+      "lhs": "(add (mul ?x ?y) (mul ?x ?z))",
+      "rhs": "(mul ?x (add ?y ?z))",
+      "prompt": 11,
+      "reason": "duplicate"
+    },
+    {
+      "name": "commutativity_add_and_mul",
+      "lhs": "(and a b)",
+      "rhs": "(and b a)",
+      "prompt": 11,
+      "reason": "unparseable"
+    },
+    {
+      "name": "associativity_add_and_mul",
+      "lhs": "(or (or ?x ?y) ?z)",
+      "rhs": "(or ?x (or ?y ?z))",
+      "prompt": 11,
+      "reason": "duplicate"
+    },
+    {
+      "name": "distributivity_sub_over_add",
+      "lhs": "(sub (add ?a ?b) ?c)",
+      "rhs": "(add (sub ?a ?c) (sub ?b ?c))",
+      "prompt": 11,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "double_negation",
+      "lhs": "(neg (not x))",
+      "rhs": "x",
+      "prompt": 11,
+      "reason": "unparseable"
+    },
+    {
+      "name": "neg_not_div",
+      "lhs": "(shr (neg (not (div 0 (div (add 4 r0) (mod 4 r0))))) 2)",
+      "rhs": "(shr (sub 0 (or (and (eq (div 0 (div (add 4 r0) (mod 4 r0))) 1) -1) 0)) 2)",
+      "prompt": 12,
+      "reason": "unparseable"
+    },
+    {
+      "name": "mul_commutativity",
+      "lhs": "(mul (shl (shl in1 2) 4) (mul in2 7))",
+      "rhs": "(mul (mul in2 7) (shl (shl in1 2) 4))",
+      "prompt": 12,
+      "reason": "unparseable"
+    },
+    {
+      "name": "double_shl",
+      "lhs": "(sub (load (mul (or r1 -1) (shr r1 255))) (mul (load (shr 8 r0)) (add r2 r3)))",
+      "rhs": "(sub (neg (load (mul (or r1 -1) (shr r1 255)))) (mul (load (shr 8 r0)) (add r2 r3)))",
+      "prompt": 12,
+      "reason": "unparseable"
+    },
+    {
+      "name": "double_add",
+      "lhs": "(sub (shl (add in1 (add v0 11)) 3) (add 5 (add 7 (mul 40 v2))))",
+      "rhs": "(sub (shl (add 12 (shl in1 3)) 3) (add 12 (add 7 (mul 40 v2))))",
+      "prompt": 12,
+      "reason": "unparseable"
+    },
+    {
+      "name": "shl_add_cancel",
+      "lhs": "(add (shl ?x ?y) (shl ?x (- ?y)))",
+      "rhs": "?x",
+      "prompt": 13,
+      "reason": "unknown operator or arity"
+    },
+    {
+      "name": "shl_mul_cancel",
+      "lhs": "(mul (shl ?x ?y) (shr ?x ?y))",
+      "rhs": "?x",
+      "prompt": 13,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "mod_const_cancel",
+      "lhs": "(mod ?x 1)",
+      "rhs": "0",
+      "prompt": 13,
+      "reason": "duplicate"
+    },
+    {
+      "name": "div_const_cancel",
+      "lhs": "(div ?x 1)",
+      "rhs": "?x",
+      "prompt": 13,
+      "reason": "duplicate"
+    },
+    {
+      "name": "double_add",
+      "lhs": "(sub (add (add ?x 3) 9) (add 9 (add ?x 3)))",
+      "rhs": "?x",
+      "prompt": 14,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "inner_mul_factor",
+      "lhs": "(mul (add (shl ?x 1) (add ?x 3)) ?z)",
+      "rhs": "(?z * ((8 * ?x) + 9))",
+      "prompt": 14,
+      "reason": "unparseable"
+    },
+    {
+      "name": "nested_add_cancel",
+      "lhs": "(add (div (shr ((add ?x 7) + (sub ?y 3)) 2) (xor ?x ?y)) (shl 0 4))",
+      "rhs": "(div (shr ((?x + (sub ?y 3)) + 7) 2) (xor ?x ?y))",
+      "prompt": 14,
+      "reason": "unparseable"
+    },
+    {
+      "name": "load_cancel_div",
+      "lhs": "(add (div (shr (mul (shl (div (shr (?x - 3) 0) 0) 1) (sub 8 (shl (shl ?x 255) 1))) 0) 0) (shl 0 3))",
+      "rhs": "(add (div ((-?x + 9) * ((4 - ?x) + 2^(?x & 7))) 0) (shl 0 3))",
+      "prompt": 14,
+      "reason": "unparseable"
+    },
+    {
+      "name": "double_neg",
+      "lhs": "(neg (neg ?x))",
+      "rhs": "?x",
+      "prompt": 16,
+      "reason": "duplicate"
+    },
+    {
+      "name": "and_or_identities",
+      "lhs": "(or (?x & ?y) ?z)",
+      "rhs": "(or ?x (or ?y ?z))",
+      "prompt": 16,
+      "reason": "unparseable"
+    },
+    {
+      "name": "mod_div_cancel",
+      "lhs": "(div (mod ?x ?n) n)",
+      "rhs": "?x & (n-1)",
+      "prompt": 16,
+      "reason": "unparseable"
+    },
+    {
+      "name": "shl_shr_const",
+      "lhs": "(shl x (?y * 32 + k))",
+      "rhs": "(shr (shl x k) y)",
+      "prompt": 16,
+      "reason": "unparseable"
+    },
+    {
+      "name": "sub_add_cancel",
+      "lhs": "(add (sub ?x ?y) ?y)",
+      "rhs": "?x",
+      "prompt": 16,
+      "reason": "duplicate"
+    },
+    {
+      "name": "decompose_add",
+      "lhs": "(add (sub (sub (mul ?a ?b) (mul ?c ?d)) ?e) (sub (sub (mul ?a ?b) (mul ?c ?d)) ?f))",
+      "rhs": "(sub (sub (add (mul ?a ?b) (mul ?a ?b)) (add (mul ?c ?d) (mul ?c ?d))) (+ ?e ?f))",
+      "prompt": 17,
+      "reason": "unknown operator or arity"
+    },
+    {
+      "name": "expose_constants",
+      "lhs": "(add 5 (sub (sub (mul 9 (shl in2 3)) (mul (mul 3 (shl in2 3)) 3)) 8))",
+      "rhs": "(add 1 (sub (sub (mul 9 (shl in2 3)) (mul 9 (shl in2 3))) 8))",
+      "prompt": 17,
+      "reason": "unparseable"
+    },
+    {
+      "name": "factor_sub",
+      "lhs": "(sub (sub (add ?x ?y) ?z) ?w)",
+      "rhs": "(sub (sub ?x ?w) (add ?z ?y))",
+      "prompt": 17,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "shift_cancel",
+      "lhs": "(sub (mul (shl (add in0 v0) 3) 76) (mul 608 (sub (add in0 v0) (add v0 in0))))",
+      "rhs": "(sub (mul (shl (add in0 v0) 3) 92) (mul (shl (add in0 v0) 3) 12))",
+      "prompt": 17,
+      "reason": "unparseable"
+    },
+    {
+      "name": "double_div",
+      "lhs": "(div (div ?a ?b) ?c)",
+      "rhs": "(div ?a (mul ?b ?c))",
+      "prompt": 18,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "mod_shift_cancel",
+      "lhs": "(shl (mod ?x ?y) 1)",
+      "rhs": "(mod (shl ?x 1) ?y)",
+      "prompt": 18,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "and_or_idempotent",
+      "lhs": "(or (and ?x ?y) ?y)",
+      "rhs": "(or ?x (and ?y ?y))",
+      "prompt": 18,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "fold_constant_add",
+      "lhs": "(add ?x 0)",
+      "rhs": "?x",
+      "prompt": 19,
+      "reason": "duplicate"
+    },
+    {
+      "name": "fold_constant_mul",
+      "lhs": "(mul ?x 1)",
+      "rhs": "?x",
+      "prompt": 19,
+      "reason": "duplicate"
+    },
+    {
+      "name": "constant_subtraction",
+      "lhs": "(sub (add ?x ?y) ?y)",
+      "rhs": "?x",
+      "prompt": 19,
+      "reason": "duplicate"
+    },
+    {
+      "name": "constant_modulo",
+      "lhs": "(mod ?x 0)",
+      "rhs": "0",
+      "prompt": 19,
+      "reason": "duplicate"
+    },
+    {
+      "name": "constant_shift",
+      "lhs": "(shl (shr ?x 5) 5)",
+      "rhs": "?x",
+      "prompt": 19,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "factor_add",
+      "lhs": "(add (mul ?x ?y) (mul ?x ?z))",
+      "rhs": "(mul ?x (add ?y ?z))",
+      "prompt": 20,
+      "reason": "duplicate"
+    },
+    {
+      "name": "sub_cancel",
+      "lhs": "(sub (add ?x ?y) ?y)",
+      "rhs": "?x",
+      "prompt": 20,
+      "reason": "duplicate"
+    },
+    {
+      "name": "div_cancel",
+      "lhs": "(div (mul ?x ?y) ?x)",
+      "rhs": "?y",
+      "prompt": 20,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "shl_const",
+      "lhs": "(shl ?x 0)",
+      "rhs": "?x",
+      "prompt": 20,
+      "reason": "duplicate"
+    },
+    {
+      "name": "shr_const",
+      "lhs": "(shr ?x 0)",
+      "rhs": "?x",
+      "prompt": 20,
+      "reason": "duplicate"
+    },
+    {
+      "name": "factor_mul",
+      "lhs": "(add (mul ?x ?y) (mul ?x ?z))",
+      "rhs": "(mul ?x (add ?y ?z))",
+      "prompt": 21,
+      "reason": "duplicate"
+    },
+    {
+      "name": "add_sub_cancel",
+      "lhs": "(sub (add ?x ?y) ?y)",
+      "rhs": "?x",
+      "prompt": 21,
+      "reason": "duplicate"
+    },
+    {
+      "name": "neg_double_neg",
+      "lhs": "(neg (neg ?x))",
+      "rhs": "?x",
+      "prompt": 21,
+      "reason": "duplicate"
+    },
+    {
+      "name": "mod_const_power_of_two",
+      "lhs": "(mod ?x (?y << ?z))",
+      "rhs": "(and ?x ((1 << ?z) - 1))",
+      "prompt": 21,
+      "reason": "unparseable"
+    },
+    {
+      "name": "shl_add_shift",
+      "lhs": "(add (shl ?x ?a) (shl ?y ?b))",
+      "rhs": "(shl (add ?x (if (> ?a ?b) (shr ?y (- ?a ?b)) (shr ?x (- ?b ?a)))) 1)",
+      "prompt": 21,
+      "reason": "unknown operator or arity"
+    },
+    {
+      "name": "mod_distrib",
+      "lhs": "(mod (add ?x ?y) ?m)",
+      "rhs": "(add (mod ?x ?m) (mod ?y ?m))",
+      "prompt": 22,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "div_mul_opt",
+      "lhs": "(mul (div ?x ?y) ?y)",
+      "rhs": "?x",
+      "prompt": 22,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "xor_self",
+      "lhs": "(xor ?x ?x)",
+      "rhs": "0",
+      "prompt": 22,
+      "reason": "duplicate"
+    },
+    {
+      "name": "and_not",
+      "lhs": "(and ?x (not ?y))",
+      "rhs": "(and ?x (- ?1 ?y))",
+      "prompt": 22,
+      "reason": "unknown operator or arity"
+    },
+    {
+      "name": "distribute_mul",
+      "lhs": "(add (mul ?x ?a) (mul ?b ?a))",
+      "rhs": "(mul (add ?x ?b) ?a)",
+      "prompt": 23,
+      "reason": "duplicate"
+    },
+    {
+      "name": "shl_absorb_and",
+      "lhs": "(and (shl ?x ?y) ?z)",
+      "rhs": "(shl (and ?x ?z) ?y)",
+      "prompt": 23,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "absorb_shl_add",
+      "lhs": "(add (shl ?x ?y) ?z)",
+      "rhs": "(shl (add ?x (shr ?z ?y)) ?y)",
+      "prompt": 23,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "mul_absorb_and",
+      "lhs": "(and (mul ?x ?a) (mul ?b ?a))",
+      "rhs": "(mul ?a (and ?x ?b))",
+      "prompt": 23,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "extract_const_add",
+      "lhs": "(add (load ?x) ?y)",
+      "rhs": "(load (+ ?x ?y))",
+      "prompt": 24,
+      "reason": "unknown operator or arity"
+    },
+    {
+      "name": "extract_const_mul",
+      "lhs": "(mul (load ?x) ?y)",
+      "rhs": "(load (* ?x ?y))",
+      "prompt": 24,
+      "reason": "unknown operator or arity"
+    },
+    {
+      "name": "shift_left_add",
+      "lhs": "(add (shl ?x 1) ?y)",
+      "rhs": "(shl (+ ?x ?y) 1)",
+      "prompt": 24,
+      "reason": "unknown operator or arity"
+    },
+    {
+      "name": "shift_right_sub",
+      "lhs": "(sub (shr ?x 1) ?y)",
+      "rhs": "(shr (- ?x ?y) 1)",
+      "prompt": 24,
+      "reason": "unknown operator or arity"
+    },
+    {
+      "name": "add_const_mul_factor",
+      "lhs": "(mul (add ?x ?y) ?z)",
+      "rhs": "(add (mul ?x ?z) (mul ?y ?z))",
+      "prompt": 24,
+      "reason": "duplicate"
+    },
+    {
+      "name": "shl_add_exp",
+      "lhs": "(add (shl ?x ?y) (shl ?x ?z))",
+      "rhs": "(shl (add ?x ?x) (max ?y ?z))",
+      "prompt": 25,
+      "reason": "unknown operator or arity"
+    },
+    {
+      "name": "xor_and_cancel",
+      "lhs": "(and (or ?x ?y) (not ?x))",
+      "rhs": "(not ?y)",
+      "prompt": 25,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "mod_add_mod_cancel",
+      "lhs": "(add (mod ?x ?a) (mod ?x ?b))",
+      "rhs": "(mod (add ?x (mod (- ?x ?b)) %a) ?a)",
+      "prompt": 25,
+      "reason": "unparseable"
+    },
+    {
+      "name": "div_mul_div_cancel",
+      "lhs": "(div (mul (div ?x ?y) ?z) ?y)",
+      "rhs": "(div (mul ?x ?z) ?y)",
+      "prompt": 25,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "sub_and_sub_cancel",
+      "lhs": "(and (or ?x ?y) (not (or (xor 1 ?x) (xor 1 ?y))))",
+      "rhs": "0",
+      "prompt": 25,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "shl_mod_cancel",
+      "lhs": "(mod (shl (mod ?x 64) 32) 128)",
+      "rhs": "(mod ?x 128)",
+      "prompt": 26,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "add_mod_cancel",
+      "lhs": "(sub (mod (add ?x ?y) 128) ?y)",
+      "rhs": "(mod ?x 128)",
+      "prompt": 26,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "multiply_by_0",
+      "lhs": "(mul ?x 0)",
+      "rhs": "0",
+      "prompt": 26,
+      "reason": "duplicate"
+    },
+    {
+      "name": "load_associativity",
+      "lhs": "(load (load ?x))",
+      "rhs": "?x",
+      "prompt": 26,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "double_shl",
+      "lhs": "(shl (shl ?x ?a) ?b)",
+      "rhs": "(shl ?x (+ ?a ?b))",
+      "prompt": 27,
+      "reason": "unknown operator or arity"
+    },
+    {
+      "name": "mod_by_pow_of_2",
+      "lhs": "(mod ?x (?y * pow 2 ?z))",
+      "rhs": "(and ?x ((pow 2 ?z) - 1))",
+      "prompt": 27,
+      "reason": "unparseable"
+    },
+    {
+      "name": "cancel_add_sub",
+      "lhs": "(sub (add ?x ?y) (sub ?x ?y))",
+      "rhs": "0",
+      "prompt": 27,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "distribute_mul_add",
+      "lhs": "(add (mul ?x ?y) (mul ?x ?z))",
+      "rhs": "(mul ?x (add ?y ?z))",
+      "prompt": 27,
+      "reason": "duplicate"
+    },
+    {
+      "name": "shl_shift_cancel",
+      "lhs": "(shl (shl ?x ?a) ?b)",
+      "rhs": "(shl ?x (add ?a ?b))",
+      "prompt": 28,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "div_mul_cancel",
+      "lhs": "(mul (div ?x ?y) ?y)",
+      "rhs": "?x",
+      "prompt": 28,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "or_and_cancel",
+      "lhs": "(and (or ?x ?y) (not ?z))",
+      "rhs": "(and ?x (or (not ?y) (not ?z)))",
+      "prompt": 28,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "double_add_shl",
+      "lhs": "(add (add ?x ?x) ?y)",
+      "rhs": "(shl (add ?x ?y) 1)",
+      "prompt": 28,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "double_sub_shr",
+      "lhs": "(sub (div ?x 2) ?y)",
+      "rhs": "(shr (add ?x (- ?y)) 1)",
+      "prompt": 28,
+      "reason": "unknown operator or arity"
+    },
+    {
+      "name": "mod_const",
+      "lhs": "(mod ?x 1024)",
+      "rhs": "(or (and ?x 511) (shl (and ?x 512) 1))",
+      "prompt": 29,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "xor_zero",
+      "lhs": "(xor ?x 0)",
+      "rhs": "?x",
+      "prompt": 29,
+      "reason": "duplicate"
+    },
+    {
+      "name": "shl_mul_const",
+      "lhs": "(mul ?x (shl 1 5))",
+      "rhs": "(shl (mul ?x 32) 1)",
+      "prompt": 29,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "mod_shr",
+      "lhs": "(shr (mod ?x ?y) ?n)",
+      "rhs": "(mod (shr ?x ?n) ?y)",
+      "prompt": 30,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "div_mul",
+      "lhs": "(mul (div ?x ?y) ?y)",
+      "rhs": "?x",
+      "prompt": 30,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "add_sub_dist",
+      "lhs": "(sub (add ?x ?a) (add ?b ?c))",
+      "rhs": "(add (sub ?x ?b) (sub ?a ?c))",
+      "prompt": 30,
+      "reason": "duplicate"
+    },
+    {
+      "name": "double_neg",
+      "lhs": "(neg (neg ?x))",
+      "rhs": "?x",
+      "prompt": 31,
+      "reason": "duplicate"
+    },
+    {
+      "name": "div_times_div",
+      "lhs": "(mul (div ?a ?c) (div ?b ?c))",
+      "rhs": "(div (mul ?a ?b) ?c)",
+      "prompt": 31,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "sub_add_sub",
+      "lhs": "(add (sub ?x ?y) ?y)",
+      "rhs": "?x",
+      "prompt": 31,
+      "reason": "duplicate"
+    },
+    {
+      "name": "mod_times_mod",
+      "lhs": "(mul (mod ?a ?c) (mod ?b ?c))",
+      "rhs": "(mod (mul ?a ?b) ?c)",
+      "prompt": 31,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "factor_add",
+      "lhs": "(add (add ?x ?y) ?z)",
+      "rhs": "(add ?x (add ?y ?z))",
+      "prompt": 32,
+      "reason": "duplicate"
+    },
+    {
+      "name": "double_not",
+      "lhs": "(not (not ?x))",
+      "rhs": "?x",
+      "prompt": 32,
+      "reason": "duplicate"
+    },
+    {
+      "name": "double_neg_shl",
+      "lhs": "(neg (shl (neg ?x) ?y))",
+      "rhs": "(neg (shl ?x ?y))",
+      "prompt": 32,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "and_div_mod_cancel",
+      "lhs": "(and (div ?x ?y) (mod ?x ?y))",
+      "rhs": "0",
+      "prompt": 32,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "double_not",
+      "lhs": "(not (not ?x))",
+      "rhs": "?x",
+      "prompt": 33,
+      "reason": "duplicate"
+    },
+    {
+      "name": "shl_const",
+      "lhs": "(shl ?x 0)",
+      "rhs": "?x",
+      "prompt": 33,
+      "reason": "duplicate"
+    },
+    {
+      "name": "add_neg",
+      "lhs": "(sub ?a ?b)",
+      "rhs": "(add ?a (neg ?b))",
+      "prompt": 33,
+      "reason": "duplicate"
+    },
+    {
+      "name": "mul_div_cancel",
+      "lhs": "(div (mul ?x ?y) ?x)",
+      "rhs": "?y",
+      "prompt": 34,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "neg_neg",
+      "lhs": "(not (not ?x))",
+      "rhs": "?x",
+      "prompt": 34,
+      "reason": "duplicate"
+    },
+    {
+      "name": "mod_sub_cancel",
+      "lhs": "(sub (mod ?x ?y) ?y)",
+      "rhs": "((not ?x) & ((1 << (sizeof(?x)*8-1)) | ((?x + 1) % ?y)))",
+      "prompt": 34,
+      "reason": "unparseable"
+    },
+    {
+      "name": "mod_shift_cancel",
+      "lhs": "(mod (shl ?x ?y) ?z)",
+      "rhs": "(if (eq (mod ?z 2) 1) (load 0) (shl (mod ?x (shr ?z ?y)) ?y))",
+      "prompt": 35,
+      "reason": "unknown operator or arity"
+    },
+    {
+      "name": "add_and_cancel",
+      "lhs": "(and (or ?x ?y) (not ?y))",
+      "rhs": "(not ?x)",
+      "prompt": 35,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "xor_add_self",
+      "lhs": "(add ?x (xor ?x ?y))",
+      "rhs": "(if (eq (mod ?y 2) 0) (load 0) (add 1 ?x))",
+      "prompt": 35,
+      "reason": "unknown operator or arity"
+    },
+    {
+      "name": "div_mul_cancel",
+      "lhs": "(mul (div ?x ?y) ?z)",
+      "rhs": "(if (eq (mod ?y 2) 1) (load 0) (div (mul ?x ?z) ?y))",
+      "prompt": 35,
+      "reason": "unknown operator or arity"
+    },
+    {
+      "name": "double_neg_not",
+      "lhs": "(not (neg ?x))",
+      "rhs": "?x",
+      "prompt": 36,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "sub_add_cancel",
+      "lhs": "(add (sub ?x ?y) ?y)",
+      "rhs": "?x",
+      "prompt": 36,
+      "reason": "duplicate"
+    },
+    {
+      "name": "mod_zero",
+      "lhs": "(mod ?x 0)",
+      "rhs": "0",
+      "prompt": 36,
+      "reason": "duplicate"
+    },
+    {
+      "name": "shr_double_shl",
+      "lhs": "(shl (shr ?x n) m)",
+      "rhs": "(shr ?x (- m n))",
+      "prompt": 36,
+      "reason": "unparseable"
+    },
+    {
+      "name": "mul_add",
+      "lhs": "(add (mul ?x ?z) (sub (mul ?y ?z) (neg (mul ?y ?z))))",
+      "rhs": "(mul ((add ?x ?y)) ?z)",
+      "prompt": 37,
+      "reason": "unknown operator or arity"
+    },
+    {
+      "name": "sub_mul",
+      "lhs": "(sub (mul ?x ?z) (mul ?y ?z))",
+      "rhs": "(mul ((sub ?x ?y)) ?z)",
+      "prompt": 37,
+      "reason": "unknown operator or arity"
+    },
+    {
+      "name": "bitwise_simplification",
+      "lhs": "(and (or ?x ?y) ?z)",
+      "rhs": "(and ?x (or ?y ?z))",
+      "prompt": 37,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "assoc_add",
+      "lhs": "(add ?x (add ?y ?z))",
+      "rhs": "(add (add ?x ?y) ?z)",
+      "prompt": 38,
+      "reason": "duplicate"
+    },
+    {
+      "name": "comm_mul",
+      "lhs": "(mul ?x ?y)",
+      "rhs": "(mul ?y ?x)",
+      "prompt": 38,
+      "reason": "duplicate"
+    },
+    {
+      "name": "negate_negate",
+      "lhs": "(neg (neg ?x))",
+      "rhs": "?x",
+      "prompt": 38,
+      "reason": "duplicate"
+    },
+    {
+      "name": "mod_plus_constant",
+      "lhs": "(add (mod ?x ?y) ?z)",
+      "rhs": "(mod (add ?x (+ ?y ?z)) ?y)",
+      "prompt": 38,
+      "reason": "unknown operator or arity"
+    },
+    {
+      "name": "shl_div_by_power_of_two",
+      "lhs": "(div a (pow 2 b))",
+      "rhs": "(shr a b)",
+      "prompt": 39,
+      "reason": "unparseable"
+    },
+    {
+      "name": "mod_by_power_of_two",
+      "lhs": "(mod a (pow 2 b))",
+      "rhs": "(and a ((sub (pow 2 b) 1)))",
+      "prompt": 39,
+      "reason": "unparseable"
+    },
+    {
+      "name": "div_by_one",
+      "lhs": "(div a 1)",
+      "rhs": "a",
+      "prompt": 39,
+      "reason": "unparseable"
+    },
+    {
+      "name": "mod_mul",
+      "lhs": "(mod (mul ?x ?y) 2^k)",
+      "rhs": "(if (> k 32) 0 (and ?x ?y))",
+      "prompt": 40,
+      "reason": "unparseable"
+    },
+    {
+      "name": "load_and_const",
+      "lhs": "(and (load ?x) ?c)",
+      "rhs": "(and ?x (?c & ((1 << 32) - 1)))",
+      "prompt": 40,
+      "reason": "unparseable"
+    },
+    {
+      "name": "mod_add_const",
+      "lhs": "(mod (add ?x ?c) 2^k)",
+      "rhs": "(if (> (abs ?c) k) ((?x + ?c) % (2^k)) (?x + ?c))",
+      "prompt": 40,
+      "reason": "unparseable"
+    },
+    {
+      "name": "sub_mul_cancel",
+      "lhs": "(mul (sub ?x ?y) (add 1 ?z))",
+      "rhs": "(add (mul ?x (add 1 ?z)) (- mul ?y (add 1 ?z))))",
+      "prompt": 40,
+      "reason": "unparseable"
+    },
+    {
+      "name": "double_shl",
+      "lhs": "(shl (shl ?x ?a) ?b)",
+      "rhs": "(shl ?x (+ ?a ?b))",
+      "prompt": 41,
+      "reason": "unknown operator or arity"
+    },
+    {
+      "name": "div_mul_fold",
+      "lhs": "(mul (div ?x ?a) ?y)",
+      "rhs": "(div (* ?x ?y) ?a)",
+      "prompt": 41,
+      "reason": "unknown operator or arity"
+    },
+    {
+      "name": "mod_mul_fold",
+      "lhs": "(mul (mod ?x ?a) ?y)",
+      "rhs": "(mod (* ?x ?y) ?a)",
+      "prompt": 41,
+      "reason": "unknown operator or arity"
+    },
+    {
+      "name": "sub_add_cancel",
+      "lhs": "(add (sub ?x ?y) ?y)",
+      "rhs": "?x",
+      "prompt": 41,
+      "reason": "duplicate"
+    },
+    {
+      "name": "shl_shr_div",
+      "lhs": "(div (shr ?x ?a) (shl ?x ?b))",
+      "rhs": "(div ?x (+ ?a ?b))",
+      "prompt": 41,
+      "reason": "unknown operator or arity"
+    },
+    {
+      "name": "shl_div_commute",
+      "lhs": "(div (shl ?x ?y) ?z)",
+      "rhs": "(shl (div ?x ?z) ?y)",
+      "prompt": 42,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "mod_div_cancel",
+      "lhs": "(div (mod ?x ?y) ?z)",
+      "rhs": "(mod (div ?x ?z) ?y)",
+      "prompt": 42,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "add_mul_distribute",
+      "lhs": "(mul (add ?x ?y) ?z)",
+      "rhs": "(add (mul ?x ?z) (mul ?y ?z))",
+      "prompt": 42,
+      "reason": "duplicate"
+    },
+    {
+      "name": "sub_add_cancel",
+      "lhs": "(add (sub ?x ?y) ?y)",
+      "rhs": "?x",
+      "prompt": 42,
+      "reason": "duplicate"
+    },
+    {
+      "name": "not_neg_double",
+      "lhs": "(not (neg ?x))",
+      "rhs": "?x",
+      "prompt": 42,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "shl_const",
+      "lhs": "(shl ?x 0)",
+      "rhs": "?x",
+      "prompt": 43,
+      "reason": "duplicate"
+    },
+    {
+      "name": "mul_one",
+      "lhs": "(mul ?x 1)",
+      "rhs": "?x",
+      "prompt": 43,
+      "reason": "duplicate"
+    },
+    {
+      "name": "div_div_const",
+      "lhs": "(div (div ?x ?y) ?y)",
+      "rhs": "(div ?x (pow ?y 2))",
+      "prompt": 43,
+      "reason": "unknown operator or arity"
+    },
+    {
+      "name": "mod_mod_const",
+      "lhs": "(mod (mod ?x ?y) ?y)",
+      "rhs": "(mod ?x (pow ?y 2))",
+      "prompt": 43,
+      "reason": "unknown operator or arity"
+    },
+    {
+      "name": "mul_add",
+      "lhs": "(add (mul ?x (add ?y ?z)) (mul ?a (add ?b ?c)))",
+      "rhs": "(add (mul ?x ?y) (mul ?x ?z) (mul ?a ?b) (mul ?a ?c))",
+      "prompt": 44,
+      "reason": "unknown operator or arity"
+    },
+    {
+      "name": "shl_right",
+      "lhs": "(shr (shl ?x ?y) ?y)",
+      "rhs": "?x",
+      "prompt": 44,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "div_by_const",
+      "lhs": "(div ?x (?mul ?y ?z))",
+      "rhs": "(div (div ?x ?y) ?z)",
+      "prompt": 44,
+      "reason": "unknown operator or arity"
+    },
+    {
+      "name": "xor_add",
+      "lhs": "(add (xor ?x ?y) ?z)",
+      "rhs": "(xor (add ?x ?z) ?y)",
+      "prompt": 45,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "neg_mul",
+      "lhs": "(neg (mul ?x ?y))",
+      "rhs": "(mul (neg ?x) (?y))",
+      "prompt": 45,
+      "reason": "unknown operator or arity"
+    },
+    {
+      "name": "sub_add_cancel",
+      "lhs": "(add (sub ?x ?y) ?y)",
+      "rhs": "?x",
+      "prompt": 45,
+      "reason": "duplicate"
+    },
+    {
+      "name": "shl_shr_fold",
+      "lhs": "(shr (shl ?x 5) 3)",
+      "rhs": "(shr ?x 2)",
+      "prompt": 45,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "factor_mul",
+      "lhs": "(add (mul 5 (mul (add (add 2 (add (add 8 in0) 19)) (add (add (add 7 in0) (add in0 3)) 3)) 9)) 10)",
+      "rhs": "(add (mul 5 (mul (add (add 2 (add (add 8 in0) 19)) (add (add (add 7 in0) (add in0 3)) 3)) (add 9 1))) 10)",
+      "prompt": 46,
+      "reason": "unparseable"
+    },
+    {
+      "name": "factor_mul",
+      "lhs": "(sub (add (mul (mul 4 2) (shl (add 0 3) 3)) (mul 2 640)) (add (mul 2 640) (mul (mul 4 2) (shl (add 0 3) 3))))",
+      "rhs": "(sub (mul ((mul 4 2) (shl (add 0 3) 3)) 2) (mul ((mul 4 2) (shl (add 0 3) 3)) 1))",
+      "prompt": 46,
+      "reason": "unknown operator or arity"
+    },
+    {
+      "name": "factor_mul",
+      "lhs": "(sub (mul (add 25 in1) (shl in1 2)) (mul (shl in1 2) (add 25 in1)))",
+      "rhs": "0",
+      "prompt": 46,
+      "reason": "unparseable"
+    },
+    {
+      "name": "factor_mul",
+      "lhs": "(shl (and (load (xor (add 8 r0) (sub r2 2))) (div (xor r3 r2) 0)) (or (or (shl (or -3 (mul r0 r2)) 1) r0) (not (neg (mod r1 8)))))",
+      "rhs": "(and ((load (xor (add 8 r0) (sub r2 2)))) ((or (shl (or -3 (mul r0 r2)) 1) r0) (not (neg (mod r1 8)))))",
+      "prompt": 46,
+      "reason": "unparseable"
+    },
+    {
+      "name": "neg_xor_cancel",
+      "lhs": "(xor (neg ?x) ?y)",
+      "rhs": "(-?x y)",
+      "prompt": 47,
+      "reason": "unparseable"
+    },
+    {
+      "name": "mod_mul_div",
+      "lhs": "(mul (mod (add ?x 10) 5) ?y)",
+      "rhs": "(div (add (mul ?x ?y) (* ?y 2)) 5)",
+      "prompt": 47,
+      "reason": "unknown operator or arity"
+    },
+    {
+      "name": "xor_zero",
+      "lhs": "(xor ?x 0)",
+      "rhs": "?x",
+      "prompt": 47,
+      "reason": "duplicate"
+    },
+    {
+      "name": "mod_by_const",
+      "lhs": "(mod ?x 1)",
+      "rhs": "0",
+      "prompt": 48,
+      "reason": "duplicate"
+    },
+    {
+      "name": "load_const",
+      "lhs": "(load 0)",
+      "rhs": "0",
+      "prompt": 48,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "neg_not_cancel",
+      "lhs": "(not (neg ?x))",
+      "rhs": "?x",
+      "prompt": 48,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "xor_self",
+      "lhs": "(xor ?x ?x)",
+      "rhs": "0",
+      "prompt": 48,
+      "reason": "duplicate"
+    },
+    {
+      "name": "shl_zero",
+      "lhs": "(shl ?x 0)",
+      "rhs": "1",
+      "prompt": 48,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "factor_out_add",
+      "lhs": "(add (mul ?x ?z) (mul ?y ?z))",
+      "rhs": "(mul (add ?x ?y) ?z)",
+      "prompt": 49,
+      "reason": "duplicate"
+    },
+    {
+      "name": "sub_add_cancel",
+      "lhs": "(add (sub ?x ?y) ?y)",
+      "rhs": "?x",
+      "prompt": 49,
+      "reason": "duplicate"
+    },
+    {
+      "name": "double_shl",
+      "lhs": "(shl (shl ?x ?a) ?b)",
+      "rhs": "(shl ?x (+ ?a ?b))",
+      "prompt": 49,
+      "reason": "unknown operator or arity"
+    },
+    {
+      "name": "div_mul_cancel",
+      "lhs": "(mul (div ?x ?y) ?y)",
+      "rhs": "?x",
+      "prompt": 49,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "mod_mul_cancel",
+      "lhs": "(mul (mod ?x ?y) ?y)",
+      "rhs": "?x",
+      "prompt": 49,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "shl_mod_comb",
+      "lhs": "(mod (shl ?x ?y) ?z)",
+      "rhs": "(mod ((shl ?x ?y) % ?z)",
+      "prompt": 50,
+      "reason": "unparseable"
+    },
+    {
+      "name": "load_cost_reduction",
+      "lhs": "(load (div (add a b) c))",
+      "rhs": "(div (add (load a) (load b)) (load c))",
+      "prompt": 50,
+      "reason": "unparseable"
+    },
+    {
+      "name": "mod_neg_distribute",
+      "lhs": "(mod (neg ?x) ?y)",
+      "rhs": "(mod ((neg ?x) % ?y)",
+      "prompt": 50,
+      "reason": "unparseable"
+    },
+    {
+      "name": "or_with_zero",
+      "lhs": "(or ?x 0)",
+      "rhs": "?x",
+      "prompt": 51,
+      "reason": "duplicate"
+    },
+    {
+      "name": "and_with_one",
+      "lhs": "(and ?x 1)",
+      "rhs": "?x",
+      "prompt": 51,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "sub_add_cancel",
+      "lhs": "(add (sub ?x ?y) ?y)",
+      "rhs": "?x",
+      "prompt": 51,
+      "reason": "duplicate"
+    },
+    {
+      "name": "mod_negate",
+      "lhs": "(mod (neg ?x) ?y)",
+      "rhs": "(mod (- ?x) ?y)",
+      "prompt": 51,
+      "reason": "unknown operator or arity"
+    },
+    {
+      "name": "mod_add",
+      "lhs": "(add (mod ?x ?n) ?n)",
+      "rhs": "?x",
+      "prompt": 52,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "mod_mul",
+      "lhs": "(mul (mod ?x ?n) ?n)",
+      "rhs": "0",
+      "prompt": 52,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "load_load",
+      "lhs": "(load (load ?x))",
+      "rhs": "(load ?x)",
+      "prompt": 52,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "sub_mul_add",
+      "lhs": "(sub (mul ?x ?y) (add ?z ?w))",
+      "rhs": "(mul ?x ?y) - (mod (add ?z ?w) ?x)",
+      "prompt": 52,
+      "reason": "unparseable"
+    },
+    {
+      "name": "shl_mul",
+      "lhs": "(mul (shl ?x ?y) ?z)",
+      "rhs": "(shl (mul ?x ?z) ?y)",
+      "prompt": 53,
+      "reason": "duplicate"
+    },
+    {
+      "name": "shr_mul",
+      "lhs": "(mul (shr ?x ?y) ?z)",
+      "rhs": "(shr (mul ?x ?z) ?y)",
+      "prompt": 53,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "add_and_cancel",
+      "lhs": "(and (add ?x ?y) ?z)",
+      "rhs": "(and ?x ?z)",
+      "prompt": 53,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "sub_div_cancel",
+      "lhs": "(div (sub ?x ?y) ?z)",
+      "rhs": "(div ?x ?z)",
+      "prompt": 53,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "or_not_cancel",
+      "lhs": "(or (not ?x) ?y)",
+      "rhs": "?y",
+      "prompt": 53,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "double_neg",
+      "lhs": "(neg (neg ?x))",
+      "rhs": "?x",
+      "prompt": 54,
+      "reason": "duplicate"
+    },
+    {
+      "name": "xor_identity",
+      "lhs": "(xor ?x 0)",
+      "rhs": "?x",
+      "prompt": 54,
+      "reason": "duplicate"
+    },
+    {
+      "name": "mod_shift_cancel",
+      "lhs": "(mod (shl ?x ?y) (pow 2 ?z))",
+      "rhs": "(if (< ?z ?y) (shl ?x (- ?y ?z)) ?x)",
+      "prompt": 54,
+      "reason": "unknown operator or arity"
+    },
+    {
+      "name": "add_mul_assoc",
+      "lhs": "(add (mul ?x ?y) ?w)",
+      "rhs": "(add (mul ?x (+ ?y (/ ?w ?x))) 0)",
+      "prompt": 54,
+      "reason": "unknown operator or arity"
+    },
+    {
+      "name": "div_const_negate",
+      "lhs": "(div (neg ?x) ?c)",
+      "rhs": "(- (div ?x (- ?c)) 1)",
+      "prompt": 54,
+      "reason": "unknown operator or arity"
+    },
+    {
+      "name": "mod_const_negate",
+      "lhs": "(mod (neg ?x) ?c)",
+      "rhs": "(- (mod ?x (- ?c)) 1)",
+      "prompt": 54,
+      "reason": "unknown operator or arity"
+    },
+    {
+      "name": "sub_add_cancel",
+      "lhs": "(add (sub ?x ?y) ?y)",
+      "rhs": "?x",
+      "prompt": 54,
+      "reason": "duplicate"
+    },
+    {
+      "name": "double_not",
+      "lhs": "(not (not ?x))",
+      "rhs": "?x",
+      "prompt": 54,
+      "reason": "duplicate"
+    },
+    {
+      "name": "shl_combination",
+      "lhs": "(or (shl ?x 1) (shl ?x 2))",
+      "rhs": "(shl ?x 3)",
+      "prompt": 55,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "shl_and_distribute",
+      "lhs": "(and (add (shl ?x ?a) (shl ?y ?a)) (not 1))",
+      "rhs": "(and (shl (or ?x ?y) ?a) (not 1))",
+      "prompt": 56,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "mod_cancel",
+      "lhs": "(mod (add ?x ?y) ?z)",
+      "rhs": "(if (< ?z 2) (mod (add ?x ?y) ?z) (mod (and (add ?x ?y) ((- ?z 1))) ?z))",
+      "prompt": 56,
+      "reason": "unknown operator or arity"
+    },
+    {
+      "name": "div_distribute",
+      "lhs": "(div (add ?x ?y) ?z)",
+      "rhs": "(if (< ?z 2) (div (add ?x ?y) ?z) (div (and (add ?x ?y) ((- ?z 1))) ?z))",
+      "prompt": 56,
+      "reason": "unknown operator or arity"
+    },
+    {
+      "name": "double_shl",
+      "lhs": "(shl (shl ?x ?a) ?b)",
+      "rhs": "(shl ?x (+ ?a ?b))",
+      "prompt": 56,
+      "reason": "unknown operator or arity"
+    },
+    {
+      "name": "xor_self_cancel",
+      "lhs": "(xor ?x ?x)",
+      "rhs": "0",
+      "prompt": 56,
+      "reason": "duplicate"
+    },
+    {
+      "name": "shl_const",
+      "lhs": "(shl ?x 0)",
+      "rhs": "?x",
+      "prompt": 57,
+      "reason": "duplicate"
+    },
+    {
+      "name": "shr_const",
+      "lhs": "(shr ?x 0)",
+      "rhs": "?x",
+      "prompt": 57,
+      "reason": "duplicate"
+    },
+    {
+      "name": "and_self",
+      "lhs": "(and ?x ?x)",
+      "rhs": "?x",
+      "prompt": 57,
+      "reason": "duplicate"
+    },
+    {
+      "name": "or_self",
+      "lhs": "(or ?x ?x)",
+      "rhs": "?x",
+      "prompt": 57,
+      "reason": "duplicate"
+    },
+    {
+      "name": "xor_zero",
+      "lhs": "(xor ?x 0)",
+      "rhs": "?x",
+      "prompt": 57,
+      "reason": "duplicate"
+    },
+    {
+      "name": "factor_mul",
+      "lhs": "(mul (add ?x ?y) ?z)",
+      "rhs": "(add (mul ?x ?z) (mul ?y ?z))",
+      "prompt": 58,
+      "reason": "duplicate"
+    },
+    {
+      "name": "add_sub_cancel",
+      "lhs": "(sub (add ?x ?y) ?y)",
+      "rhs": "?x",
+      "prompt": 58,
+      "reason": "duplicate"
+    },
+    {
+      "name": "and_mul_by_2",
+      "lhs": "(mul ?a (shl ?b 1))",
+      "rhs": "(shl (mul ?a ?b) 1)",
+      "lhs_cost": 7,
+      "rhs_cost": 7,
+      "z3": "timeout",
+      "prompt": 58,
+      "reason": "unsound (z3 unknown)"
+    },
+    {
+      "name": "or_const",
+      "lhs": "(or ?x ?c)",
+      "rhs": "(?x | ?c)",
+      "prompt": 58,
+      "reason": "unparseable"
+    },
+    {
+      "name": "xor_const",
+      "lhs": "(xor ?x ?c)",
+      "rhs": "(?x ^ ?c)",
+      "prompt": 58,
+      "reason": "unparseable"
+    },
+    {
+      "name": "distribute_mul",
+      "lhs": "(add (mul ?x ?y) (mul ?x ?z))",
+      "rhs": "(mul ?x (add ?y ?z))",
+      "prompt": 59,
+      "reason": "duplicate"
+    },
+    {
+      "name": "assoc_add",
+      "lhs": "(add (add ?x ?y) ?z)",
+      "rhs": "(add ?x (add ?y ?z))",
+      "prompt": 59,
+      "reason": "duplicate"
+    },
+    {
+      "name": "factor_out_sub",
+      "lhs": "(sub (add ?x ?y) (add ?x ?z))",
+      "rhs": "(sub ?y ?z)",
+      "prompt": 59,
+      "reason": "duplicate"
+    },
+    {
+      "name": "distribute_add",
+      "lhs": "(mul (add ?x ?y) ?z)",
+      "rhs": "(add (mul ?x ?z) (mul ?y ?z))",
+      "prompt": 59,
+      "reason": "duplicate"
+    },
+    {
+      "name": "cancel_add_sub",
+      "lhs": "(sub (add ?x ?y) ?x)",
+      "rhs": "?y",
+      "prompt": 59,
+      "reason": "duplicate"
+    },
+    {
+      "name": "assoc_add",
+      "lhs": "(add (add ?x ?y) ?z)",
+      "rhs": "(add ?x (add ?y ?z))",
+      "prompt": 60,
+      "reason": "duplicate"
+    },
+    {
+      "name": "assoc_mul",
+      "lhs": "(mul (mul ?x ?y) ?z)",
+      "rhs": "(mul ?x (mul ?y ?z))",
+      "prompt": 60,
+      "reason": "duplicate"
+    },
+    {
+      "name": "dist_add_mul",
+      "lhs": "(mul (add ?x ?y) ?z)",
+      "rhs": "(add (mul ?x ?z) (mul ?y ?z))",
+      "prompt": 60,
+      "reason": "duplicate"
+    },
+    {
+      "name": "identity_add_zero",
+      "lhs": "(add ?x 0)",
+      "rhs": "?x",
+      "prompt": 60,
+      "reason": "duplicate"
+    },
+    {
+      "name": "shr_mul_to_add",
+      "lhs": "(mul (shr ?x ?y) ?z)",
+      "rhs": "(add (shr (mul ?x ?z) ?y) 0)",
+      "prompt": 61,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "and_shl_to_shl_and",
+      "lhs": "(and (shl ?x ?y) ?z)",
+      "rhs": "(shl (and ?x ?z) ?y)",
+      "prompt": 61,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "or_shl_to_shl_or",
+      "lhs": "(or (shl ?x ?y) ?z)",
+      "rhs": "(shl (or ?x ?z) ?y)",
+      "prompt": 61,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "neg_div_to_mul_neg",
+      "lhs": "(neg (div ?x ?y))",
+      "rhs": "(mul ?x (not ?y))",
+      "prompt": 61,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "mul_const_fact",
+      "lhs": "(mul ?x (add ?y *const))",
+      "rhs": "(add (mul ?x ?y) (mul ?x *const))",
+      "prompt": 62,
+      "reason": "unparseable"
+    },
+    {
+      "name": "sub_cancel_add",
+      "lhs": "(sub (add ?a (add ?b ?c)) ?b)",
+      "rhs": "(add ?a (add ?c ?b))",
+      "prompt": 62,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "shl_const_fact",
+      "lhs": "(shl (add ?x ?y) *const)",
+      "rhs": "(add (shl ?x *const) (shl ?y *const))",
+      "prompt": 62,
+      "reason": "unparseable"
+    },
+    {
+      "name": "div_mod_fold",
+      "lhs": "(div (mod ?x *const) *other_const)",
+      "rhs": "0",
+      "prompt": 62,
+      "reason": "unparseable"
+    },
+    {
+      "name": "double_neg",
+      "lhs": "(neg (not ?x))",
+      "rhs": "?x",
+      "prompt": 63,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "inv_shl",
+      "lhs": "(shl ?x -1)",
+      "rhs": "(shr ?x 31)",
+      "prompt": 63,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "unary_and_const",
+      "lhs": "(and ?x ?y)",
+      "rhs": "(if (is_const ?y) (and ?x (low_bits ?y)) ?x)",
+      "prompt": 63,
+      "reason": "unknown operator or arity"
+    },
+    {
+      "name": "div_by_pow2",
+      "lhs": "(div ?x (pow 2 ?n))",
+      "rhs": "(shr ?x ?n)",
+      "prompt": 63,
+      "reason": "unknown operator or arity"
+    },
+    {
+      "name": "mod_by_pow2",
+      "lhs": "(mod ?x (pow 2 ?n))",
+      "rhs": "(and ?x ((-1) << ?n))",
+      "prompt": 63,
+      "reason": "unparseable"
+    },
+    {
+      "name": "right_shl_distribute",
+      "lhs": "(add (shl ?x ?z) ?y)",
+      "rhs": "(shl (add ?x ?y) ?z)",
+      "prompt": 64,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "mod_add_cancel",
+      "lhs": "(mod (add ?x ?y) ?z)",
+      "rhs": "(+ (?x % ?z) (?y % ?z))",
+      "prompt": 64,
+      "reason": "unparseable"
+    },
+    {
+      "name": "div_sub_cancel",
+      "lhs": "(sub (div ?x ?y) (div ?z ?y))",
+      "rhs": "(div (?x - ?z) ?y)",
+      "prompt": 64,
+      "reason": "unparseable"
+    },
+    {
+      "name": "mul_mod_cancel",
+      "lhs": "(mod (mul ?x ?y) ?z)",
+      "rhs": "(mod (* ?x ?y) ?z)",
+      "prompt": 64,
+      "reason": "unknown operator or arity"
+    },
+    {
+      "name": "double_neg_not",
+      "lhs": "(not (neg ?x))",
+      "rhs": "?x",
+      "prompt": 65,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "shl_and_shr_comb",
+      "lhs": "(and (shl ?x ?a) (shr ?x ?b))",
+      "rhs": "(and ?x (shl 1 (?b - ?a)))",
+      "prompt": 65,
+      "reason": "unparseable"
+    },
+    {
+      "name": "mod_mul_cancel",
+      "lhs": "(mul (mod ?x ?y) ?z)",
+      "rhs": "(mod (mul ?x ?z) ?y)",
+      "prompt": 65,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "div_mul_cancel",
+      "lhs": "(mul (div ?x ?y) ?z)",
+      "rhs": "(div (mul ?x ?z) ?y)",
+      "prompt": 65,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "sub_add_cancel",
+      "lhs": "(add (sub ?x ?y) ?y)",
+      "rhs": "?x",
+      "prompt": 65,
+      "reason": "duplicate"
+    },
+    {
+      "name": "shl_mul",
+      "lhs": "(mul (shift_left ?x ?y) (const 2))",
+      "rhs": "(shift_left (mul ?x ?y) ?y)",
+      "prompt": 66,
+      "reason": "unknown operator or arity"
+    },
+    {
+      "name": "xor_negate",
+      "lhs": "(neg (xor ?x (const 0xFFFFFFFF)))",
+      "rhs": "(?x)",
+      "prompt": 66,
+      "reason": "unparseable"
+    },
+    {
+      "name": "double_and",
+      "lhs": "(and (and ?x (const ?a)) (const ?b))",
+      "rhs": "(and ?x (const (?a & ?b)))",
+      "prompt": 66,
+      "reason": "unparseable"
+    },
+    {
+      "name": "add_sub_shift_cancel",
+      "lhs": "(sub (add (shift_left ?x ?y) ?z) (shift_left ?x ?y))",
+      "rhs": "?z",
+      "prompt": 66,
+      "reason": "unknown operator or arity"
+    },
+    {
+      "name": "div_const_shift",
+      "lhs": "(div ?x (const 4))",
+      "rhs": "(shr ?x (const 2))",
+      "prompt": 66,
+      "reason": "unknown operator or arity"
+    },
+    {
+      "name": "shl_const",
+      "lhs": "(shl ?x 0)",
+      "rhs": "?x",
+      "prompt": 67,
+      "reason": "duplicate"
+    },
+    {
+      "name": "shr_const",
+      "lhs": "(shr ?x 0)",
+      "rhs": "?x",
+      "prompt": 67,
+      "reason": "duplicate"
+    },
+    {
+      "name": "div_by_1",
+      "lhs": "(div ?x 1)",
+      "rhs": "?x",
+      "prompt": 67,
+      "reason": "duplicate"
+    },
+    {
+      "name": "load_store_fusion",
+      "lhs": "(add (load ?x) (add (load ?y) (sub 0 (sub (shl (shr (div 256 8) 8) 8) (div 256 8)))))",
+      "rhs": "(add (load ?x) (add (load ?y) 15))",
+      "prompt": 67,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "add_assoc",
+      "lhs": "(add ?x (add ?y ?z))",
+      "rhs": "(add (add ?x ?y) ?z)",
+      "prompt": 68,
+      "reason": "duplicate"
+    },
+    {
+      "name": "sub_add_cancel",
+      "lhs": "(add (sub ?x ?y) ?y)",
+      "rhs": "?x",
+      "prompt": 68,
+      "reason": "duplicate"
+    },
+    {
+      "name": "mul_zero_l",
+      "lhs": "(mul 0 ?x)",
+      "rhs": "0",
+      "prompt": 68,
+      "reason": "duplicate"
+    },
+    {
+      "name": "shl_const",
+      "lhs": "(shl ?x ?c)",
+      "rhs": "(if (< ?c 32) (<< ?x ?c) ?x)",
+      "prompt": 68,
+      "reason": "unknown operator or arity"
+    },
+    {
+      "name": "double_neg",
+      "lhs": "(neg (not ?x))",
+      "rhs": "?x",
+      "prompt": 69,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "add_mul_cancel",
+      "lhs": "(sub (mul ?x ?y) (mul ?x ?z))",
+      "rhs": "(mul ?x (sub ?y ?z))",
+      "prompt": 69,
+      "reason": "duplicate"
+    },
+    {
+      "name": "associativity_add",
+      "lhs": "(add ?x (add ?y ?z))",
+      "rhs": "(add (add ?x ?y) ?z)",
+      "prompt": 70,
+      "reason": "duplicate"
+    },
+    {
+      "name": "associativity_mul",
+      "lhs": "(mul ?x (mul ?y ?z))",
+      "rhs": "(mul (mul ?x ?y) ?z)",
+      "prompt": 70,
+      "reason": "duplicate"
+    },
+    {
+      "name": "commutativity_add",
+      "lhs": "(add ?x ?y)",
+      "rhs": "(add ?y ?x)",
+      "prompt": 70,
+      "reason": "duplicate"
+    },
+    {
+      "name": "double_neg",
+      "lhs": "(neg (neg ?x))",
+      "rhs": "?x",
+      "prompt": 70,
+      "reason": "duplicate"
+    },
+    {
+      "name": "shl_const_fold",
+      "lhs": "(shl ?x 0)",
+      "rhs": "1",
+      "prompt": 70,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "constant_fold_shl",
+      "lhs": "(shl (load ?c) ?b)",
+      "rhs": "(load (?c << ?b))",
+      "prompt": 71,
+      "reason": "unparseable"
+    },
+    {
+      "name": "double_neg_conv",
+      "lhs": "(neg (neg ?x))",
+      "rhs": "?x",
+      "prompt": 71,
+      "reason": "duplicate"
+    },
+    {
+      "name": "sub_double_add_conv",
+      "lhs": "(sub ?x (add ?y ?z))",
+      "rhs": "(add (-?x) (?y ? z))",
+      "prompt": 71,
+      "reason": "unparseable"
+    },
+    {
+      "name": "shl_mul",
+      "lhs": "(mul (add ?x (shl ?x ?y)) ?z)",
+      "rhs": "(add (mul ?x ?z) ( shl (mul ?x ?y) ?z))",
+      "prompt": 72,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "mod_add_cancel",
+      "lhs": "(add (mod ?x ?y) ?y)",
+      "rhs": "?x",
+      "prompt": 72,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "and_not_negate",
+      "lhs": "(not (neg (xor ?x ?y)))",
+      "rhs": "(or ?x ?y)",
+      "prompt": 72,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "div_pow2",
+      "lhs": "(div ?x 4)",
+      "rhs": "(shr ?x 2)",
+      "prompt": 72,
+      "reason": "duplicate"
+    },
+    {
+      "name": "add_add_cancel",
+      "lhs": "(add (add ?x ?y) (- ?x))",
+      "rhs": "?y",
+      "prompt": 72,
+      "reason": "unknown operator or arity"
+    },
+    {
+      "name": "mod_add",
+      "lhs": "(add (mod ?x ?m) (mod ?y ?m))",
+      "rhs": "(mod (add ?x ?y) ?m)",
+      "prompt": 73,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "div_mul_cancel",
+      "lhs": "(mul (div ?x ?a) ?a)",
+      "rhs": "?x",
+      "prompt": 73,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "xor_and_not",
+      "lhs": "(and (not ?x) ?y)",
+      "rhs": "(xor ?x (not ?y))",
+      "prompt": 73,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "shift_add",
+      "lhs": "(add (shl ?x ?k) (shl ?y ?k))",
+      "rhs": "(shl (add ?x ?y) ?k)",
+      "prompt": 73,
+      "reason": "duplicate"
+    },
+    {
+      "name": "mod_load_const",
+      "lhs": "(mod (load ?a) ?c)",
+      "rhs": "(mod (mod ?a 16) ?c)",
+      "prompt": 73,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "double_neg",
+      "lhs": "(neg (not ?x))",
+      "rhs": "?x",
+      "prompt": 74,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "sub_add_cancel",
+      "lhs": "(add (sub ?x ?y) ?y)",
+      "rhs": "?x",
+      "prompt": 74,
+      "reason": "duplicate"
+    },
+    {
+      "name": "div_mul_cancel",
+      "lhs": "(mul (div ?x ?y) ?y)",
+      "rhs": "?x",
+      "prompt": 74,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "shl_mul_const",
+      "lhs": "(mul ?x (shl 1 ?n))",
+      "rhs": "(shl ?x ?n)",
+      "prompt": 74,
+      "reason": "duplicate"
+    },
+    {
+      "name": "load_add_const",
+      "lhs": "(add (load ?x) ?y)",
+      "rhs": "(load (+ ?x ?y))",
+      "prompt": 75,
+      "reason": "unknown operator or arity"
+    },
+    {
+      "name": "mul_add_shl",
+      "lhs": "(add (mul ?x (shl ?y 1)) (shl ?z 1))",
+      "rhs": "(shl (add (mul ?x ?y) (mul ?z ?y)) 1)",
+      "prompt": 75,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "mod_add_cancel",
+      "lhs": "(add (mod ?x ?y) ?z)",
+      "rhs": "(mod (+ ?x (* ?y (?div ?z ?y))))",
+      "prompt": 75,
+      "reason": "unknown operator or arity"
+    },
+    {
+      "name": "shl_mul_const",
+      "lhs": "(mul (load ?x) (shl 1 ?y))",
+      "rhs": "(shl (mul (load ?x) 2) ?(sub ?y 1))",
+      "prompt": 75,
+      "reason": "unknown operator or arity"
+    },
+    {
+      "name": "shift_left_mul",
+      "lhs": "(mul (shl ?x ?a) ?b)",
+      "rhs": "(shl (mul ?x ?b) ?a)",
+      "prompt": 76,
+      "reason": "duplicate"
+    },
+    {
+      "name": "assoc_add",
+      "lhs": "(add (add ?x ?y) ?z)",
+      "rhs": "(add ?x (add ?y ?z))",
+      "prompt": 76,
+      "reason": "duplicate"
+    },
+    {
+      "name": "assoc_mul",
+      "lhs": "(mul (mul ?x ?y) ?z)",
+      "rhs": "(mul ?x (mul ?y ?z))",
+      "prompt": 76,
+      "reason": "duplicate"
+    },
+    {
+      "name": "sub_add_const",
+      "lhs": "(add (sub ?x ?y) ?y)",
+      "rhs": "?x",
+      "prompt": 76,
+      "reason": "duplicate"
+    },
+    {
+      "name": "double_negate",
+      "lhs": "(neg (neg ?x))",
+      "rhs": "?x",
+      "prompt": 76,
+      "reason": "duplicate"
+    },
+    {
+      "name": "distribute_mul",
+      "lhs": "(add (mul ?x ?z) ?w)",
+      "rhs": "(add (add (mul ?x ?y) (mul ?y ?z)) ?w)",
+      "prompt": 77,
+      "reason": "right side uses unbound variables"
+    },
+    {
+      "name": "pull_out_constant",
+      "lhs": "(mul (add ?c1 ?c2) ?x)",
+      "rhs": "(add (mul ?c1 ?x) (mul ?c2 ?x))",
+      "prompt": 77,
+      "reason": "duplicate"
+    },
+    {
+      "name": "distribute_sub",
+      "lhs": "(sub (add ?x ?y) (add ?z ?w))",
+      "rhs": "(add (sub ?x ?z) (sub ?y ?w))",
+      "prompt": 77,
+      "reason": "duplicate"
+    },
+    {
+      "name": "simplify_neg_not",
+      "lhs": "(neg (not ?x))",
+      "rhs": "?x",
+      "prompt": 77,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "commutative_add_sub",
+      "lhs": "(sub (add ?x ?y) (add ?x ?z))",
+      "rhs": "(sub ?y ?z)",
+      "prompt": 77,
+      "reason": "duplicate"
+    },
+    {
+      "name": "shift_const",
+      "lhs": "(shl ?x 0)",
+      "rhs": "?x",
+      "prompt": 78,
+      "reason": "duplicate"
+    },
+    {
+      "name": "shift_cancel",
+      "lhs": "(shl (shr ?x ?y) ?y)",
+      "rhs": "?x",
+      "prompt": 78,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "div_by_self",
+      "lhs": "(div ?x ?x)",
+      "rhs": "1",
+      "prompt": 78,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "mod_by_one",
+      "lhs": "(mod ?x 1)",
+      "rhs": "0",
+      "prompt": 78,
+      "reason": "duplicate"
+    },
+    {
+      "name": "or_with_zero",
+      "lhs": "(or ?x 0)",
+      "rhs": "?x",
+      "prompt": 78,
+      "reason": "duplicate"
+    },
+    {
+      "name": "shl_add",
+      "lhs": "(add (shl ?x ?a) (shl ?y ?b))",
+      "rhs": "(shl (add ?x ?y) (max ?a ?b))",
+      "prompt": 79,
+      "reason": "unknown operator or arity"
+    },
+    {
+      "name": "mod_add_cancel",
+      "lhs": "(mod (add (add ?x 10) 40) 50)",
+      "rhs": "(mod (add ?x 10) 50)",
+      "prompt": 79,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "shl_div",
+      "lhs": "(div (shl ?x ?a) (shr ?y ?b))",
+      "rhs": "(shl (div ?x (shr ?y ?b)) ?a)",
+      "prompt": 79,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "factor_mul",
+      "lhs": "(add (mul ?x ?y) (mul ?x ?z))",
+      "rhs": "(mul ?x (add ?y ?z))",
+      "prompt": 80,
+      "reason": "duplicate"
+    },
+    {
+      "name": "add_sub_cancel",
+      "lhs": "(sub (add ?x ?y) ?y)",
+      "rhs": "?x",
+      "prompt": 80,
+      "reason": "duplicate"
+    },
+    {
+      "name": "and_or_distribute",
+      "lhs": "(or (and ?x ?y) (or ?x ?z))",
+      "rhs": "(or ?x (and ?y ?z))",
+      "prompt": 80,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "mul_assoc",
+      "lhs": "(mul (mul ?x ?y) ?z)",
+      "rhs": "(mul ?x (mul ?y ?z))",
+      "prompt": 80,
+      "reason": "duplicate"
+    },
+    {
+      "name": "shl_shr_cancel",
+      "lhs": "(shl (shr ?x ?a) ?a)",
+      "rhs": "?x",
+      "prompt": 80,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "shl_load",
+      "lhs": "(shl (load ?a) ?b)",
+      "rhs": "(load (shl ?a ?b))",
+      "prompt": 81,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "mod_const",
+      "lhs": "(mod ?x 1)",
+      "rhs": "0",
+      "prompt": 81,
+      "reason": "duplicate"
+    },
+    {
+      "name": "neg_double_neg",
+      "lhs": "(neg (neg ?x))",
+      "rhs": "?x",
+      "prompt": 81,
+      "reason": "duplicate"
+    },
+    {
+      "name": "double_shl",
+      "lhs": "(shl (shl ?x ?y) ?z)",
+      "rhs": "(shl ?x (+ ?y ?z))",
+      "prompt": 81,
+      "reason": "unknown operator or arity"
+    },
+    {
+      "name": "double_shift",
+      "lhs": "(shl (shr ?x ?y) ?z)",
+      "rhs": "(shr ?x (?y+?z))",
+      "prompt": 82,
+      "reason": "unknown operator or arity"
+    },
+    {
+      "name": "mod_const",
+      "lhs": "(mod ?x 0)",
+      "rhs": "0",
+      "prompt": 83,
+      "reason": "duplicate"
+    },
+    {
+      "name": "add_mul_distribute",
+      "lhs": "(add (mul ?x ?y) (mul ?x ?z))",
+      "rhs": "(mul ?x (add ?y ?z))",
+      "prompt": 83,
+      "reason": "duplicate"
+    },
+    {
+      "name": "sub_shl_cancel",
+      "lhs": "(sub (shl ?x 1) (shl ?x 2))",
+      "rhs": "(shl ?x 2)",
+      "prompt": 83,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "mod_pow",
+      "lhs": "(mod ?x (pow ?y ?z))",
+      "rhs": "(pow (mod ?x ?y) ?z)",
+      "prompt": 83,
+      "reason": "unknown operator or arity"
+    },
+    {
+      "name": "shl_const",
+      "lhs": "(add ?x (shl ?x ?c))",
+      "rhs": "(shl (add ?x 1) ?c)",
+      "prompt": 84,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "mul_div_cancel",
+      "lhs": "(div (mul ?x ?y) ?y)",
+      "rhs": "?x",
+      "prompt": 84,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "sub_add_cancel",
+      "lhs": "(add (?x - ?y) ?y)",
+      "rhs": "?x",
+      "prompt": 84,
+      "reason": "unparseable"
+    },
+    {
+      "name": "shl_shr_cancel",
+      "lhs": "(shr (shl ?x ?c) ?c)",
+      "rhs": "?x",
+      "prompt": 84,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "and_const",
+      "lhs": "(and ?x ?c)",
+      "rhs": "(if (= 0 ?c) 0 (+ ?x (?x - 1)))",
+      "prompt": 84,
+      "reason": "unparseable"
+    },
+    {
+      "name": "mod_shift_cancel",
+      "lhs": "(mod (shl ?x ?n) ((shr 1 32)-1))",
+      "rhs": "?x",
+      "prompt": 85,
+      "reason": "unknown operator or arity"
+    },
+    {
+      "name": "mul_add_distrib",
+      "lhs": "(add (mul ?a ?c) (mul ?b ?c))",
+      "rhs": "(mul (add ?a ?b) ?c)",
+      "prompt": 85,
+      "reason": "duplicate"
+    },
+    {
+      "name": "div_mul_cancel",
+      "lhs": "(add (div ?x ?y) (mul ?z ?y))",
+      "rhs": "(div (add ?x (mul ?z ?y)) ?y)",
+      "prompt": 85,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "mod_add_cancel",
+      "lhs": "(mod (add ?x (mod ?y ?n)) ?n)",
+      "rhs": "?x",
+      "prompt": 85,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "mul_not_cancel",
+      "lhs": "(not (and (not ?a) (not ?b)))",
+      "rhs": "(or (not ?a) (not ?b))",
+      "prompt": 85,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "mul_add_distrib",
+      "lhs": "(add (mul ?x ?y) (mul ?x ?z))",
+      "rhs": "(mul ?x (add ?y ?z))",
+      "prompt": 86,
+      "reason": "duplicate"
+    },
+    {
+      "name": "div_mul_cancel",
+      "lhs": "(mul (div ?x ?y) ?y)",
+      "rhs": "?x",
+      "prompt": 86,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "shl_add_distrib",
+      "lhs": "(add (shl ?x ?y) (shl ?x ?z))",
+      "rhs": "(shl (add ?x ?x) ?y)",
+      "prompt": 86,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "mod_mul_cancel",
+      "lhs": "(mul (mod ?x ?y) ?y)",
+      "rhs": "?x",
+      "prompt": 86,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "xor_add_distrib",
+      "lhs": "(add (xor ?x ?y) (xor ?x ?z))",
+      "rhs": "(xor ?x (add ?y ?z))",
+      "prompt": 86,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "double_neg",
+      "lhs": "(neg (neg ?x))",
+      "rhs": "?x",
+      "prompt": 87,
+      "reason": "duplicate"
+    },
+    {
+      "name": "div_by_const",
+      "lhs": "(div ?a ?c)",
+      "rhs": "((mul (xor (div (add -1 ?c) ?c) -1) ?a))",
+      "prompt": 87,
+      "reason": "unknown operator or arity"
+    },
+    {
+      "name": "and_with_true",
+      "lhs": "(and ?x 1)",
+      "rhs": "?x",
+      "prompt": 87,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "double_and",
+      "lhs": "(and (and ?x ?a) ?a)",
+      "rhs": "?a",
+      "prompt": 88,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "xor_with_1",
+      "lhs": "(xor ?x 1)",
+      "rhs": "(not ?x)",
+      "prompt": 88,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "mul_shift_cancel",
+      "lhs": "(mul (div ?x ?c) ?c)",
+      "rhs": "?x",
+      "prompt": 88,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "mod_and_cancel",
+      "lhs": "(and (mod ?x 2) (and ?x 3))",
+      "rhs": "(and (mod ?x 2) (mod ?x 3))",
+      "prompt": 88,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "neg_not_mod",
+      "lhs": "(neg (not (mod ?x ?y)))",
+      "rhs": "-1",
+      "prompt": 89,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "xor_and_cancel",
+      "lhs": "(xor (add ?x ?y) (and ?x ?y))",
+      "rhs": "(not (and ?x ?y))",
+      "prompt": 89,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "mod_div_const",
+      "lhs": "(div (mod ?x ?y) ?z)",
+      "rhs": "(mod ?x (* ?y ?z))",
+      "prompt": 89,
+      "reason": "unknown operator or arity"
+    },
+    {
+      "name": "neg_not_xor",
+      "lhs": "(neg (not (xor ?x ?y)))",
+      "rhs": "?x",
+      "prompt": 89,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "double_neg",
+      "lhs": "(neg (neg ?x))",
+      "rhs": "?x",
+      "prompt": 90,
+      "reason": "duplicate"
+    },
+    {
+      "name": "div_const",
+      "lhs": "(div ?x 1)",
+      "rhs": "?x",
+      "prompt": 90,
+      "reason": "duplicate"
+    },
+    {
+      "name": "add_zero",
+      "lhs": "(add ?x 0)",
+      "rhs": "?x",
+      "prompt": 90,
+      "reason": "duplicate"
+    },
+    {
+      "name": "mul_const",
+      "lhs": "(mul ?x 1)",
+      "rhs": "?x",
+      "prompt": 90,
+      "reason": "duplicate"
+    },
+    {
+      "name": "shift_cancel",
+      "lhs": "(shr (shl ?x ?a) ?a)",
+      "rhs": "?x",
+      "prompt": 91,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "load_const",
+      "lhs": "(load 0)",
+      "rhs": "0",
+      "prompt": 91,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "div_by_2",
+      "lhs": "(div ?x 2)",
+      "rhs": "(shr ?x 1)",
+      "prompt": 91,
+      "reason": "duplicate"
+    },
+    {
+      "name": "neg_cancel",
+      "lhs": "(neg (neg ?x))",
+      "rhs": "?x",
+      "prompt": 91,
+      "reason": "duplicate"
+    },
+    {
+      "name": "factor_mul",
+      "lhs": "(add (mul ?x ?y) (mul ?x ?z))",
+      "rhs": "(mul ?x (add ?y ?z))",
+      "prompt": 92,
+      "reason": "duplicate"
+    },
+    {
+      "name": "sub_add_cancel",
+      "lhs": "(sub (add ?x ?y) ?y)",
+      "rhs": "?x",
+      "prompt": 92,
+      "reason": "duplicate"
+    },
+    {
+      "name": "double_neg_then_not",
+      "lhs": "((not (neg ?x)))",
+      "rhs": "?x",
+      "prompt": 92,
+      "reason": "unknown operator or arity"
+    },
+    {
+      "name": "mod_add_cancel",
+      "lhs": "(add (mod ?a ?c) (-?c))",
+      "rhs": "(mod ?a ?c)",
+      "prompt": 92,
+      "reason": "unknown operator or arity"
+    },
+    {
+      "name": "div_mul_cancel",
+      "lhs": "(mul (div ?a ?b) ?b)",
+      "rhs": "?a",
+      "prompt": 92,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "shr_shl_cancel",
+      "lhs": "(shr (shl ?x ?a) ?b)",
+      "rhs": "(shl ?x (?a - ?b))",
+      "prompt": 93,
+      "reason": "unparseable"
+    },
+    {
+      "name": "mul_mod_cancel",
+      "lhs": "(mod (mul ?x ?y) ?n)",
+      "rhs": "(mul (mod ?x ?n) (mod ?y ?n))",
+      "prompt": 93,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "neg_neg_cancel",
+      "lhs": "(neg (neg ?x))",
+      "rhs": "?x",
+      "prompt": 93,
+      "reason": "duplicate"
+    },
+    {
+      "name": "add_add_cancel",
+      "lhs": "(add (add ?x ?y) (add ?y ?z))",
+      "rhs": "(add ?x (add ?y ?z))",
+      "prompt": 93,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "shr_const",
+      "lhs": "(shr ?x 32)",
+      "rhs": "0",
+      "prompt": 94,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "xor_const",
+      "lhs": "(xor ?x 0)",
+      "rhs": "?x",
+      "prompt": 94,
+      "reason": "duplicate"
+    },
+    {
+      "name": "or_const",
+      "lhs": "(or ?x 0)",
+      "rhs": "?x",
+      "prompt": 94,
+      "reason": "duplicate"
+    },
+    {
+      "name": "double_mul",
+      "lhs": "(mul (mul ?x ?y) ?z)",
+      "rhs": "(mul ?x (mul ?y ?z))",
+      "prompt": 95,
+      "reason": "duplicate"
+    },
+    {
+      "name": "shl_add",
+      "lhs": "(add (shl ?x ?a) (shr ?x ?b))",
+      "rhs": "(shl (add ?x (neg (shr ?x ?b))) (sub 32 ?a))",
+      "prompt": 95,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "div_sub",
+      "lhs": "(sub (div ?x ?y) ?z)",
+      "rhs": "(div (sub ?x (mul ?z ?y)) ?y)",
+      "prompt": 95,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "mod_add",
+      "lhs": "(add (mod ?x ?y) ?z)",
+      "rhs": "(mod (add ?x (neg (mod ?x ?y))) ?y)",
+      "prompt": 95,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "shl_mul",
+      "lhs": "(mul ?x (shl ?y ?a))",
+      "rhs": "(shl (mul ?x ?y) ?a)",
+      "prompt": 95,
+      "reason": "duplicate"
+    },
+    {
+      "name": "mul_shl_fusion",
+      "lhs": "(mul (shl ?a ?b) ?c)",
+      "rhs": "(shl (mul ?a ?c) ?b)",
+      "prompt": 96,
+      "reason": "duplicate"
+    },
+    {
+      "name": "add_mul_distrib",
+      "lhs": "(add (mul ?x ?y) (mul ?z ?y))",
+      "rhs": "(mul (add ?x ?z) ?y)",
+      "prompt": 96,
+      "reason": "duplicate"
+    },
+    {
+      "name": "div_mod_combinability",
+      "lhs": "(mod (div (mod ?a ?m) ?n) ?p)",
+      "rhs": "(mod (div ?a (mul ?n ?p)) ?m)",
+      "prompt": 96,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "double_negation",
+      "lhs": "(not (not ?x))",
+      "rhs": "?x",
+      "prompt": 96,
+      "reason": "duplicate"
+    },
+    {
+      "name": "factor_add",
+      "lhs": "(add (sub ?x ?y) (sub ?z ?y))",
+      "rhs": "(sub (add ?x ?z) 2*y)",
+      "prompt": 97,
+      "reason": "unparseable"
+    },
+    {
+      "name": "mod_const",
+      "lhs": "(mod ?x 32)",
+      "rhs": "?x & 0xFFFFFFFF",
+      "prompt": 97,
+      "reason": "unparseable"
+    },
+    {
+      "name": "shl_zero",
+      "lhs": "(shl ?x 0)",
+      "rhs": "?x",
+      "prompt": 97,
+      "reason": "duplicate"
+    },
+    {
+      "name": "xor_same",
+      "lhs": "(xor ?x ?x)",
+      "rhs": "0",
+      "prompt": 97,
+      "reason": "duplicate"
+    },
+    {
+      "name": "mod_shift_cancel",
+      "lhs": "(xor (?z mod 32) (shl ?z (?b)))",
+      "rhs": "?z",
+      "prompt": 98,
+      "reason": "unparseable"
+    },
+    {
+      "name": "and_load_const",
+      "lhs": "(and (load ?x) (?c))",
+      "rhs": "(load (?c & ?x))",
+      "prompt": 98,
+      "reason": "unparseable"
+    },
+    {
+      "name": "or_load_const",
+      "lhs": "(or (load ?x) (?c))",
+      "rhs": "(load ((-1 ^ ?c) & ?x))",
+      "prompt": 98,
+      "reason": "unparseable"
+    },
+    {
+      "name": "not_not_cancel",
+      "lhs": "(not (not ?x))",
+      "rhs": "?x",
+      "prompt": 98,
+      "reason": "duplicate"
+    },
+    {
+      "name": "commutative_add",
+      "lhs": "(add ?x (sub 0 ?y))",
+      "rhs": "(sub (?x 0) ?y)",
+      "prompt": 99,
+      "reason": "unknown operator or arity"
+    },
+    {
+      "name": "associative_mul_shift",
+      "lhs": "(mul (shl ?a ?b) (shr ?c ?d))",
+      "rhs": "(shl (?a ?b) ((?c ?d) & 5))",
+      "prompt": 99,
+      "reason": "unparseable"
+    },
+    {
+      "name": "double_negation",
+      "lhs": "(neg (neg ?x))",
+      "rhs": "?x",
+      "prompt": 99,
+      "reason": "duplicate"
+    },
+    {
+      "name": "constant_folding_mul_shift",
+      "lhs": "(mul ?x (shl ?y (mod ?z 6)))",
+      "rhs": "(shl (mul ?x ?y) ((?z & 5) % 6))",
+      "prompt": 99,
+      "reason": "unparseable"
+    },
+    {
+      "name": "double_neg",
+      "lhs": "(neg (neg ?x))",
+      "rhs": "?x",
+      "prompt": 100,
+      "reason": "duplicate"
+    },
+    {
+      "name": "add_with_zero",
+      "lhs": "(add ?x 0)",
+      "rhs": "?x",
+      "prompt": 100,
+      "reason": "duplicate"
+    },
+    {
+      "name": "mul_by_one",
+      "lhs": "(mul ?x 1)",
+      "rhs": "?x",
+      "prompt": 100,
+      "reason": "duplicate"
+    },
+    {
+      "name": "shl_by_zero",
+      "lhs": "(shl ?x 0)",
+      "rhs": "?x",
+      "prompt": 100,
+      "reason": "duplicate"
+    },
+    {
+      "name": "shr_by_zero",
+      "lhs": "(shr ?x 0)",
+      "rhs": "?x",
+      "prompt": 100,
+      "reason": "duplicate"
+    },
+    {
+      "name": "factor_add",
+      "lhs": "(add (and ?x 127) (and ?y 127))",
+      "rhs": "(and (add ?x ?y) 127)",
+      "prompt": 101,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "shl_const",
+      "lhs": "(shl ?x 0)",
+      "rhs": "?x",
+      "prompt": 101,
+      "reason": "duplicate"
+    },
+    {
+      "name": "shr_const",
+      "lhs": "(shr (shl ?x 3) 3)",
+      "rhs": "?x",
+      "prompt": 101,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "xor_self",
+      "lhs": "(xor ?x ?x)",
+      "rhs": "0",
+      "prompt": 101,
+      "reason": "duplicate"
+    },
+    {
+      "name": "double_not",
+      "lhs": "(not (not ?x))",
+      "rhs": "?x",
+      "prompt": 101,
+      "reason": "duplicate"
+    },
+    {
+      "name": "factor_sub",
+      "lhs": "(sub (add ?x ?y) (add ?x ?z))",
+      "rhs": "(sub ?y ?z)",
+      "prompt": 102,
+      "reason": "duplicate"
+    },
+    {
+      "name": "mul_add_cancel",
+      "lhs": "(add (mul ?x ?a) (mul ?b ?c))",
+      "rhs": "(mul (+ ?x ?b) ?c)",
+      "prompt": 102,
+      "reason": "unknown operator or arity"
+    },
+    {
+      "name": "double_factor_mul",
+      "lhs": "(mul (mul ?x ?y) ?y)",
+      "rhs": "(mul ((shl ?x 1) ?y)",
+      "prompt": 102,
+      "reason": "unparseable"
+    },
+    {
+      "name": "mod_shift_opt",
+      "lhs": "(shr (add ?x (shl ?y k)) n)",
+      "rhs": "(shr ?x (+ ?n k))",
+      "prompt": 102,
+      "reason": "unparseable"
+    },
+    {
+      "name": "div_mod_cancel",
+      "lhs": "(mod (mul ?x ?a) (mul ?b ?c))",
+      "rhs": "(mod ?x (/ ?c ?b))",
+      "prompt": 102,
+      "reason": "unknown operator or arity"
+    },
+    {
+      "name": "shl_const",
+      "lhs": "(shl ?x 0)",
+      "rhs": "?x",
+      "prompt": 103,
+      "reason": "duplicate"
+    },
+    {
+      "name": "shr_const",
+      "lhs": "(shr ?x 0)",
+      "rhs": "?x",
+      "prompt": 103,
+      "reason": "duplicate"
+    },
+    {
+      "name": "load_add_const",
+      "lhs": "(add (load ?x) ?y)",
+      "rhs": "(load (add ?x ?y))",
+      "prompt": 103,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "neg_neg",
+      "lhs": "(neg (neg ?x))",
+      "rhs": "?x",
+      "prompt": 103,
+      "reason": "duplicate"
+    },
+    {
+      "name": "sub_const",
+      "lhs": "(sub ?x 0)",
+      "rhs": "?x",
+      "prompt": 103,
+      "reason": "duplicate"
+    },
+    {
+      "name": "mod_shl",
+      "lhs": "(shl (mod ?a ?b) ?c)",
+      "rhs": "(mod (shl ?a ?c) ?b)",
+      "prompt": 104,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "div_mul_cancel",
+      "lhs": "(mul (div ?a ?b) ?b)",
+      "rhs": "?a",
+      "prompt": 104,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "xor_double",
+      "lhs": "(xor ?x ?x)",
+      "rhs": "0",
+      "prompt": 104,
+      "reason": "duplicate"
+    },
+    {
+      "name": "sub_add_assoc",
+      "lhs": "(sub (add ?x ?y) (add ?z ?w))",
+      "rhs": "(add (sub ?x ?z) (sub ?y ?w))",
+      "prompt": 104,
+      "reason": "duplicate"
+    },
+    {
+      "name": "not_not",
+      "lhs": "(not (not ?x))",
+      "rhs": "?x",
+      "prompt": 104,
+      "reason": "duplicate"
+    },
+    {
+      "name": "mod_add",
+      "lhs": "(add (mod ?a ?b) (mod ?c ?b))",
+      "rhs": "(mod (add ?a ?c) ?b)",
+      "prompt": 105,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "sub_add_cancel",
+      "lhs": "(add (sub ?x ?y) ?y)",
+      "rhs": "?x",
+      "prompt": 105,
+      "reason": "duplicate"
+    },
+    {
+      "name": "shl_mul",
+      "lhs": "(mul a (shl b c))",
+      "rhs": "(shl (mul a b) c)",
+      "prompt": 105,
+      "reason": "unparseable"
+    },
+    {
+      "name": "shr_div",
+      "lhs": "(div a (shr b c))",
+      "rhs": "(shr (div a b) c)",
+      "prompt": 105,
+      "reason": "unparseable"
+    },
+    {
+      "name": "extract_load",
+      "lhs": "(load (and ?x ?y))",
+      "rhs": "(and (load ?x) (load ?y))",
+      "prompt": 106,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "distribute_mul_over_add",
+      "lhs": "(mul (add ?x ?y ?z)",
+      "rhs": "(add (mul ?x ?z) (mul ?y ?z) (mul ?z ?z))",
+      "prompt": 106,
+      "reason": "unparseable"
+    },
+    {
+      "name": "negate_divisor",
+      "lhs": "(div ?x (neg ?y))",
+      "rhs": "(sub 0 (div ?x ?y))",
+      "prompt": 106,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "shl_by_power_of_two",
+      "lhs": "(shl ?x ?y)",
+      "rhs": "(if (and (leq 0 ?y) (lt ?y 32)) (mul ?x (ldc (power-of-two ?y))) ?x)",
+      "prompt": 106,
+      "reason": "unknown operator or arity"
+    },
+    {
+      "name": "mod_by_even_number",
+      "lhs": "(mod ?x ?y)",
+      "rhs": "(if (even? ?y) (mod ?x (/ ?y 2)) ?x)",
+      "prompt": 106,
+      "reason": "unknown operator or arity"
+    },
+    {
+      "name": "mod_add",
+      "lhs": "(add (load (div ?a 32)) ?b)",
+      "rhs": "(add ?a (mul ?b 32))",
+      "prompt": 107,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "div_mod_const",
+      "lhs": "(div (mod ?x ?c) ?d)",
+      "rhs": "(mod ?x (* ?c ?d))",
+      "prompt": 107,
+      "reason": "unknown operator or arity"
+    },
+    {
+      "name": "shl_div",
+      "lhs": "(shr (div ?a (mul ?b 32)) ?n)",
+      "rhs": "(div (shr ?a ?n) (mul ?b 32))",
+      "lhs_cost": 18,
+      "rhs_cost": 18,
+      "z3": "timeout",
+      "prompt": 107,
+      "reason": "unsound (z3 unknown)"
+    },
+    {
+      "name": "xor_const_cancel",
+      "lhs": "(xor ?x (add ?y (- 32)))",
+      "rhs": "(neg ?y)",
+      "prompt": 107,
+      "reason": "unknown operator or arity"
+    },
+    {
+      "name": "and_or_assoc",
+      "lhs": "(or (and ?x ?y) (and ?z ?w))",
+      "rhs": "(and (or ?x ?z) (or ?y ?w))",
+      "prompt": 107,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "mod_const",
+      "lhs": "(mod ?x ?c)",
+      "rhs": "?c",
+      "prompt": 108,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "shl_shr_cancel",
+      "lhs": "(shr (shl ?x ?n) ?n)",
+      "rhs": "?x",
+      "prompt": 108,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "sub_sub_cancel",
+      "lhs": "(sub (sub ?x ?y) ?y)",
+      "rhs": "?x",
+      "prompt": 108,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "factor_mul",
+      "lhs": "(add (mul ?x ?y) (mul ?x ?z))",
+      "rhs": "(mul ?x (add ?y ?z))",
+      "prompt": 109,
+      "reason": "duplicate"
+    },
+    {
+      "name": "add_sub_cancel",
+      "lhs": "(sub (add ?x ?y) ?y)",
+      "rhs": "?x",
+      "prompt": 109,
+      "reason": "duplicate"
+    },
+    {
+      "name": "xor_commutativity",
+      "lhs": "(xor ?x ?y)",
+      "rhs": "(xor ?y ?x)",
+      "prompt": 109,
+      "reason": "duplicate"
+    },
+    {
+      "name": "and_distrib_left",
+      "lhs": "(and (or ?x ?y) ?z)",
+      "rhs": "(or (and ?x ?z) (and ?y ?z))",
+      "prompt": 109,
+      "reason": "duplicate"
+    },
+    {
+      "name": "shl_mul",
+      "lhs": "(mul (load ?a) ?b)",
+      "rhs": "(load (shl ?a ?b))",
+      "prompt": 109,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "mul_assoc",
+      "lhs": "(mul (add ?x ?y) ?z)",
+      "rhs": "(add (mul ?x ?z) (mul ?y ?z))",
+      "prompt": 110,
+      "reason": "duplicate"
+    },
+    {
+      "name": "sub_cancel",
+      "lhs": "(sub (mul ?a ?b) (?a * (add ?c -1)))",
+      "rhs": "(mul ?a (sub ?b ?c))",
+      "prompt": 110,
+      "reason": "unparseable"
+    },
+    {
+      "name": "mod_distrib",
+      "lhs": "(div (mod ?x ?m) ?d)",
+      "rhs": "(div (mod ?x ?d) ?m)",
+      "prompt": 110,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "xor_zero",
+      "lhs": "(or ?x 0)",
+      "rhs": "?x",
+      "prompt": 110,
+      "reason": "duplicate"
+    },
+    {
+      "name": "shl_div",
+      "lhs": "(div (shl ?a n) m)",
+      "rhs": "(shl (?a / m) n)",
+      "prompt": 110,
+      "reason": "unparseable"
+    },
+    {
+      "name": "shl_by_zero",
+      "lhs": "(shl ?x 0)",
+      "rhs": "?x",
+      "prompt": 111,
+      "reason": "duplicate"
+    },
+    {
+      "name": "shr_by_zero",
+      "lhs": "(shr ?x 0)",
+      "rhs": "?x",
+      "prompt": 111,
+      "reason": "duplicate"
+    },
+    {
+      "name": "div_by_one",
+      "lhs": "(div ?x 1)",
+      "rhs": "?x",
+      "prompt": 111,
+      "reason": "duplicate"
+    },
+    {
+      "name": "neg_neg",
+      "lhs": "(neg (neg ?x))",
+      "rhs": "?x",
+      "prompt": 111,
+      "reason": "duplicate"
+    },
+    {
+      "name": "assoc_add",
+      "lhs": "(add (add ?x ?y) ?",
+      "rhs": "(add ?x (add ?y ?z))",
+      "prompt": 112,
+      "reason": "unparseable"
+    },
+    {
+      "name": "distr_mul_add",
+      "lhs": "(mul (add ?x ?y) ?",
+      "rhs": "(add (mul ?x ?z) (mul ?y ?z))",
+      "prompt": 112,
+      "reason": "unparseable"
+    },
+    {
+      "name": "mod_by_pow_of_2",
+      "lhs": "(mod ?x ?",
+      "rhs": "(and ?x (?-1 (+ 1 ?n))))",
+      "prompt": 112,
+      "reason": "unparseable"
+    },
+    {
+      "name": "add_mul_distrib",
+      "lhs": "(add (mul ?x ?y) ?",
+      "rhs": "(add ?x (mul ?x ?z))",
+      "prompt": 112,
+      "reason": "unparseable"
+    },
+    {
+      "name": "xor_const_fold",
+      "lhs": "(xor ?x 0)",
+      "rhs": "?x",
+      "prompt": 113,
+      "reason": "duplicate"
+    },
+    {
+      "name": "mul_shr_cancel",
+      "lhs": "(shr (mul ?x 4) 2)",
+      "rhs": "(shr ?x 2)",
+      "prompt": 113,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "constant_fold",
+      "lhs": "(load (load (mod 255 r0)))",
+      "rhs": "(mod 255 r0)",
+      "prompt": 114,
+      "reason": "unparseable"
+    },
+    {
+      "name": "double_mul_opt",
+      "lhs": "(mul (mul ?x ?y) ?z)",
+      "rhs": "(mul ?x (add (mul ?y ?z) (neg (mul ?y (mod ?z 256)))))",
+      "prompt": 114,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "simplify_shift",
+      "lhs": "(sub (mul -6 (add (add 6 (add (add in1 in1) 3)) 3)) (mul (add (add 6 (add (add in1 in1) 3)) 3) -6))",
+      "rhs": "(mul 0 (add (add 6 (add (add in1 in1) 3)) 3))",
+      "prompt": 114,
+      "reason": "unparseable"
+    },
+    {
+      "name": "constant_fold_mul",
+      "lhs": "(mul ?x (mod ?y 256))",
+      "rhs": "(and ?x ?y)",
+      "prompt": 114,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "reduce_div",
+      "lhs": "(sub (add (add 8 (add (add 5 (add in0 (add in1 1))) 4)) (shl (shl (shl in0 1) 1) 1)) (add (add (add (add (add 5 in0) (add in1 1)) 4) (shl (shl (shl in0 1) 1) 1)) 8))",
+      "rhs": "(sub (add (add 8 5) (add in0 (add in1 1))) (add (add 4 (shl (shl in0 1) 2)) (shl (shl (shl in0 1) 1) 1)))",
+      "prompt": 114,
+      "reason": "unparseable"
+    },
+    {
+      "name": "mod_shift_cancel",
+      "lhs": "(shl (div r1 r0) 2)",
+      "rhs": "(shr (div r1 r0) 30)",
+      "prompt": 115,
+      "reason": "unparseable"
+    },
+    {
+      "name": "or_and_cancel",
+      "lhs": "(and (or ?x ?y) (not ?z))",
+      "rhs": "(and (xor ?x ?z) (xor ?y ?z))",
+      "prompt": 115,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "not_not_cancel",
+      "lhs": "(not (not ?x))",
+      "rhs": "?x",
+      "prompt": 115,
+      "reason": "duplicate"
+    },
+    {
+      "name": "mul_shift_cancel",
+      "lhs": "(shl (mul r1 r0) 2)",
+      "rhs": "(shr (mul r1 r0) 30)",
+      "prompt": 115,
+      "reason": "unparseable"
+    },
+    {
+      "name": "sub_add_cancel",
+      "lhs": "(add (sub ?x ?y) ?y)",
+      "rhs": "?x",
+      "prompt": 115,
+      "reason": "duplicate"
+    },
+    {
+      "name": "mul_assoc",
+      "lhs": "(mul (add ?x ?y) ?z)",
+      "rhs": "(add (mul ?x ?z) (mul ?y ?z))",
+      "prompt": 116,
+      "reason": "duplicate"
+    },
+    {
+      "name": "double_neg",
+      "lhs": "(neg (neg ?x))",
+      "rhs": "?x",
+      "prompt": 116,
+      "reason": "duplicate"
+    },
+    {
+      "name": "shl_mul_by_power_of_two",
+      "lhs": "(mul ?a (shl ?b ?c))",
+      "rhs": "(shl (mul ?a ?b) ?c)",
+      "prompt": 116,
+      "reason": "duplicate"
+    },
+    {
+      "name": "div_shr_by_power_of_two",
+      "lhs": "(div ?a (shr ?b ?c))",
+      "rhs": "(shr (div ?a ?b) ?c)",
+      "prompt": 116,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "add_cancel",
+      "lhs": "(sub (add ?x ?y) ?x)",
+      "rhs": "?y",
+      "prompt": 116,
+      "reason": "duplicate"
+    },
+    {
+      "name": "mod_mul_cancel",
+      "lhs": "(sub (mul ?x ?y) (mul ?x (mod ?y ?z)))",
+      "rhs": "(mul ?x (mod (sub ?y (mod ?y ?z)) ?z))",
+      "prompt": 117,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "div_mod_reorder",
+      "lhs": "(div (mod ?x ?a) (mod ?x ?b))",
+      "rhs": "(mod ?x (gcd ?a ?b))",
+      "prompt": 117,
+      "reason": "unknown operator or arity"
+    },
+    {
+      "name": "shl_shr_cancel",
+      "lhs": "(shr (add (shl ?x ?y) 1) 1)",
+      "rhs": "?x",
+      "prompt": 117,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "or_and_negate",
+      "lhs": "(not (or (and ?x ?y) (and (not ?x) (not ?y))))",
+      "rhs": "(and (not ?x) (not ?y))",
+      "prompt": 117,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "expand_and",
+      "lhs": "(and (or ?x 1) 3)",
+      "rhs": "3",
+      "prompt": 118,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "extract_shift",
+      "lhs": "(sub (mul (add ?x ?y) 256) 256)",
+      "rhs": "(mul (add ?x ?y) 256)",
+      "prompt": 118,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "fold_mul_shift",
+      "lhs": "(shl (mul ?x 16) 8)",
+      "rhs": "(mul ?x 131072)",
+      "prompt": 118,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "sub_const_cancel",
+      "lhs": "(sub (add ?x ?y) -3)",
+      "rhs": "(add ?x (+ ?y 3))",
+      "prompt": 118,
+      "reason": "unknown operator or arity"
+    },
+    {
+      "name": "double_negate",
+      "lhs": "(neg (neg ?x))",
+      "rhs": "?x",
+      "prompt": 118,
+      "reason": "duplicate"
+    },
+    {
+      "name": "factor_mul",
+      "lhs": "(add (mul ?x ?y) (mul ?x ?z))",
+      "rhs": "(mul ?x (add ?y ?z))",
+      "prompt": 119,
+      "reason": "duplicate"
+    },
+    {
+      "name": "add_sub_cancel",
+      "lhs": "(sub (add ?x ?y) ?y)",
+      "rhs": "?x",
+      "prompt": 119,
+      "reason": "duplicate"
+    },
+    {
+      "name": "mod_add_reduce",
+      "lhs": "(add (mod ?a ?b) (mod ?c ?d))",
+      "rhs": "(mod (+ ?a ?c) (lcm ?b ?d))",
+      "prompt": 119,
+      "reason": "unknown operator or arity"
+    },
+    {
+      "name": "mul_and_cancel",
+      "lhs": "(and (mul ?x ?y) 0xFFFFFFFF)",
+      "rhs": "?y",
+      "prompt": 119,
+      "reason": "unparseable"
+    },
+    {
+      "name": "shl_const",
+      "lhs": "(shl ?x 0)",
+      "rhs": "?x",
+      "prompt": 120,
+      "reason": "duplicate"
+    },
+    {
+      "name": "mul_const_2",
+      "lhs": "(mul ?x 2)",
+      "rhs": "(shl ?x 1)",
+      "prompt": 120,
+      "reason": "duplicate"
+    },
+    {
+      "name": "div_const_1",
+      "lhs": "(div ?x 1)",
+      "rhs": "?x",
+      "prompt": 120,
+      "reason": "duplicate"
+    },
+    {
+      "name": "sub_add_cancel",
+      "lhs": "(add (subtract ?x ?y) ?y)",
+      "rhs": "?x",
+      "prompt": 120,
+      "reason": "unknown operator or arity"
+    },
+    {
+      "name": "mul_const_4",
+      "lhs": "(mul ?x 4)",
+      "rhs": "(shl ?x 2)",
+      "prompt": 120,
+      "reason": "duplicate"
+    },
+    {
+      "name": "mod_add",
+      "lhs": "(add (mod ?x ?y) (mod ?z ?y))",
+      "rhs": "(mod (add ?x ?z) ?y)",
+      "prompt": 121,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "shl_plus_shr",
+      "lhs": "(or (shl ?x ?y) (shr ?x ?y))",
+      "rhs": "(add (shl ?x ?y) (shr ?x ?y))",
+      "prompt": 121,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "double_shl",
+      "lhs": "(shl (shl ?x ?a) ?b)",
+      "rhs": "(shl ?x (+ ?a ?b))",
+      "prompt": 122,
+      "reason": "unknown operator or arity"
+    },
+    {
+      "name": "double_mul",
+      "lhs": "(mul (mul ?x ?y) ?z)",
+      "rhs": "(mul ?x (mul ?y ?z))",
+      "prompt": 122,
+      "reason": "duplicate"
+    },
+    {
+      "name": "double_not_neg",
+      "lhs": "(not (neg ?x))",
+      "rhs": "?x",
+      "prompt": 122,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "shl_const",
+      "lhs": "(shl ?x (load 0))",
+      "rhs": "?x",
+      "prompt": 123,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "shr_const",
+      "lhs": "(shr ?x (load 0))",
+      "rhs": "?x",
+      "prompt": 123,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "xor_self",
+      "lhs": "(xor ?x ?x)",
+      "rhs": "0",
+      "prompt": 123,
+      "reason": "duplicate"
+    },
+    {
+      "name": "and_self",
+      "lhs": "(and ?x ?x)",
+      "rhs": "?x",
+      "prompt": 123,
+      "reason": "duplicate"
+    },
+    {
+      "name": "or_self",
+      "lhs": "(or ?x ?x)",
+      "rhs": "?x",
+      "prompt": 123,
+      "reason": "duplicate"
+    },
+    {
+      "name": "shl_shr_cancel",
+      "lhs": "(shl (shr ?x ?y) ?z)",
+      "rhs": "?x",
+      "prompt": 124,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "mul_zero_left",
+      "lhs": "(mul 0 ?x)",
+      "rhs": "0",
+      "prompt": 124,
+      "reason": "duplicate"
+    },
+    {
+      "name": "not_not_cancel",
+      "lhs": "(not (not ?x))",
+      "rhs": "?x",
+      "prompt": 124,
+      "reason": "duplicate"
+    },
+    {
+      "name": "shl_add_expanding",
+      "lhs": "(add (shl ?x 1) (shl ?y 2))",
+      "rhs": "(or (shl ?x 1) (shl ?y 2))",
+      "prompt": 124,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "double_addition",
+      "lhs": "(add (add ?x ?y) ?z)",
+      "rhs": "(add ?x (add ?y ?z))",
+      "prompt": 125,
+      "reason": "duplicate"
+    },
+    {
+      "name": "constant_expansion",
+      "lhs": "(or (and ?x 0xFF) (and ?x 0xFF00))",
+      "rhs": "(or (and ?x 0xFF00) (and ?x 0xFF))",
+      "prompt": 125,
+      "reason": "unparseable"
+    },
+    {
+      "name": "shl_addition",
+      "lhs": "(add (shl ?x ?y) (shl ?x (sub ?z ?y)))",
+      "rhs": "(shl ?x ?z)",
+      "prompt": 125,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "shl_const_replace",
+      "lhs": "(shl ?x 5)",
+      "rhs": "?x*32",
+      "prompt": 126,
+      "reason": "right side uses unbound variables"
+    },
+    {
+      "name": "div_by_self",
+      "lhs": "(div ?x ?x)",
+      "rhs": "1",
+      "prompt": 126,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "mod_by_one",
+      "lhs": "(mod ?x 1)",
+      "rhs": "0",
+      "prompt": 126,
+      "reason": "duplicate"
+    },
+    {
+      "name": "xor_with_zero",
+      "lhs": "(xor ?x 0)",
+      "rhs": "?x",
+      "prompt": 126,
+      "reason": "duplicate"
+    },
+    {
+      "name": "add_const_cancel",
+      "lhs": "(add (add ?x ?y) (?z -?y))",
+      "rhs": "(add ?x ?z)",
+      "prompt": 126,
+      "reason": "unparseable"
+    },
+    {
+      "name": "expand_mul_add",
+      "lhs": "(add (mul ?x ?y) (mul ?z ?y))",
+      "rhs": "(mul (add ?x ?z) ?y)",
+      "prompt": 127,
+      "reason": "duplicate"
+    },
+    {
+      "name": "add_neg_cancel",
+      "lhs": "(add ?x (neg ?x))",
+      "rhs": "0",
+      "prompt": 127,
+      "reason": "duplicate"
+    },
+    {
+      "name": "shl_const",
+      "lhs": "(shl ?x 0)",
+      "rhs": "?x",
+      "prompt": 127,
+      "reason": "duplicate"
+    },
+    {
+      "name": "mod_by_0",
+      "lhs": "(mod ?x 0)",
+      "rhs": "0",
+      "prompt": 127,
+      "reason": "duplicate"
+    },
+    {
+      "name": "shift_cancel",
+      "lhs": "(shl (shr ?x ?k) ?k)",
+      "rhs": "?x",
+      "prompt": 128,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "div_by_const",
+      "lhs": "(div ?x ?c)",
+      "rhs": "(mul ?x (inv ?c))",
+      "prompt": 128,
+      "reason": "unknown operator or arity"
+    },
+    {
+      "name": "shl_shr_cancel",
+      "lhs": "(shl (shr ?x ?a) ?a)",
+      "rhs": "?x",
+      "prompt": 129,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "mod_2_power_shift",
+      "lhs": "(mod ?x (pow 2 ?n))",
+      "rhs": "(and ?x ((- (pow 2 ?n)) 1))",
+      "prompt": 129,
+      "reason": "unknown operator or arity"
+    },
+    {
+      "name": "div_mod_cancel",
+      "lhs": "(div (mod ?x ?m) ?d)",
+      "rhs": "(mod (div ?x ?d) ?m)",
+      "prompt": 129,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "xor_double_neg_not",
+      "lhs": "(xor (neg (not ?x)) (add 16 ?y))",
+      "rhs": "(and ?x ((- (pow 2 5)) 1))",
+      "prompt": 129,
+      "reason": "unknown operator or arity"
+    },
+    {
+      "name": "sub_shl_cancel",
+      "lhs": "(sub (shl ?x ?a) (mul ((pow 2 ?a) - 1) ?y))",
+      "rhs": "(xor ?x ?y)",
+      "prompt": 129,
+      "reason": "unparseable"
+    },
+    {
+      "name": "div_mul_cancel",
+      "lhs": "(mul (div ?x ?y) ?y)",
+      "rhs": "?x",
+      "prompt": 130,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "double_neg",
+      "lhs": "(neg (neg ?x))",
+      "rhs": "?x",
+      "prompt": 131,
+      "reason": "duplicate"
+    },
+    {
+      "name": "shl_const",
+      "lhs": "(shl ?x 0)",
+      "rhs": "1",
+      "prompt": 131,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "xor_self",
+      "lhs": "(xor ?x ?x)",
+      "rhs": "0",
+      "prompt": 131,
+      "reason": "duplicate"
+    },
+    {
+      "name": "mod_2_pow",
+      "lhs": "(mod ?x (mul 2 ?y))",
+      "rhs": "(and ?x ((sub 1 (pow 2 ?y))))",
+      "prompt": 131,
+      "reason": "unknown operator or arity"
+    },
+    {
+      "name": "div_by_mul",
+      "lhs": "(div (mul ?x ?a) (mul ?b ?c))",
+      "rhs": "(mul (div ?x ?b) (div ?a ?c))",
+      "prompt": 131,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "double_neg_and",
+      "lhs": "(and (neg ?x) (neg ?x))",
+      "rhs": "?x",
+      "prompt": 132,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "double_mul",
+      "lhs": "(mul (add ?a ?b) (add ?c ?d))",
+      "rhs": "(add (add (mul ?a ?c) (mul ?a ?d)), (add (mul ?b ?c) (mul ?b ?d))))",
+      "prompt": 132,
+      "reason": "unparseable"
+    },
+    {
+      "name": "div_div_cancel",
+      "lhs": "(div (div ?x ?y) ?z)",
+      "rhs": "(div ?x (mul ?y ?z))",
+      "prompt": 132,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "commutativity_and",
+      "lhs": "(and ?x (or ?y ?z))",
+      "rhs": "(or (and ?x ?y) (and ?x ?z))",
+      "prompt": 133,
+      "reason": "duplicate"
+    },
+    {
+      "name": "associativity_and",
+      "lhs": "(and (and ?x ?y) ?z)",
+      "rhs": "(and ?x (and ?y ?z))",
+      "prompt": 133,
+      "reason": "duplicate"
+    },
+    {
+      "name": "commutativity_or",
+      "lhs": "(or ?x (or ?y ?z))",
+      "rhs": "(or (or ?x ?y) ?z)",
+      "prompt": 133,
+      "reason": "duplicate"
+    },
+    {
+      "name": "associativity_or",
+      "lhs": "(or (or ?x ?y) ?z)",
+      "rhs": "(or ?x (or ?y ?z))",
+      "prompt": 133,
+      "reason": "duplicate"
+    },
+    {
+      "name": "shl_add",
+      "lhs": "(add (shl ?x ?n) ?x)",
+      "rhs": "(shl ?x (add ?n 1))",
+      "prompt": 133,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "shl_mul",
+      "lhs": "(mul (add ?x ?y) (mul 2 ^?k))",
+      "rhs": "(mul (add (shl ?x ^?k) (shl ?y ^?k)) 2 ^?k)",
+      "prompt": 134,
+      "reason": "unparseable"
+    },
+    {
+      "name": "div_mul_const",
+      "lhs": "(mul (mul ?x ?c) ?d)",
+      "rhs": "(mul ?x (* ?c ?d))",
+      "prompt": 134,
+      "reason": "unknown operator or arity"
+    },
+    {
+      "name": "mod_add_cancel",
+      "lhs": "(add (mod ?x ?m) (mod ?y ?m))",
+      "rhs": "(mod (add ?x ?y) ?m)",
+      "prompt": 134,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "shr_mul_const",
+      "lhs": "(mul (shr ?x ^?k) ?c)",
+      "rhs": "(shr (mul ?x ?c) ^?k)",
+      "prompt": 134,
+      "reason": "unparseable"
+    },
+    {
+      "name": "not_or_cancel",
+      "lhs": "(or (not ?x) ?x)",
+      "rhs": "1",
+      "prompt": 134,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "shl_shr_cancel",
+      "lhs": "(shr (shl ?x ?a) ?b)",
+      "rhs": "(and ?x (not (sub ?a ?b)))",
+      "prompt": 135,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "div_mul_cancel",
+      "lhs": "(mul (div ?x ?y) ?y)",
+      "rhs": "?x",
+      "prompt": 135,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "mod_mul_cancel",
+      "lhs": "(mul (mod ?x ?y) ?y)",
+      "rhs": "0",
+      "prompt": 135,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "xor_not_cancel",
+      "lhs": "(xor (not ?x) ?x)",
+      "rhs": "0",
+      "prompt": 135,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "add_add_cancel",
+      "lhs": "(add ?x ?x)",
+      "rhs": "(shl ?x 1)",
+      "prompt": 135,
+      "reason": "duplicate"
+    },
+    {
+      "name": "shl_add_sub",
+      "lhs": "(add (sub (add 7 v1) (sub (add v0 2) (add 2 v0))) (add (add (add (sub (add v0 2) (add 2 v0)) (add 7 v1)) v2) 3))",
+      "rhs": "(add (shl (add (add (shl 7 1) (add (div (sub (mul v0 3) 3) (not v0)) 3)) 3) 1) (add (shl (add (add (add (add (shl 7 1) (add (div (sub (mul v2 3) 3) (not v2)) 3)) 3) (shl (add (add (add (add 1 (shl in2 1)) (add (sub (mul in0 in2) (mul in2 in0)) 5)) 9) 6) 4) 3) (add (add in0 6) 7))",
+      "prompt": 136,
+      "reason": "unparseable"
+    },
+    {
+      "name": "mod_not_div",
+      "lhs": "(mul (div (mod r1 r2) (not r1)) (not (shl (or r2 r3) 1)))",
+      "rhs": "(if (= r1 0) 0 (mul (div (mod r1 r2) r1) (not (shl (or r2 r3) 1))))",
+      "prompt": 136,
+      "reason": "unparseable"
+    },
+    {
+      "name": "add_const_cancel",
+      "lhs": "(add (add 7 (add (add (shl (add (add (add (add 1 (shl (shl in2 1) 2)) (add (sub (mul in0 in2) (mul in2 in0)) 5)) 9) 6) 4) 3) 6)) (add (add in0 6) 7))",
+      "rhs": "(add (shl (add (add (add (add (add (add 1 (shl (shl in2 1) 2)) (add (sub (mul in0 in2) (mul in2 in0)) 5)) 9) 6) 4) 3) 6) (add 7 (add in0 6)))",
+      "prompt": 136,
+      "reason": "unparseable"
+    },
+    {
+      "name": "subtract_const_cancel",
+      "lhs": "(sub (add (add (mul 3 v1) 85) 1) (add (add 1 (mul 3 v1)) 85))",
+      "rhs": "(sub 0 2)",
+      "prompt": 136,
+      "reason": "unparseable"
+    },
+    {
+      "name": "mod_add_const",
+      "lhs": "(add (mod ?x ?y) ?z)",
+      "rhs": "(mod (add ?x (?z modulo ?y)) ?y)",
+      "prompt": 137,
+      "reason": "unparseable"
+    },
+    {
+      "name": "sub_sub_cancel",
+      "lhs": "(sub (sub ?x ?y) ?y)",
+      "rhs": "?x",
+      "prompt": 137,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "div_div_cancel",
+      "lhs": "(div (div ?x ?y) ?z)",
+      "rhs": "(div ?x (mul ?y ?z))",
+      "prompt": 137,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "and_and_distribute",
+      "lhs": "(and (and ?x ?y) ?z)",
+      "rhs": "(and ?x (and ?y ?z))",
+      "prompt": 137,
+      "reason": "duplicate"
+    },
+    {
+      "name": "xor_commutative",
+      "lhs": "(xor ?x ?y)",
+      "rhs": "(xor ?y ?x)",
+      "prompt": 137,
+      "reason": "duplicate"
+    },
+    {
+      "name": "add_mul_distrib",
+      "lhs": "(add (mul ?x ?y) (mul ?z ?y))",
+      "rhs": "(mul ?y (add ?x ?z))",
+      "prompt": 138,
+      "reason": "duplicate"
+    },
+    {
+      "name": "sub_sub_cancel",
+      "lhs": "(sub (sub ?x ?y) ?y)",
+      "rhs": "(sub ?x 0)",
+      "prompt": 138,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "xor_const",
+      "lhs": "(xor ?a 1)",
+      "rhs": "(not ?a)",
+      "prompt": 138,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "div_mul_cancel",
+      "lhs": "(mul (div ?x ?c) ?c)",
+      "rhs": "?x",
+      "prompt": 138,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "shl_shr_cancel",
+      "lhs": "(shr (shl ?x ?y) ?y)",
+      "rhs": "?x",
+      "prompt": 139,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "mod_add_mod_cancel",
+      "lhs": "(mod (add ?x ?y) ?z)",
+      "rhs": "(mod (add (mod ?x ?z) ?y) ?z)",
+      "prompt": 139,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "and_and_cancel",
+      "lhs": "(and (and ?x ?y) ?z)",
+      "rhs": "(and ?x (and ?y ?z))",
+      "prompt": 139,
+      "reason": "duplicate"
+    },
+    {
+      "name": "xor_xor_cancel",
+      "lhs": "(xor (xor ?x ?y) ?z)",
+      "rhs": "(xor ?x (xor ?y ?z))",
+      "prompt": 139,
+      "reason": "duplicate"
+    },
+    {
+      "name": "shl_shr_explore",
+      "lhs": "(shr (shl ?x ?y) (mod ?z 5))",
+      "rhs": "(shl (shr ?x (mod ?z 5)) ?y)",
+      "prompt": 139,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "mod_shift_cancel",
+      "lhs": "(shl (shr (mod ?x ?y) ?z) (add 1 ?z))",
+      "rhs": "(mod ?x (shl ?y (sub ?z 1)))",
+      "prompt": 140,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "double_negate",
+      "lhs": "(neg (neg ?x))",
+      "rhs": "?x",
+      "prompt": 140,
+      "reason": "duplicate"
+    },
+    {
+      "name": "shift_add_fold",
+      "lhs": "(add (shl ?x ?y) (shl ?x ?z))",
+      "rhs": "(if (eq ?y ?z) (shl ?x (add 1 ?y)) (add (shl ?x (min ?y ?z)) (shl ?x (max ?y ?z))))",
+      "prompt": 140,
+      "reason": "unknown operator or arity"
+    },
+    {
+      "name": "and_or_distribute",
+      "lhs": "(or ?x (and ?y ?z))",
+      "rhs": "(if (eq ?x 0) 0 (if (eq ?z 0) 0 (or ?x ?z)))",
+      "prompt": 140,
+      "reason": "unknown operator or arity"
+    },
+    {
+      "name": "mod_add_cancel",
+      "lhs": "(mod (add ?x ?y) ?z)",
+      "rhs": "(mod (mod ?x ?z) ?z)",
+      "prompt": 141,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "shl_mul_const",
+      "lhs": "(mul ?x (shl 1 n))",
+      "rhs": "(shl (mul ?x 2^n) n)",
+      "prompt": 141,
+      "reason": "unparseable"
+    },
+    {
+      "name": "div_mul_cancel",
+      "lhs": "(div (mul ?x ?y) (mul ?x ?z))",
+      "rhs": "(div ?y ?z)",
+      "prompt": 141,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "and_or_distribute",
+      "lhs": "(or (and ?x ?a) (and ?x ?b))",
+      "rhs": "(and ?x (or ?a ?b))",
+      "prompt": 141,
+      "reason": "duplicate"
+    },
+    {
+      "name": "xor_add_shl",
+      "lhs": "(add (xor ?x ?y) (shl ?z ?w))",
+      "rhs": "(xor (add ?x (shl ?z ?w)) ?y)",
+      "prompt": 142,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "sub_mod_shr",
+      "lhs": "(sub (mod ?x ?y) (shr ?z ?w))",
+      "rhs": "(mod (sub ?x (shr ?z ?w)) ?y)",
+      "prompt": 142,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "div_and_xor",
+      "lhs": "(and (div ?x ?y) (xor ?a ?b))",
+      "rhs": "(xor (div ?x ?y) (and ?a ?b))",
+      "prompt": 142,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "shl_add_const",
+      "lhs": "(add ?x (shl ?y ?w))",
+      "rhs": "(add (shl ?x 1) (sub ?y (shr ?x ?w)))",
+      "prompt": 142,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "mod_xor_shr",
+      "lhs": "(xor (mod ?x ?y) (shr ?z ?w))",
+      "rhs": "(xor (mod ?x ?y) (and ?z (shr (div ?z ?y) 1)))",
+      "prompt": 142,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "shift_mul_id",
+      "lhs": "(mul (shl ?x ?y) (shr ?x ?y))",
+      "rhs": "?x",
+      "prompt": 143,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "add_shift_cancel",
+      "lhs": "(sub (shl ?x 1) (shl ?x 2))",
+      "rhs": "(or ?x (shl ?x -1))",
+      "prompt": 143,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "and_and_distribute",
+      "lhs": "(and (and ?x ?y) ?z)",
+      "rhs": "(and ?x (and ?y ?z))",
+      "prompt": 143,
+      "reason": "duplicate"
+    },
+    {
+      "name": "neg_neg_cancel",
+      "lhs": "(not (neg ?x))",
+      "rhs": "?x",
+      "prompt": 143,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "div_mul_shift",
+      "lhs": "(mul (div ?x ?y) (shl ?y 1))",
+      "rhs": "(shl ?x 1)",
+      "prompt": 143,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "xor_self",
+      "lhs": "(xor ?x ?x)",
+      "rhs": "0",
+      "prompt": 144,
+      "reason": "duplicate"
+    },
+    {
+      "name": "neg_cancel",
+      "lhs": "(and (neg ?x) (not ?x))",
+      "rhs": "1",
+      "prompt": 144,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "mod_shl",
+      "lhs": "(mod (shl ?x ?y) (add ?z 1))",
+      "rhs": "(shl (mod ?x (add ?z 1)) ?y)",
+      "prompt": 144,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "mod_assoc",
+      "lhs": "(mod (mod ?x ?m) ?n)",
+      "rhs": "(mod ?x (gcd ?m ?n))",
+      "prompt": 145,
+      "reason": "unknown operator or arity"
+    },
+    {
+      "name": "div_by_1",
+      "lhs": "(div ?x 1)",
+      "rhs": "?x",
+      "prompt": 145,
+      "reason": "duplicate"
+    },
+    {
+      "name": "load_fold",
+      "lhs": "(load (load ?x))",
+      "rhs": "(load ?x)",
+      "prompt": 145,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "add_const",
+      "lhs": "(add ?x 0)",
+      "rhs": "?x",
+      "prompt": 145,
+      "reason": "duplicate"
+    },
+    {
+      "name": "and_self",
+      "lhs": "(and ?x ?x)",
+      "rhs": "?x",
+      "prompt": 145,
+      "reason": "duplicate"
+    },
+    {
+      "name": "shl_shr_cancel",
+      "lhs": "(shr (shl ?x ?a) ?b)",
+      "rhs": "?x",
+      "prompt": 146,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "abs_neg_cancel",
+      "lhs": "(- (- ?x))",
+      "rhs": "?x",
+      "prompt": 146,
+      "reason": "unknown operator or arity"
+    },
+    {
+      "name": "shl_add_simplify",
+      "lhs": "(add (shl ?x ?y) (shl ?x ?z))",
+      "rhs": "(shl (add ?x ?x) ?y)",
+      "prompt": 147,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "mul_shr_cancel",
+      "lhs": "(div (mul ?x ?y) (shr 1 ?y))",
+      "rhs": "(mul ?x (shr ?y 1))",
+      "prompt": 147,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "sub_add_simplify",
+      "lhs": "(sub (add ?x ?y) (add ?z ?w))",
+      "rhs": "(sub (add ?x ?y) (add ?z ?w))",
+      "prompt": 147,
+      "reason": "no-op"
+    },
+    {
+      "name": "shl_mul_simplify",
+      "lhs": "(mul (shl ?x 1) ?y)",
+      "rhs": "(shl (mul ?x ?y) 1)",
+      "lhs_cost": 7,
+      "rhs_cost": 7,
+      "z3": "timeout",
+      "prompt": 147,
+      "reason": "unsound (z3 unknown)"
+    },
+    {
+      "name": "sub_add_fold",
+      "lhs": "(sub (add ?x (load 0)) ?z)",
+      "rhs": "(sub ?x (load 0))",
+      "prompt": 147,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "left_distrib_div",
+      "lhs": "(div (add ?x ?y) ?z)",
+      "rhs": "(add (div ?x ?z) (div ?y ?z))",
+      "prompt": 148,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "right_distrib_mul",
+      "lhs": "(mul (sub ?x ?y) ?z)",
+      "rhs": "(sub (mul ?x ?z) (mul ?y ?z))",
+      "prompt": 148,
+      "reason": "duplicate"
+    },
+    {
+      "name": "double_negation",
+      "lhs": "(not (neg ?x))",
+      "rhs": "?x",
+      "prompt": 148,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "xor_shift_cancel",
+      "lhs": "(xor (shl ?x ?y) ?z)",
+      "rhs": "(sub (shl (xor ?x ?z) ?y) (shl ?z ?y))",
+      "prompt": 149,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "div_mod_cancel",
+      "lhs": "(mod (div ?x ?y) ?z)",
+      "rhs": "(mod ?x (mul ?y ?z))",
+      "prompt": 149,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "double_neg_not_cancel",
+      "lhs": "(neg (not (neg (not ?x))))",
+      "rhs": "?x",
+      "prompt": 149,
+      "reason": "unsound (random 32-bit test)"
+    },
+    {
+      "name": "shl_mul_cancel",
+      "lhs": "(mul (shl ?x ?y) ?z)",
+      "rhs": "(shl (mul ?x ?z) ?y)",
+      "prompt": 149,
+      "reason": "duplicate"
+    },
+    {
+      "name": "xor_div_cancel",
+      "lhs": "(div (xor ?x (mod ?x ?y)) ?y)",
+      "rhs": "(div ?x ?y)",
+      "prompt": 149,
+      "reason": "unsound (random 32-bit test)"
+    }
+  ]
+}
