@@ -54,3 +54,6 @@
   - 161 tests pass on the server. Pushed `run4`.
 - 11-21 14:22 IST check: hard corpus still filtering (19,400 candidates, 7 workers); run 4 queued; nothing to sync yet.
 - 11-21 15:25 IST: hard corpus rebuilt = 10,999 train / 911 test (identical to night 3), pushed. Control-flow corpus building (started 09:48 UTC). Run 4 still queued.
+- 11-21 ~16:30 IST: added the egglog baseline for asm (commit 11ca813, deployed; final_eval writes final_v4_*_egglog.md).
+  - Pilot on 100 held-out terms with built-in rules: egglog 86.4% vs MCTS@100 71.8%. egglog was never worse on a term; 0.15 s per term; all outputs equivalent on random-input checks.
+  - egglog already beats night 3's best AZ (79.2%). Raised with the user: the report must show this honestly; AZ's edge is fewer rewrites. Next idea: RL-guided saturation.
