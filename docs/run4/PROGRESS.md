@@ -5,7 +5,7 @@
 > - **Commits:** sumeettummarmatti <sumeettummarmatti@gmail.com>, no Claude trailers.
 > - **Pushing:** `git -c credential.helper= -c 'credential.helper=!gh auth git-credential' push`. Plain `git push` returns 403.
 
-## ▶ RESUME HERE (last updated 2026-11-22 ~07:13 IST)
+## ▶ RESUME HERE (last updated 2026-11-22 ~08:14 IST)
 
 **Run 4 is in progress on the Vultr server.**
 - Server: `ssh <server>`; work dir `/root/rlges`.
@@ -79,3 +79,4 @@
 - 11-22 05:13 IST: DISCOVERY DONE: rounds 1-4 verified 105/89/71/76, 80 accepted rules in learned_rules_qwen_all.json (20 per round). builtin_s2 round 14, best 0.548. Ollama now idle (remove after run). No errors.
 - 11-22 06:13 IST: builtin_s2 round 23, best 0.550. Load ~5 (only training now). No errors.
 - 11-22 07:13 IST: builtin_s2 round 33, new best 0.5525 (best builtin seed so far). No errors.
+- 11-22 08:14 IST: builtin_s2 round 42, new best 0.560 (above night-3 builtin ~0.55). No errors.
