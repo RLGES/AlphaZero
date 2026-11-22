@@ -5,7 +5,7 @@
 > - **Commits:** sumeettummarmatti <sumeettummarmatti@gmail.com>, no Claude trailers.
 > - **Pushing:** `git -c credential.helper= -c 'credential.helper=!gh auth git-credential' push`. Plain `git push` returns 403.
 
-## ▶ RESUME HERE (last updated 2026-11-22 ~12:13 IST)
+## ▶ RESUME HERE (last updated 2026-11-22 ~13:13 IST)
 
 **Run 4 is in progress on the Vultr server.**
 - Server: `ssh <server>`; work dir `/root/rlges`.
@@ -84,3 +84,4 @@
 - 11-22 10:20 IST: builtin_s2 FINISHED (round 55, best 0.560; @100 AZ 59.6% vs MCTS 59.9%, best-known 85% vs 80%). CRASH at 09:59 IST: run4.sh stopped at the llm_s0 test step: test_greedy_misses_what_needs_a_reassociation failed because a qwen rule folds x*2*4 in one step (test isolation, not training). Fixed (test pins built-in rules), 164 passed with both rule sets, relaunched run4.sh at 10:16 IST with setsid nohup; it skipped finished runs/discovery and is on llm_s0 step 4. Old discovery log saved as checkpoints/run4_discover_rounds1-4.log. ~25 min lost.
 - 11-22 11:13 IST: llm_s0 before-report (80 qwen rules, untrained AZ vs MCTS, 314 held-out): @10 50.0/62.5%, @25 59.6/65.2, @50 65.2/66.0, @100 66.6/66.5 (best-known 87 vs 83%). With built-in rules MCTS@100 was 59.9%, so the qwen rules add ~6.6 points. llm_s0 training started 11:09 IST (before-eval took 52 min, rules make search slower). No errors.
 - 11-22 12:13 IST: llm_s0 round 5, score 0.606, best 0.614 (builtin best was 0.560). ~10 min/round. No errors.
+- 11-22 13:13 IST: llm_s0 round 11, best 0.616. No errors.
