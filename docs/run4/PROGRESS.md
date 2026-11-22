@@ -5,7 +5,7 @@
 > - **Commits:** sumeettummarmatti <sumeettummarmatti@gmail.com>, no Claude trailers.
 > - **Pushing:** `git -c credential.helper= -c 'credential.helper=!gh auth git-credential' push`. Plain `git push` returns 403.
 
-## ▶ RESUME HERE (last updated 2026-11-22 ~05:13 IST)
+## ▶ RESUME HERE (last updated 2026-11-22 ~06:13 IST)
 
 **Run 4 is in progress on the Vultr server.**
 - Server: `ssh <server>`; work dir `/root/rlges`.
@@ -77,3 +77,4 @@
 - 11-22 03:13 IST: builtin_s1 stopped early at round 32 (patience), best 0.544 (round 17); its after-eval is running (report_after.txt still empty). Discovery round 4 at 100/200, 42 verified. No errors.
 - 11-22 04:13 IST: builtin_s1 report_after: AZ vs MCTS @10 49.4/54.4%, @100 60.1/59.9%, best-known @100 85% vs 81%. builtin_s2 started, round 5 best 0.540. Discovery round 4 at 164/200, 68 verified. No errors.
 - 11-22 05:13 IST: DISCOVERY DONE: rounds 1-4 verified 105/89/71/76, 80 accepted rules in learned_rules_qwen_all.json (20 per round). builtin_s2 round 14, best 0.548. Ollama now idle (remove after run). No errors.
+- 11-22 06:13 IST: builtin_s2 round 23, best 0.550. Load ~5 (only training now). No errors.
