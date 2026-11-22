@@ -251,3 +251,41 @@ round 48: loss=1.7155 policy=1.7111 value=0.0043 samples=3038 eval_cost=2.43 sco
 round 49: loss=1.7158 policy=1.7114 value=0.0044 samples=2862 eval_cost=2.43 score=0.5517 best=0.5600 (281.47s play, 92.54s train)
 round 50: loss=1.7125 policy=1.7085 value=0.0040 samples=3029 eval_cost=2.43 score=0.5492 best=0.5600 (293.04s play, 92.71s train)
 round 51: loss=1.7106 policy=1.7067 value=0.0040 samples=2669 eval_cost=2.43 score=0.5567 best=0.5600 (176.8s play, 91.32s train)
+round 52: loss=1.7087 policy=1.7044 value=0.0043 samples=3070 eval_cost=2.43 score=0.5563 best=0.5600 (297.8s play, 91.55s train)
+round 53: loss=1.7077 policy=1.7036 value=0.0042 samples=2786 eval_cost=2.43 score=0.5563 best=0.5600 (235.68s play, 91.07s train)
+round 54: loss=1.7120 policy=1.7077 value=0.0043 samples=3054 eval_cost=2.43 score=0.5585 best=0.5600 (275.65s play, 93.14s train)
+round 55: loss=1.7077 policy=1.7036 value=0.0042 samples=2933 eval_cost=2.43 score=0.5489 best=0.5600 (239.73s play, 92.55s train)
+early stop: no better score for 15 rounds
+Latest checkpoint: checkpoints/asm_v4_builtin_s2/latest.pt
+
+=== 2026-11-22 04:09:29 6. after: trained AlphaZero (best.pt) vs MCTS
+Engine     Budget  Runs  Improvement  best-known  transitions   Seconds
+AlphaZero      10   314        50.9%         42%          9.2    0.0473
+MCTS           10   314        54.4%         42%         74.1    0.2037
+AlphaZero      25   314        56.4%         61%         22.7    0.0989
+MCTS           25   314        58.0%         62%        170.9    0.4614
+AlphaZero      50   314        58.6%         74%         44.8    0.1804
+MCTS           50   314        59.1%         72%        315.0    0.8395
+AlphaZero     100   314        59.6%         85%         88.8    0.3258
+MCTS          100   314        59.9%         80%        582.5    1.5462
+
+=== 2026-11-22 04:28:55 7. extra v3 runs: 
+
+=== 2026-11-22 04:28:55 done. Summary: checkpoints/summary_asm_v4_builtin_s2.txt
+=== 2026-11-22 04:28:55 waiting for discovery (pid 2775307)
+round 4: 20 rules loaded
+80 rules -> benchmarks/asm/learned_rules_qwen_all.json
+=== 2026-11-21 23:20:09 discovery done: 80 rules in learned_rules_qwen_all.json
+
+=== 2026-11-22 04:28:55 1. environment
+torch 2.15.0+cpu
+Learn-R: /root/rlges/Learn-R (?)
+
+=== 2026-11-22 04:28:57 2. Learn-R corpus and learned rules
+rule set: RLGES_ASM_LEARNED=benchmarks/asm/learned_rules_qwen_all.json
+keeping the committed corpus (10999 train terms)
+
+=== 2026-11-22 04:28:57 3. tests
+FAILED tests/test_asm.py::test_greedy_misses_what_needs_a_reassociation - Ass...
+!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!
+1 failed, 50 passed, 1 skipped in 5.61s
