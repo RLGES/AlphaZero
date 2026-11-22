@@ -393,3 +393,8 @@ round 15: loss=1.7596 policy=1.7550 value=0.0046 samples=3023 eval_cost=2.43 sco
 round 16: loss=1.7536 policy=1.7485 value=0.0051 samples=2801 eval_cost=2.43 score=0.6178 best=0.6197 (367.92s play, 82.7s train)
 round 17: loss=1.7477 policy=1.7427 value=0.0049 samples=3082 eval_cost=2.43 score=0.6304 best=0.6304 (413.23s play, 83.28s train)
 round 18: loss=1.7433 policy=1.7384 value=0.0049 samples=2915 eval_cost=2.43 score=0.6122 best=0.6304 (410.37s play, 82.68s train)
+round 19: loss=1.7416 policy=1.7367 value=0.0049 samples=2882 eval_cost=2.43 score=0.6238 best=0.6304 (497.12s play, 82.27s train)
+round 20: loss=1.7450 policy=1.7403 value=0.0047 samples=2736 eval_cost=2.43 score=0.6181 best=0.6304 (389.31s play, 84.27s train)
+round 21: loss=1.7404 policy=1.7357 value=0.0047 samples=2948 eval_cost=2.43 score=0.6243 best=0.6304 (468.55s play, 83.6s train)
+round 22: loss=1.7264 policy=1.7218 value=0.0047 samples=2640 eval_cost=2.43 score=0.6205 best=0.6304 (392.06s play, 79.99s train)
+round 23: loss=1.7342 policy=1.7294 value=0.0048 samples=2955 eval_cost=2.43 score=0.6240 best=0.6304 (366.05s play, 81.68s train)
