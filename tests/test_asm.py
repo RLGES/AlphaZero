@@ -138,10 +138,12 @@ def test_ir_inlining_matches_learnr_lowering():
     assert not straight_line
 
 
-def test_greedy_misses_what_needs_a_reassociation():
+def test_greedy_misses_what_needs_a_reassociation(monkeypatch):
     from benchmarks.asm.hardness import greedy_cost, hardness, is_hard
-    from benchmarks.asm.language import AsmLanguage
+    from benchmarks.asm.language import BUILTIN_RULES, AsmLanguage
 
+    # Built-in rules only: a learned rule (RLGES_ASM_LEARNED) may fold x*2*4 in one step.
+    monkeypatch.setattr(AsmLanguage, "rules", BUILTIN_RULES)
     language = AsmLanguage()
     term = B("mul", B("mul", x, Const(2)), Const(4))  # x*2*4: best is x<<3 (cost 3)
     assert language.cost(term) == 9
