@@ -5,7 +5,7 @@
 > - **Commits:** sumeettummarmatti <sumeettummarmatti@gmail.com>, no Claude trailers.
 > - **Pushing:** `git -c credential.helper= -c 'credential.helper=!gh auth git-credential' push`. Plain `git push` returns 403.
 
-## ▶ RESUME HERE (last updated 2026-11-22 ~17:13 IST)
+## ▶ RESUME HERE (last updated 2026-11-22 ~18:13 IST)
 
 **Run 4 is in progress on the Vultr server.**
 - Server: `ssh <server>`; work dir `/root/rlges`.
@@ -89,3 +89,4 @@
 - 11-22 15:13 IST: llm_s0 round 23, score 0.624, best 0.630. No errors.
 - 11-22 16:13 IST: llm_s0 round 29, score 0.634, best 0.636. No errors.
 - 11-22 17:13 IST: llm_s0 round 36, score 0.629, best 0.638. No errors.
+- 11-22 18:13 IST: llm_s0 round 42, score 0.637, best 0.638. No errors. Revised ETA: main results ~Tue 24 Nov 21:00 IST, llmbig ~Wed 25 Nov 12:00.
