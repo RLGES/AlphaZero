@@ -174,9 +174,15 @@ def _uniform(width: int) -> list[float]:
 class Agent:
     """Priors and values for e-graph states, from the extracted term."""
 
-    def __init__(self, language: AsmLanguage, net=None):
+    def __init__(self, language: AsmLanguage, net=None, macro: int | None = None,
+                 macro_prior: float = 0.0):
+        """``macro``/``macro_prior``: in mixed mode the FOLD index is the macro action
+        (one capped iteration of every rule). The term network was trained to rewrite
+        terms and gives FOLD almost no prior, so the search would hardly try the macro
+        action; mixing in ``macro_prior`` keeps it in play while the network learns."""
         self.language = language
         self.width = len(language.action_vocabulary())
+        self.macro, self.macro_prior = macro, macro_prior
         self.evaluator = None
         if net is not None:
             from src.engines.alphazero.inference import NetworkEvaluator
@@ -187,7 +193,11 @@ class Agent:
         if self.evaluator is None:
             return _uniform(self.width), 0.0
         ((prior, value),) = self.evaluator.evaluate(self.language, [term])
-        return [float(p) for p in prior], float(value)
+        prior = [float(p) for p in prior]
+        if self.macro is not None and self.macro_prior > 0:
+            prior = [(1 - self.macro_prior) * p for p in prior]
+            prior[self.macro] += self.macro_prior
+        return prior, float(value)
 
 
 @dataclass

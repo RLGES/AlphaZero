@@ -65,7 +65,7 @@ def _play(job) -> list:
     term, seed, args = job
     language = AsmLanguage()
     env = _env(args)
-    agent = Agent(language, _net(args["current"]))
+    agent = Agent(language, _net(args["current"]), macro=env.noop if env.kind == "mixed" else None, macro_prior=args.get("macro_prior", 0.0))
     cfg = SearchConfig(simulations=args["sims"], mode="az", dirichlet_epsilon=0.25)
     try:
         episode = build(term, env, agent, cfg, Random(seed), temperature_moves=2, record=True)
@@ -83,7 +83,7 @@ def _score(job) -> tuple[float, float, int, int]:
     language = AsmLanguage()
     env = _env(args)
     egg = egglog_schedule(term, env)
-    agent = Agent(language, _net(args["current"]))
+    agent = Agent(language, _net(args["current"]), macro=env.noop if env.kind == "mixed" else None, macro_prior=args.get("macro_prior", 0.0))
     cfg = SearchConfig(simulations=args["sims"], mode="az")
     try:
         ep = build(term, env, agent, cfg, Random(0))
@@ -215,6 +215,8 @@ def main() -> int:
     p.add_argument("--train-steps", type=int, default=150)
     p.add_argument("--validation", type=int, default=40)
     p.add_argument("--patience", type=int, default=10)
+    p.add_argument("--macro-prior", type=float, default=0.5,
+                   help="prior mass on the macro action (all rules, capped) in mixed mode")
     p.add_argument("--composite", type=int, default=0,
                    help="k>0: k generated terms joined by add/xor; -1: test-suite-style training terms")
     p.add_argument("--kind", default="enable", choices=["enable", "enable_all", "rule", "mixed"])
@@ -234,7 +236,7 @@ def main() -> int:
     buffer = ReplayBuffer(20_000)
     current = out / "current.pt"
     args = {"node_limit": a.node_limit, "steps": a.steps, "sims": a.sims, "current": str(current),
-            "kind": a.kind}
+            "kind": a.kind, "macro_prior": a.macro_prior}
     validation = _terms(Random(VALIDATION_SEED), a.validation, a.composite, (4, 6))
     log = (out / "train.log").open("a")
 
