@@ -250,7 +250,10 @@ def main() -> int:
     # spawn, not fork: forking after torch has started its thread pools deadlocks the
     # workers (first launch hung with every process at 0% CPU).
     context = multiprocessing.get_context("spawn")
-    with ProcessPoolExecutor(a.workers, mp_context=context, initializer=_guard) as pool:
+    # max_tasks_per_child: egglog e-graphs are not all freed between episodes (workers
+    # grew to 2.6 GB in geb_v4), so recycle each worker after a few tasks.
+    with ProcessPoolExecutor(a.workers, mp_context=context, initializer=_guard,
+                             max_tasks_per_child=4) as pool:
         for rnd in range(first, a.rounds):
             t0 = time.time()
             save_checkpoint(current, net, language, rnd, {})
