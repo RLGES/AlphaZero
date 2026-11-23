@@ -193,6 +193,24 @@ Finding: same quality (-0.04), with the memory tail removed: p95 halves, the wor
 from >2 GB (11 terms) to under 100 MB extra, and egglog runs 32% faster. The max for all
 rules is understated: the 11 retried terms first exceeded 2 GB.
 
+## 9. New e-graph test suites (built 24 Nov; spec docs/paper/TESTSET_SPEC.md)
+`benchmarks/asm/testsets/<suite>.jsonl`, `<suite>_manifest.json` (per-term aspects),
+`summary.json`; built by `scripts/build_testsets.py`, measured by `scripts/testset_stats.py`
+(log `checkpoints/testsets.log`, 5,010 s total). Separation checked against run-4 training
+terms (76,800 + validation), held-out + stress, and earlier suites.
+
+| Suite | Terms | Buckets | Acceptance check |
+|---|---|---|---|
+| T3 large blocks | 366 | L 167, XL 199 | count PASS; L/XL >= 100 PASS; sharing 99.5% PASS; egglog fail or > 3k e-nodes 15.0% PASS (target 15%); egglog failed outright 7.7% |
+| T4 explosion | 300 | L 234, M 66 | count PASS; AC chain >= 6 100% PASS; egglog fail or > 5k e-nodes **0.0% FAIL** (target 25%) |
+| T5 deep / non-greedy | **29** | L 15, XL 10, M 4 | **count FAIL** (target 200): of 500 candidates, 259 duplicated held-out/stress and 82 training terms; non-greedy 100% of kept |
+| T7 rule-sensitive | 249 | L 135, M 58, XL 55 | count PASS; rule-sensitive 100% PASS |
+
+All suites: best-known outputs equivalent to inputs on 200 random 32-bit inputs (100%).
+Findings: egglog's back-off scheduler keeps long same-operator chains under control (T4); the
+asm generator's test split overlaps the existing held-out/stress sets heavily (T5), so T5 needs
+deeper or differently seeded terms. XL is capped at 256 nodes by the language.
+
 ## Decisions and incidents (dates IST)
 - 22 Nov: test assumed built-in rules only; pinned (`tests/test_asm.py`).
 - 23 Nov: discovery round 5 run; no gain, no extra arm.
