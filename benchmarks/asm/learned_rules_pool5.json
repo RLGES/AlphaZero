@@ -1,0 +1,3564 @@
+{
+ "sources": [
+  "benchmarks/asm/learned_rules_qwen.json",
+  "benchmarks/asm/learned_rules_qwen2.json",
+  "benchmarks/asm/learned_rules_qwen3.json",
+  "benchmarks/asm/learned_rules_qwen4.json",
+  "benchmarks/asm/learned_rules_qwen5.json"
+ ],
+ "note": "all verified cost-lowering rules",
+ "accepted": [
+  {
+   "name": "pool_0",
+   "lhs": "(sub (mul ?x ?y) (mul ?y ?z))",
+   "rhs": "(mul ?y (sub ?x ?z))",
+   "lhs_cost": 11,
+   "rhs_cost": 7,
+   "prompt": 185,
+   "seeds": [
+    "(mul (shl (shl (sub (add in0 33) (add 33 in0)) 3) 1) 41)",
+    "(and (sub (xor r1 4) (shl (div 2 r3) 1)) (not (add r2 -1)))",
+    "(load (not (shl (mod (load 0) (div (load 253) (mul r2 3))) 2)))",
+    "(sub (sub (add (mul 42 in0) (shl in0 3)) (add (shl in0 3) (mul 42 in0))) (shl in0 4))"
+   ],
+   "seed_matches": 23,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_1",
+   "lhs": "(shl (shl ?x 1) 1)",
+   "rhs": "(shl ?x 2)",
+   "lhs_cost": 5,
+   "rhs_cost": 3,
+   "prompt": 143,
+   "seeds": [
+    "(shl (shl (shl (shl (shl (add (mul (shl in0 2) in0) 8) 2) 1) 2) 2) 2)",
+    "(sub (shl (not (mul (mod r2 r1) (shl r2 255))) 1) (add (shl (load 0) (load (mod r1 r0))) (load 0)))",
+    "(sub (add (shl (shl (mul (add in1 5) 5) 1) 1) 576) (add 576 (shl (shl (mul (add in1 5) 5) 1) 1)))",
+    "(shl (shl (sub (add 120 (shl (mul 3 in0) 1)) (add (shl (mul 3 in0) 1) 120)) 1) 1)"
+   ],
+   "seed_matches": 11,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_2",
+   "lhs": "(div ?m 0)",
+   "rhs": "0",
+   "lhs_cost": 12,
+   "rhs_cost": 1,
+   "prompt": 148,
+   "seeds": [
+    "(div 0 (neg (div r0 r3)))",
+    "(shr (div (mod (load (or r1 r2)) 0) (shl (shl (mod r1 4) (shl r0 r2)) 1)) 1)",
+    "(shr (and (shl (div (mul r1 r0) (load (and r2 r0))) 2) r0) (neg (add (mul r0 r0) (xor r2 r0))))",
+    "(div (not (neg (shl (not (mod r1 0)) (sub (not (neg (sub r3 r0))) -2)))) (div (div (shl r1 r0) (add -1 r3)) (xor (neg r1) (neg (not (add r0 2))))))"
+   ],
+   "seed_matches": 9,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_3",
+   "lhs": "(mod ?x ?x)",
+   "rhs": "0",
+   "lhs_cost": 12,
+   "rhs_cost": 1,
+   "prompt": 124,
+   "seeds": [
+    "(shl (shr (sub (div r0 r3) 1) (div (shr r3 255) (mod 2 r0))) 3)",
+    "(mod (load (mul (div (load r3) (div (shr r1 r0) 8)) (neg (not (mul (add r0 r3) (sub r0 r3)))))) (shr (or (div r1 r2) (div r2 r1)) -1))",
+    "(load (shl (shl (sub (div (sub 1 r3) 32) (shl (div (neg r2) (sub 2 r2)) 3)) (shl (shr (add (mul (shr (or r1 1) 2) r2) 0) (mul (xor 2 r3) (add r1 r0))) 3)) 1))",
+    "(div (shr (shl (not (shl (div r1 r0) 1)) 2) (xor (or r3 r1) (xor r3 3))) (not (div (mod r0 r0) 0)))"
+   ],
+   "seed_matches": 7,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_4",
+   "lhs": "(div ?x 8)",
+   "rhs": "(shr ?x 3)",
+   "lhs_cost": 12,
+   "rhs_cost": 3,
+   "prompt": 71,
+   "seeds": [
+    "(shl (add 11 (add (add (add 8 v17) (add v23 6)) (sub v5 16))) 4)",
+    "(mul (not (shl (and 16 r2) (div 2 r2))) (shl (xor (div (shl r3 2) 8) (mul r2 r3)) 1))",
+    "(mul 8 (shl (mul (sub (add (mul (add in0 6) 0) (mul in0 1)) (add (mul in0 1) (mul (add in0 6) 0))) 4) 2))",
+    "(mul (shl (shl (shl in0 2) 2) 2) 40)"
+   ],
+   "seed_matches": 6,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_5",
+   "lhs": "(mul 2 ?x)",
+   "rhs": "(shl ?x 1)",
+   "lhs_cost": 5,
+   "rhs_cost": 3,
+   "prompt": 168,
+   "seeds": [
+    "(add (add (shl in1 4) (shl (add 7 (add (shl in1 3) 123)) 3)) 9)",
+    "(shl (shl (shl (shl (shl (add (mul (shl in0 2) in0) 8) 2) 1) 2) 2) 2)",
+    "(sub (mul (load (mod 0 r3)) (sub (shl r0 r3) (add r0 r3))) (mul (div 0 (shl (sub r3 2) 1)) (shl (load (add r1 8)) (load 255))))",
+    "(mul (shr (neg (not 0)) (add (mod (mul 3 r2) (load (mod r3 r0))) (shr (not (shl r0 1)) 2))) (not (shl (shr (mul r3 r1) (load (div (shl r3 r2) r1))) 1)))"
+   ],
+   "seed_matches": 5,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_6",
+   "lhs": "(shl (shl ?a 1) 2)",
+   "rhs": "(shl ?a 3)",
+   "lhs_cost": 5,
+   "rhs_cost": 3,
+   "prompt": 87,
+   "seeds": [
+    "(mul (shl (shl v5 1) 2) (add (shl (shl v1 2) 2) (add (shl (shl v6 1) 2) 9)))",
+    "(shl (add (add (add 9 (shl in2 2)) in2) 4) 3)",
+    "(mul (sub (add 8 (shl in1 4)) (add (shl in1 4) 8)) 56)",
+    "(neg (xor (add (shr (xor r3 2) (and r3 r2)) (div (mul r3 r3) (not r2))) (not (neg (mod 0 r3)))))"
+   ],
+   "seed_matches": 5,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_7",
+   "lhs": "(mul 8 ?x)",
+   "rhs": "(shl ?x 3)",
+   "lhs_cost": 5,
+   "rhs_cost": 3,
+   "prompt": 77,
+   "seeds": [
+    "(mul (shl (shl (mul 8 (shl (mul in2 12) 2)) 2) 2) 36)",
+    "(shl (shl -1 (div r1 r3)) (shl (neg (shr 1 r3)) 1))",
+    "(load (not (neg (not (sub (div r0 r1) (add (shl (not r0) 1) (shl r1 2)))))))",
+    "(sub (add (sub 1 (shl (mul 24 in0) 1)) 8) (add 8 (sub 1 (shl (mul 24 in0) 1))))"
+   ],
+   "seed_matches": 5,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_8",
+   "lhs": "(mod 0 ?y)",
+   "rhs": "0",
+   "lhs_cost": 12,
+   "rhs_cost": 1,
+   "prompt": 71,
+   "seeds": [
+    "(add (add (add in0 5) 10) (add (add 1 (add in0 5)) 16))",
+    "(neg (xor (add (shr (xor r3 2) (and r3 r2)) (div (mul r3 r3) (not r2))) (not (neg (mod 0 r3)))))",
+    "(sub (add (mul 21 (add (add (add 7 in0) in0) 4)) 64) (add 64 (mul 21 (add (add (add 7 in0) in0) 4))))",
+    "(add 8 (add (shl in0 2) (add (add 2 in0) (add in0 8))))"
+   ],
+   "seed_matches": 4,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_9",
+   "lhs": "(sub 0 ?x)",
+   "rhs": "(neg ?x)",
+   "lhs_cost": 3,
+   "rhs_cost": 2,
+   "prompt": 147,
+   "seeds": [
+    "(sub (load (sub (mod -1 r2) (xor r3 3))) (div (shr -16 r1) 8))",
+    "(and (load 0) (sub (shl (sub r3 3) (shr r1 1)) (mul r3 (shr r1 r3))))",
+    "(load (and (xor (mul r1 r3) (neg r1)) (shl (shl (or (div (and r2 r3) 16) (neg r2)) 1) 2)))",
+    "(sub (mul (add 24 (mul 4 4)) 3) 0)"
+   ],
+   "seed_matches": 4,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_10",
+   "lhs": "(sub ?x (neg ?y))",
+   "rhs": "(add ?x ?y)",
+   "lhs_cost": 4,
+   "rhs_cost": 3,
+   "prompt": 79,
+   "seeds": [
+    "(add in0 (shl (sub (add 1 (add in2 (add 6 (add in0 9)))) (add 6 (add (add in0 9) (add 1 in2)))) 2))",
+    "(mod (load (mul (div (load r3) (div (shr r1 r0) 8)) (neg (not (mul (add r0 r3) (sub r0 r3)))))) (shr (or (div r1 r2) (div r2 r1)) -1))",
+    "(shl (add (shr (mod r1 r1) (shr 16 r3)) (xor (div r3 r3) -8)) 1)",
+    "(shl (shl (shl (mod 4 r1) 1) 1) (shl (shr 3 r0) 4))"
+   ],
+   "seed_matches": 3,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_11",
+   "lhs": "(mod ?x 0)",
+   "rhs": "0",
+   "lhs_cost": 12,
+   "rhs_cost": 1,
+   "prompt": 9,
+   "seeds": [
+    "(load (div (shl (xor (shr (shr r1 r1) 4) (neg (not (shl (shr (and 2 r2) 2) (not (neg (mod r3 16))))))) 2) (add (shr (sub r0 r3) (load (or 1 r3))) (shr -5 (shl (mul 255 r0) 2)))))",
+    "(add (add 8 (add 9 (mul (add (add (mul 3 (mul in0 5)) 5) 1) 1))) 0)",
+    "(div (mod (shl (mul 8 r0) r1) (div (mul -1 r0) (or r2 r0))) (shl (mod (sub (and r0 r3) (xor 4 r0)) (or r2 (or 255 (and r2 2)))) 3))",
+    "(shl (add (add (add 8 (mul 45 v8)) (mul 72 v4)) 2) 2)"
+   ],
+   "seed_matches": 2,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_12",
+   "lhs": "(sub (add (add ?x 11) (shl ?y 4)) (add (add 11 (shl ?y 4)) ?x))",
+   "rhs": "0",
+   "lhs_cost": 15,
+   "rhs_cost": 1,
+   "prompt": 122,
+   "seeds": [
+    "(sub (add (add in1 11) (shl in0 4)) (add (add 11 (shl in0 4)) in1))",
+    "(mod (mul (xor (div r0 r2) -9) (shl (xor (shl r2 r0) (shl r2 r3)) 1)) (div (or (neg r2) (shl (mod r3 r2) 1)) (and (shr r0 r3) (shl r3 4))))",
+    "(sub (add 6 (add 2 (mul in0 12))) (add (mul in0 12) 8))",
+    "(xor (xor (neg (div 510 (add r2 r1))) (and (not (div r1 r1)) (sub (shl r2 1) (mul r0 r1)))) (add 0 (and (shl (shl (or (sub r3 r2) -8) 1) 1) (shr (or 255 r2) (load (shr r1 r3))))))"
+   ],
+   "seed_matches": 1,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_13",
+   "lhs": "(div ?x 1)",
+   "rhs": "?x",
+   "lhs_cost": 12,
+   "rhs_cost": 1,
+   "prompt": 0,
+   "seeds": [
+    "(sub (mul (add 25 in1) (shl in1 2)) (mul (shl in1 2) (add 25 in1)))",
+    "(neg (not (shl (mul (add (mul r3 r3) (or r1 255)) (div r2 (shr r1 2))) (xor (shl (or 3 r2) 1) (xor 255 r0)))))",
+    "(add (add in0 (add 8 (mul 12 (shl in1 1)))) (add (sub (add 3 in0) (add in0 3)) 8))",
+    "(shl (shl (add (shl (mul (sub (add in1 2) (add 2 in1)) 4) 4) 11) 3) 4)"
+   ],
+   "seed_matches": 1,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_14",
+   "lhs": "(mod ?x 8)",
+   "rhs": "(and ?x 7)",
+   "lhs_cost": 12,
+   "rhs_cost": 3,
+   "prompt": 40,
+   "seeds": [
+    "(shl (div (sub (or (add r1 r2) 4) (shl (shr (shl (shr r3 r2) 1) 2) 3)) (shr (xor (load -256) (or (shl r1 4) (load 2))) 1)) 1)",
+    "(shl (mul (mul 7 (mul (add (sub (add in2 in1) (add in1 in2)) (add 53 3)) 16)) 96) 1)",
+    "(or (shr (mod (shl (or (shl 0 2) (add r1 16)) 1) (shr (div (xor r2 r1) 16) r3)) 1) (shr (sub -1 (and r0 255)) (and (shr r1 3) (not r3))))",
+    "(shr (mul r3 (and r1 16)) (shl (not (neg (mul r1 r0))) (shr (add r3 2) 2)))"
+   ],
+   "seed_matches": 1,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_15",
+   "lhs": "(sub (shl ?x ?y) (shl ?x ?y))",
+   "rhs": "0",
+   "lhs_cost": 7,
+   "rhs_cost": 1,
+   "prompt": 180,
+   "seeds": [
+    "(mul (shl (shl (sub (add in0 33) (add 33 in0)) 3) 1) 41)",
+    "(add (sub (add 0 (shl (shl (shl (shl (mul in1 16) 2) 2) 1) 3)) (add (shl (shl (shl (shl (mul in1 16) 2) 2) 1) 3) 0)) 11)",
+    "(add (sub (shl (sub (add v1 16) (add 16 v1)) 3) v2) 9)",
+    "(mul (add 12 (mul 8 (shl in0 1))) (add 21 (mul 8 (shl in0 1))))"
+   ],
+   "seed_matches": 1,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_16",
+   "lhs": "(sub (add ?x ?y) ?y)",
+   "rhs": "?x",
+   "lhs_cost": 5,
+   "rhs_cost": 1,
+   "prompt": 3,
+   "seeds": [
+    "(shr (mul r1 (mul r0 (add r2 r1))) (and (sub r0 1) (xor r2 4)))",
+    "(mod (shl (sub 3 (or (or r1 255) r0)) 4) (mod (not (or r3 r0)) (xor (add r1 1) (shr 255 r3))))",
+    "(shl (sub (add (add (add (add 7 v1) v2) 3) (sub (add v0 2) (add 2 v0))) (add (add (add (sub (add v0 2) (add 2 v0)) (add 7 v1)) v2) 3)) 2)",
+    "(sub (add (add 8 (shl (shl in0 4) 2)) (add 3 (add 15 (add (mul in0 8) 4)))) (add (add (shl (shl in0 4) 2) (add (add 3 15) (add (mul in0 8) 4))) 8))"
+   ],
+   "seed_matches": 1,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_17",
+   "lhs": "(add (mul ?x ?y) (add (mul ?x ?z) ?w))",
+   "rhs": "(add (mul ?x (add ?y ?z)) ?w)",
+   "lhs_cost": 13,
+   "rhs_cost": 9,
+   "prompt": 114,
+   "seeds": [
+    "(sub (add 6 (add 2 (mul in0 12))) (add (mul in0 12) 8))",
+    "(sub (add (add (add (add in2 7) 9) (sub (add in2 in0) (add in0 in2))) 11) (add 7 (add (add 4 (add (add in2 7) 9)) (sub (add in2 in0) (add in0 in2)))))",
+    "(shl (mul (shl (shl (add 8 (add v1 4)) 4) 2) 9) 3)",
+    "(or (sub (load 0) (load (shl (shl (shr r0 -1) 4) (not r0)))) (load (shl (shl (shr r1 r0) 1) 2)))"
+   ],
+   "seed_matches": 1,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_18",
+   "lhs": "(sub (add ?x ?y) (add ?z ?y))",
+   "rhs": "(sub ?x ?z)",
+   "lhs_cost": 7,
+   "rhs_cost": 3,
+   "prompt": 83,
+   "seeds": [
+    "(load (shl (and r2 (and (div r1 255) 3)) (shl 32 (div r1 r3))))",
+    "(shl (sub (add in0 (shl in0 4)) (add (shl in0 4) in0)) 4)",
+    "(or (load (xor (shr (load (shr r1 r1)) (and r0 r2)) (shl (xor (shl (shl r0 1) 2) 11) 1))) (neg (add (div (add r2 r1) 8) (xor r3 r1))))",
+    "(sub (add (sub r2 r3) (mod (not (neg (add r1 -1))) (shl r2 1))) r3)"
+   ],
+   "seed_matches": 1,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_19",
+   "lhs": "(mul ?x -1)",
+   "rhs": "(neg ?x)",
+   "lhs_cost": 5,
+   "rhs_cost": 2,
+   "prompt": 83,
+   "seeds": [
+    "(shl (shl (mod (div r0 r3) (mod r3 r3)) (mul (xor r0 r1) 7)) 1)",
+    "(div 0 (neg (div r0 r3)))",
+    "(sub (add (add 8 (shl (shl in0 4) 2)) (add 3 (add 15 (add (mul in0 8) 4)))) (add (add (shl (shl in0 4) 2) (add (add 3 15) (add (mul in0 8) 4))) 8))",
+    "(neg (shl (xor (shl (mod r2 r3) (mul r2 r0)) (sub -250 (mul r0 r0))) 1))"
+   ],
+   "seed_matches": 1,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_20",
+   "lhs": "(sub (shl ?x ?a) (shl ?y ?a))",
+   "rhs": "(shl (sub ?x ?y) ?a)",
+   "lhs_cost": 7,
+   "rhs_cost": 5,
+   "prompt": 93,
+   "seeds": [
+    "(shl (sub (mul (shl in0 1) (shl in0 3)) (mul (shl in0 3) (shl in0 1))) 2)",
+    "(shr (shr (sub 3 (neg r0)) (sub (shl r3 3) 15)) (not (neg (div r2 r1))))",
+    "(add 5 (sub (sub (mul 9 (shl in2 3)) (mul (mul 3 (shl in2 3)) 3)) 8))",
+    "(neg (mod (or (neg (mod r1 r1)) (add (add r2 8) (div r0 r2))) (and (mul 7 (mod 0 r1)) (div 0 (shl (shl r0 8) 2)))))"
+   ],
+   "seed_matches": 1,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_21",
+   "lhs": "(sub (add ?x 0) ?y)",
+   "rhs": "(sub ?x ?y)",
+   "lhs_cost": 5,
+   "rhs_cost": 3,
+   "prompt": 81,
+   "seeds": [
+    "(add 3 (add (mul (add 3 3) (mul 2 9)) (add (add 8 5) 7)))",
+    "(or (shr (mod (shl (or (shl 0 2) (add r1 16)) 1) (shr (div (xor r2 r1) 16) r3)) 1) (shr (sub -1 (and r0 255)) (and (shr r1 3) (not r3))))",
+    "(mul 8 (sub (or (and (and 16 r3) (or r2 r0)) (add (shr (shr r0 r0) (shl (shl (and r1 16) 1) 1)) 0)) (sub (add r0 (shl (shl (mod r0 r1) 1) 1)) (xor (load (div 8 r2)) -256))))",
+    "(mul (shl (shl (sub (shr r1 r1) (xor 1 r2)) 2) (not (not (shr (and r3 8) (load -1))))) (mul (mod (or r1 255) (load -1)) (xor (or 2 r0) (sub 16 r0))))"
+   ],
+   "seed_matches": 1,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_22",
+   "lhs": "(add (shl ?x ?y) 0)",
+   "rhs": "(shl ?x ?y)",
+   "lhs_cost": 5,
+   "rhs_cost": 3,
+   "prompt": 87,
+   "seeds": [
+    "(add (add 6 (shl (shl (mul 3 (add (add (add 4 in2) (add in0 4)) in2)) 2) 4)) (add (shl in2 3) 5))",
+    "(shl (mul (mul 7 (mul (add (sub (add in2 in1) (add in1 in2)) (add 53 3)) 16)) 96) 1)",
+    "(mul (shr (neg (not 0)) (add (mod (mul 3 r2) (load (mod r3 r0))) (shr (not (shl r0 1)) 2))) (not (shl (shr (mul r3 r1) (load (div (shl r3 r2) r1))) 1)))",
+    "(sub (add (shl (shl v1 3) 2) 0) (add 0 (shl (shl v1 3) 2)))"
+   ],
+   "seed_matches": 1,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_23",
+   "lhs": "(add (neg ?x) ?y)",
+   "rhs": "(sub ?y ?x)",
+   "lhs_cost": 4,
+   "rhs_cost": 3,
+   "prompt": 105,
+   "seeds": [
+    "(sub (add (add (sub (add in0 in1) (add in1 in0)) 8) 5) (add 13 (sub (add in0 in1) (add in1 in0))))",
+    "(div (div (mod (shl (div (and r1 r3) -1) 1) (add (xor r1 r3) (shr r2 8))) (shl (mul (sub (mod r1 8) 256) (xor (shl (shl (xor r2 r3) 1) 2) (shr r3 8))) 2)) 8)",
+    "(add (add 0 (sub (add (shl in1 3) in1) (add in1 (shl in1 3)))) (mul in1 3))",
+    "(div 0 (neg (div r0 r3)))"
+   ],
+   "seed_matches": 1,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_24",
+   "lhs": "(sub (mod ?x ?w) (add 1 (mod ?x ?w)))",
+   "rhs": "-1",
+   "lhs_cost": 27,
+   "rhs_cost": 1,
+   "prompt": 10,
+   "seeds": [
+    "(sub (mul (add 7 (shl in0 1)) (shl (shl in0 2) 2)) (mul (shl (shl in0 2) 2) (add 7 (shl in0 1))))",
+    "(mod 0 (shl (mul (mul (div (load (add 0 (mod (load 6) (load (add (shr r2 r3) 0))))) (div (add (shl r0 r1) 0) (shl r3 r1))) 254) 2) 1))",
+    "(add (add (add 3 in2) 4) (shl (shl (shl (shl in0 1) 2) 1) 2))",
+    "(mod (mul (shl (sub r0 r3) 1) (shl r1 1)) (shr (sub r2 -1) (div 3 r0)))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_25",
+   "lhs": "(add (mod ?x ?y) (neg (mod ?x ?y)))",
+   "rhs": "0",
+   "lhs_cost": 26,
+   "rhs_cost": 1,
+   "prompt": 92,
+   "seeds": [
+    "(add (add (mul (shl in2 2) in2) (add (add (shl in0 1) in2) 6)) 2)",
+    "(shl (sub (add in0 (shl in0 4)) (add (shl in0 4) in0)) 4)",
+    "(shr (xor (mod r0 (xor r1 1)) (or (shl (xor 255 r1) 1) (shr r1 r1))) 2)",
+    "(mul (sub (add v11 v9) (add v9 v11)) 324)"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_26",
+   "lhs": "(sub (mod ?a ?b) (mod ?a ?b))",
+   "rhs": "0",
+   "lhs_cost": 25,
+   "rhs_cost": 1,
+   "prompt": 22,
+   "seeds": [
+    "(neg (not (mod (xor (mod r3 r0) (shr r0 8)) (shr (shl (mod r3 r0) 3) (shl (add r0 r2) 1)))))",
+    "(div (mod (shl (add -256 (add r0 r1)) 1) (add (shl r3 1) -8)) (or (mul (xor -1 r0) (xor r3 r0)) (neg (shr r2 r0))))",
+    "(add (add 19 (add 3 (add (add 9 in0) (add in0 7)))) (add (add (add 9 in0) (add in0 7)) 7))",
+    "(mod (sub (xor (shr 4 r0) (div r1 r1)) (load (shr -5 (and r0 r2)))) (sub (sub (mul r2 3) (mod r2 -1)) (or (add 4 r2) (and 8 r0))))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_27",
+   "lhs": "(mod (div ?x ?y) 1)",
+   "rhs": "0",
+   "lhs_cost": 23,
+   "rhs_cost": 1,
+   "prompt": 32,
+   "seeds": [
+    "(not (neg (shl (shr (div (xor r3 r2) 0) (mod (div r0 r1) (div 0 r1))) 1)))",
+    "(shl (and (load (xor (add 8 r0) (sub r2 2))) (div (xor r3 r2) 0)) (or (or (shl (or -3 (mul r0 r2)) 1) r0) (not (neg (mod r1 8)))))",
+    "(add (add 0 (sub (add (shl in1 3) in1) (add in1 (shl in1 3)))) (mul in1 3))",
+    "(shl (shl (load (and (div (shl (and r0 r3) 1) (mod r3 r0)) (mod (shl r2 8) (div 4 r0)))) (or (not (load (shr r0 r1))) (xor (not r0) (sub r1 r0)))) 1)"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_28",
+   "lhs": "(div (mod ?x 1) ?y)",
+   "rhs": "0",
+   "lhs_cost": 23,
+   "rhs_cost": 1,
+   "prompt": 81,
+   "seeds": [
+    "(shl (and (shl (shl (xor r3 r2) 1) 1) (div (load (sub r0 2)) (shr 8 r2))) 1)",
+    "(shl (shr (div (mod 0 (sub r1 r0)) 8) (div (shr r3 r3) (or r0 3))) 4)",
+    "(load (shl (shl (sub (div (sub 1 r3) 32) (shl (div (neg r2) (sub 2 r2)) 3)) (shl (shr (add (mul (shr (or r1 1) 2) r2) 0) (mul (xor 2 r3) (add r1 r0))) 3)) 1))",
+    "(div (mod (shl (add -256 (add r0 r1)) 1) (add (shl r3 1) -8)) (or (mul (xor -1 r0) (xor r3 r0)) (neg (shr r2 r0))))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_29",
+   "lhs": "(div (mod ?x ?d) ?d)",
+   "rhs": "0",
+   "lhs_cost": 23,
+   "rhs_cost": 1,
+   "prompt": 146,
+   "seeds": [
+    "(add 2 (add 6 (sub (add 0 (sub (mul in0 5) (mul 5 in0))) (add (sub (mul in0 5) (mul 5 in0)) 0))))",
+    "(shl (shr (sub (div r0 r3) 1) (div (shr r3 255) (mod 2 r0))) 3)",
+    "(mul 56 (sub (add (mul 3 (mul v3 9)) (mul in1 v1)) (add (mul in1 v1) (mul 3 (mul v3 9)))))",
+    "(add (sub (mul (add 2 in0) 3) (mul 3 (add 2 in0))) 20)"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_30",
+   "lhs": "(div (mod ?x 0) ?y)",
+   "rhs": "0",
+   "lhs_cost": 23,
+   "rhs_cost": 1,
+   "prompt": 75,
+   "seeds": [
+    "(sub (add (add 10 in1) 12) (add (add (add in1 6) 6) 10))",
+    "(mul (sub (add (xor r3 1) (not r0)) (shl 0 3)) (div (div (mod (neg r0) (shl (shl (or r0 r2) 1) 1)) 16) (not (shl r0 3))))",
+    "(and (neg (not (shr (div (add (add r3 3) 38) (mod 0 (or r3 r0))) (shr (shl (shr (load 255) (shr r2 r2)) 3) (div (and 1 r3) (shl r0 r0)))))) (add 0 (shr (shr r2 r2) (shr r1 r2))))",
+    "(add 5 (add (add (add (add (add 8 (add v2 4)) 9) (shl (shl in0 1) 2)) (mul v3 v2)) 5))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_31",
+   "lhs": "(div ?x (mod ?y 0))",
+   "rhs": "0",
+   "lhs_cost": 23,
+   "rhs_cost": 1,
+   "prompt": 90,
+   "seeds": [
+    "(sub (load (sub (mod -1 r2) (xor r3 3))) (div (shr -16 r1) 8))",
+    "(sub (add (shl v0 3) (mul (add v3 9) 140)) (add (mul (add v3 9) 140) (shl v0 3)))",
+    "(mod (load (add (or 3 r0) (load (shl r2 r1)))) (shl (sub (add r3 4) 0) 3))",
+    "(load (neg (shl (load 0) 3)))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_32",
+   "lhs": "(sub (add (mul (add 0 ?x) ?y) (mul (add 0 ?z) ?y)) (add (mul (add 0 ?x) ?y) (mul (add 0 ?w) ?y)))",
+   "rhs": "(mul ?y (sub (add ?x ?z) (add ?x ?w)))",
+   "lhs_cost": 31,
+   "rhs_cost": 11,
+   "prompt": 10,
+   "seeds": [
+    "(sub (mul (add 25 in1) (shl in1 2)) (mul (shl in1 2) (add 25 in1)))",
+    "(load (add (not (shl (mul (or 16 r2) 0) (not (and (xor 4 r0) (or 3 r1))))) 0))",
+    "(sub (add (mul (mul 4 2) (shl (add 0 3) 3)) (mul 2 640)) (add (mul 2 640) (mul (mul 4 2) (shl (add 0 3) 3))))",
+    "(mul (div (mod r1 r2) (not r1)) (not (shl (or r2 r3) 1)))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_33",
+   "lhs": "(sub (mul (mod ?x ?y) ?z) (mul (mod ?x ?y) ?w))",
+   "rhs": "(mul (mod ?x ?y) (sub ?z ?w))",
+   "lhs_cost": 33,
+   "rhs_cost": 18,
+   "prompt": 113,
+   "seeds": [
+    "(and (neg (not (xor (add (not (neg (or r0 r2))) (shr (not r2) 2)) 32))) (add (mul (mod r2 r0) (shl (sub 3 r0) 3)) (sub (shl r2 r3) (shr (and 8 r3) 2))))",
+    "(load (shl (shl (sub (div (sub 1 r3) 32) (shl (div (neg r2) (sub 2 r2)) 3)) (shl (shr (add (mul (shr (or r1 1) 2) r2) 0) (mul (xor 2 r3) (add r1 r0))) 3)) 1))",
+    "(mul (mul (mul (add (add (mul 7 (mul in2 5)) in0) 15) 7) in2) 5)",
+    "(add 2 (add 6 (sub (add 0 (sub (mul in0 5) (mul 5 in0))) (add (sub (mul in0 5) (mul 5 in0)) 0))))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_34",
+   "lhs": "(mod (mul ?x 0) ?y)",
+   "rhs": "0",
+   "lhs_cost": 16,
+   "rhs_cost": 1,
+   "prompt": 45,
+   "seeds": [
+    "(mul 21 (sub (add in0 (add 12 (add in1 7))) (add (add in1 7) (add in0 12))))",
+    "(sub (div (shl (mul (shl (add r0 r1) 2) (add 0 (div 8 r1))) 1) (shl (mod 0 (mul r2 r3)) 2)) (xor (and (add r1 r3) (div r0 r0)) (neg (load r1))))",
+    "(load (mod (div (shr (or r2 r3) (add r2 16)) (div (mul r2 r1) -255)) (xor (div -4 (load (shl 16 r1))) (or (xor 3 r3) -1))))",
+    "(sub (add (add 13 (sub (add 1 in0) (add in0 1))) (shl (shl (shl in1 1) 4) 1)) (add (add (shl (shl (shl in1 1) 4) 1) 13) (sub (add 1 in0) (add in0 1))))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_35",
+   "lhs": "(mod (and ?x ?y) 0)",
+   "rhs": "0",
+   "lhs_cost": 14,
+   "rhs_cost": 1,
+   "prompt": 44,
+   "seeds": [
+    "(add 10 (mul (mul 3 (sub (mul in0 in1) (mul in1 in0))) 5))",
+    "(sub (add (add 8 (shl (shl in0 4) 2)) (add 3 (add 15 (add (mul in0 8) 4)))) (add (add (shl (shl in0 4) 2) (add (add 3 15) (add (mul in0 8) 4))) 8))",
+    "(div (not (neg (shl (not (mod r1 0)) (sub (not (neg (sub r3 r0))) -2)))) (div (div (shl r1 r0) (add -1 r3)) (xor (neg r1) (neg (not (add r0 2))))))",
+    "(shl (div (shl (shr r2 8) 19) (div (or (neg (not (or r3 3))) (mul r1 r3)) 8)) 1)"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_36",
+   "lhs": "(mod (shl ?x 1) 2)",
+   "rhs": "0",
+   "lhs_cost": 14,
+   "rhs_cost": 1,
+   "prompt": 83,
+   "seeds": [
+    "(neg (mod (load (sub r2 3)) (add (add r0 r3) (sub r2 255))))",
+    "(neg (not (sub (not (shl (and r3 3) 2)) (add (shr 4 r0) (shr r3 r0)))))",
+    "(shl (add (and 3 (shl (shl (or r3 8) 1) 2)) (not (mod 3 r3))) (mul (shl (mul (load r1) (mul 16 r1)) 3) (xor (xor r3 1) (and r0 r3))))",
+    "(shl (shl (add (add (mul v27 10) 13) (add v20 3)) 3) 2)"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_37",
+   "lhs": "(mod (add ?x (mod ?y 1)) ?z)",
+   "rhs": "(mod ?x ?z)",
+   "lhs_cost": 25,
+   "rhs_cost": 12,
+   "prompt": 54,
+   "seeds": [
+    "(add 3 (add 2 (add (shl (add (sub (add v2 (add (add 8 in1) (add v0 6))) (add (add (add 8 in1) (add v0 6)) v2)) 6) 3) v0)))",
+    "(and (and (shl (shr r2 r0) (mod 255 r3)) (load (sub r0 r2))) (shl (shr 2147483646 (not r2)) 1))",
+    "(not (neg (sub (shl (mul (shl (shr r3 16) 1) (xor r3 255)) 2) (sub (shl (add r2 r0) 3) (load 12)))))",
+    "(not (mod (shr (shl (xor (shr r1 r2) (load 16)) 1) (load (div 0 (shl (sub r3 r0) 3)))) (div (sub (shl r3 r0) (shl r1 3)) (mul r3 (shl (load r3) 4)))))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_38",
+   "lhs": "(mod (sub ?x (mod ?y 1)) ?z)",
+   "rhs": "(mod ?x ?z)",
+   "lhs_cost": 25,
+   "rhs_cost": 12,
+   "prompt": 54,
+   "seeds": [
+    "(add 3 (add 2 (add (shl (add (sub (add v2 (add (add 8 in1) (add v0 6))) (add (add (add 8 in1) (add v0 6)) v2)) 6) 3) v0)))",
+    "(and (and (shl (shr r2 r0) (mod 255 r3)) (load (sub r0 r2))) (shl (shr 2147483646 (not r2)) 1))",
+    "(not (neg (sub (shl (mul (shl (shr r3 16) 1) (xor r3 255)) 2) (sub (shl (add r2 r0) 3) (load 12)))))",
+    "(not (mod (shr (shl (xor (shr r1 r2) (load 16)) 1) (load (div 0 (shl (sub r3 r0) 3)))) (div (sub (shl r3 r0) (shl r1 3)) (mul r3 (shl (load r3) 4)))))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_39",
+   "lhs": "(sub (add (mul ?x ?y) ?z) (mul ?x ?y))",
+   "rhs": "?z",
+   "lhs_cost": 13,
+   "rhs_cost": 1,
+   "prompt": 141,
+   "seeds": [
+    "(add (sub (mul (add 2 in0) 3) (mul 3 (add 2 in0))) 20)",
+    "(add (load 0) (load (and (div (and (and r3 r2) (mod r0 r0)) 16) (shl (mul r3 255) (shl (div r3 r2) 1)))))",
+    "(add (mul 5 (mul (add (add 2 (add (add 8 in0) 19)) (add (add (add 7 in0) (add in0 3)) 3)) 9)) 10)",
+    "(shl (mod 8 (or r0 r3)) (div 258 (sub r0 r2)))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_40",
+   "lhs": "(add (sub ?x (load 2)) (load 2))",
+   "rhs": "?x",
+   "lhs_cost": 13,
+   "rhs_cost": 1,
+   "prompt": 121,
+   "seeds": [
+    "(shl (sub (add (mul v5 v2) v0) (add v0 (mul v5 v2))) 2)",
+    "(neg (mod (load (sub r2 3)) (add (add r0 r3) (sub r2 255))))",
+    "(sub (add (shl (add (add (add in2 in2) (add 4 (add (add in0 2) 2))) 2) 1) 16) (add 16 (shl (add (add (add in2 in2) (add 4 (add (add in0 2) 2))) 2) 1)))",
+    "(div (div (div 0 (add r2 1)) (shr (mod r2 r0) 8)) (not (shl 15 (shl (shl r1 2) 1))))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_41",
+   "lhs": "(sub (add ?x (mul ?y ?z)) (mul ?y ?z))",
+   "rhs": "?x",
+   "lhs_cost": 13,
+   "rhs_cost": 1,
+   "prompt": 61,
+   "seeds": [
+    "(mod (shl (and (div r1 r1) (load r0)) 1) (shr 11 (not r2)))",
+    "(load (mul (shl (mod r1 -1) 255) (shl (xor (load (mod r2 r0)) (and r2 2)) 1)))",
+    "(sub (add 2 (mul (add 8 (add (shl (shl in0 2) 1) 6)) 15)) (add (mul (add 8 (add (shl (shl in0 2) 1) 6)) 15) 2))",
+    "(sub (add (mul (add (mul in1 (sub (add in1 in0) (add in0 in1))) 14) (shl in1 1)) 40) (add 40 (mul (add (mul in1 (sub (add in1 in0) (add in0 in1))) 14) (shl in1 1))))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_42",
+   "lhs": "(add (mul ?x ?z) (sub ?y (mul ?x ?z)))",
+   "rhs": "?y",
+   "lhs_cost": 13,
+   "rhs_cost": 1,
+   "prompt": 30,
+   "seeds": [
+    "(mul (sub (add v11 v9) (add v9 v11)) 324)",
+    "(or (and (shr (neg r2) (or r3 r2)) (neg (shl r0 r2))) (shl (shl (sub (or r0 1) (shr r3 r0)) 2) (sub (shl r2 r2) (div r3 r0))))",
+    "(mod (load (shl (add (or r3 r0) (shr r3 -1)) (and (div r0 r1) (or -1 r2)))) (add (add (not (sub r3 r1)) (div r0 r2)) (mul r1 r0)))",
+    "(xor (mul 72 (and 3 r1)) (shl (shr r3 1) 1))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_43",
+   "lhs": "(mod ?x 1)",
+   "rhs": "0",
+   "lhs_cost": 12,
+   "rhs_cost": 1,
+   "prompt": 0,
+   "seeds": [
+    "(sub (mul (add 25 in1) (shl in1 2)) (mul (shl in1 2) (add 25 in1)))",
+    "(neg (not (shl (mul (add (mul r3 r3) (or r1 255)) (div r2 (shr r1 2))) (xor (shl (or 3 r2) 1) (xor 255 r0)))))",
+    "(add (add in0 (add 8 (mul 12 (shl in1 1)))) (add (sub (add 3 in0) (add in0 3)) 8))",
+    "(shl (shl (add (shl (mul (sub (add in1 2) (add 2 in1)) 4) 4) 11) 3) 4)"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_44",
+   "lhs": "(add (mul ?x ?y) (neg (mul ?x ?y)))",
+   "rhs": "0",
+   "lhs_cost": 12,
+   "rhs_cost": 1,
+   "prompt": 39,
+   "seeds": [
+    "(load (shr (shl (xor (mul r0 r1) (or r0 r3)) 2) (xor (mod r3 4) (not r1))))",
+    "(shl (shr (div (mod 0 (sub r1 r0)) 8) (div (shr r3 r3) (or r0 3))) 4)",
+    "(add 2 (add 6 (sub (add 0 (sub (mul in0 5) (mul 5 in0))) (add (sub (mul in0 5) (mul 5 in0)) 0))))",
+    "(sub (shl (mul (div r0 r1) r0) 1) -1)"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_45",
+   "lhs": "(mod (and (shl ?x 3) 7) 4)",
+   "rhs": "(and (shl ?x 3) 7)",
+   "lhs_cost": 16,
+   "rhs_cost": 5,
+   "prompt": 47,
+   "seeds": [
+    "(shl (mul (shl (shl (xor 0 (mul (shl 2 r0) (sub r3 255))) 1) 2) (shl (shl (and (shl (shl r1 3) 1) (mod (and 4 r0) (add r1 -1))) 1) 2)) 1)",
+    "(mul (shl (mul (mul (add (div r2 r3) (shl (or r3 255) 1)) 2) 2) 0) (shr (mod (mul 8 r0) (or r3 -1)) (load (div (div 255 r1) (shr (shl r0 r0) 1)))))",
+    "(add (add 8 (add 9 (mul (add (add (mul 3 (mul in0 5)) 5) 1) 1))) 0)",
+    "(shl (div (shr (shl r2 r0) 2) (add (shr r0 r2) (sub r1 r2))) (shr 3 (sub (shl (add 16 r0) 3) (neg (not (div 16 r3))))))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_46",
+   "lhs": "(div ?x (shl 1 ?y))",
+   "rhs": "(shr ?x ?y)",
+   "lhs_cost": 14,
+   "rhs_cost": 3,
+   "prompt": 52,
+   "seeds": [
+    "(neg (mod (or (neg (mod r1 r1)) (add (add r2 8) (div r0 r2))) (and (mul 7 (mod 0 r1)) (div 0 (shl (shl r0 8) 2)))))",
+    "(load (load (mod 255 r0)))",
+    "(div 0 (shl (not (shr r1 3)) (div (neg r1) 16)))",
+    "(sub (load (mul (or r1 -1) (shr r1 255))) (mul (load (shr 8 r0)) (add r2 r3)))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_47",
+   "lhs": "(div (div ?x 2) 2)",
+   "rhs": "(div ?x 4)",
+   "lhs_cost": 23,
+   "rhs_cost": 12,
+   "prompt": 58,
+   "seeds": [
+    "(neg (xor (mod (mul 4 0) (shr (shl (shl r0 4) 1) (mod r2 3))) (not (sub (mul 8 (neg r2)) (add 0 8)))))",
+    "(div 0 (shr (neg (xor (xor (div r0 255) (add 4 r1)) (load (load (or r1 r2))))) 1))",
+    "(or 0 (shl (mod (shl (shl (sub (mod 0 0) (mul (div (shr 255 r3) (load (add (sub r0 r3) 0))) 8)) 1) 2) (load 0)) 1))",
+    "(shl (add (add 1 (shl in1 1)) (add (mul 6 (shl in1 3)) 5)) 4)"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_48",
+   "lhs": "(div (shr ?x ?y) 1)",
+   "rhs": "(shr ?x ?y)",
+   "lhs_cost": 14,
+   "rhs_cost": 3,
+   "prompt": 15,
+   "seeds": [
+    "(mul v5 (shl (shl (shl v0 3) 2) 1))",
+    "(add (sub (mul in2 (sub (add (sub (add 4 in0) (add in0 4)) 128) (add 128 (sub (add 4 in0) (add in0 4))))) 11) 11)",
+    "(shl (sub (add (shl in0 2) (mul 9 (shl (shl in0 2) 2))) (add (mul 9 (shl (shl in0 2) 2)) (shl in0 2))) 3)",
+    "(or (sub (shr r2 1) (sub r2 r3)) (shr (shl r3 8) (shl r1 1)))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_49",
+   "lhs": "(div (div ?x 4) 2)",
+   "rhs": "(div ?x 8)",
+   "lhs_cost": 23,
+   "rhs_cost": 12,
+   "prompt": 121,
+   "seeds": [
+    "(shl (shr (or (xor (div (mod 8 r1) 8) (mod r1 r3)) (sub -68 (div 8 r2))) (shl (shl (div (shl (or r0 4) 3) -1) 2) (mul (div 1 r0) (add r3 r3)))) 1)",
+    "(mul (sub (add 8 (shl in1 4)) (add (shl in1 4) 8)) 56)",
+    "(mul 45 (sub (add (shl in1 3) 100) (add 100 (shl in1 3))))",
+    "(sub (shr 255 r0) (sub (div r0 8) (mod r0 255)))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_50",
+   "lhs": "(sub (mul ?x ?y) (mul ?x ?y))",
+   "rhs": "0",
+   "lhs_cost": 11,
+   "rhs_cost": 1,
+   "prompt": 63,
+   "seeds": [
+    "(add (add 1 (mul 33 4)) (add (mul 3 0) 5))",
+    "(mul (div (mul r1 r2) (add r2 8)) (or (shl (and (div r3 3) (and 1 r2)) 1) (load (shr (div r0 r3) (and r2 r3)))))",
+    "(shl (shl (mul (mul 8 r2) (shl (or r1 255) (div r0 r3))) 1) 2)",
+    "(add (add 6 (shl (shl (mul 3 (add (add (add 4 in2) (add in0 4)) in2)) 2) 4)) (add (shl in2 3) 5))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_51",
+   "lhs": "(add (mul 1 ?x) (mul -1 ?x))",
+   "rhs": "0",
+   "lhs_cost": 11,
+   "rhs_cost": 1,
+   "prompt": 68,
+   "seeds": [
+    "(shl (sub (add in0 (sub (add 5 in0) (add in0 5))) (add (sub (add 5 in0) (add in0 5)) in0)) 3)",
+    "(load (mod (div (shr (or r2 r3) (add r2 16)) (div (mul r2 r1) -255)) (xor (div -4 (load (shl 16 r1))) (or (xor 3 r3) -1))))",
+    "(load (and (div (xor 18 (shl (mod r1 r2) 1)) 16) (shl (div 16 (add r0 r0)) 1)))",
+    "(sub (div (shl (mul (shl (add r0 r1) 2) (add 0 (div 8 r1))) 1) (shl (mod 0 (mul r2 r3)) 2)) (xor (and (add r1 r3) (div r0 r0)) (neg (load r1))))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_52",
+   "lhs": "(div (xor ?a ?b) 2)",
+   "rhs": "(shr (xor ?a ?b) 1)",
+   "lhs_cost": 14,
+   "rhs_cost": 5,
+   "prompt": 119,
+   "seeds": [
+    "(neg (mod (or (neg (mod r1 r1)) (add (add r2 8) (div r0 r2))) (and (mul 7 (mod 0 r1)) (div 0 (shl (shl r0 8) 2)))))",
+    "(sub (mul (add 25 in1) (shl in1 2)) (mul (shl in1 2) (add 25 in1)))",
+    "(or (xor r2 (shl r1 r0)) (load (mod r1 r3)))",
+    "(mul 2 (shl (sub (shl (shl (or 0 (and (or r3 0) (and 255 r3))) 0) 1) (neg (not 0))) 1))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_53",
+   "lhs": "(mod ?x 2)",
+   "rhs": "(and ?x 1)",
+   "lhs_cost": 12,
+   "rhs_cost": 3,
+   "prompt": 130,
+   "seeds": [
+    "(mod (shl (add (add (div 8 r2) (shl (shl (shr 1 r2) 1) 1)) (xor (shl (add r1 r1) 1) (shl r3 1))) 4) (add (shr (mul 6 (mul r1 r0)) 1) (load (xor 4 (add 16 r1)))))",
+    "(shl (shr (sub (div r0 r3) 1) (div (shr r3 255) (mod 2 r0))) 3)",
+    "(and (shl (load (div r0 1)) (xor r3 (div r1 r1))) (mod 2 (div (mul r2 r0) (load r1))))",
+    "(shl (sub (add (add (add (add 7 v1) v2) 3) (sub (add v0 2) (add 2 v0))) (add (add (add (sub (add v0 2) (add 2 v0)) (add 7 v1)) v2) 3)) 2)"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_54",
+   "lhs": "(div (mod ?x 256) 16)",
+   "rhs": "(shr (mod ?x 256) 4)",
+   "lhs_cost": 23,
+   "rhs_cost": 14,
+   "prompt": 132,
+   "seeds": [
+    "(load (mul (or (neg r3) (mod r2 r2)) (shl (load (div 255 r1)) 4)))",
+    "(or (shl (sub r2 3) (load (load 4))) (mod (load (mul r3 r3)) (div (mod 2 r0) 16)))",
+    "(mul (shl (load (neg r1)) 1) (neg (load (shl r1 r2))))",
+    "(add 2 (add 6 (sub (add 0 (sub (mul in0 5) (mul 5 in0))) (add (sub (mul in0 5) (mul 5 in0)) 0))))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_55",
+   "lhs": "(sub (add ?x ?y) (add (add ?y ?z) (neg ?z)))",
+   "rhs": "?x",
+   "lhs_cost": 10,
+   "rhs_cost": 1,
+   "prompt": 0,
+   "seeds": [
+    "(shl (xor (mod (shl (or (add r0 r0) (not r0)) 1) (shl (shl r3 r1) 3)) (load (mul (mul (add (xor 3 r1) (shl r3 8)) (shl r0 3)) (div r0 r0)))) 1)",
+    "(add (add (add (add (add 8 (mul (shl (shl in1 1) 2) 3)) (sub (add 3 in0) (add in0 3))) 8) in0) 11)",
+    "(div (not (xor r1 r2)) -1)",
+    "(shl (add (add 1 (shl in1 1)) (add (mul 6 (shl in1 3)) 5)) 4)"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_56",
+   "lhs": "(mod ?x 4)",
+   "rhs": "(and ?x 3)",
+   "lhs_cost": 12,
+   "rhs_cost": 3,
+   "prompt": 3,
+   "seeds": [
+    "(and (sub (xor r1 4) (shl (div 2 r3) 1)) (not (add r2 -1)))",
+    "(mod (mul (shl (sub r0 r3) 1) (shl r1 1)) (shr (sub r2 -1) (div 3 r0)))",
+    "(shl (sub (add (mul v5 v2) v0) (add v0 (mul v5 v2))) 2)",
+    "(shl (shl (sub (xor (add r2 -1) (shl (mod r0 r3) 2)) (div (shl (xor 8 r3) 1) (div r3 r1))) 1) 1)"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_57",
+   "lhs": "(div (add (load ?i) ?x) 2)",
+   "rhs": "(shr (add (load ?i) ?x) 1)",
+   "lhs_cost": 18,
+   "rhs_cost": 9,
+   "prompt": 48,
+   "seeds": [
+    "(shl (shl (sub (mul (shl in0 3) (sub (mul v9 in1) (mul in1 v9))) (shl (mul (sub (mul v9 in1) (mul in1 v9)) in0) 3)) 3) 3)",
+    "(sub (add (shl (add (add (add in2 in2) (add 4 (add (add in0 2) 2))) 2) 1) 16) (add 16 (shl (add (add (add in2 in2) (add 4 (add (add in0 2) 2))) 2) 1)))",
+    "(not (xor (div (load 0) (not (shl r3 1))) (add (shl (sub r3 r2) 3) (mod r0 r1))))",
+    "(shl (and (load (add (and (neg r0) (div r2 r3)) (or (sub r0 r1) (shr r3 4)))) (shl (not (and r1 r2)) (or (load (and (and r0 r2) (load (mod r2 r0)))) (mod (and 2 3) (div 8 r1))))) 1)"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_58",
+   "lhs": "(mod ?x 32)",
+   "rhs": "(and ?x 31)",
+   "lhs_cost": 12,
+   "rhs_cost": 3,
+   "prompt": 82,
+   "seeds": [
+    "(add (load (and 16 r0)) (shl (div (shr 2 r1) (add r0 r1)) 2))",
+    "(add (add (add 3 in2) 4) (shl (shl (shl (shl in0 1) 2) 1) 2))",
+    "(div (not (xor r1 r2)) -1)",
+    "(xor (shr (add (div r0 r0) (mod 255 r2)) 0) (div (sub (or r0 r1) (shl (load r1) 1)) (mod (shl r1 1) (div r0 r3))))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_59",
+   "lhs": "(add (div ?x ?y) (div ?x ?y))",
+   "rhs": "(mul (div ?x ?y) 2)",
+   "lhs_cost": 25,
+   "rhs_cost": 16,
+   "prompt": 191,
+   "seeds": [
+    "(add (not (neg (div (div 8 r0) (shl (or r0 8) 3)))) (shl (shr r3 r1) (xor r0 2)))",
+    "(shl (shr (shr (mul (neg (shl (and 4 r2) 1)) 4) (div (add 0 (shl r1 r3)) 258)) (xor (mod (xor r2 8) (or r3 1)) (shl (sub (and r1 r2) (sub r2 2)) 4))) 1)",
+    "(mul (mul 9 (sub (mul in0 10) (mul 10 in0))) 64)",
+    "(sub (mul 232 (shl (add 18 in0) 2)) (mul (shl (add 18 in0) 2) 232))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_60",
+   "lhs": "(div ?a 256)",
+   "rhs": "(shr ?a 8)",
+   "lhs_cost": 12,
+   "rhs_cost": 3,
+   "prompt": 199,
+   "seeds": [
+    "(div (not (xor r1 r2)) -1)",
+    "(shl (shr (shr (mul (neg (shl (and 4 r2) 1)) 4) (div (add 0 (shl r1 r3)) 258)) (xor (mod (xor r2 8) (or r3 1)) (shl (sub (and r1 r2) (sub r2 2)) 4))) 1)",
+    "(sub (mul (add 7 (shl in0 1)) (shl (shl in0 2) 2)) (mul (shl (shl in0 2) 2) (add 7 (shl in0 1))))",
+    "(shl (add (add (add (add 7 in0) (add in0 7)) (add (add 7 in0) (add in0 7))) 16) 2)"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_61",
+   "lhs": "(mod ?x 64)",
+   "rhs": "(and ?x 63)",
+   "lhs_cost": 12,
+   "rhs_cost": 3,
+   "prompt": 2,
+   "seeds": [
+    "(sub 0 (mul 4 (mul (shl (shl (shl (shl in0 1) 3) 2) 2) 3)))",
+    "(shl (add 12 (add in0 (add (add 6 in0) (add (add (add in0 9) 3) 1)))) 2)",
+    "(shl (sub (add in0 (sub (add 5 in0) (add in0 5))) (add (sub (add 5 in0) (add in0 5)) in0)) 3)",
+    "(shl (div -7 (xor r2 r1)) 2)"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_62",
+   "lhs": "(mod ?x 256)",
+   "rhs": "(and ?x 255)",
+   "lhs_cost": 12,
+   "rhs_cost": 3,
+   "prompt": 30,
+   "seeds": [
+    "(load (add (and (and (neg r2) r3) r2) (add (or 2 r2) (shl r0 8))))",
+    "(shl (mul (shl (add 4 (add in1 (add in0 6))) 3) 14) 1)",
+    "(load (shl (or (sub r1 r2) (and r0 r2)) (div (shr r0 r1) (load r0))))",
+    "(load (or (mod (not r0) (shl (div r0 r1) 3)) (load (shr (or r0 -1) 3))))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_63",
+   "lhs": "(mod (mul ?x ?y) 32)",
+   "rhs": "(and (mul ?x ?y) 31)",
+   "lhs_cost": 16,
+   "rhs_cost": 7,
+   "prompt": 12,
+   "seeds": [
+    "(xor (mod (mod 6 (xor r1 r0)) (sub 0 (shr (load r1) 2))) (sub (mul (sub r1 r2) (load (mod 2 r3))) (mod (sub r3 r0) 20)))",
+    "(shl (shl (shl (sub (add in0 v6) (add v6 in0)) 3) 2) 3)",
+    "(add 15 (add 9 (mul (mul 27 -22) in0)))",
+    "(add 27 (sub (add (add (add (add 4 (sub in0 in1)) 5) (add (mul in0 in1) 1)) 7) (add (add (add (add (mul in0 in1) 1) 7) (add 4 (sub in0 in1))) 5)))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_64",
+   "lhs": "(mod (shr ?x ?y) 16)",
+   "rhs": "(and (shr ?x ?y) 15)",
+   "lhs_cost": 14,
+   "rhs_cost": 5,
+   "prompt": 21,
+   "seeds": [
+    "(not (load (load (and (mod 20 (xor r0 r1)) (div (shr (xor r3 r0) (shl (sub r3 255) 1)) 16)))))",
+    "(add (not (shl (mul (shl (mul -1 r2) 3) (shl r0 r3)) 2)) (shr (or 20 (load 1)) (mod 247 (neg r3))))",
+    "(shr (sub (not (neg (xor (add (sub 255 r3) (xor r2 r0)) (sub (neg r0) (shl r3 r1))))) (mod (load (and (shl r0 r0) 63)) (not (and r0 8)))) 2)",
+    "(mul 45 (shl (shl (mul v27 (add v8 22)) 3) 2))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_65",
+   "lhs": "(sub (add ?x ?y) (div ?z 2))",
+   "rhs": "(sub (add ?x ?y) (shr ?z 1))",
+   "lhs_cost": 16,
+   "rhs_cost": 7,
+   "prompt": 82,
+   "seeds": [
+    "(shl (shl (load (sub (load r0) (mod r2 r1))) (shl (not (sub 255 r1)) 1)) 1)",
+    "(add (add 33 (add (add 1 v10) 13)) (sub (add 8 in1) (add in1 8)))",
+    "(add (add (mul (shl in2 2) in2) (add (add (shl in0 1) in2) 6)) 2)",
+    "(sub (add 5 (add (sub v1 v3) 86)) (add 5 (add (sub v1 v3) 86)))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_66",
+   "lhs": "(add (shl ?x ?y) (sub ?x (shl ?x ?y)))",
+   "rhs": "?x",
+   "lhs_cost": 9,
+   "rhs_cost": 1,
+   "prompt": 88,
+   "seeds": [
+    "(mul 2 (shl (sub (shl (shl (or 0 (and (or r3 0) (and 255 r3))) 0) 1) (neg (not 0))) 1))",
+    "(sub (add (mul (mul 4 2) (shl (add 0 3) 3)) (mul 2 640)) (add (mul 2 640) (mul (mul 4 2) (shl (add 0 3) 3))))",
+    "(or (shl (and (xor (shl r2 r3) (shl (div r2 r1) 2)) (add (add r1 8) (div r1 r2))) 3) (load (add (sub -1 r1) (mod r1 255))))",
+    "(div (mod (shl (add -256 (add r0 r1)) 1) (add (shl r3 1) -8)) (or (mul (xor -1 r0) (xor r3 r0)) (neg (shr r2 r0))))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_67",
+   "lhs": "(sub (add (shl ?x 1) ?y) (shl ?x 1))",
+   "rhs": "?y",
+   "lhs_cost": 9,
+   "rhs_cost": 1,
+   "prompt": 12,
+   "seeds": [
+    "(neg (not (shr (load (div (mod 16 r2) (div r3 r2))) (not (neg (mod 0 (and r1 r0)))))))",
+    "(xor (mod (xor r1 r3) r3) (shr (shl (load r0) (shr r0 r2)) 2))",
+    "(or (xor (neg (shr r2 -1)) (add (load (xor 2 r1)) (mod r0 r3))) (load (xor (not (add r2 16)) (shl (mul (add r1 r0) (div r2 r1)) 1))))",
+    "(add (shl (xor (div (add r3 r0) (mul 16 r2)) (load (shl r3 r3))) 3) (mul (or (and 8 (mul r2 r3)) (xor (add 0 (or 4 r1)) (add r0 1))) 8))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_68",
+   "lhs": "(sub (add ?x (shl ?y ?n)) (shl ?y ?n))",
+   "rhs": "?x",
+   "lhs_cost": 9,
+   "rhs_cost": 1,
+   "prompt": 54,
+   "seeds": [
+    "(shl (mul (shl (shl (add (add (add 8 (add (mul 3 (shl in0 2)) 13)) in0) 4) 1) 1) (shl (add 13 (mul 3 (shl in0 2))) 1)) 1)",
+    "(shl (mul (shr -32 (load r1)) (neg (shr (mul r3 r2) 2))) (load 0))",
+    "(add (add (shl (shl (mul in1 in1) 3) 2) 1) (add 8 (mul (mul in1 12) in1)))",
+    "(mul (add (add (add (add in0 6) (sub (add v14 v27) (add v27 v14))) 1) v17) 12)"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_69",
+   "lhs": "(sub (add ?x (shl ?x 5)) (shl ?x 5))",
+   "rhs": "?x",
+   "lhs_cost": 9,
+   "rhs_cost": 1,
+   "prompt": 133,
+   "seeds": [
+    "(and (shl (shr (and r1 255) (xor 1 r3)) 1) (mul 3 (shr r3 r0)))",
+    "(mul 21 (sub (add in0 (add 12 (add in1 7))) (add (add in1 7) (add in0 12))))",
+    "(add 3 (add (add (shl (shl (add (add (mul 3 (add (shl in2 2) (shl in0 2))) 4) 4) 2) 1) 6) 7))",
+    "(sub (add (mul in0 42) (shl in0 3)) (add (shl in0 3) (mul in0 42)))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_70",
+   "lhs": "(sub (add (shl ?x 1) (sub ?y (shl ?x 1))) ?z)",
+   "rhs": "(sub ?y ?z)",
+   "lhs_cost": 11,
+   "rhs_cost": 3,
+   "prompt": 23,
+   "seeds": [
+    "(and (load 0) (sub (shl (sub r3 3) (shr r1 1)) (mul r3 (shr r1 r3))))",
+    "(shr (add (shl (not (shl 2 r3)) 2) 0) (load (add (shl (sub (load (mul r3 r3)) (sub r3 r2)) 1) (mul (shl (sub r0 r3) 2) (shl r1 3)))))",
+    "(add (sub (mul 3 (shl in1 3)) 4) 18)",
+    "(mod (load (add (or 3 r0) (load (shl r2 r1)))) (shl (sub (add r3 4) 0) 3))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_71",
+   "lhs": "(add (shr ?x ?y) (sub ?a (shr ?x ?y)))",
+   "rhs": "?a",
+   "lhs_cost": 9,
+   "rhs_cost": 1,
+   "prompt": 37,
+   "seeds": [
+    "(shl (shl (mul r2 (mul (load (not r1)) r2)) (and 6 r3)) 1)",
+    "(mul (xor (shl r1 r1) 7) (shl (and (mul r2 r0) (load (mod -1 r1))) 3))",
+    "(add (div (sub 16 r2) (shr r0 r2)) (shr 2147483646 (add r2 3)))",
+    "(shl (add 10 (shl (add (add (shl in0 2) 3) 7) 1)) 1)"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_72",
+   "lhs": "(sub (mul ?x (add ?y ?z)) (mul ?x ?z))",
+   "rhs": "(mul ?x ?y)",
+   "lhs_cost": 13,
+   "rhs_cost": 5,
+   "prompt": 77,
+   "seeds": [
+    "(shl (sub (add (add v22 4) 8) (add 8 (add v22 4))) 3)",
+    "(shl (add (add (add 9 (shl (shl in1 2) 1)) (add (sub (add in0 5) (add 5 in0)) 2)) 8) 2)",
+    "(sub (add (mul (add (mul in1 (sub (add in1 in0) (add in0 in1))) 14) (shl in1 1)) 40) (add 40 (mul (add (mul in1 (sub (add in1 in0) (add in0 in1))) 14) (shl in1 1))))",
+    "(add 15 (add 9 (mul (mul 27 -22) in0)))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_73",
+   "lhs": "(sub (add (shl ?a 5) (shr ?b 3)) (add (shl ?a 5) (shr ?c 3)))",
+   "rhs": "(sub (shr ?b 3) (shr ?c 3))",
+   "lhs_cost": 15,
+   "rhs_cost": 7,
+   "prompt": 153,
+   "seeds": [
+    "(and (not (neg (and (or (or r0 r2) 16) (xor (shl (div r2 r2) 1) (load 2))))) (add (shl (div (shl (div r3 r1) 1) (sub 2 r1)) 1) (not (shr r2 r0))))",
+    "(or (div 0 (div (div 16 r3) 8)) (shr (or r3 r1) r0))",
+    "(sub (add (mul (add (mul in1 (sub (add in1 in0) (add in0 in1))) 14) (shl in1 1)) 40) (add 40 (mul (add (mul in1 (sub (add in1 in0) (add in0 in1))) 14) (shl in1 1))))",
+    "(shl (sub (add (shl in0 3) (shl in2 1)) (add (shl in2 1) (shl in0 3))) 2)"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_74",
+   "lhs": "(sub (add (load 1) (shl ?x ?y)) (shl ?x ?y))",
+   "rhs": "(load 1)",
+   "lhs_cost": 13,
+   "rhs_cost": 5,
+   "prompt": 178,
+   "seeds": [
+    "(neg (neg (shl (sub (sub 0 (shl r2 1)) (load (xor (add r2 2) (neg r0)))) (shl (xor (shl (sub (and r2 r3) (and r1 r0)) 3) (or (sub 0 r3) (not (neg (mul r3 r2))))) 2))))",
+    "(mul (sub 8 (mul 8 (mul in2 6))) (add (mul 8 (mul in2 6)) 11))",
+    "(and (load 0) (sub (shl (sub r3 3) (shr r1 1)) (mul r3 (shr r1 r3))))",
+    "(add (add (add in0 5) 10) (add (add 1 (add in0 5)) 16))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_75",
+   "lhs": "(sub (add ?x (shl ?x ?y)) (shl ?x ?y))",
+   "rhs": "?x",
+   "lhs_cost": 9,
+   "rhs_cost": 1,
+   "prompt": 102,
+   "seeds": [
+    "(shl (sub (add in0 (shl in0 4)) (add (shl in0 4) in0)) 4)",
+    "(xor (mod (not (neg (or (shl (shl (sub r0 2) 1) 2) 0))) (not (neg (div (xor (sub r3 2) 0) (add (sub 16 r1) (sub 16 r1)))))) 0)",
+    "(shl (shl -1 (div r1 r3)) (shl (neg (shr 1 r3)) 1))",
+    "(div (mul (sub r2 1) (shl (mod r3 r2) 1)) (sub (neg (not (or r3 r0))) (shl r3 1)))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_76",
+   "lhs": "(add (shl ?x ?y) (neg (shl ?x ?y)))",
+   "rhs": "0",
+   "lhs_cost": 8,
+   "rhs_cost": 1,
+   "prompt": 61,
+   "seeds": [
+    "(sub (and (mod -1 r2) (load r0)) (and (add r1 4) (mul r3 r2)))",
+    "(shl (shr (shr (mul (neg (shl (and 4 r2) 1)) 4) (div (add 0 (shl r1 r3)) 258)) (xor (mod (xor r2 8) (or r3 1)) (shl (sub (and r1 r2) (sub r2 2)) 4))) 1)",
+    "(div (shl (add r2 r0) 2) (shl (mul -2 (neg r2)) 1))",
+    "(div 0 (shr (neg (xor (xor (div r0 255) (add 4 r1)) (load (load (or r1 r2))))) 1))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_77",
+   "lhs": "(and (shl ?x ?y) (not (shl ?x ?y)))",
+   "rhs": "0",
+   "lhs_cost": 8,
+   "rhs_cost": 1,
+   "prompt": 115,
+   "seeds": [
+    "(shl (and (shl 4 r2) (neg (not (neg r3)))) (mod (sub r0 3) (shl r3 r0)))",
+    "(and (neg (not (shr (div (add (add r3 3) 38) (mod 0 (or r3 r0))) (shr (shl (shr (load 255) (shr r2 r2)) 3) (div (and 1 r3) (shl r0 r0)))))) (add 0 (shr (shr r2 r2) (shr r1 r2))))",
+    "(shl (add 15 (shl (add 3 (add in1 (add in2 9))) 1)) 1)",
+    "(mul (sub (add 8 (shl in1 4)) (add (shl in1 4) 8)) 56)"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_78",
+   "lhs": "(and (sub ?x ?y) (not (sub ?x ?y)))",
+   "rhs": "0",
+   "lhs_cost": 8,
+   "rhs_cost": 1,
+   "prompt": 115,
+   "seeds": [
+    "(shl (and (shl 4 r2) (neg (not (neg r3)))) (mod (sub r0 3) (shl r3 r0)))",
+    "(and (neg (not (shr (div (add (add r3 3) 38) (mod 0 (or r3 r0))) (shr (shl (shr (load 255) (shr r2 r2)) 3) (div (and 1 r3) (shl r0 r0)))))) (add 0 (shr (shr r2 r2) (shr r1 r2))))",
+    "(shl (add 15 (shl (add 3 (add in1 (add in2 9))) 1)) 1)",
+    "(mul (sub (add 8 (shl in1 4)) (add (shl in1 4) 8)) 56)"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_79",
+   "lhs": "(sub (add ?x ?y) (add ?x ?y))",
+   "rhs": "0",
+   "lhs_cost": 7,
+   "rhs_cost": 1,
+   "prompt": 27,
+   "seeds": [
+    "(shr (sub (shl (xor (neg (not (and r0 r2))) (add 16 r3)) 1) (mod (load r2) 512)) 2)",
+    "(sub (add (mul (mul 4 2) (shl (add 0 3) 3)) (mul 2 640)) (add (mul 2 640) (mul (mul 4 2) (shl (add 0 3) 3))))",
+    "(load (load (mod 255 r0)))",
+    "(sub (mul 96 (shl (shl in1 2) 1)) (mul (shl in1 2) 192))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_80",
+   "lhs": "(sub (add ?x 10) (add ?x 10))",
+   "rhs": "0",
+   "lhs_cost": 7,
+   "rhs_cost": 1,
+   "prompt": 79,
+   "seeds": [
+    "(add in0 (shl (sub (add 1 (add in2 (add 6 (add in0 9)))) (add 6 (add (add in0 9) (add 1 in2)))) 2))",
+    "(mod (load (mul (div (load r3) (div (shr r1 r0) 8)) (neg (not (mul (add r0 r3) (sub r0 r3)))))) (shr (or (div r1 r2) (div r2 r1)) -1))",
+    "(shl (add (shr (mod r1 r1) (shr 16 r3)) (xor (div r3 r3) -8)) 1)",
+    "(shl (shl (shl (mod 4 r1) 1) 1) (shl (shr 3 r0) 4))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_81",
+   "lhs": "(sub (sub (add ?x ?y) ?y) ?x)",
+   "rhs": "0",
+   "lhs_cost": 7,
+   "rhs_cost": 1,
+   "prompt": 173,
+   "seeds": [
+    "(mul (or (div 255 r2) (div r2 r2)) (mul (add r3 r2) 1020))",
+    "(sub (or 3 (not r1)) (or (add (not (neg (add r1 1))) (shr r1 r2)) (shr (add r2 (shl (load 4) 3)) 1)))",
+    "(add 7 (add 3 (add (add in0 8) (add 6 (add 6 (add (add (shl (add (add in0 8) 6) 4) (shl (shl (add (add in0 8) 6) 2) 1)) 6))))))",
+    "(or (mul (mul r0 (div 4 r2)) (sub 0 (and r2 -1))) (xor (neg (add 0 (shl r3 4))) (mul 4 (shl (div 0 (or 8 r0)) 1))))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_82",
+   "lhs": "(add (mul ?x ?y) (mul ?x 0))",
+   "rhs": "(mul ?x ?y)",
+   "lhs_cost": 11,
+   "rhs_cost": 5,
+   "prompt": 181,
+   "seeds": [
+    "(add (add 4 (sub (add (shl (add (sub 3 in0) (shl in0 1)) 3) 3) (add 3 (shl (add (sub 3 in0) (shl in0 1)) 3)))) (add 6 13))",
+    "(add (add (shl (shl (shl in1 1) 1) 1) (add (mul 10 (sub in1 (shl (shl in1 1) 1))) 1)) 3)",
+    "(or (mul (mul r0 (div 4 r2)) (sub 0 (and r2 -1))) (xor (neg (add 0 (shl r3 4))) (mul 4 (shl (div 0 (or 8 r0)) 1))))",
+    "(div (mul (shr (load (or (and r1 r0) (shl r0 1))) 2) (shl (or (xor r0 r1) -1) 1)) 16)"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_83",
+   "lhs": "(xor (shl ?x 1) (shl ?x 1))",
+   "rhs": "0",
+   "lhs_cost": 7,
+   "rhs_cost": 1,
+   "prompt": 37,
+   "seeds": [
+    "(shl (shl (mul r2 (mul (load (not r1)) r2)) (and 6 r3)) 1)",
+    "(mul (xor (shl r1 r1) 7) (shl (and (mul r2 r0) (load (mod -1 r1))) 3))",
+    "(add (div (sub 16 r2) (shr r0 r2)) (shr 2147483646 (add r2 3)))",
+    "(shl (add 10 (shl (add (add (shl in0 2) 3) 7) 1)) 1)"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_84",
+   "lhs": "(sub (add ?x (mul 2 ?y)) ?y)",
+   "rhs": "(add ?x ?y)",
+   "lhs_cost": 9,
+   "rhs_cost": 3,
+   "prompt": 140,
+   "seeds": [
+    "(shl (shr (or (xor (div (mod 8 r1) 8) (mod r1 r3)) (sub -68 (div 8 r2))) (shl (shl (div (shl (or r0 4) 3) -1) 2) (mul (div 1 r0) (add r3 r3)))) 1)",
+    "(mul (shl (add in0 (add (shl in0 1) 9)) 4) (shl (shl (add 6 (add (add (shl in0 1) 5) 9)) 2) 1))",
+    "(or (div (shr r2 r3) (sub r0 r2)) (load (shr (neg (not (div r2 r2))) (mod r0 r2))))",
+    "(or (div 0 (div (div 16 r3) 8)) (shr (or r3 r1) r0))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_85",
+   "lhs": "(mul (sub ?x ?y) 0)",
+   "rhs": "0",
+   "lhs_cost": 7,
+   "rhs_cost": 1,
+   "prompt": 68,
+   "seeds": [
+    "(load (mod (shr (xor 1 r0) (or 255 r1)) (shl (neg (or r3 3)) 1)))",
+    "(shl (add 11 (add (add (add 8 v17) (add v23 6)) (sub v5 16))) 4)",
+    "(mul (sub (add v11 v9) (add v9 v11)) 324)",
+    "(shr (neg (mod r0 r2)) (add (and r1 8) (add r3 16)))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_86",
+   "lhs": "(add (add ?x ?y) (neg ?x))",
+   "rhs": "?y",
+   "lhs_cost": 6,
+   "rhs_cost": 1,
+   "prompt": 52,
+   "seeds": [
+    "(div (mod (add (not (neg (add 3 r2))) 2) (sub (or r3 (div r2 r2)) (load (shr (shl r1 r0) (sub 2 r0))))) 8)",
+    "(add (add (sub (add 4 in1) (add in1 4)) 1) (add 4 (add in0 (shl (shl (sub (shl in0 1) (mul 2 in0)) 2) 1))))",
+    "(add (shl (shl (mul (sub (add (sub (add in0 3) 16) 4) (add 4 (sub (add in0 3) 16))) 9) 2) 2) 10)",
+    "(add (xor (div (add r1 r2) 16) (add r2 255)) (mul (neg (not (xor (shr r2 r3) (mod r0 r2)))) (or (shl r0 2) (mul (shl r0 4) 8))))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_87",
+   "lhs": "(and (or (not ?x) ?y) ?y)",
+   "rhs": "?y",
+   "lhs_cost": 6,
+   "rhs_cost": 1,
+   "prompt": 98,
+   "seeds": [
+    "(load (xor (and (shl (mul (add -1 r0) (shl r0 r0)) 1) 0) (div (mod (mod r2 r1) (shl 16 r0)) (shr (add (add (shr r0 r2) r1) 255) 2))))",
+    "(mod (mod r2 (or r3 r2)) (add (and (and r1 r3) (mod r0 r1)) (load (shl (div 1 r0) 1))))",
+    "(shl (sub 1 (mul (add in0 7) in1)) 1)",
+    "(add 15 (mul 44 (mul (add v9 14) (add (mul 44 (add v9 14)) v3))))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_88",
+   "lhs": "(sub (add ?x ?y) ?x)",
+   "rhs": "?y",
+   "lhs_cost": 5,
+   "rhs_cost": 1,
+   "prompt": 0,
+   "seeds": [
+    "(sub (mul (add 25 in1) (shl in1 2)) (mul (shl in1 2) (add 25 in1)))",
+    "(neg (not (shl (mul (add (mul r3 r3) (or r1 255)) (div r2 (shr r1 2))) (xor (shl (or 3 r2) 1) (xor 255 r0)))))",
+    "(add (add in0 (add 8 (mul 12 (shl in1 1)))) (add (sub (add 3 in0) (add in0 3)) 8))",
+    "(shl (shl (add (shl (mul (sub (add in1 2) (add 2 in1)) 4) 4) 11) 3) 4)"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_89",
+   "lhs": "(add (mul ?x ?y) (mul ?x ?z))",
+   "rhs": "(mul ?x (add ?y ?z))",
+   "lhs_cost": 11,
+   "rhs_cost": 7,
+   "prompt": 6,
+   "seeds": [
+    "(load (div (shl (xor (shr (shr r1 r1) 4) (neg (not (shl (shr (and 2 r2) 2) (not (neg (mod r3 16))))))) 2) (add (shr (sub r0 r3) (load (or 1 r3))) (shr -5 (shl (mul 255 r0) 2)))))",
+    "(add (add (add (add (add (add (add in0 5) 2) 5) 4) (add (add 5 (shl in0 3)) (add (mul in0 12) 5))) 9) 7)",
+    "(add (add 19 (add 3 (add (add 9 in0) (add in0 7)))) (add (add (add 9 in0) (add in0 7)) 7))",
+    "(and (neg (not (xor (add (not (neg (or r0 r2))) (shr (not r2) 2)) 32))) (add (mul (mod r2 r0) (shl (sub 3 r0) 3)) (sub (shl r2 r3) (shr (and 8 r3) 2))))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_90",
+   "lhs": "(add (sub ?x ?y) ?y)",
+   "rhs": "?x",
+   "lhs_cost": 5,
+   "rhs_cost": 1,
+   "prompt": 8,
+   "seeds": [
+    "(or (sub (and 2 r1) (shl (div 0 r2) 3)) (shl (shl (sub r2 r3) (sub r0 r2)) 2))",
+    "(shl (add (add (add 8 (mul 45 v8)) (mul 72 v4)) 2) 2)",
+    "(mod (sub (xor (shr 4 r0) (div r1 r1)) (load (shr -5 (and r0 r2)))) (sub (sub (mul r2 3) (mod r2 -1)) (or (add 4 r2) (and 8 r0))))",
+    "(load (mul (or (neg r3) (mod r2 r2)) (shl (load (div 255 r1)) 4)))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_91",
+   "lhs": "(mul ?x (shl 1 ?n))",
+   "rhs": "(shl ?x ?n)",
+   "lhs_cost": 7,
+   "rhs_cost": 3,
+   "prompt": 15,
+   "seeds": [
+    "(sub (shl (mul (div r0 r1) r0) 1) -1)",
+    "(add (sub (mul (add 2 in0) 3) (mul 3 (add 2 in0))) 20)",
+    "(shr (sub (shl (xor (neg (not (and r0 r2))) (add 16 r3)) 1) (mod (load r2) 512)) 2)",
+    "(mod (load (mul (div (load r3) (div (shr r1 r0) 8)) (neg (not (mul (add r0 r3) (sub r0 r3)))))) (shr (or (div r1 r2) (div r2 r1)) -1))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_92",
+   "lhs": "(add (mul ?x ?z) (mul ?y ?z))",
+   "rhs": "(mul (add ?x ?y) ?z)",
+   "lhs_cost": 11,
+   "rhs_cost": 7,
+   "prompt": 18,
+   "seeds": [
+    "(add (mul 5 (mul (add (add 2 (add (add 8 in0) 19)) (add (add (add 7 in0) (add in0 3)) 3)) 9)) 10)",
+    "(div (div (mod (shl (div (and r1 r3) -1) 1) (add (xor r1 r3) (shr r2 8))) (shl (mul (sub (mod r1 8) 256) (xor (shl (shl (xor r2 r3) 1) 2) (shr r3 8))) 2)) 8)",
+    "(sub (mul (shl (shl in1 2) 4) (mul in2 7)) (shl (mul (mul in2 7) (shl in1 2)) 4))",
+    "(shl (and (not (neg (or 5 r0))) (and (shl (not (neg (or (sub 4 r0) (mul r1 r3)))) (not (add r1 r2))) (mul 16843009 (not (neg r3))))) 1)"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_93",
+   "lhs": "(and ?x (or ?x ?y))",
+   "rhs": "?x",
+   "lhs_cost": 5,
+   "rhs_cost": 1,
+   "prompt": 30,
+   "seeds": [
+    "(div (shr (mod (sub r3 1) (load (shl r3 1))) (xor (sub r2 r0) (or r0 r3))) (and (mul 16 (mul r2 8)) (and (shl r0 3) (shr (shr (shl r1 2) 1) (load (mul 3 r0))))))",
+    "(or (shl (load (shr r1 r0)) (load (mul r1 r3))) (sub (shl (and r2 4) 1) (shl (and 16 r0) 1)))",
+    "(add (add 19 (add 3 (add (add 9 in0) (add in0 7)))) (add (add (add 9 in0) (add in0 7)) 7))",
+    "(neg (not (shl (mul (add (mul r3 r3) (or r1 255)) (div r2 (shr r1 2))) (xor (shl (or 3 r2) 1) (xor 255 r0)))))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_94",
+   "lhs": "(sub (add ?x ?y) (add ?x ?z))",
+   "rhs": "(sub ?y ?z)",
+   "lhs_cost": 7,
+   "rhs_cost": 3,
+   "prompt": 39,
+   "seeds": [
+    "(load (shr (shl (xor (mul r0 r1) (or r0 r3)) 2) (xor (mod r3 4) (not r1))))",
+    "(shl (shr (div (mod 0 (sub r1 r0)) 8) (div (shr r3 r3) (or r0 3))) 4)",
+    "(add 2 (add 6 (sub (add 0 (sub (mul in0 5) (mul 5 in0))) (add (sub (mul in0 5) (mul 5 in0)) 0))))",
+    "(sub (shl (mul (div r0 r1) r0) 1) -1)"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_95",
+   "lhs": "(sub (mul ?x ?y) (mul ?x ?z))",
+   "rhs": "(mul ?x (sub ?y ?z))",
+   "lhs_cost": 11,
+   "rhs_cost": 7,
+   "prompt": 50,
+   "seeds": [
+    "(load (load (mod 255 r0)))",
+    "(not (neg (shl (shr (load (div (div r0 0) 8)) (shr (load 2) (mod r1 r3))) (shl (mod (shl (and r0 3) 1) (shr (shl r2 r3) (shr r2 r0))) 2))))",
+    "(load (div (shl (xor (shr (shr r1 r1) 4) (neg (not (shl (shr (and 2 r2) 2) (not (neg (mod r3 16))))))) 2) (add (shr (sub r0 r3) (load (or 1 r3))) (shr -5 (shl (mul 255 r0) 2)))))",
+    "(sub (sub (add (shl v12 3) (add v12 v12)) (add v12 (add (shl v12 3) v12))) (shl (add v10 v6) 3))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_96",
+   "lhs": "(add (mul ?x ?y) (mul ?y ?z))",
+   "rhs": "(mul ?y (add ?x ?z))",
+   "lhs_cost": 11,
+   "rhs_cost": 7,
+   "prompt": 55,
+   "seeds": [
+    "(sub (load (mul (or r1 -1) (shr r1 255))) (mul (load (shr 8 r0)) (add r2 r3)))",
+    "(shl (and (load (xor (add 8 r0) (sub r2 2))) (div (xor r3 r2) 0)) (or (or (shl (or -3 (mul r0 r2)) 1) r0) (not (neg (mod r1 8)))))",
+    "(or (sub (and 2 r1) (shl (div 0 r2) 3)) (shl (shl (sub r2 r3) (sub r0 r2)) 2))",
+    "(shr (mul r1 (mul r0 (add r2 r1))) (and (sub r0 1) (xor r2 4)))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_97",
+   "lhs": "(add ?x (sub ?y ?x))",
+   "rhs": "?y",
+   "lhs_cost": 5,
+   "rhs_cost": 1,
+   "prompt": 55,
+   "seeds": [
+    "(sub (load (mul (or r1 -1) (shr r1 255))) (mul (load (shr 8 r0)) (add r2 r3)))",
+    "(shl (and (load (xor (add 8 r0) (sub r2 2))) (div (xor r3 r2) 0)) (or (or (shl (or -3 (mul r0 r2)) 1) r0) (not (neg (mod r1 8)))))",
+    "(or (sub (and 2 r1) (shl (div 0 r2) 3)) (shl (shl (sub r2 r3) (sub r0 r2)) 2))",
+    "(shr (mul r1 (mul r0 (add r2 r1))) (and (sub r0 1) (xor r2 4)))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_98",
+   "lhs": "(add (mul ?x ?y) (mul ?z ?x))",
+   "rhs": "(mul ?x (add ?y ?z))",
+   "lhs_cost": 11,
+   "rhs_cost": 7,
+   "prompt": 71,
+   "seeds": [
+    "(sub (sub (add (shl v12 3) (add v12 v12)) (add v12 (add (shl v12 3) v12))) (shl (add v10 v6) 3))",
+    "(div 0 (neg (div r0 r3)))",
+    "(or (shl (and (xor (shl r2 r3) (shl (div r2 r1) 2)) (add (add r1 8) (div r1 r2))) 3) (load (add (sub -1 r1) (mod r1 255))))",
+    "(sub (mul (add 25 in1) (shl in1 2)) (mul (shl in1 2) (add 25 in1)))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_99",
+   "lhs": "(xor (xor ?x ?y) ?x)",
+   "rhs": "?y",
+   "lhs_cost": 5,
+   "rhs_cost": 1,
+   "prompt": 74,
+   "seeds": [
+    "(sub (mul (shl (sub (add in0 v0) (add v0 in0)) 3) 76) (mul 608 (sub (add in0 v0) (add v0 in0))))",
+    "(or (shl (sub r2 3) (load (load 4))) (mod (load (mul r3 r3)) (div (mod 2 r0) 16)))",
+    "(mod (load (mul (div (load r3) (div (shr r1 r0) 8)) (neg (not (mul (add r0 r3) (sub r0 r3)))))) (shr (or (div r1 r2) (div r2 r1)) -1))",
+    "(mul (div (mod r1 r2) (not r1)) (not (shl (or r2 r3) 1)))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_100",
+   "lhs": "(add (sub ?x 3) 3)",
+   "rhs": "?x",
+   "lhs_cost": 5,
+   "rhs_cost": 1,
+   "prompt": 82,
+   "seeds": [
+    "(add (add in0 (add 8 (mul 12 (shl in1 1)))) (add (sub (add 3 in0) (add in0 3)) 8))",
+    "(shl (sub (add (add (add (add 7 v1) v2) 3) (sub (add v0 2) (add 2 v0))) (add (add (add (sub (add v0 2) (add 2 v0)) (add 7 v1)) v2) 3)) 2)",
+    "(sub (add (add 8 (shl (shl in0 4) 2)) (add 3 (add 15 (add (mul in0 8) 4)))) (add (add (shl (shl in0 4) 2) (add (add 3 15) (add (mul in0 8) 4))) 8))",
+    "(sub (mul (shl (shl in1 2) 4) (mul in2 7)) (shl (mul (mul in2 7) (shl in1 2)) 4))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_101",
+   "lhs": "(add (sub ?x 2) 2)",
+   "rhs": "?x",
+   "lhs_cost": 5,
+   "rhs_cost": 1,
+   "prompt": 82,
+   "seeds": [
+    "(add (add in0 (add 8 (mul 12 (shl in1 1)))) (add (sub (add 3 in0) (add in0 3)) 8))",
+    "(shl (sub (add (add (add (add 7 v1) v2) 3) (sub (add v0 2) (add 2 v0))) (add (add (add (sub (add v0 2) (add 2 v0)) (add 7 v1)) v2) 3)) 2)",
+    "(sub (add (add 8 (shl (shl in0 4) 2)) (add 3 (add 15 (add (mul in0 8) 4)))) (add (add (shl (shl in0 4) 2) (add (add 3 15) (add (mul in0 8) 4))) 8))",
+    "(sub (mul (shl (shl in1 2) 4) (mul in2 7)) (shl (mul (mul in2 7) (shl in1 2)) 4))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_102",
+   "lhs": "(neg (add ?x (neg ?x)))",
+   "rhs": "0",
+   "lhs_cost": 5,
+   "rhs_cost": 1,
+   "prompt": 99,
+   "seeds": [
+    "(sub (add (add (mul 3 v1) 85) 1) (add (add 1 (mul 3 v1)) 85))",
+    "(mul 8 (shl (sub 0 (mul 7 (mul 0 (add (add 0 (add (sub (mul in0 5) (mul 5 in0)) 2)) 4)))) 2))",
+    "(neg (shr (shl (mul (xor r1 r2) (mul (mul r0 3) (xor (shl (shl (sub r3 r2) 1) 2) 0))) 1) (and (mod (load r3) (mod r2 r1)) (shr (shl (xor 255 r0) 3) (div r3 r1)))))",
+    "(sub (shl (mul (div r0 r1) r0) 1) -1)"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_103",
+   "lhs": "(add (sub (mul ?x ?y) ?z) ?z)",
+   "rhs": "(mul ?x ?y)",
+   "lhs_cost": 9,
+   "rhs_cost": 5,
+   "prompt": 108,
+   "seeds": [
+    "(sub (add (add v2 6) (mul 64 v27)) (add (mul 64 v27) (add v2 6)))",
+    "(mod (shl (sub 3 (or (or r1 255) r0)) 4) (mod (not (or r3 r0)) (xor (add r1 1) (shr 255 r3))))",
+    "(shl (shr (div (mod 0 (sub r1 r0)) 8) (div (shr r3 r3) (or r0 3))) 4)",
+    "(add in0 (shl (sub (add 1 (add in2 (add 6 (add in0 9)))) (add 6 (add (add in0 9) (add 1 in2)))) 2))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_104",
+   "lhs": "(add (mul ?x ?y) (mul ?z ?y))",
+   "rhs": "(mul ?y (add ?x ?z))",
+   "lhs_cost": 11,
+   "rhs_cost": 7,
+   "prompt": 121,
+   "seeds": [
+    "(sub (mul -6 (add (add 6 (add (add in1 in1) 3)) 3)) (mul (add (add 6 (add (add in1 in1) 3)) 3) -6))",
+    "(shl (add (add (add 8 (mul 45 v8)) (mul 72 v4)) 2) 2)",
+    "(shl (add (shr (mod r1 r1) (shr 16 r3)) (xor (div r3 r3) -8)) 1)",
+    "(sub (load (mul (or r1 -1) (shr r1 255))) (mul (load (shr 8 r0)) (add r2 r3)))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_105",
+   "lhs": "(and (or ?x ?y) ?y)",
+   "rhs": "?y",
+   "lhs_cost": 5,
+   "rhs_cost": 1,
+   "prompt": 122,
+   "seeds": [
+    "(sub (sub (add (add (add (mul 14 v0) (mul 4 (shl in1 2))) 7) 4) (add (add (add (mul 4 (shl in1 2)) 7) 4) (mul 14 v0))) 0)",
+    "(shl (shl (xor (neg (not (sub (shr 8 r2) (div r2 r2)))) (xor (div r3 255) (and 2 r0))) 1) 1)",
+    "(sub (add (add v2 6) (mul 64 v27)) (add (mul 64 v27) (add v2 6)))",
+    "(and (xor (shl (sub 2 r0) 3) (load r0)) (load (neg (div (or r3 255) 8))))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_106",
+   "lhs": "(or (and ?x ?y) ?y)",
+   "rhs": "?y",
+   "lhs_cost": 5,
+   "rhs_cost": 1,
+   "prompt": 122,
+   "seeds": [
+    "(sub (sub (add (add (add (mul 14 v0) (mul 4 (shl in1 2))) 7) 4) (add (add (add (mul 4 (shl in1 2)) 7) 4) (mul 14 v0))) 0)",
+    "(shl (shl (xor (neg (not (sub (shr 8 r2) (div r2 r2)))) (xor (div r3 255) (and 2 r0))) 1) 1)",
+    "(sub (add (add v2 6) (mul 64 v27)) (add (mul 64 v27) (add v2 6)))",
+    "(and (xor (shl (sub 2 r0) 3) (load r0)) (load (neg (div (or r3 255) 8))))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_107",
+   "lhs": "(xor ?x (xor ?x ?y))",
+   "rhs": "?y",
+   "lhs_cost": 5,
+   "rhs_cost": 1,
+   "prompt": 130,
+   "seeds": [
+    "(mod (shl (add (add (div 8 r2) (shl (shl (shr 1 r2) 1) 1)) (xor (shl (add r1 r1) 1) (shl r3 1))) 4) (add (shr (mul 6 (mul r1 r0)) 1) (load (xor 4 (add 16 r1)))))",
+    "(shl (shr (sub (div r0 r3) 1) (div (shr r3 255) (mod 2 r0))) 3)",
+    "(and (shl (load (div r0 1)) (xor r3 (div r1 r1))) (mod 2 (div (mul r2 r0) (load r1))))",
+    "(shl (sub (add (add (add (add 7 v1) v2) 3) (sub (add v0 2) (add 2 v0))) (add (add (add (sub (add v0 2) (add 2 v0)) (add 7 v1)) v2) 3)) 2)"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_108",
+   "lhs": "(xor (xor ?x ?y) (xor ?x ?z))",
+   "rhs": "(xor ?y ?z)",
+   "lhs_cost": 7,
+   "rhs_cost": 3,
+   "prompt": 12,
+   "seeds": [
+    "(add (xor (mod (xor r2 -1) (sub r2 8)) (shl (shl r1 2) (neg (not (mul r2 r0))))) (load (mod (mul r3 r2) (div (shl (shl r0 8) 1) (div r2 r2)))))",
+    "(sub (and (mod -1 r2) (load r0)) (and (add r1 4) (mul r3 r2)))",
+    "(div (shl (load (and r0 -1)) (div 0 r0)) (or (sub r1 1) (div (not r1) 16)))",
+    "(sub (shl (shl (shl (shl (sub (add 16 in0) (add in0 16)) 1) 1) 1) 3) 10)"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_109",
+   "lhs": "(sub ?x (sub ?x ?y))",
+   "rhs": "?y",
+   "lhs_cost": 5,
+   "rhs_cost": 1,
+   "prompt": 17,
+   "seeds": [
+    "(add (load (and 16 r0)) (shl (div (shr 2 r1) (add r0 r1)) 2))",
+    "(mul (sub (neg r1) r1) (shr (neg r0) (shl 255 r3)))",
+    "(sub (sub (add (mul 42 in0) (shl in0 3)) (add (shl in0 3) (mul 42 in0))) (shl in0 4))",
+    "(sub (mul (sub (shl r2 r0) (div (shr 255 r2) 8)) (mul (div r0 r3) (shl r2 r0))) (mod (mul -2 (shl r1 r2)) (load 0)))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_110",
+   "lhs": "(mul ?x (shl 1 3))",
+   "rhs": "(shl ?x 3)",
+   "lhs_cost": 7,
+   "rhs_cost": 3,
+   "prompt": 25,
+   "seeds": [
+    "(add 9 (mul 3 (sub (mul 8 v2) (shl v2 3))))",
+    "(xor (shr (add (div r0 r0) (mod 255 r2)) 0) (div (sub (or r0 r1) (shl (load r1) 1)) (mod (shl r1 1) (div r0 r3))))",
+    "(neg (mod (shl (shl (and r2 r3) 1) 1) (div r2 r1)))",
+    "(neg (xor (mod (mul 4 0) (shr (shl (shl r0 4) 1) (mod r2 3))) (not (sub (mul 8 (neg r2)) (add 0 8)))))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_111",
+   "lhs": "(xor (xor ?x ?y) ?y)",
+   "rhs": "?x",
+   "lhs_cost": 5,
+   "rhs_cost": 1,
+   "prompt": 32,
+   "seeds": [
+    "(add (not (neg (div (div 8 r0) (shl (or r0 8) 3)))) (shl (shr r3 r1) (xor r0 2)))",
+    "(add 14 (mul (sub (mul (add in0 11) (add 18 (add in1 7))) (mul (add 18 (add in1 7)) (add in0 11))) 45))",
+    "(shl (add (add (add (add 7 in0) (add in0 7)) (add (add 7 in0) (add in0 7))) 16) 2)",
+    "(add (xor (mod (xor r2 -1) (sub r2 8)) (shl (shl r1 2) (neg (not (mul r2 r0))))) (load (mod (mul r3 r2) (div (shl (shl r0 8) 1) (div r2 r2)))))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_112",
+   "lhs": "(sub (mul ?x ?a) (mul ?y ?a))",
+   "rhs": "(mul ?a (sub ?x ?y))",
+   "lhs_cost": 11,
+   "rhs_cost": 7,
+   "prompt": 37,
+   "seeds": [
+    "(sub (mul (add 7 (shl in0 1)) (shl (shl in0 2) 2)) (mul (shl (shl in0 2) 2) (add 7 (shl in0 1))))",
+    "(mul (shl (shl (sub (add in0 33) (add 33 in0)) 3) 1) 41)",
+    "(mul (shl (sub (shl (add in0 2) 3) (shl in0 3)) 1) 6)",
+    "(add (add (sub (add 4 in1) (add in1 4)) 1) (add 4 (add in0 (shl (shl (sub (shl in0 1) (mul 2 in0)) 2) 1))))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_113",
+   "lhs": "(add (sub ?x 1) 1)",
+   "rhs": "?x",
+   "lhs_cost": 5,
+   "rhs_cost": 1,
+   "prompt": 40,
+   "seeds": [
+    "(add (add (add 11 in0) in0) (shl (sub (add 5 in0) (add in0 5)) 1))",
+    "(div 0 (shr (neg (xor (xor (div r0 255) (add 4 r1)) (load (load (or r1 r2))))) 1))",
+    "(div (shl (add r2 r0) 2) (shl (mul -2 (neg r2)) 1))",
+    "(add (add (sub (add 4 in1) (add in1 4)) 1) (add 4 (add in0 (shl (shl (sub (shl in0 1) (mul 2 in0)) 2) 1))))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_114",
+   "lhs": "(add (mul ?x (shl ?y 1)) (mul ?x (shr ?y 1)))",
+   "rhs": "(mul ?x (add (shl ?y 1) (shr ?y 1)))",
+   "lhs_cost": 15,
+   "rhs_cost": 11,
+   "prompt": 55,
+   "seeds": [
+    "(sub (shl (shr (load (add 16 r3)) (shl r3 1)) 1) (mod (load (or r2 r0)) (div (shl r1 r3) 5)))",
+    "(xor (shr (add (div r0 r0) (mod 255 r2)) 0) (div (sub (or r0 r1) (shl (load r1) 1)) (mod (shl r1 1) (div r0 r3))))",
+    "(add 8 (add (mul (add (mul 144 9) 14) 2) 68))",
+    "(add (mul 27 (sub (mul v7 v2) (mul v2 v7))) (add (shl v9 4) 40))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_115",
+   "lhs": "(or ?x (and ?x ?y))",
+   "rhs": "?x",
+   "lhs_cost": 5,
+   "rhs_cost": 1,
+   "prompt": 80,
+   "seeds": [
+    "(xor (load (add (add (add r1 r3) r0) (shl (xor (shl (mul (and r0 255) 2) 1) (add 255 r3)) 1))) (load (xor (shl (shl (sub r0 r3) 1) 2) (sub r0 r3))))",
+    "(and 1 (or r0 (shl (div r3 255) 1)))",
+    "(div (div (div 0 (add r2 1)) (shr (mod r2 r0) 8)) (not (shl 15 (shl (shl r1 2) 1))))",
+    "(sub (add (shl (add (add (add in2 in2) (add 4 (add (add in0 2) 2))) 2) 1) 16) (add 16 (shl (add (add (add in2 in2) (add 4 (add (add in0 2) 2))) 2) 1)))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_116",
+   "lhs": "(sub (add ?x 0) ?x)",
+   "rhs": "0",
+   "lhs_cost": 5,
+   "rhs_cost": 1,
+   "prompt": 81,
+   "seeds": [
+    "(add (add (add (add (add 8 (mul (shl (shl in1 1) 2) 3)) (sub (add 3 in0) (add in0 3))) 8) in0) 11)",
+    "(sub (shl (shr (load (add 16 r3)) (shl r3 1)) 1) (mod (load (or r2 r0)) (div (shl r1 r3) 5)))",
+    "(load (and 0 (shr (div (xor (shl (mod r3 r0) 2) (div 1 r2)) (add (shl (shl (xor 0 r3) 1) (shl (add r1 r2) 1)) 0)) 1)))",
+    "(mod 0 (shl (mul (mul (div (load (add 0 (mod (load 6) (load (add (shr r2 r3) 0))))) (div (add (shl r0 r1) 0) (shl r3 r1))) 254) 2) 1))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_117",
+   "lhs": "(add (shl ?x 2) (shl ?x 2))",
+   "rhs": "(shl ?x 3)",
+   "lhs_cost": 7,
+   "rhs_cost": 3,
+   "prompt": 98,
+   "seeds": [
+    "(add (add (add 3 in2) 4) (shl (shl (shl (shl in0 1) 2) 1) 2))",
+    "(add 8 (add (mul (add (mul 144 9) 14) 2) 68))",
+    "(mul (add 12 (mul 8 (shl in0 1))) (add 21 (mul 8 (shl in0 1))))",
+    "(add (mul 20 (sub 15 in2)) (sub (add (shl in0 2) (shl (shl in2 1) 2)) (add (shl (shl in2 1) 2) (shl in0 2))))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_118",
+   "lhs": "(add (mul ?x ?a) (mul ?x ?b))",
+   "rhs": "(mul (add ?a ?b) ?x)",
+   "lhs_cost": 11,
+   "rhs_cost": 7,
+   "prompt": 138,
+   "seeds": [
+    "(neg (xor (mod (mul 4 0) (shr (shl (shl r0 4) 1) (mod r2 3))) (not (sub (mul 8 (neg r2)) (add 0 8)))))",
+    "(add 0 (shr (mul (mul r0 r0) (add r1 0)) (and (mod 0 r0) (div 1 r0))))",
+    "(or (and (mod (shl (load r0) 3) (add 255 r3)) (add (shr r2 r2) (shl 3 r2))) (mod -9 (load (mul (div r1 r2) (load (sub r1 r2))))))",
+    "(neg (not (sub (not (shl (and r3 3) 2)) (add (shr 4 r0) (shr r3 r0)))))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_119",
+   "lhs": "(sub (add (add ?x ?y) ?z) ?z)",
+   "rhs": "(add ?x ?y)",
+   "lhs_cost": 7,
+   "rhs_cost": 3,
+   "prompt": 2,
+   "seeds": [
+    "(sub 0 (mul 4 (mul (shl (shl (shl (shl in0 1) 3) 2) 2) 3)))",
+    "(shl (add 12 (add in0 (add (add 6 in0) (add (add (add in0 9) 3) 1)))) 2)",
+    "(shl (sub (add in0 (sub (add 5 in0) (add in0 5))) (add (sub (add 5 in0) (add in0 5)) in0)) 3)",
+    "(shl (div -7 (xor r2 r1)) 2)"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_120",
+   "lhs": "(xor (neg ?x) (neg ?x))",
+   "rhs": "0",
+   "lhs_cost": 5,
+   "rhs_cost": 1,
+   "prompt": 31,
+   "seeds": [
+    "(add (sub (add (sub 5 v1) (sub (add 10 (mul v4 v2)) (add (mul v4 v2) 10))) (add (sub (add 10 (mul v4 v2)) (add (mul v4 v2) 10)) (sub 5 v1))) 14)",
+    "(sub (add 6 (add 2 (mul in0 12))) (add (mul in0 12) 8))",
+    "(load (xor (shl (shl (and (shl 8 r2) (xor r1 r0)) 1) 2) (xor 255 (not r2))))",
+    "(add (mul (add 10 in1) in1) (add 17 (sub (add (add 1 in0) 10) 9)))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_121",
+   "lhs": "(sub (add ?x (mul ?y ?z)) (add ?y (mul ?y ?w)))",
+   "rhs": "(add (sub ?x ?y) (mul ?y (sub ?z ?w)))",
+   "lhs_cost": 15,
+   "rhs_cost": 11,
+   "prompt": 34,
+   "seeds": [
+    "(sub (add (mul in0 42) (shl in0 3)) (add (shl in0 3) (mul in0 42)))",
+    "(or (mul (mul r0 (div 4 r2)) (sub 0 (and r2 -1))) (xor (neg (add 0 (shl r3 4))) (mul 4 (shl (div 0 (or 8 r0)) 1))))",
+    "(or (sub (load 0) (load (shl (shl (shr r0 -1) 4) (not r0)))) (load (shl (shl (shr r1 r0) 1) 2)))",
+    "(add (add 4 (sub (add (shl (add (sub 3 in0) (shl in0 1)) 3) 3) (add 3 (shl (add (sub 3 in0) (shl in0 1)) 3)))) (add 6 13))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_122",
+   "lhs": "(sub (mul ?x ?y) (add (mul ?x ?a) (mul ?x ?b)))",
+   "rhs": "(sub (mul ?x ?y) (mul ?x (add ?a ?b)))",
+   "lhs_cost": 17,
+   "rhs_cost": 13,
+   "prompt": 50,
+   "seeds": [
+    "(add (mul in0 (mul 8 in0)) (add (mul in0 40) 10))",
+    "(shl (mul (shl (shl (add 8 (add v1 4)) 4) 2) 9) 3)",
+    "(not (and (and (shl (and (sub r2 1) (or 4 r1)) 1) (shl (sub r2 16) (mod r3 r1))) (add (load (shl (mod r2 r1) (and r0 r2))) (and (shl r2 r0) (shl (shl r2 r3) 1)))))",
+    "(sub 0 (mul 4 (mul (shl (shl (shl (shl in0 1) 3) 2) 2) 3)))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_123",
+   "lhs": "(add (sub ?x ?y) (add ?y ?z))",
+   "rhs": "(add ?x ?z)",
+   "lhs_cost": 7,
+   "rhs_cost": 3,
+   "prompt": 88,
+   "seeds": [
+    "(sub (add (add (add (add in2 7) 9) (sub (add in2 in0) (add in0 in2))) 11) (add 7 (add (add 4 (add (add in2 7) 9)) (sub (add in2 in0) (add in0 in2)))))",
+    "(shl (add (add (mul 4 in2) (add (sub in1 in2) 8)) 3) 3)",
+    "(sub 0 (div (add r2 (add (shl (add 2 r1) 4) 4)) (and r1 (load r2))))",
+    "(add (add 6 (shl (shl (mul 3 (add (add (add 4 in2) (add in0 4)) in2)) 2) 4)) (add (shl in2 3) 5))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_124",
+   "lhs": "(and (and ?x 255) 256)",
+   "rhs": "0",
+   "lhs_cost": 5,
+   "rhs_cost": 1,
+   "prompt": 116,
+   "seeds": [
+    "(or (shr (mod (shl (or (shl 0 2) (add r1 16)) 1) (shr (div (xor r2 r1) 16) r3)) 1) (shr (sub -1 (and r0 255)) (and (shr r1 3) (not r3))))",
+    "(not (and (and (shl (and (sub r2 1) (or 4 r1)) 1) (shl (sub r2 16) (mod r3 r1))) (add (load (shl (mod r2 r1) (and r0 r2))) (and (shl r2 r0) (shl (shl r2 r3) 1)))))",
+    "(or (sub (load 0) (load (shl (shl (shr r0 -1) 4) (not r0)))) (load (shl (shl (shr r1 r0) 1) 2)))",
+    "(shl (sub (mod 1 r0) (shl (or r2 r0) 1)) (load r1))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_125",
+   "lhs": "(add (mul ?x 2) (shl ?y 1))",
+   "rhs": "(shl (add ?x ?y) 1)",
+   "lhs_cost": 9,
+   "rhs_cost": 5,
+   "prompt": 132,
+   "seeds": [
+    "(add (shl (xor (div (add r3 r0) (mul 16 r2)) (load (shl r3 r3))) 3) (mul (or (and 8 (mul r2 r3)) (xor (add 0 (or 4 r1)) (add r0 1))) 8))",
+    "(add (or (not r1) (shl (shr r3 4) 4)) (div (shl (mod 2 r3) 1) r2))",
+    "(add (add 1 (mul 33 4)) (add (mul 3 0) 5))",
+    "(mul (sub (shl (not r0) 2) (shl (shl (neg r2) (load (add r2 255))) 1)) (xor (add (add r2 1) (shl r1 2)) (xor (xor r1 -1) (shl r2 r0))))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_126",
+   "lhs": "(add (mul ?x ?y) (mul ?x (mod ?z 32)))",
+   "rhs": "(mul ?x (add ?y (mod ?z 32)))",
+   "lhs_cost": 22,
+   "rhs_cost": 18,
+   "prompt": 134,
+   "seeds": [
+    "(shl (add (div (load (div (sub r2 r0) 8)) (shr -2 (shl r2 2))) (shl (shr (sub (shr r2 r0) (shl r0 r3)) (load (shr (or 4 r2) (shl (shl r3 -1) 1)))) 1)) 4)",
+    "(add (add (add (add in1 4) 1) (add (shl (shl (shl (sub (shl (add (add 1 (sub (add in1 in0) (add in0 in1))) 4) 3) 5) 2) 4) 1) 6)) 7)",
+    "(add 7 (add 3 (add (add in0 8) (add 6 (add 6 (add (add (shl (add (add in0 8) 6) 4) (shl (shl (add (add in0 8) 6) 2) 1)) 6))))))",
+    "(shl (shl (shl (shl (shl (add (mul (shl in0 2) in0) 8) 2) 1) 2) 2) 2)"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_127",
+   "lhs": "(add (shl ?x 1) (shl ?x 1))",
+   "rhs": "(shl ?x 2)",
+   "lhs_cost": 7,
+   "rhs_cost": 3,
+   "prompt": 185,
+   "seeds": [
+    "(xor (mod (xor r1 r3) r3) (shr (shl (load r0) (shr r0 r2)) 2))",
+    "(or (shr (mod (shl (or (shl 0 2) (add r1 16)) 1) (shr (div (xor r2 r1) 16) r3)) 1) (shr (sub -1 (and r0 255)) (and (shr r1 3) (not r3))))",
+    "(shl (shl (mul (mul 8 r2) (shl (or r1 255) (div r0 r3))) 1) 2)",
+    "(shl (shr (shr (mod -1 r1) (div r2 16)) (or (div 4 r1) (shr 255 r3))) 1)"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_128",
+   "lhs": "(mul (shl ?x ?y) 1)",
+   "rhs": "(shl ?x ?y)",
+   "lhs_cost": 7,
+   "rhs_cost": 3,
+   "prompt": 15,
+   "seeds": [
+    "(mul v5 (shl (shl (shl v0 3) 2) 1))",
+    "(add (sub (mul in2 (sub (add (sub (add 4 in0) (add in0 4)) 128) (add 128 (sub (add 4 in0) (add in0 4))))) 11) 11)",
+    "(shl (sub (add (shl in0 2) (mul 9 (shl (shl in0 2) 2))) (add (mul 9 (shl (shl in0 2) 2)) (shl in0 2))) 3)",
+    "(or (sub (shr r2 1) (sub r2 r3)) (shr (shl r3 8) (shl r1 1)))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_129",
+   "lhs": "(sub (mul ?a ?c) (mul ?b ?c))",
+   "rhs": "(mul (sub ?a ?b) ?c)",
+   "lhs_cost": 11,
+   "rhs_cost": 7,
+   "prompt": 46,
+   "seeds": [
+    "(add (shl (xor (load (sub r1 r0)) (load (add r1 r3))) 3) (load (shl (xor r0 r3) (and r1 8))))",
+    "(shl (sub (add (shl in0 3) (shl in2 1)) (add (shl in2 1) (shl in0 3))) 2)",
+    "(add 15 (add 9 (mul (mul 27 -22) in0)))",
+    "(shl (mul (add 0 (neg r2)) (load (and r0 255))) (shr (and r2 r3) 0))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_130",
+   "lhs": "(sub (mul ?c ?a) (mul ?c ?b))",
+   "rhs": "(mul (sub ?a ?b) ?c)",
+   "lhs_cost": 11,
+   "rhs_cost": 7,
+   "prompt": 46,
+   "seeds": [
+    "(add (shl (xor (load (sub r1 r0)) (load (add r1 r3))) 3) (load (shl (xor r0 r3) (and r1 8))))",
+    "(shl (sub (add (shl in0 3) (shl in2 1)) (add (shl in2 1) (shl in0 3))) 2)",
+    "(add 15 (add 9 (mul (mul 27 -22) in0)))",
+    "(shl (mul (add 0 (neg r2)) (load (and r0 255))) (shr (and r2 r3) 0))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_131",
+   "lhs": "(sub (add ?x 8) 8)",
+   "rhs": "?x",
+   "lhs_cost": 5,
+   "rhs_cost": 1,
+   "prompt": 71,
+   "seeds": [
+    "(add (add (add in0 5) 10) (add (add 1 (add in0 5)) 16))",
+    "(neg (xor (add (shr (xor r3 2) (and r3 r2)) (div (mul r3 r3) (not r2))) (not (neg (mod 0 r3)))))",
+    "(sub (add (mul 21 (add (add (add 7 in0) in0) 4)) 64) (add 64 (mul 21 (add (add (add 7 in0) in0) 4))))",
+    "(add 8 (add (shl in0 2) (add (add 2 in0) (add in0 8))))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_132",
+   "lhs": "(sub (add ?x 4) 4)",
+   "rhs": "?x",
+   "lhs_cost": 5,
+   "rhs_cost": 1,
+   "prompt": 72,
+   "seeds": [
+    "(shl (add 15 (shl (add 3 (add in1 (add in2 9))) 1)) 1)",
+    "(load (or (neg (load (and (load (or r2 r0)) (load (sub r3 r0))))) (load (mul 8 (div r1 r0)))))",
+    "(xor (mod (and (sub 16 r0) 7) (sub (sub r2 r0) 3)) (mul (shl (xor (load 0) (load (mul 4 r0))) 1) (mod (shl (and r1 8) 2) (shl (sub 4 r3) 2))))",
+    "(mod (load (add (or 3 r0) (load (shl r2 r1)))) (shl (sub (add r3 4) 0) 3))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_133",
+   "lhs": "(sub (add ?x -1) -1)",
+   "rhs": "?x",
+   "lhs_cost": 5,
+   "rhs_cost": 1,
+   "prompt": 90,
+   "seeds": [
+    "(sub (load (sub (mod -1 r2) (xor r3 3))) (div (shr -16 r1) 8))",
+    "(sub (add (shl v0 3) (mul (add v3 9) 140)) (add (mul (add v3 9) 140) (shl v0 3)))",
+    "(mod (load (add (or 3 r0) (load (shl r2 r1)))) (shl (sub (add r3 4) 0) 3))",
+    "(load (neg (shl (load 0) 3)))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_134",
+   "lhs": "(add (mul (add 24 (mul 4 4)) 3) 0)",
+   "rhs": "(add (mul (add 24 16) 3) 0)",
+   "lhs_cost": 13,
+   "rhs_cost": 9,
+   "prompt": 94,
+   "seeds": [
+    "(sub (mul (add 24 (mul 4 4)) 3) 0)",
+    "(sub (add v11 (add 9 (sub v34 v2))) (add (sub v34 v2) (add v11 9)))",
+    "(not (neg (shl (shr (shl 0 2) (load (shr r0 (shl 8 r0)))) (neg (sub (and -1 r1) (or 16 r1))))))",
+    "(shl (add (add (add 9 (shl in2 2)) in2) 4) 3)"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_135",
+   "lhs": "(mul (add ?x ?y) 1)",
+   "rhs": "(add ?x ?y)",
+   "lhs_cost": 7,
+   "rhs_cost": 3,
+   "prompt": 12,
+   "seeds": [
+    "(shl (mul 8 (sub (add v5 5) (add 5 v5))) 3)",
+    "(shl (and (sub 8 r0) (neg (or r0 3))) (mul (load 2040) (shl (add r0 -1) 504)))",
+    "(mul 8 (shl (mul (sub (add (mul (add in0 6) 0) (mul in0 1)) (add (mul in0 1) (mul (add in0 6) 0))) 4) 2))",
+    "(sub (add 5 (add in0 (add (add (add v0 6) 5) 2))) (sub (add 5 (add in0 (add v0 12))) -1))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_136",
+   "lhs": "(sub (add (shl ?x ?y) ?z) ?z)",
+   "rhs": "(shl ?x ?y)",
+   "lhs_cost": 7,
+   "rhs_cost": 3,
+   "prompt": 18,
+   "seeds": [
+    "(add (not (shl (mul (shl (mul -1 r2) 3) (shl r0 r3)) 2)) (shr (or 20 (load 1)) (mod 247 (neg r3))))",
+    "(shl (mul 8 (sub (add v5 5) (add 5 v5))) 3)",
+    "(add (shl (sub (mul in0 in2) (add (shl in0 1) 13)) 3) (shl in1 1))",
+    "(xor (shl (sub (add r3 r3) (and r2 r3)) 1) (load (not (shr (shr r0 255) (shl (mul r2 r0) 1)))))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_137",
+   "lhs": "(sub (add (mod ?x ?y) ?z) ?z)",
+   "rhs": "(mod ?x ?y)",
+   "lhs_cost": 16,
+   "rhs_cost": 12,
+   "prompt": 26,
+   "seeds": [
+    "(and (and (shl (shr r2 r0) (mod 255 r3)) (load (sub r0 r2))) (shl (shr 2147483646 (not r2)) 1))",
+    "(sub (add (add v1 v2) v23) (add v23 (add v1 v2)))",
+    "(xor (mod (not (neg (or (shl (shl (sub r0 2) 1) 2) 0))) (not (neg (div (xor (sub r3 2) 0) (add (sub 16 r1) (sub 16 r1)))))) 0)",
+    "(shl (shl -1 (div r1 r3)) (shl (neg (shr 1 r3)) 1))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_138",
+   "lhs": "(sub (add (mul ?x ?y) ?z) ?z)",
+   "rhs": "(mul ?x ?y)",
+   "lhs_cost": 9,
+   "rhs_cost": 5,
+   "prompt": 39,
+   "seeds": [
+    "(add 14 (mul in1 (sub (add in1 in0) (add in0 in1))))",
+    "(add 15 (mul 44 (mul (add v9 14) (add (mul 44 (add v9 14)) v3))))",
+    "(mul (add v3 (mul 10 v2)) (add (sub (add v7 v9) (add v9 v7)) 5))",
+    "(mul 45 (shl (shl (mul v27 (add v8 22)) 3) 2))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_139",
+   "lhs": "(add (mul ?x -1) ?y)",
+   "rhs": "(sub ?y ?x)",
+   "lhs_cost": 7,
+   "rhs_cost": 3,
+   "prompt": 95,
+   "seeds": [
+    "(div (load (xor 1 r2)) (mod r0 r1))",
+    "(load (shl (and r2 (and (div r1 255) 3)) (shl 32 (div r1 r3))))",
+    "(xor (shr (and (or 16 r1) 18) (shl (add r2 r3) (mul r2 r0))) (mul 8 (shl (div (shr r3 r0) (not r2)) (mul -4 (shl (mul r3 r3) 3)))))",
+    "(sub (add 5 (add (sub v1 v3) 86)) (add 5 (add (sub v1 v3) 86)))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_140",
+   "lhs": "(add (mul (shl ?x ?y) ?z) (mul (shr ?x ?y) ?z))",
+   "rhs": "(mul (add (shl ?x ?y) (shr ?x ?y)) ?z)",
+   "lhs_cost": 15,
+   "rhs_cost": 11,
+   "prompt": 96,
+   "seeds": [
+    "(add (not (shl (mul (shl (mul -1 r2) 3) (shl r0 r3)) 2)) (shr (or 20 (load 1)) (mod 247 (neg r3))))",
+    "(shl (load (sub (neg (xor r1 255)) (or (add (shr r3 1) 0) (shl (neg r2) 1)))) (not (shl (shl (add r1 r3) 1) (mul 16 r1))))",
+    "(not (load (load (and (mod 20 (xor r0 r1)) (div (shr (xor r3 r0) (shl (sub r3 255) 1)) 16)))))",
+    "(add (shl (sub (mul in0 in2) (add (shl in0 1) 13)) 3) (shl in1 1))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_141",
+   "lhs": "(add (mul ?x (shl ?y ?z)) (mul ?w ?y))",
+   "rhs": "(mul ?y (add (shl ?x ?z) ?w))",
+   "lhs_cost": 13,
+   "rhs_cost": 9,
+   "prompt": 122,
+   "seeds": [
+    "(shl (mul (shr (shl -2 (div 1 r3)) 1) (shl (load 4) (shl r3 r3))) 2)",
+    "(sub (div (load r2) (shl r0 r3)) (load (mod (div -1 r1) (shl (div r3 r2) (shr 3 r2)))))",
+    "(shl (and (sub 8 r0) (neg (or r0 3))) (mul (load 2040) (shl (add r0 -1) 504)))",
+    "(not (mod (or (shr (neg (sub r2 8)) (and (sub r2 r0) (add 0 (and 16 r1)))) 0) (or (sub (shl (add 8 r0) (load (or r2 r3))) (load (div r0 -1))) 0)))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_142",
+   "lhs": "(or ?x (neg (neg ?x)))",
+   "rhs": "?x",
+   "lhs_cost": 5,
+   "rhs_cost": 1,
+   "prompt": 148,
+   "seeds": [
+    "(shl (shl (sub (load (or r1 1)) 16) (and (shr r0 4) (shl (shl 2 r1) 1))) 2)",
+    "(neg (div (shl r3 1) 11))",
+    "(and (and 2 (load 0)) (mul (load (neg (shl (shr r3 r3) 1))) (and (and r1 255) (mod r0 3))))",
+    "(shl (shl (sub (add in0 (shl (shl in0 3) 3)) (add in0 (add (shl (add in0 (shl (shl in0 3) 3)) 1) (add in0 (shl (shl in0 3) 3))))) 2) 2)"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_143",
+   "lhs": "(and ?x (not (not ?x)))",
+   "rhs": "?x",
+   "lhs_cost": 5,
+   "rhs_cost": 1,
+   "prompt": 148,
+   "seeds": [
+    "(shl (shl (sub (load (or r1 1)) 16) (and (shr r0 4) (shl (shl 2 r1) 1))) 2)",
+    "(neg (div (shl r3 1) 11))",
+    "(and (and 2 (load 0)) (mul (load (neg (shl (shr r3 r3) 1))) (and (and r1 255) (mod r0 3))))",
+    "(shl (shl (sub (add in0 (shl (shl in0 3) 3)) (add in0 (add (shl (add in0 (shl (shl in0 3) 3)) 1) (add in0 (shl (shl in0 3) 3))))) 2) 2)"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_144",
+   "lhs": "(add (neg (neg ?x)) (neg (neg ?y)))",
+   "rhs": "(add ?x ?y)",
+   "lhs_cost": 7,
+   "rhs_cost": 3,
+   "prompt": 177,
+   "seeds": [
+    "(div (mul (sub r2 1) (shl (mod r3 r2) 1)) (sub (neg (not (or r3 r0))) (shl r3 1)))",
+    "(add (add 8 (add (shl in2 1) (add in0 9))) (sub 0 (shl in1 3)))",
+    "(neg (mod (div (or r0 r1) (load (and r1 8))) (div (shr (shl (shl r0 r1) 3) (shl (or r2 r3) 3)) 16)))",
+    "(sub (div (load r2) (shl r0 r3)) (load (mod (div -1 r1) (shl (div r3 r2) (shr 3 r2)))))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_145",
+   "lhs": "(sub 0 (sub 0 ?x))",
+   "rhs": "?x",
+   "lhs_cost": 5,
+   "rhs_cost": 1,
+   "prompt": 190,
+   "seeds": [
+    "(shl (add 6 (add (mul 32 (mul 7 (add 4 (add in1 (add in0 6))))) 4)) 3)",
+    "(shl (mod (shl (shl r0 2) (add r2 r0)) (sub (mod r3 r0) (shl (mod r0 r1) 1))) 4)",
+    "(sub (shl (add (and (or r3 r0) (or 8 r1)) (add (shr r1 r2) (load (mod 255 r2)))) 1) (shl (sub (shl (add r2 r1) 1) (sub 1 r2)) 1))",
+    "(sub (add (add in0 (add (add (add in1 6) 5) (add 1 1))) 5) (add (add 5 (add in0 (add in1 12))) 1))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_146",
+   "lhs": "(add ?x (neg ?x))",
+   "rhs": "0",
+   "lhs_cost": 4,
+   "rhs_cost": 1,
+   "prompt": 43,
+   "seeds": [
+    "(shr (shr (sub 3 (neg r0)) (sub (shl r3 3) 15)) (not (neg (div r2 r1))))",
+    "(sub (mul -6 (add (add 6 (add (add in1 in1) 3)) 3)) (mul (add (add 6 (add (add in1 in1) 3)) 3) -6))",
+    "(mul 2 (shl (sub (shl (shl (or 0 (and (or r3 0) (and 255 r3))) 0) 1) (neg (not 0))) 1))",
+    "(add (sub (mul (add 2 in0) 3) (mul 3 (add 2 in0))) 20)"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_147",
+   "lhs": "(add (neg ?x) ?x)",
+   "rhs": "0",
+   "lhs_cost": 4,
+   "rhs_cost": 1,
+   "prompt": 55,
+   "seeds": [
+    "(sub (shl (shr (load (add 16 r3)) (shl r3 1)) 1) (mod (load (or r2 r0)) (div (shl r1 r3) 5)))",
+    "(xor (shr (add (div r0 r0) (mod 255 r2)) 0) (div (sub (or r0 r1) (shl (load r1) 1)) (mod (shl r1 1) (div r0 r3))))",
+    "(add 8 (add (mul (add (mul 144 9) 14) 2) 68))",
+    "(add (mul 27 (sub (mul v7 v2) (mul v2 v7))) (add (shl v9 4) 40))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_148",
+   "lhs": "(sub 0 (neg ?x))",
+   "rhs": "?x",
+   "lhs_cost": 4,
+   "rhs_cost": 1,
+   "prompt": 73,
+   "seeds": [
+    "(sub (shr (neg r2) (shl (sub 2 r2) 1)) (add (xor r1 r3) (load (shr r2 r1))))",
+    "(mul (div (shl (shl 2 r3) 2) (shr r1 r0)) (and (and -1 (shl r1 r0)) r1))",
+    "(add 8 (add (mul 16 (sub (add (shl (shl in0 1) 2) 7) (mul (mul 5 (add (shl (shl in0 1) 2) 7)) 9))) 7))",
+    "(div (shl (load (and r0 -1)) (div 0 r0)) (or (sub r1 1) (div (not r1) 16)))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_149",
+   "lhs": "(and (not ?x) ?x)",
+   "rhs": "0",
+   "lhs_cost": 4,
+   "rhs_cost": 1,
+   "prompt": 81,
+   "seeds": [
+    "(add (add (add (add (add 8 (mul (shl (shl in1 1) 2) 3)) (sub (add 3 in0) (add in0 3))) 8) in0) 11)",
+    "(sub (shl (shr (load (add 16 r3)) (shl r3 1)) 1) (mod (load (or r2 r0)) (div (shl r1 r3) 5)))",
+    "(load (and 0 (shr (div (xor (shl (mod r3 r0) 2) (div 1 r2)) (add (shl (shl (xor 0 r3) 1) (shl (add r1 r2) 1)) 0)) 1)))",
+    "(mod 0 (shl (mul (mul (div (load (add 0 (mod (load 6) (load (add (shr r2 r3) 0))))) (div (add (shl r0 r1) 0) (shl r3 r1))) 254) 2) 1))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_150",
+   "lhs": "(xor ?x (not ?x))",
+   "rhs": "-1",
+   "lhs_cost": 4,
+   "rhs_cost": 1,
+   "prompt": 174,
+   "seeds": [
+    "(shl (shl (sub (mul (shl in0 3) (sub (mul v9 in1) (mul in1 v9))) (shl (mul (sub (mul v9 in1) (mul in1 v9)) in0) 3)) 3) 3)",
+    "(add (shl (shl (mul (sub (add (sub (add in0 3) 16) 4) (add 4 (sub (add in0 3) 16))) 9) 2) 2) 10)",
+    "(shl (xor (mod (shl (or (add r0 r0) (not r0)) 1) (shl (shl r3 r1) 3)) (load (mul (mul (add (xor 3 r1) (shl r3 8)) (shl r0 3)) (div r0 r0)))) 1)",
+    "(neg (mod (load (sub r2 3)) (add (add r0 r3) (sub r2 255))))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_151",
+   "lhs": "(or (not ?x) ?x)",
+   "rhs": "-1",
+   "lhs_cost": 4,
+   "rhs_cost": 1,
+   "prompt": 69,
+   "seeds": [
+    "(mul (div (mul r1 r2) (add r2 8)) (or (shl (and (div r3 3) (and 1 r2)) 1) (load (shr (div r0 r3) (and r2 r3)))))",
+    "(not (and (and (shl (and (sub r2 1) (or 4 r1)) 1) (shl (sub r2 16) (mod r3 r1))) (add (load (shl (mod r2 r1) (and r0 r2))) (and (shl r2 r0) (shl (shl r2 r3) 1)))))",
+    "(neg (not (shr (load (div (mod 16 r2) (div r3 r2))) (not (neg (mod 0 (and r1 r0)))))))",
+    "(xor (not (mod (mod -1 r3) (div r1 r1))) (mod (and (shl r0 r3) (sub r1 r2)) (xor (not r3) (load (or r3 2)))))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_152",
+   "lhs": "(and ?x (not 0))",
+   "rhs": "?x",
+   "lhs_cost": 4,
+   "rhs_cost": 1,
+   "prompt": 169,
+   "seeds": [
+    "(not (and (and (shl (and (sub r2 1) (or 4 r1)) 1) (shl (sub r2 16) (mod r3 r1))) (add (load (shl (mod r2 r1) (and r0 r2))) (and (shl r2 r0) (shl (shl r2 r3) 1)))))",
+    "(add (shl (load (load r0)) 1) (not (div (add r0 r2) (sub r0 r1))))",
+    "(mul (or (div 255 r2) (div r2 r2)) (mul (add r3 r2) 1020))",
+    "(add (add (add (add in1 4) 1) (add (shl (shl (shl (sub (shl (add (add 1 (sub (add in1 in0) (add in0 in1))) 4) 3) 5) 2) 4) 1) 6)) 7)"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_153",
+   "lhs": "(and ?x (not ?x))",
+   "rhs": "0",
+   "lhs_cost": 4,
+   "rhs_cost": 1,
+   "prompt": 159,
+   "seeds": [
+    "(shl (xor (or (neg r3) (sub r0 4)) (load 0)) 2)",
+    "(load (xor (xor 0 (shl (shl (not r1) (or r3 r0)) 2)) (load (div (div (not r1) 16) (shl 255 r1)))))",
+    "(xor (shl (and (or r2 1) 255) 3) (shl (mod (mul r0 r0) (xor r1 r3)) 2))",
+    "(sub (add v11 (add 9 (sub v34 v2))) (add (sub v34 v2) (add v11 9)))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_154",
+   "lhs": "(and (not ?x) (not ?x))",
+   "rhs": "(not ?x)",
+   "lhs_cost": 5,
+   "rhs_cost": 2,
+   "prompt": 169,
+   "seeds": [
+    "(shr (add (shl (not (shl 2 r3)) 2) 0) (load (add (shl (sub (load (mul r3 r3)) (sub r3 r2)) 1) (mul (shl (sub r0 r3) 2) (shl r1 3)))))",
+    "(shl (mul (mul 3 (add in0 7)) 168) 3)",
+    "(sub (add v11 (add 9 (sub v34 v2))) (add (sub v34 v2) (add v11 9)))",
+    "(shl (mul (add (add 0 (add in0 6)) (shl (add in0 6) 3)) (shl (shl (add in0 6) 3) 3)) 3)"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_155",
+   "lhs": "(mul ?x (add 0 ?y))",
+   "rhs": "(mul ?x ?y)",
+   "lhs_cost": 7,
+   "rhs_cost": 5,
+   "prompt": 10,
+   "seeds": [
+    "(sub (mul (add 25 in1) (shl in1 2)) (mul (shl in1 2) (add 25 in1)))",
+    "(load (add (not (shl (mul (or 16 r2) 0) (not (and (xor 4 r0) (or 3 r1))))) 0))",
+    "(sub (add (mul (mul 4 2) (shl (add 0 3) 3)) (mul 2 640)) (add (mul 2 640) (mul (mul 4 2) (shl (add 0 3) 3))))",
+    "(mul (div (mod r1 r2) (not r1)) (not (shl (or r2 r3) 1)))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_156",
+   "lhs": "(xor ?x (neg (neg ?y)))",
+   "rhs": "(xor ?x ?y)",
+   "lhs_cost": 5,
+   "rhs_cost": 3,
+   "prompt": 18,
+   "seeds": [
+    "(add (mul 5 (mul (add (add 2 (add (add 8 in0) 19)) (add (add (add 7 in0) (add in0 3)) 3)) 9)) 10)",
+    "(div (div (mod (shl (div (and r1 r3) -1) 1) (add (xor r1 r3) (shr r2 8))) (shl (mul (sub (mod r1 8) 256) (xor (shl (shl (xor r2 r3) 1) 2) (shr r3 8))) 2)) 8)",
+    "(sub (mul (shl (shl in1 2) 4) (mul in2 7)) (shl (mul (mul in2 7) (shl in1 2)) 4))",
+    "(shl (and (not (neg (or 5 r0))) (and (shl (not (neg (or (sub 4 r0) (mul r1 r3)))) (not (add r1 r2))) (mul 16843009 (not (neg r3))))) 1)"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_157",
+   "lhs": "(add (shl ?x ?y) (shl ?z ?y))",
+   "rhs": "(shl (add ?x ?z) ?y)",
+   "lhs_cost": 7,
+   "rhs_cost": 5,
+   "prompt": 34,
+   "seeds": [
+    "(and 0 (mul (div (shr (sub (shl (shl r1 r0) 2) (shl r3 r2)) (div (add r1 -1) (shl (xor r2 4) 1))) 8) (add (sub (mul -1 r2) (mul 4 r2)) (not (neg (div (xor r3 r2) r2))))))",
+    "(div (shr (mod (sub r3 1) (load (shl r3 1))) (xor (sub r2 r0) (or r0 r3))) (and (mul 16 (mul r2 8)) (and (shl r0 3) (shr (shr (shl r1 2) 1) (load (mul 3 r0))))))",
+    "(div 0 (neg (div r0 r3)))",
+    "(sub (add (add (sub (add in0 in1) (add in1 in0)) 8) 5) (add 13 (sub (add in0 in1) (add in1 in0))))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_158",
+   "lhs": "(or (and ?x (shl ?y ?z)) (and ?x ?y))",
+   "rhs": "(and ?x (or ?y (shl ?y ?z)))",
+   "lhs_cost": 9,
+   "rhs_cost": 7,
+   "prompt": 34,
+   "seeds": [
+    "(and 0 (mul (div (shr (sub (shl (shl r1 r0) 2) (shl r3 r2)) (div (add r1 -1) (shl (xor r2 4) 1))) 8) (add (sub (mul -1 r2) (mul 4 r2)) (not (neg (div (xor r3 r2) r2))))))",
+    "(div (shr (mod (sub r3 1) (load (shl r3 1))) (xor (sub r2 r0) (or r0 r3))) (and (mul 16 (mul r2 8)) (and (shl r0 3) (shr (shr (shl r1 2) 1) (load (mul 3 r0))))))",
+    "(div 0 (neg (div r0 r3)))",
+    "(sub (add (add (sub (add in0 in1) (add in1 in0)) 8) 5) (add 13 (sub (add in0 in1) (add in1 in0))))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_159",
+   "lhs": "(add (mul (add ?x ?y) ?z) 0)",
+   "rhs": "(mul (add ?x ?y) ?z)",
+   "lhs_cost": 9,
+   "rhs_cost": 7,
+   "prompt": 68,
+   "seeds": [
+    "(add (add 8 (add 9 (mul (add (add (mul 3 (mul in0 5)) 5) 1) 1))) 0)",
+    "(mul (div (mod r1 r2) (not r1)) (not (shl (or r2 r3) 1)))",
+    "(sub (add (add (mul 3 v1) 85) 1) (add (add 1 (mul 3 v1)) 85))",
+    "(shl (add (add (add 8 (mul 45 v8)) (mul 72 v4)) 2) 2)"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_160",
+   "lhs": "(or (shl ?x ?y) 0)",
+   "rhs": "(shl ?x ?y)",
+   "lhs_cost": 5,
+   "rhs_cost": 3,
+   "prompt": 82,
+   "seeds": [
+    "(add (add in0 (add 8 (mul 12 (shl in1 1)))) (add (sub (add 3 in0) (add in0 3)) 8))",
+    "(shl (sub (add (add (add (add 7 v1) v2) 3) (sub (add v0 2) (add 2 v0))) (add (add (add (sub (add v0 2) (add 2 v0)) (add 7 v1)) v2) 3)) 2)",
+    "(sub (add (add 8 (shl (shl in0 4) 2)) (add 3 (add 15 (add (mul in0 8) 4)))) (add (add (shl (shl in0 4) 2) (add (add 3 15) (add (mul in0 8) 4))) 8))",
+    "(sub (mul (shl (shl in1 2) 4) (mul in2 7)) (shl (mul (mul in2 7) (shl in1 2)) 4))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_161",
+   "lhs": "(shl ?x 32)",
+   "rhs": "?x",
+   "lhs_cost": 3,
+   "rhs_cost": 1,
+   "prompt": 94,
+   "seeds": [
+    "(add (load 0) (load (and (div (and (and r3 r2) (mod r0 r0)) 16) (shl (mul r3 255) (shl (div r3 r2) 1)))))",
+    "(mul 56 (sub (add (mul 3 (mul v3 9)) (mul in1 v1)) (add (mul in1 v1) (mul 3 (mul v3 9)))))",
+    "(and 0 (mul (div (shr (sub (shl (shl r1 r0) 2) (shl r3 r2)) (div (add r1 -1) (shl (xor r2 4) 1))) 8) (add (sub (mul -1 r2) (mul 4 r2)) (not (neg (div (xor r3 r2) r2))))))",
+    "(add (div (shr (mul (shl (div (shr (sub r1 3) 0) 0) 1) (sub 8 (shl (shl r0 255) 1))) 0) 0) (shl 0 3))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_162",
+   "lhs": "(and ?x -1)",
+   "rhs": "?x",
+   "lhs_cost": 3,
+   "rhs_cost": 1,
+   "prompt": 94,
+   "seeds": [
+    "(add (load 0) (load (and (div (and (and r3 r2) (mod r0 r0)) 16) (shl (mul r3 255) (shl (div r3 r2) 1)))))",
+    "(mul 56 (sub (add (mul 3 (mul v3 9)) (mul in1 v1)) (add (mul in1 v1) (mul 3 (mul v3 9)))))",
+    "(and 0 (mul (div (shr (sub (shl (shl r1 r0) 2) (shl r3 r2)) (div (add r1 -1) (shl (xor r2 4) 1))) 8) (add (sub (mul -1 r2) (mul 4 r2)) (not (neg (div (xor r3 r2) r2))))))",
+    "(add (div (shr (mul (shl (div (shr (sub r1 3) 0) 0) 1) (sub 8 (shl (shl r0 255) 1))) 0) 0) (shl 0 3))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_163",
+   "lhs": "(and (shl ?x ?y) (shl ?z ?y))",
+   "rhs": "(shl (and ?x ?z) ?y)",
+   "lhs_cost": 7,
+   "rhs_cost": 5,
+   "prompt": 121,
+   "seeds": [
+    "(sub (mul -6 (add (add 6 (add (add in1 in1) 3)) 3)) (mul (add (add 6 (add (add in1 in1) 3)) 3) -6))",
+    "(shl (add (add (add 8 (mul 45 v8)) (mul 72 v4)) 2) 2)",
+    "(shl (add (shr (mod r1 r1) (shr 16 r3)) (xor (div r3 r3) -8)) 1)",
+    "(sub (load (mul (or r1 -1) (shr r1 255))) (mul (load (shr 8 r0)) (add r2 r3)))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_164",
+   "lhs": "(or (and ?x ?a) (and ?x ?b))",
+   "rhs": "(and ?x (or ?a ?b))",
+   "lhs_cost": 7,
+   "rhs_cost": 5,
+   "prompt": 128,
+   "seeds": [
+    "(shl (div (shr (shl r2 r0) 2) (add (shr r0 r2) (sub r1 r2))) (shr 3 (sub (shl (add 16 r0) 3) (neg (not (div 16 r3))))))",
+    "(or (shl (and (xor (shl r2 r3) (shl (div r2 r1) 2)) (add (add r1 8) (div r1 r2))) 3) (load (add (sub -1 r1) (mod r1 255))))",
+    "(div (shr (shl (not (shl (div r1 r0) 1)) 2) (xor (or r3 r1) (xor r3 3))) (not (div (mod r0 r0) 0)))",
+    "(div 0 (xor (shl r3 1) (shl (div r0 0) 1)))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_165",
+   "lhs": "(add (div ?x ?y) 0)",
+   "rhs": "(div ?x ?y)",
+   "lhs_cost": 14,
+   "rhs_cost": 12,
+   "prompt": 140,
+   "seeds": [
+    "(shl (shl (shl (mod 4 r1) 1) 1) (shl (shr 3 r0) 4))",
+    "(load (add (not (shl (mul (or 16 r2) 0) (not (and (xor 4 r0) (or 3 r1))))) 0))",
+    "(shl (add in0 (add (shl (sub (add 10 in0) (add in0 10)) 4) (add 6 2))) 3)",
+    "(div (shr (shl (not (shl (div r1 r0) 1)) 2) (xor (or r3 r1) (xor r3 3))) (not (div (mod r0 r0) 0)))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_166",
+   "lhs": "(add (shl ?x ?n) (shl ?x ?n))",
+   "rhs": "(shl (add ?x ?x) ?n)",
+   "lhs_cost": 7,
+   "rhs_cost": 5,
+   "prompt": 0,
+   "seeds": [
+    "(shl (xor (mod (shl (or (add r0 r0) (not r0)) 1) (shl (shl r3 r1) 3)) (load (mul (mul (add (xor 3 r1) (shl r3 8)) (shl r0 3)) (div r0 r0)))) 1)",
+    "(add (add (add (add (add 8 (mul (shl (shl in1 1) 2) 3)) (sub (add 3 in0) (add in0 3))) 8) in0) 11)",
+    "(div (not (xor r1 r2)) -1)",
+    "(shl (add (add 1 (shl in1 1)) (add (mul 6 (shl in1 3)) 5)) 4)"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_167",
+   "lhs": "(shr (shr ?x 2) 2)",
+   "rhs": "(shr ?x 4)",
+   "lhs_cost": 5,
+   "rhs_cost": 3,
+   "prompt": 6,
+   "seeds": [
+    "(sub (shl (shl (shl (shl (sub (add 16 in0) (add in0 16)) 1) 1) 1) 3) 10)",
+    "(or (and -255 (shl r3 1)) (shl (sub (add r3 r3) (shl (sub r2 255) 3)) 1))",
+    "(shl (and (load (add (and (neg r0) (div r2 r3)) (or (sub r0 r1) (shr r3 4)))) (shl (not (and r1 r2)) (or (load (and (and r0 r2) (load (mod r2 r0)))) (mod (and 2 3) (div 8 r1))))) 1)",
+    "(mul (mul 9 (sub (mul in0 10) (mul 10 in0))) 64)"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_168",
+   "lhs": "(sub (mul ?x 2) ?y)",
+   "rhs": "(sub (shl ?x 1) ?y)",
+   "lhs_cost": 7,
+   "rhs_cost": 5,
+   "prompt": 48,
+   "seeds": [
+    "(shl (shl (sub (mul (shl in0 3) (sub (mul v9 in1) (mul in1 v9))) (shl (mul (sub (mul v9 in1) (mul in1 v9)) in0) 3)) 3) 3)",
+    "(sub (add (shl (add (add (add in2 in2) (add 4 (add (add in0 2) 2))) 2) 1) 16) (add 16 (shl (add (add (add in2 in2) (add 4 (add (add in0 2) 2))) 2) 1)))",
+    "(not (xor (div (load 0) (not (shl r3 1))) (add (shl (sub r3 r2) 3) (mod r0 r1))))",
+    "(shl (and (load (add (and (neg r0) (div r2 r3)) (or (sub r0 r1) (shr r3 4)))) (shl (not (and r1 r2)) (or (load (and (and r0 r2) (load (mod r2 r0)))) (mod (and 2 3) (div 8 r1))))) 1)"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_169",
+   "lhs": "(mul -1 (add ?x ?y))",
+   "rhs": "(sub 0 (add ?x ?y))",
+   "lhs_cost": 7,
+   "rhs_cost": 5,
+   "prompt": 51,
+   "seeds": [
+    "(add (xor (mod (xor r2 -1) (sub r2 8)) (shl (shl r1 2) (neg (not (mul r2 r0))))) (load (mod (mul r3 r2) (div (shl (shl r0 8) 1) (div r2 r2)))))",
+    "(shl (add (add 1 (shl in1 1)) (add (mul 6 (shl in1 3)) 5)) 4)",
+    "(sub (mul (mul (mul (shl (shl (add 11 in1) 1) 2) 2) 5) 6) (add (add (sub (mul in0 in1) (mul in1 in0)) (add (sub (mul in0 in1) (mul in1 in0)) 9)) 1))",
+    "(shl (shl (add 8 (add (add (add in0 1) 1) (add (mul (mul in0 6) 6) 5))) 3) 2)"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_170",
+   "lhs": "(mul (add ?x 0) ?z)",
+   "rhs": "(mul ?x ?z)",
+   "lhs_cost": 7,
+   "rhs_cost": 5,
+   "prompt": 57,
+   "seeds": [
+    "(add 8 (add (mul 16 (sub (add (shl (shl in0 1) 2) 7) (mul (mul 5 (add (shl (shl in0 1) 2) 7)) 9))) 7))",
+    "(mod 0 (shl (mul (mul (div (load (add 0 (mod (load 6) (load (add (shr r2 r3) 0))))) (div (add (shl r0 r1) 0) (shl r3 r1))) 254) 2) 1))",
+    "(div (xor -1 (load r1)) 8)",
+    "(load (not (shl (mod (load 0) (div (load 253) (mul r2 3))) 2)))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_171",
+   "lhs": "(mul (add ?x ?y) 256)",
+   "rhs": "(shl (add ?x ?y) 8)",
+   "lhs_cost": 7,
+   "rhs_cost": 5,
+   "prompt": 59,
+   "seeds": [
+    "(sub (mul 256 (sub (add in0 32) (add 32 in0))) (mul (sub (add in0 32) (add 32 in0)) 256))",
+    "(add (xor (div (add r1 r2) 16) (add r2 255)) (mul (neg (not (xor (shr r2 r3) (mod r0 r2)))) (or (shl r0 2) (mul (shl r0 4) 8))))",
+    "(not (xor (div (load 0) (not (shl r3 1))) (add (shl (sub r3 r2) 3) (mod r0 r1))))",
+    "(mul 8 (shl (mul (shl (shl (sub (mul (add 11 (mul in0 8)) 4) (mul 4 (add 11 (mul in0 8)))) 1) 2) (add 1 (add in0 2))) 2))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_172",
+   "lhs": "(shl ?x 256)",
+   "rhs": "?x",
+   "lhs_cost": 3,
+   "rhs_cost": 1,
+   "prompt": 64,
+   "seeds": [
+    "(or 0 (shl (mod (shl (shl (sub (mod 0 0) (mul (div (shr 255 r3) (load (add (sub r0 r3) 0))) 8)) 1) 2) (load 0)) 1))",
+    "(add (xor (mod (xor r2 -1) (sub r2 8)) (shl (shl r1 2) (neg (not (mul r2 r0))))) (load (mod (mul r3 r2) (div (shl (shl r0 8) 1) (div r2 r2)))))",
+    "(sub (div (load r0) (div (add 4 r1) 16)) (xor (xor r1 r3) (shl (mul r0 r2) 3)))",
+    "(div (sub (mul r1 3) (not (shl r3 r0))) (div (neg (not (shr r3 r1))) r1))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_173",
+   "lhs": "(mod (add ?x ?y) (sub ?z 0))",
+   "rhs": "(mod (add ?x ?y) ?z)",
+   "lhs_cost": 16,
+   "rhs_cost": 14,
+   "prompt": 69,
+   "seeds": [
+    "(mod (shl (div (shr (shr r3 r0) (shl r3 1)) (sub (div r1 8) (not r0))) 1) (sub (or (not r1) (load (neg r1))) (shl (shr (neg r0) (load (mod 3 r2))) 3)))",
+    "(shl (shl (or (shl (shl (mod r2 r1) 1) 1) (mul r3 8)) 3) (shl (or (shr (and 1 r3) 0) (or r2 2)) 1))",
+    "(sub 0 (shl (shl (div (and r2 r0) (shl (mul 255 r3) 1)) (shl (add r2 255) (div r0 r2))) (mul 8 (shl (or (load (shl 3 r0)) (or r1 -1)) 0))))",
+    "(xor (shr (add (div r0 r0) (mod 255 r2)) 0) (div (sub (or r0 r1) (shl (load r1) 1)) (mod (shl r1 1) (div r0 r3))))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_174",
+   "lhs": "(neg (neg (add ?x ?y)))",
+   "rhs": "(add ?x ?y)",
+   "lhs_cost": 5,
+   "rhs_cost": 3,
+   "prompt": 85,
+   "seeds": [
+    "(mul (add (mul 8 (mul in0 7)) 16) 28)",
+    "(sub (or (and 3 r1) (mul r0 r2)) (shl (or r2 3) (or r1 2)))",
+    "(and (shl (and (sub r3 r2) (shl r2 8)) 1) (mul (shr 16 r1) (shl r3 1)))",
+    "(sub (mul 256 (sub (add in0 32) (add 32 in0))) (mul (sub (add in0 32) (add 32 in0)) 256))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_175",
+   "lhs": "(shl (neg (neg ?x)) ?y)",
+   "rhs": "(shl ?x ?y)",
+   "lhs_cost": 5,
+   "rhs_cost": 3,
+   "prompt": 104,
+   "seeds": [
+    "(add (not (neg (div (div 8 r0) (shl (or r0 8) 3)))) (shl (shr r3 r1) (xor r0 2)))",
+    "(shr (xor (not r2) (add (shr r2 r0) (shl r3 r0))) (neg (not (shl (shl (mul (div r1 r3) (shl (shl r2 r1) 2)) 1) (and r0 255)))))",
+    "(or 0 (shl (mod (shl (shl (sub (mod 0 0) (mul (div (shr 255 r3) (load (add (sub r0 r3) 0))) 8)) 1) 2) (load 0)) 1))",
+    "(mul 8 (shl (mul (shl (shl (sub (mul (add 11 (mul in0 8)) 4) (mul 4 (add 11 (mul in0 8)))) 1) 2) (add 1 (add in0 2))) 2))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_176",
+   "lhs": "(or (and ?a ?c) (and ?b ?c))",
+   "rhs": "(and (or ?a ?b) ?c)",
+   "lhs_cost": 7,
+   "rhs_cost": 5,
+   "prompt": 110,
+   "seeds": [
+    "(shl (and (and (xor (and 1 r3) (shr r3 r1)) (and r2 r3)) r1) 2)",
+    "(load (and 0 (shr (div (xor (shl (mod r3 r0) 2) (div 1 r2)) (add (shl (shl (xor 0 r3) 1) (shl (add r1 r2) 1)) 0)) 1)))",
+    "(shr (xor (not r2) (add (shr r2 r0) (shl r3 r0))) (neg (not (shl (shl (mul (div r1 r3) (shl (shl r2 r1) 2)) 1) (and r0 255)))))",
+    "(or 0 (shl (mod (shl (shl (sub (mod 0 0) (mul (div (shr 255 r3) (load (add (sub r0 r3) 0))) 8)) 1) 2) (load 0)) 1))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_177",
+   "lhs": "(and (and ?x ?a) (and ?y ?a))",
+   "rhs": "(and ?a (and ?x ?y))",
+   "lhs_cost": 7,
+   "rhs_cost": 5,
+   "prompt": 132,
+   "seeds": [
+    "(or (div (or r1 (load (add (mul 16 r3) 0))) (shl (sub (xor r2 r2) (add -2 -2)) 2)) (xor (div 255 (add (shr r0 r0) (shr r0 r0))) (shl (shr (shl (and r3 r0) 2) (div r2 16)) 4)))",
+    "(add (add (add 11 in0) in0) (shl (sub (add 5 in0) (add in0 5)) 1))",
+    "(mod (load 16) (div (not r2) (div r2 3)))",
+    "(sub (xor (div 4 r3) (shl (xor r2 4) 2)) (not (mul r0 r0)))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_178",
+   "lhs": "(sub (neg ?x) (neg ?y))",
+   "rhs": "(sub ?y ?x)",
+   "lhs_cost": 5,
+   "rhs_cost": 3,
+   "prompt": 141,
+   "seeds": [
+    "(shr (xor (not r2) (add (shr r2 r0) (shl r3 r0))) (neg (not (shl (shl (mul (div r1 r3) (shl (shl r2 r1) 2)) 1) (and r0 255)))))",
+    "(sub (mul (mul (mul (shl (shl (add 11 in1) 1) 2) 2) 5) 6) (add (add (sub (mul in0 in1) (mul in1 in0)) (add (sub (mul in0 in1) (mul in1 in0)) 9)) 1))",
+    "(div (sub (mul r1 3) (not (shl r3 r0))) (div (neg (not (shr r3 r1))) r1))",
+    "(sub (div (load r0) (div (add 4 r1) 16)) (xor (xor r1 r3) (shl (mul r0 r2) 3)))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_179",
+   "lhs": "(shl (shl ?x 8) 8)",
+   "rhs": "(shl ?x 16)",
+   "lhs_cost": 5,
+   "rhs_cost": 3,
+   "prompt": 148,
+   "seeds": [
+    "(mul (mod (div r2 r2) -1) (add (and r3 r0) (shl (sub r3 1) 1)))",
+    "(load (xor (shl (shl (load (mod (mul 8 (and r2 255)) (mod r2 r3))) 1) 2) (and (div 0 (shr (add r2 r0) 2)) (shl (sub (and r3 r1) (not (or r1 r2))) 2))))",
+    "(div 0 (shr (neg (xor (xor (div r0 255) (add 4 r1)) (load (load (or r1 r2))))) 1))",
+    "(add (add (sub (add 4 in1) (add in1 4)) 1) (add 4 (add in0 (shl (shl (sub (shl in0 1) (mul 2 in0)) 2) 1))))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_180",
+   "lhs": "(xor (and ?x ?a) (and ?y ?a))",
+   "rhs": "(and (xor ?x ?y) ?a)",
+   "lhs_cost": 7,
+   "rhs_cost": 5,
+   "prompt": 154,
+   "seeds": [
+    "(load (xor (shl (shl (load (mod (mul 8 (and r2 255)) (mod r2 r3))) 1) 2) (and (div 0 (shr (add r2 r0) 2)) (shl (sub (and r3 r1) (not (or r1 r2))) 2))))",
+    "(xor (xor (shl (and 4 r3) 3) (div r1 r3)) (shl r3 (shl (mul r3 510) 1)))",
+    "(shl (sub (mul 20 (add (shl in2 2) in2)) (mul (add (shl in2 2) in2) 20)) 1)",
+    "(div (mod (add (not (neg (add 3 r2))) 2) (sub (or r3 (div r2 r2)) (load (shr (shl r1 r0) (sub 2 r0))))) 8)"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_181",
+   "lhs": "(shr ?x 32)",
+   "rhs": "?x",
+   "lhs_cost": 3,
+   "rhs_cost": 1,
+   "prompt": 186,
+   "seeds": [
+    "(div (shl (load (and r0 -1)) (div 0 r0)) (or (sub r1 1) (div (not r1) 16)))",
+    "(mul (mul (and (sub (mul (shl (div 0 (sub r2 8)) 0) (sub (div r0 r2) 0)) (shl (or (neg (not (shl r3 r0))) (or 8 r3)) (div (or 16 r2) (add 0 (shr 2 r1))))) 0) 2) 2)",
+    "(mul (shl (shl (sub (add in0 33) (add 33 in0)) 3) 1) 41)",
+    "(load (xor (shl (shl (load (mod (mul 8 (and r2 255)) (mod r2 r3))) 1) 2) (and (div 0 (shr (add r2 r0) 2)) (shl (sub (and r3 r1) (not (or r1 r2))) 2))))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_182",
+   "lhs": "(add (mul 2 ?x) ?y)",
+   "rhs": "(add ?x (add ?x ?y))",
+   "lhs_cost": 7,
+   "rhs_cost": 5,
+   "prompt": 199,
+   "seeds": [
+    "(div (not (xor r1 r2)) -1)",
+    "(shl (shr (shr (mul (neg (shl (and 4 r2) 1)) 4) (div (add 0 (shl r1 r3)) 258)) (xor (mod (xor r2 8) (or r3 1)) (shl (sub (and r1 r2) (sub r2 2)) 4))) 1)",
+    "(sub (mul (add 7 (shl in0 1)) (shl (shl in0 2) 2)) (mul (shl (shl in0 2) 2) (add 7 (shl in0 1))))",
+    "(shl (add (add (add (add 7 in0) (add in0 7)) (add (add 7 in0) (add in0 7))) 16) 2)"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_183",
+   "lhs": "(and ?x (and ?y ?x))",
+   "rhs": "(and ?x ?y)",
+   "lhs_cost": 5,
+   "rhs_cost": 3,
+   "prompt": 18,
+   "seeds": [
+    "(sub (add (add 13 (sub (add 1 in0) (add in0 1))) (shl (shl (shl in1 1) 4) 1)) (add (add (shl (shl (shl in1 1) 4) 1) 13) (sub (add 1 in0) (add in0 1))))",
+    "(not (shl (or (mod r1 -1) -45) 3))",
+    "(shl (mul (mul 7 (mul (add (sub (add in2 in1) (add in1 in2)) (add 53 3)) 16)) 96) 1)",
+    "(mul (sub (shl (not r0) 2) (shl (shl (neg r2) (load (add r2 255))) 1)) (xor (add (add r2 1) (shl r1 2)) (xor (xor r1 -1) (shl r2 r0))))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_184",
+   "lhs": "(or ?x (or ?y ?x))",
+   "rhs": "(or ?x ?y)",
+   "lhs_cost": 5,
+   "rhs_cost": 3,
+   "prompt": 18,
+   "seeds": [
+    "(sub (add (add 13 (sub (add 1 in0) (add in0 1))) (shl (shl (shl in1 1) 4) 1)) (add (add (shl (shl (shl in1 1) 4) 1) 13) (sub (add 1 in0) (add in0 1))))",
+    "(not (shl (or (mod r1 -1) -45) 3))",
+    "(shl (mul (mul 7 (mul (add (sub (add in2 in1) (add in1 in2)) (add 53 3)) 16)) 96) 1)",
+    "(mul (sub (shl (not r0) 2) (shl (shl (neg r2) (load (add r2 255))) 1)) (xor (add (add r2 1) (shl r1 2)) (xor (xor r1 -1) (shl r2 r0))))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_185",
+   "lhs": "(mul (neg ?x) (neg ?y))",
+   "rhs": "(mul ?x ?y)",
+   "lhs_cost": 7,
+   "rhs_cost": 5,
+   "prompt": 23,
+   "seeds": [
+    "(load (sub (neg (mul (shl (or r2 r1) 1) (shl r1 4))) (or (and (neg r1) (shl r3 1)) (load -256))))",
+    "(add (add 4 (sub (add (shl (add (sub 3 in0) (shl in0 1)) 3) 3) (add 3 (shl (add (sub 3 in0) (shl in0 1)) 3)))) (add 6 13))",
+    "(add (mul (add 10 in1) in1) (add 17 (sub (add (add 1 in0) 10) 9)))",
+    "(not (shl (or (mod r1 -1) -45) 3))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_186",
+   "lhs": "(add (mod ?x ?m) 0)",
+   "rhs": "(mod ?x ?m)",
+   "lhs_cost": 14,
+   "rhs_cost": 12,
+   "prompt": 35,
+   "seeds": [
+    "(sub (add (add 13 (sub (add 1 in0) (add in0 1))) (shl (shl (shl in1 1) 4) 1)) (add (add (shl (shl (shl in1 1) 4) 1) 13) (sub (add 1 in0) (add in0 1))))",
+    "(shl (mul (shl (shl (add 8 (add v1 4)) 4) 2) 9) 3)",
+    "(shr (mul r3 (and r1 16)) (shl (not (neg (mul r1 r0))) (shr (add r3 2) 2)))",
+    "(shl (shl (sub (add 120 (shl (mul 3 in0) 1)) (add (shl (mul 3 in0) 1) 120)) 1) 1)"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_187",
+   "lhs": "(mul ?x 256)",
+   "rhs": "(shl ?x 8)",
+   "lhs_cost": 5,
+   "rhs_cost": 3,
+   "prompt": 41,
+   "seeds": [
+    "(sub (add (shl (shl v1 3) 2) 0) (add 0 (shl (shl v1 3) 2)))",
+    "(sub (add (shl (add in0 9) 4) 48) (add 48 (shl (add in0 9) 4)))",
+    "(mul 8 (sub (or (and (and 16 r3) (or r2 r0)) (add (shr (shr r0 r0) (shl (shl (and r1 16) 1) 1)) 0)) (sub (add r0 (shl (shl (mod r0 r1) 1) 1)) (xor (load (div 8 r2)) -256))))",
+    "(add 3 (add (mul (add 3 3) (mul 2 9)) (add (add 8 5) 7)))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_188",
+   "lhs": "(shl (add ?x 0) ?y)",
+   "rhs": "(shl ?x ?y)",
+   "lhs_cost": 5,
+   "rhs_cost": 3,
+   "prompt": 87,
+   "seeds": [
+    "(add (add 6 (shl (shl (mul 3 (add (add (add 4 in2) (add in0 4)) in2)) 2) 4)) (add (shl in2 3) 5))",
+    "(shl (mul (mul 7 (mul (add (sub (add in2 in1) (add in1 in2)) (add 53 3)) 16)) 96) 1)",
+    "(mul (shr (neg (not 0)) (add (mod (mul 3 r2) (load (mod r3 r0))) (shr (not (shl r0 1)) 2))) (not (shl (shr (mul r3 r1) (load (div (shl r3 r2) r1))) 1)))",
+    "(sub (add (shl (shl v1 3) 2) 0) (add 0 (shl (shl v1 3) 2)))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_189",
+   "lhs": "(load (add ?x 0))",
+   "rhs": "(load ?x)",
+   "lhs_cost": 7,
+   "rhs_cost": 5,
+   "prompt": 96,
+   "seeds": [
+    "(mul (add 8 (add v2 (add (add (shl (shl in0 2) 2) 3) 12))) (add v3 (add v1 14)))",
+    "(add (add (add (add in2 7) 9) (add (sub (add in2 in0) (add in0 in2)) 10)) 9)",
+    "(add (mod (shr (div 0 r2) (load (add r1 r1))) (add (or r2 r0) (sub r3 r0))) (load (sub (mod (mod r2 r0) (not (neg (load r0)))) (and (add 8 r0) (mul (add 16 r3) 4)))))",
+    "(shl (add 12 (add in0 (add (add 6 in0) (add (add (add in0 9) 3) 1)))) 2)"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_190",
+   "lhs": "(add (shl ?x 1) (shl ?y 1))",
+   "rhs": "(shl (add ?x ?y) 1)",
+   "lhs_cost": 7,
+   "rhs_cost": 5,
+   "prompt": 176,
+   "seeds": [
+    "(sub (add (shl (shl (mul (add in1 5) 5) 1) 1) 576) (add 576 (shl (shl (mul (add in1 5) 5) 1) 1)))",
+    "(sub (add (add (add v3 7) 6) (shl v1 2)) (add (add (shl v1 2) (add v3 7)) 6))",
+    "(sub (add (shl (add in0 9) 4) 48) (add 48 (shl (add in0 9) 4)))",
+    "(add (sub (add (sub 5 v1) (sub (add 10 (mul v4 v2)) (add (mul v4 v2) 10))) (add (sub (add 10 (mul v4 v2)) (add (mul v4 v2) 10)) (sub 5 v1))) 14)"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_191",
+   "lhs": "(shl (add ?a (shl 4 1)) 1)",
+   "rhs": "(shl (add ?a 8) 1)",
+   "lhs_cost": 7,
+   "rhs_cost": 5,
+   "prompt": 20,
+   "seeds": [
+    "(or (add r0 r0) (shl (div r1 r0) 1))",
+    "(shl (add 15 (shl (add 3 (add in1 (add in2 9))) 1)) 1)",
+    "(load (and (xor (mul r1 r3) (neg r1)) (shl (shl (or (div (and r2 r3) 16) (neg r2)) 1) 2)))",
+    "(xor (shl (and (or r2 1) 255) 3) (shl (mod (mul r0 r0) (xor r1 r3)) 2))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_192",
+   "lhs": "(shl (load ?v) 0)",
+   "rhs": "(load ?v)",
+   "lhs_cost": 7,
+   "rhs_cost": 5,
+   "prompt": 44,
+   "seeds": [
+    "(and 0 (load (add (not (div (shl (and (not (and r0 r0)) (add (sub (sub r1 16) (div r3 3)) 0)) 1) (shr (add (add (shr 0 1) r2) (add r2 0)) 2))) 0)))",
+    "(add (shl (add (add 3 (shl in2 1)) 7) 1) 35)",
+    "(add 15 (add 9 (mul (mul 27 -22) in0)))",
+    "(sub (shr 255 r0) (sub (div r0 8) (mod r0 255)))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_193",
+   "lhs": "(shr (sub ?x 0) ?y)",
+   "rhs": "(shr ?x ?y)",
+   "lhs_cost": 5,
+   "rhs_cost": 3,
+   "prompt": 70,
+   "seeds": [
+    "(shl (mul (add 0 (neg r2)) (load (and r0 255))) (shr (and r2 r3) 0))",
+    "(add (add (add 4 (shl (shl (shl (sub (add in1 in0) (add in0 in1)) 1) 2) 3)) (shl (shl (mul (sub (add 0 10) (add 10 0)) 2) 2) 2)) 3)",
+    "(mul (xor (shl r1 r1) 7) (shl (and (mul r2 r0) (load (mod -1 r1))) 3))",
+    "(mul (shr (shl r0 r2) (and r2 255)) (not (load 3)))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_194",
+   "lhs": "(shr (div ?x 2) 1)",
+   "rhs": "(div ?x 4)",
+   "lhs_cost": 14,
+   "rhs_cost": 12,
+   "prompt": 97,
+   "seeds": [
+    "(shl (and (shl 4 r2) (neg (not (neg r3)))) (mod (sub r0 3) (shl r3 r0)))",
+    "(shl (xor (or (neg r3) (sub r0 4)) (load 0)) 2)",
+    "(mul (sub (add (xor r3 1) (not r0)) (shl 0 3)) (div (div (mod (neg r0) (shl (shl (or r0 r2) 1) 1)) 16) (not (shl r0 3))))",
+    "(load (or (neg (load (and (load (or r2 r0)) (load (sub r3 r0))))) (load (mul 8 (div r1 r0)))))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_195",
+   "lhs": "(shl (add ?x 0) 1)",
+   "rhs": "(shl ?x 1)",
+   "lhs_cost": 5,
+   "rhs_cost": 3,
+   "prompt": 115,
+   "seeds": [
+    "(shl (and (shl 4 r2) (neg (not (neg r3)))) (mod (sub r0 3) (shl r3 r0)))",
+    "(and (neg (not (shr (div (add (add r3 3) 38) (mod 0 (or r3 r0))) (shr (shl (shr (load 255) (shr r2 r2)) 3) (div (and 1 r3) (shl r0 r0)))))) (add 0 (shr (shr r2 r2) (shr r1 r2))))",
+    "(shl (add 15 (shl (add 3 (add in1 (add in2 9))) 1)) 1)",
+    "(mul (sub (add 8 (shl in1 4)) (add (shl in1 4) 8)) 56)"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_196",
+   "lhs": "(sub (mod ?x ?y) 0)",
+   "rhs": "(mod ?x ?y)",
+   "lhs_cost": 14,
+   "rhs_cost": 12,
+   "prompt": 122,
+   "seeds": [
+    "(mul (sub (add (add 13 8) (shl in0 2)) in0) 8)",
+    "(xor (mod (and (sub 16 r0) 7) (sub (sub r2 r0) 3)) (mul (shl (xor (load 0) (load (mul 4 r0))) 1) (mod (shl (and r1 8) 2) (shl (sub 4 r3) 2))))",
+    "(mul (shl (mul r1 64) 1) (load (load (shl r1 3))))",
+    "(load (mul (shl (mod r1 -1) 255) (shl (xor (load (mod r2 r0)) (and r2 2)) 1)))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_197",
+   "lhs": "(add 0 (mul ?x ?y))",
+   "rhs": "(mul ?x ?y)",
+   "lhs_cost": 7,
+   "rhs_cost": 5,
+   "prompt": 133,
+   "seeds": [
+    "(shl (shl (add (or 255 r2) (div (shr 1 r3) 16)) 1) (or (shl (or r2 2) 2) (and r0 r1)))",
+    "(add (shl (add (add 3 (shl in2 1)) 7) 1) 35)",
+    "(mul (shl (shl v5 1) 2) (add (shl (shl v1 2) 2) (add (shl (shl v6 1) 2) 9)))",
+    "(mul (sub (add (add 13 8) (shl in0 2)) in0) 8)"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_198",
+   "lhs": "(mul (load ?x) 2)",
+   "rhs": "(shl (load ?x) 1)",
+   "lhs_cost": 9,
+   "rhs_cost": 7,
+   "prompt": 139,
+   "seeds": [
+    "(mul (mul (mul (add (add 390 (mul 8 (mul in0 3))) 7) 3) (add (add (add (add (add (add 4 (mul 8 (mul (add 390 (add (mul 8 (mul in0 3)) 7)) 3))) 2) 1) 89) 8) 8)) 8)",
+    "(add 8 (add (shl in0 2) (add (add 2 in0) (add in0 8))))",
+    "(shl (shl (mul r2 (mul (load (not r1)) r2)) (and 6 r3)) 1)",
+    "(mul (sub (add 8 (shl in1 4)) (add (shl in1 4) 8)) 56)"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_199",
+   "lhs": "(and (shr ?a 5) (shr ?b 5))",
+   "rhs": "(shr (and ?a ?b) 5)",
+   "lhs_cost": 7,
+   "rhs_cost": 5,
+   "prompt": 163,
+   "seeds": [
+    "(load (neg (shl (load 0) 3)))",
+    "(mul (div (neg (not (mod r3 r0))) (shr r1 r0)) (xor (or r3 r1) (div 8 r1)))",
+    "(load (xor (xor 0 (shl (shl (not r1) (or r3 r0)) 2)) (load (div (div (not r1) 16) (shl 255 r1)))))",
+    "(shr (shl (and (shl (or 16 (shl (sub r3 255) 3)) 1) (mod 0 (shr r0 r3))) 1) (mul (or (mod r0 r1) (shl (or r2 255) 1)) (xor (load (shl r2 1)) (add 255 r0))))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_200",
+   "lhs": "(and (shl ?x ?y) (or ?z 0))",
+   "rhs": "(and (shl ?x ?y) ?z)",
+   "lhs_cost": 7,
+   "rhs_cost": 5,
+   "prompt": 195,
+   "seeds": [
+    "(mod (load (add (or 3 r0) (load (shl r2 r1)))) (shl (sub (add r3 4) 0) 3))",
+    "(shl (shr (or (xor (div (mod 8 r1) 8) (mod r1 r3)) (sub -68 (div 8 r2))) (shl (shl (div (shl (or r0 4) 3) -1) 2) (mul (div 1 r0) (add r3 r3)))) 1)",
+    "(xor (mod (mod 6 (xor r1 r0)) (sub 0 (shr (load r1) 2))) (sub (mul (sub r1 r2) (load (mod 2 r3))) (mod (sub r3 r0) 20)))",
+    "(mul (xor (shl r1 r1) 7) (shl (and (mul r2 r0) (load (mod -1 r1))) 3))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_201",
+   "lhs": "(and (or ?x ?y) (not ?y))",
+   "rhs": "(and ?x (not ?y))",
+   "lhs_cost": 6,
+   "rhs_cost": 4,
+   "prompt": 12,
+   "seeds": [
+    "(shl (mul 8 (sub (add v5 5) (add 5 v5))) 3)",
+    "(shl (and (sub 8 r0) (neg (or r0 3))) (mul (load 2040) (shl (add r0 -1) 504)))",
+    "(mul 8 (shl (mul (sub (add (mul (add in0 6) 0) (mul in0 1)) (add (mul in0 1) (mul (add in0 6) 0))) 4) 2))",
+    "(sub (add 5 (add in0 (add (add (add v0 6) 5) 2))) (sub (add 5 (add in0 (add v0 12))) -1))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_202",
+   "lhs": "(xor (neg (neg ?x)) ?y)",
+   "rhs": "(xor ?x ?y)",
+   "lhs_cost": 5,
+   "rhs_cost": 3,
+   "prompt": 26,
+   "seeds": [
+    "(and (and (shl (shr r2 r0) (mod 255 r3)) (load (sub r0 r2))) (shl (shr 2147483646 (not r2)) 1))",
+    "(sub (add (add v1 v2) v23) (add v23 (add v1 v2)))",
+    "(xor (mod (not (neg (or (shl (shl (sub r0 2) 1) 2) 0))) (not (neg (div (xor (sub r3 2) 0) (add (sub 16 r1) (sub 16 r1)))))) 0)",
+    "(shl (shl -1 (div r1 r3)) (shl (neg (shr 1 r3)) 1))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_203",
+   "lhs": "(add 0 (add ?x ?y))",
+   "rhs": "(add ?x ?y)",
+   "lhs_cost": 5,
+   "rhs_cost": 3,
+   "prompt": 125,
+   "seeds": [
+    "(sub (add (add (mul in2 35) 7) (add v11 23)) (add (add (add 7 v11) 23) (mul in2 35)))",
+    "(add (add 8 (add (shl in2 1) (add in0 9))) (sub 0 (shl in1 3)))",
+    "(or (not (neg (not (mod (mod r3 2) (shl r3 r3))))) (or (shl (xor r3 2) 1) (not r2)))",
+    "(sub (add (shl in1 2) (mul in1 63)) (add (mul in1 63) (shl in1 2)))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_204",
+   "lhs": "(add (add ?x ?y) (add ?x ?y))",
+   "rhs": "(shl (add ?x ?y) 1)",
+   "lhs_cost": 7,
+   "rhs_cost": 5,
+   "prompt": 142,
+   "seeds": [
+    "(or (and (shr (neg r2) (or r3 r2)) (neg (shl r0 r2))) (shl (shl (sub (or r0 1) (shr r3 r0)) 2) (sub (shl r2 r2) (div r3 r0))))",
+    "(add 9 (add (add 9 (add 8 (shl (add (add 7 in0) (add in0 1)) 3))) (shl (add (add 7 in0) (add in0 1)) 3)))",
+    "(shl (add 6 (add (mul 32 (mul 7 (add 4 (add in1 (add in0 6))))) 4)) 3)",
+    "(mul (and (div 0 r1) (and -1 r1)) (and (sub 1 r1) (add r3 r1)))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_205",
+   "lhs": "(shl (add ?x ?y) 0)",
+   "rhs": "(add ?x ?y)",
+   "lhs_cost": 5,
+   "rhs_cost": 3,
+   "prompt": 149,
+   "seeds": [
+    "(shl (load (sub (neg (xor r1 255)) (or (add (shr r3 1) 0) (shl (neg r2) 1)))) (not (shl (shl (add r1 r3) 1) (mul 16 r1))))",
+    "(add 15 (mul 44 (mul (add v9 14) (add (mul 44 (add v9 14)) v3))))",
+    "(mod (div (add (add 255 r2) (div r0 3)) (load (or (and r3 r1) 536870911))) (or (load (div (add r0 r3) (shl r2 r1))) (shl (and r2 r3) (shr r1 r2))))",
+    "(neg (mod (div (or r0 r1) (load (and r1 8))) (div (shr (shl (shl r0 r1) 3) (shl (or r2 r3) 3)) 16)))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_206",
+   "lhs": "(or (add ?x ?y) 0)",
+   "rhs": "(add ?x ?y)",
+   "lhs_cost": 5,
+   "rhs_cost": 3,
+   "prompt": 149,
+   "seeds": [
+    "(shl (load (sub (neg (xor r1 255)) (or (add (shr r3 1) 0) (shl (neg r2) 1)))) (not (shl (shl (add r1 r3) 1) (mul 16 r1))))",
+    "(add 15 (mul 44 (mul (add v9 14) (add (mul 44 (add v9 14)) v3))))",
+    "(mod (div (add (add 255 r2) (div r0 3)) (load (or (and r3 r1) 536870911))) (or (load (div (add r0 r3) (shl r2 r1))) (shl (and r2 r3) (shr r1 r2))))",
+    "(neg (mod (div (or r0 r1) (load (and r1 8))) (div (shr (shl (shl r0 r1) 3) (shl (or r2 r3) 3)) 16)))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_207",
+   "lhs": "(mul ?x 32)",
+   "rhs": "(shl ?x 5)",
+   "lhs_cost": 5,
+   "rhs_cost": 3,
+   "prompt": 150,
+   "seeds": [
+    "(xor (shl (sub (add r3 r3) (and r2 r3)) 1) (load (not (shr (shr r0 255) (shl (mul r2 r0) 1)))))",
+    "(div (or (div r3 r2) (shl (div r0 r1) 3)) (shl (div 32 (mod r0 255)) 1))",
+    "(div (load (xor 1 r2)) (mod r0 r1))",
+    "(shl (add 6 (add (mul 32 (mul 7 (add 4 (add in1 (add in0 6))))) 4)) 3)"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_208",
+   "lhs": "(and (or ?x 0) ?y)",
+   "rhs": "(and ?x ?y)",
+   "lhs_cost": 5,
+   "rhs_cost": 3,
+   "prompt": 151,
+   "seeds": [
+    "(shl (sub 1 (mul (add in0 7) in1)) 1)",
+    "(or (not (neg (not (mod (mod r3 2) (shl r3 r3))))) (or (shl (xor r3 2) 1) (not r2)))",
+    "(shl (and (sub 8 r0) (neg (or r0 3))) (mul (load 2040) (shl (add r0 -1) 504)))",
+    "(add (add 8 (add (shl in2 1) (add in0 9))) (sub 0 (shl in1 3)))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_209",
+   "lhs": "(sub ?x (mul ?y 2))",
+   "rhs": "(sub ?x (add ?y ?y))",
+   "lhs_cost": 7,
+   "rhs_cost": 5,
+   "prompt": 153,
+   "seeds": [
+    "(shr (sub (not (neg (xor (add (sub 255 r3) (xor r2 r0)) (sub (neg r0) (shl r3 r1))))) (mod (load (and (shl r0 r0) 63)) (not (and r0 8)))) 2)",
+    "(sub (add (mul 4 (mul (sub 89 89) 4)) in0) (add in0 (mul 4 (mul (sub 89 89) 4))))",
+    "(or (load (xor (shr (load (shr r1 r1)) (and r0 r2)) (shl (xor (shl (shl r0 1) 2) 11) 1))) (neg (add (div (add r2 r1) 8) (xor r3 r1))))",
+    "(shl (shl -1 (div r1 r3)) (shl (neg (shr 1 r3)) 1))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_210",
+   "lhs": "(sub ?x (neg ?x))",
+   "rhs": "(shl ?x 1)",
+   "lhs_cost": 4,
+   "rhs_cost": 3,
+   "prompt": 40,
+   "seeds": [
+    "(div (mod (shl (add -256 (add r0 r1)) 1) (add (shl r3 1) -8)) (or (mul (xor -1 r0) (xor r3 r0)) (neg (shr r2 r0))))",
+    "(sub (mul (add 25 in1) (shl in1 2)) (mul (shl in1 2) (add 25 in1)))",
+    "(shr (div (mod (load (or r1 r2)) 0) (shl (shl (mod r1 4) (shl r0 r2)) 1)) 1)",
+    "(shl (add in0 (add (shl (sub (add 10 in0) (add in0 10)) 4) (add 6 2))) 3)"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_211",
+   "lhs": "(or (not ?x) (not ?y))",
+   "rhs": "(not (and ?x ?y))",
+   "lhs_cost": 5,
+   "rhs_cost": 4,
+   "prompt": 132,
+   "seeds": [
+    "(load (mul (or (neg r3) (mod r2 r2)) (shl (load (div 255 r1)) 4)))",
+    "(or (shl (sub r2 3) (load (load 4))) (mod (load (mul r3 r3)) (div (mod 2 r0) 16)))",
+    "(mul (shl (load (neg r1)) 1) (neg (load (shl r1 r2))))",
+    "(add 2 (add 6 (sub (add 0 (sub (mul in0 5) (mul 5 in0))) (add (sub (mul in0 5) (mul 5 in0)) 0))))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_212",
+   "lhs": "(and (or ?x ?y) (not ?x))",
+   "rhs": "(not (or ?x (not ?y)))",
+   "lhs_cost": 6,
+   "rhs_cost": 5,
+   "prompt": 144,
+   "seeds": [
+    "(or (xor r2 (shl r1 r0)) (load (mod r1 r3)))",
+    "(neg (not (mod (xor (mod r3 r0) (shr r0 8)) (shr (shl (mod r3 r0) 3) (shl (add r0 r2) 1)))))",
+    "(not (neg (shl (shr (load (div (div r0 0) 8)) (shr (load 2) (mod r1 r3))) (shl (mod (shl (and r0 3) 1) (shr (shl r2 r3) (shr r2 r0))) 2))))",
+    "(neg (not (shl (mul (add (mul r3 r3) (or r1 255)) (div r2 (shr r1 2))) (xor (shl (or 3 r2) 1) (xor 255 r0)))))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_213",
+   "lhs": "(add (mul ?x ?y) (neg (mul ?y ?z)))",
+   "rhs": "(sub (mul ?x ?y) (mul ?y ?z))",
+   "lhs_cost": 12,
+   "rhs_cost": 11,
+   "prompt": 5,
+   "seeds": [
+    "(shl (and (and (xor (and 1 r3) (shr r3 r1)) (and r2 r3)) r1) 2)",
+    "(div (sub (mul r1 3) (not (shl r3 r0))) (div (neg (not (shr r3 r1))) r1))",
+    "(mul 8 (sub (add (add 9 (add in0 (add in1 5))) (add (shl in0 1) 12)) (add (add (shl in0 1) 8) (add 4 (add (add 9 in0) (add in1 5))))))",
+    "(shl (shl (add (add 3 (mul (shl (shl (mul 3 (mul v22 5)) 3) 1) 7)) 9) 2) 1)"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_214",
+   "lhs": "(and (not ?x) (not ?y))",
+   "rhs": "(not (or ?x ?y))",
+   "lhs_cost": 5,
+   "rhs_cost": 4,
+   "prompt": 128,
+   "seeds": [
+    "(and (sub (xor r1 4) (shl (div 2 r3) 1)) (not (add r2 -1)))",
+    "(mod (load 16) (div (not r2) (div r2 3)))",
+    "(shr (shl (shl (div (add r2 r2) (mod r2 r0)) (shl (shl (mod r2 (mod r1 8)) 1) 1)) 1) (not (shr (or r2 16) (div 16 r0))))",
+    "(add (xor (mod (xor r2 -1) (sub r2 8)) (shl (shl r1 2) (neg (not (mul r2 r0))))) (load (mod (mul r3 r2) (div (shl (shl r0 8) 1) (div r2 r2)))))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_215",
+   "lhs": "(sub 0 (add ?x ?y))",
+   "rhs": "(neg (add ?x ?y))",
+   "lhs_cost": 5,
+   "rhs_cost": 4,
+   "prompt": 185,
+   "seeds": [
+    "(mul (shl (shl (sub (add in0 33) (add 33 in0)) 3) 1) 41)",
+    "(and (sub (xor r1 4) (shl (div 2 r3) 1)) (not (add r2 -1)))",
+    "(load (not (shl (mod (load 0) (div (load 253) (mul r2 3))) 2)))",
+    "(sub (sub (add (mul 42 in0) (shl in0 3)) (add (shl in0 3) (mul 42 in0))) (shl in0 4))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_216",
+   "lhs": "(add ?x (neg ?y))",
+   "rhs": "(sub ?x ?y)",
+   "lhs_cost": 4,
+   "rhs_cost": 3,
+   "prompt": 160,
+   "seeds": [
+    "(or (sub (load 0) (load (shl (shl (shr r0 -1) 4) (not r0)))) (load (shl (shl (shr r1 r0) 1) 2)))",
+    "(sub (add (shl (shl (mul (add in1 5) 5) 1) 1) 576) (add 576 (shl (shl (mul (add in1 5) 5) 1) 1)))",
+    "(and (or (neg (not (add r2 r3))) (xor r2 r3)) (shl (xor r1 r3) (shr r0 r0)))",
+    "(shl (sub (add in0 (sub (add 5 in0) (add in0 5))) (add (sub (add 5 in0) (add in0 5)) in0)) 3)"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_217",
+   "lhs": "(neg (sub (load 0) ?x))",
+   "rhs": "(sub ?x (load 0))",
+   "lhs_cost": 8,
+   "rhs_cost": 7,
+   "prompt": 162,
+   "seeds": [
+    "(or (sub (load 0) (load (shl (shl (shr r0 -1) 4) (not r0)))) (load (shl (shl (shr r1 r0) 1) 2)))",
+    "(shl (add (add (mul 4 in2) (add (sub in1 in2) 8)) 3) 3)",
+    "(mul (add 8 (add v2 (add (add (shl (shl in0 2) 2) 3) 12))) (add v3 (add v1 14)))",
+    "(add 4 (add (add 4 (add (add (add 5 (mul 9 (mul (shl in0 1) 16))) (add (shl (shl in2 2) 2) 6)) 1)) (mul (shl (sub 16 (add 5 in1)) 2) 16)))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_218",
+   "lhs": "(add (mul ?x ?y) (neg (mul ?x ?z)))",
+   "rhs": "(sub (mul ?x ?y) (mul ?x ?z))",
+   "lhs_cost": 12,
+   "rhs_cost": 11,
+   "prompt": 76,
+   "seeds": [
+    "(mul (shl (div -4 (shl r1 r1)) 2) (and (load (div 16 r3)) (load (add r2 r1))))",
+    "(mod (shl (and (div r1 r1) (load r0)) 1) (shr 11 (not r2)))",
+    "(add 8 (add (shl in0 2) (add (add 2 in0) (add in0 8))))",
+    "(shl (sub (add (add v22 4) 8) (add 8 (add v22 4))) 3)"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_219",
+   "lhs": "(add (mul ?x ?y) (neg (mul ?z ?y)))",
+   "rhs": "(sub (mul ?x ?y) (mul ?z ?y))",
+   "lhs_cost": 12,
+   "rhs_cost": 11,
+   "prompt": 82,
+   "seeds": [
+    "(add 27 (sub (add (add (add (add 4 (sub in0 in1)) 5) (add (mul in0 in1) 1)) 7) (add (add (add (add (mul in0 in1) 1) 7) (add 4 (sub in0 in1))) 5)))",
+    "(mul (sub 8 (mul 8 (mul in2 6))) (add (mul 8 (mul in2 6)) 11))",
+    "(add 8 (add (sub (add 16 (mul 6 (shl (add 9 (add in1 3)) 3))) (add (mul 6 (shl (add 9 (add in1 3)) 3)) 16)) 8))",
+    "(add (add (shl (sub (add in0 in0) (add (mul 21 in0) in0)) 3) 4) 9)"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_220",
+   "lhs": "(xor (and ?a ?b) ?a)",
+   "rhs": "(and ?a (not ?b))",
+   "lhs_cost": 5,
+   "rhs_cost": 4,
+   "prompt": 165,
+   "seeds": [
+    "(xor (xor (and -1 r0) r3) (shl (xor (shr r1 16) (shl r0 1)) 1))",
+    "(add 5 (add 17 (add (add (add 9 (add 6 19)) (add (mul 8 (mul in0 7)) 9)) 8)))",
+    "(sub (add (mul 21 (add (add (add 7 in0) in0) 4)) 64) (add 64 (mul 21 (add (add (add 7 in0) in0) 4))))",
+    "(shl (shl (mul r2 (mul (load (not r1)) r2)) (and 6 r3)) 1)"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  },
+  {
+   "name": "pool_221",
+   "lhs": "(xor ?x -1)",
+   "rhs": "(not ?x)",
+   "lhs_cost": 3,
+   "rhs_cost": 2,
+   "prompt": 104,
+   "seeds": [
+    "(not (neg (or (load 128) (div (add (shr (mod r1 r2) 2) (div r0 16)) (mul (shl r1 16) (load (or r2 8)))))))",
+    "(shl (add 11 (add (add (add 8 v17) (add v23 6)) (sub v5 16))) 4)",
+    "(mul (xor -1 (shl (shr r3 3) 2)) (shl (div r1 3) 1))",
+    "(shr (mod (shr (or 3 r2) (or r3 4)) (div (load 0) (or r3 3))) (load (or (not (neg (or (shr r3 r3) (sub r2 r0)))) r3)))"
+   ],
+   "seed_matches": 0,
+   "lowers_cost": true
+  }
+ ]
+}

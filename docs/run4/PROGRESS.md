@@ -5,7 +5,7 @@
 > - **Commits:** sumeettummarmatti <sumeettummarmatti@gmail.com>, no Claude trailers.
 > - **Pushing:** `git -c credential.helper= -c 'credential.helper=!gh auth git-credential' push`. Plain `git push` returns 403.
 
-## ▶ RESUME HERE (last updated 2026-11-23 ~14:13 IST)
+## ▶ RESUME HERE (last updated 2026-11-23 ~15:15 IST)
 
 **Run 4 is in progress on the Vultr server.**
 - Server: `ssh <server>`; work dir `/root/rlges`.
@@ -103,6 +103,7 @@
 - 11-23 12:13 IST: llm_s2 round 2, best 0.597 (~16 min/round while Ollama shares the CPU). Round 5 prompt 80/200, 25 verified, ETA ~14:30 IST. No errors.
 - 11-23 13:13 IST: llm_s2 round 7, best 0.624. Round 5 prompt 141/200, 47 verified, ETA ~14:15 IST. No errors.
 - 11-23 14:13 IST: llm_s2 round 11, best 0.624. Round 5 prompt 197/200, 64 verified, finishing now. No errors.
+- 11-23 15:15 IST: round 5 done: 20 loaded + 46 verified (seed_matches mostly 0 = diminishing returns). Rule check @25/@100: qwen_all 65.2/66.7, qwen_all5 (100 rules) 65.4/66.8, pool5 (222) 65.3/67.0: no real gain, so NO extra training arm. Launched scripts/run4_precache.sh (nice 15, 3 workers): MCTS/egglog/egglog+MCTS caches on the 1722 held-out + 784 stress terms for none and qwen_all; reused by final_eval.sh and gives the run-4 rule lift on the same test set as night 3. llm_s2 round 16, best 0.624.
 - 11-22 18:13 IST: llm_s0 round 42, score 0.637, best 0.638. No errors. Revised ETA: main results ~Tue 24 Nov 21:00 IST, llmbig ~Wed 25 Nov 12:00.
 - 11-22 20:13 IST: llm_s0 round 54, score 0.637, new best 0.643. Still improving. No errors.
 - 11-22 21:13 IST: llm_s0 round 60, new best 0.644. Still improving. No errors.
