@@ -37,6 +37,15 @@
    - After the run, remove it: `docker rm -f rlges-ollama && docker volume rm rlges-ollama`.
    - The Mac is not needed.
 
+**Current state (23 Nov, 10:45 IST)**
+- Done: builtin s0–s2 (best 0.552/0.544/0.560); llm s0 (best 0.646, after-eval @100 AZ 67.1 vs MCTS 66.5, best-known 89% vs 82%, ~7.8x fewer transitions).
+- Running: llm_s1 training (round ~45, best 0.636); then llm_s2, llmft s0–s2, final eval, llmbig (all inside `run4.sh`, do not edit that script while it runs).
+- Gap vs night 3: rule lift is +7.3 (run 4, 314 terms) vs +12.7 (night 3). Night-3 qwen12 rule file is lost (overwritten by run-4 round 1–2 files).
+- Rule-set check (`scripts/rule_select_eval.py`, MCTS on 300 train-split terms, seed 424242): none 59.4, qwen_all 66.7, all-189-verified pool 66.9 @100. So the 20-per-round filter is not the issue; the factoring rules (x*z+y*z -> (x+y)*z, x*2+x*3 -> x*5) were never found.
+- **Discovery round 5** running on the server since 23 Nov 10:36 IST: `scripts/run4_discover5.sh` (Ollama, 200 prompts, seeded from terms stuck with all 80 rules). Logs `checkpoints/run4_discover5.log`, `discover5.log`; output `benchmarks/asm/learned_rules_qwen5.json`.
+- Next (all on the SERVER, user's rule): run `rule_select_eval.py` on the server with qwen_all + round 5; if clearly better, add a follow-up script that waits for `run4.sh` to exit, trains an extra arm with the new rules, then reruns `final_eval.sh` including it.
+- **User rule (23 Nov): run everything on the server, nothing on the Mac.**
+
 
 **Each hour:**
 - Rsync the server's `checkpoints/` (results, logs, best.pt) to `~/Desktop/cap/RLGES/AlphaZero/checkpoints`.
