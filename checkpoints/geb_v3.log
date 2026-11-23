@@ -1,1 +1,4 @@
 === 2026-11-23 20:20:34 AZ-GEB from checkpoints/asm_v4_llm_s0/best.pt, round 0, kind mixed, node limit 1000, steps 30, sims 16
+round 0: samples=960 loss=1.257 az=21.28 egglog=67.54 capped=69.35 nodes az=52 egglog=928 best=21.28 (1432s)
+/usr/lib/python3.12/multiprocessing/resource_tracker.py:254: UserWarning: resource_tracker: There appear to be 5 leaked semaphore objects to clean up at shutdown
+  warnings.warn('resource_tracker: There appear to be %d '
