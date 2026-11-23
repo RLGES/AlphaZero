@@ -5,7 +5,7 @@
 > - **Commits:** sumeettummarmatti <sumeettummarmatti@gmail.com>, no Claude trailers.
 > - **Pushing:** `git -c credential.helper= -c 'credential.helper=!gh auth git-credential' push`. Plain `git push` returns 403.
 
-## ▶ RESUME HERE (last updated 2026-11-23 ~18:40 IST)
+## ▶ RESUME HERE (last updated 2026-11-23 ~19:14 IST)
 
 **Run 4 is in progress on the Vultr server.**
 - Server: `ssh <server>`; work dir `/root/rlges`.
@@ -108,6 +108,7 @@
 - 11-23 17:20 IST: CRASH in precache: egglog with qwen_all hit 11.7 GB on one held-out term, OOM killer (11:22 UTC) broke the pool (training survived). Same would have killed run4 final eval. Fix c3d36e1: final_eval runs egglog in a forked child with RLIMIT_AS 2 GB (EGGLOG_MEM_GB) + 300 s timeout, retries iterations 6/4/2/1, logs to checkpoints/egglog_fallbacks.log; builtin results identical to cache; 164 tests pass on server. Precache relaunched. qwen_all MCTS on 1722 held-out @10/25/50/100 = 66.7/71.8/73.1/74.0 (builtin 66.1 @100 -> lift +7.9; night 3 +12.5). llm_s2 round 27, best 0.631.
 - 11-23 18:13 IST: precache DONE (12:23 UTC). Held-out (1722): MCTS@100 none 66.1 / qwen_all 74.0; egglog none 80.5 / qwen_all 80.8; egglog+MCTS 80.6 / 80.9 (flat over budgets). Stress (784): MCTS@100 60.4 / 68.4; egglog 75.6 / 75.7; egglog+MCTS 75.7 / 75.8. 30 egglog memory-cap retries with qwen_all (26 at 4 iterations, 4 at 2), none failed. llm_s2 round 32, best 0.631 (r22) -> early stop at r37 if no new best.
 - 11-23 18:40 IST: USER DECISION: do all recs: skip llmbig (watcher scripts/run4_skip_llmbig.sh 3218742 kills run4.sh when it logs asm_v4_llmbig), add AZ->egglog and AZ-chosen-rules->egglog arms (separate), and build AlphaZero acting directly on e-graphs (MCTS-GEB + learning), plan docs/run4/EGRAPH_PLAN.md. Test on 60 held-out terms (llm_s0 best.pt, @100): egglog all 125 rules 86.9 (matches 4100), egglog builtin 86.3, AZ+egglog 86.6, AZrules top-k over ALL rules k=24/40/60: 79.1/79.5/81.4 (bad), builtin + AZ top-k learned + path: k=0 86.7, k=10 87.1 (matches 2643, -35%), k=20 87.1. Launched scripts/run4_azfirst.sh (k=10, 3 workers, nice 15) for llm s0-s2 on both sets. Commit c? pending push.
+- 11-23 19:14 IST: llm_s2 round 38, new best 0.632 (r35). AZ-first hybrids: llm_s0 held-out az+egglog done, azrules running. GEB prototype committed (benchmarks/asm/geb.py); 10-term smoke @2000 nodes: egglog 81.5 (0.3 s), MCTS-GEB 62.8 (11 s), AZ-GEB untrained 44.6 (5.5 s). Next: action = builtin iteration + one AZ-chosen learned rule; self-play training loop.
 - 11-22 18:13 IST: llm_s0 round 42, score 0.637, best 0.638. No errors. Revised ETA: main results ~Tue 24 Nov 21:00 IST, llmbig ~Wed 25 Nov 12:00.
 - 11-22 20:13 IST: llm_s0 round 54, score 0.637, new best 0.643. Still improving. No errors.
 - 11-22 21:13 IST: llm_s0 round 60, new best 0.644. Still improving. No errors.

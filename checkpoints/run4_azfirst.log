@@ -1,2 +1,7 @@
 === 2026-11-23 13:08:05 AZ-first hybrids for checkpoints/asm_v4_llm_s0
 heldout: asm_v4_llm_s0 az+egglog on 1722 terms
+memory allocation of 671088640 bytes failed
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+memory allocation of 2147483648 bytes failed
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+heldout: asm_v4_llm_s0 azrules+egglog on 1722 terms
