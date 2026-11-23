@@ -5,7 +5,7 @@
 > - **Commits:** sumeettummarmatti <sumeettummarmatti@gmail.com>, no Claude trailers.
 > - **Pushing:** `git -c credential.helper= -c 'credential.helper=!gh auth git-credential' push`. Plain `git push` returns 403.
 
-## ▶ RESUME HERE (last updated 2026-11-24 ~00:47 IST)
+## ▶ RESUME HERE (last updated 2026-11-24 ~01:17 IST)
 
 **Run 4 is in progress on the Vultr server.**
 - Server: `ssh <server>`; work dir `/root/rlges`.
@@ -120,6 +120,7 @@
 - 11-24 00:10 IST: Verified every deck number for the explainer session from per-term CSVs (corrections: AZ-then-egglog stress now 3 seeds 75.7; seconds ~9x; builtin MCTS ahead at 10/25/50). AZ qwen final held-out 75.22/74.77/74.98 (mean 74.99); stress s0 68.80, s1/s2 running. Launched scripts/memory_compare.py (peak RSS per egglog child, all rules vs AZ-chosen k=10, 1722 held-out, s0) -> checkpoints/memory_compare_heldout.csv; 10-term smoke: 124 rules 275 MB mean/385 max vs 54.7 rules 260/262, same score.
 - 11-24 00:45 IST: memory_compare DONE (1722 held-out): all rules 124 rules, extra RAM mean 63.7 / p95 117.5 / max 931 MB, 11 terms over 2 GB (retried), 3769 matches, 0.71 s; AZ-chosen 54.8 rules, extra 50.2 / 56.1 / 96.4 MB, 0 retries, 2090 matches, 0.49 s; improvement 80.83 vs 80.79. RESULTS.md section 8. Test sets restarted with 5 workers at 18:59 UTC. Cron replaced: 30-min update job d5ef05aa (4,34 * * * *).
 - 11-24 00:47 IST: test sets: T3 measured 399/399 (+builtin), T4 289/300, then T5, T7. No errors.
+- 11-24 01:17 IST: test sets: T3 399, T4 300, T5 500 measured (+builtin), T7 201/520. T3 egglog-stress 14.8% (<15%), T4 0% (FAIL, egglog never blows up on AC chains). Queued scripts/run_geb_probes.sh (all suites, after build). AZ-GEB suite-style training generator added (geb_train --composite -1); train-side rule-sensitive screening running. 24-term T3 probe still running (slow). Load ~11.
 - 11-22 18:13 IST: llm_s0 round 42, score 0.637, best 0.638. No errors. Revised ETA: main results ~Tue 24 Nov 21:00 IST, llmbig ~Wed 25 Nov 12:00.
 - 11-22 20:13 IST: llm_s0 round 54, score 0.637, new best 0.643. Still improving. No errors.
 - 11-22 21:13 IST: llm_s0 round 60, new best 0.644. Still improving. No errors.
