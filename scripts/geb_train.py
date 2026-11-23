@@ -15,6 +15,7 @@ best round is kept as best.pt. Resumable from latest.pt.
 from __future__ import annotations
 
 import argparse
+import contextlib
 import json
 import multiprocessing
 import os
@@ -250,10 +251,19 @@ def main() -> int:
     # spawn, not fork: forking after torch has started its thread pools deadlocks the
     # workers (first launch hung with every process at 0% CPU).
     context = multiprocessing.get_context("spawn")
-    # max_tasks_per_child: egglog e-graphs are not all freed between episodes (workers
-    # grew to 2.6 GB in geb_v4), so recycle each worker after a few tasks.
-    with ProcessPoolExecutor(a.workers, mp_context=context, initializer=_guard,
-                             max_tasks_per_child=4) as pool:
+    # egglog e-graphs are not all freed between episodes (workers grew to 2.6 GB in
+    # geb_v4), and max_tasks_per_child hung the pool (geb_v5), so every small batch of
+    # jobs gets a fresh pool.
+    class _Pool:
+        def map(self, fn, jobs):
+            jobs, out = list(jobs), []
+            for i in range(0, len(jobs), 2 * a.workers):
+                with ProcessPoolExecutor(a.workers, mp_context=context,
+                                         initializer=_guard) as fresh:
+                    out.extend(fresh.map(fn, jobs[i:i + 2 * a.workers]))
+            return out
+
+    with contextlib.nullcontext(_Pool()) as pool:
         for rnd in range(first, a.rounds):
             t0 = time.time()
             save_checkpoint(current, net, language, rnd, {})
