@@ -58,7 +58,7 @@ class EGraphEnv:
     (LLM-discovered) rules join and when."""
 
     def __init__(self, language: AsmLanguage, node_limit: int = 2000, max_steps: int = 12,
-                 kind: str = "rule"):
+                 kind: str = "rule", match_limit: int = 200):
         self.language = language
         self.adapter = AsmAdapter()
         self.names = [rule.name for rule in language.action_vocabulary()]
@@ -67,6 +67,7 @@ class EGraphEnv:
         self.node_limit = node_limit
         self.max_steps = max_steps
         self.kind = kind
+        self.match_limit = match_limit
         builtin = {name for name, _, _ in PATTERN_RULES}
         self.noop = next(i for i, n in enumerate(self.names) if n not in builtin
                          and n not in {r[0] for r in learned_named()})
@@ -105,10 +106,15 @@ class EGraphEnv:
         if self.kind == "enable":
             if action != self.noop and action not in self.active:
                 self.active = self.active + (action,)
+            from egglog import back_off, run
+
             schedule = self.builtin
             for i in self.active:
                 schedule = schedule | self.rulesets[i]
-            self.egraph.run(1, ruleset=schedule)
+            # Cap matches per rule per step (egglog's back-off scheduler) so one step
+            # cannot overshoot the e-node limit by thousands of nodes.
+            self.egraph.run(run(schedule, scheduler=back_off(match_limit=self.match_limit,
+                                                             ban_length=2)))
         else:
             self.egraph.run(self.rulesets[action])
             self.egraph.run(self.fold)
