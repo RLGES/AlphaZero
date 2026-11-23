@@ -97,13 +97,74 @@ def _network(checkpoint: str):
     return load_network(checkpoint, AsmLanguage())
 
 
+def _egglog_guarded(language, term):
+    """egglog in a forked child with a memory cap (EGGLOG_MEM_GB, default 2) and a
+    timeout (EGGLOG_TIMEOUT s, default 300). With many learned rules the e-graph can
+    outgrow the machine (one held-out term reached 11.7 GB and the OOM killer took
+    the whole pool), so on failure it retries with fewer iterations (6, 4, 2, 1) and,
+    if all fail, returns the input term unchanged. Fallbacks go to
+    checkpoints/egglog_fallbacks.log. Returns (final_term, final_cost, seconds, engine)."""
+    import pickle
+    import resource
+    import select
+    import time
+
+    from src.api import rewrite_detailed
+    from src.engines.egglog import EgglogConfig
+
+    limit = int(float(os.environ.get("EGGLOG_MEM_GB", "2")) * 2**30)
+    timeout = float(os.environ.get("EGGLOG_TIMEOUT", "300"))
+    start = time.perf_counter()
+    for iterations in (6, 4, 2, 1):
+        read, write = os.pipe()
+        pid = os.fork()
+        if pid == 0:
+            os.close(read)
+            try:
+                resource.setrlimit(resource.RLIMIT_AS, (limit, limit))
+                r = rewrite_detailed(language, term, EgglogConfig(iterations=iterations))
+                data = pickle.dumps((r.final_term, r.final_cost, r.engine))
+                with os.fdopen(write, "wb") as out:
+                    out.write(data)
+            finally:
+                os._exit(0)
+        os.close(write)
+        chunks, deadline = [], time.monotonic() + timeout
+        with os.fdopen(read, "rb") as inp:
+            while True:
+                left = deadline - time.monotonic()
+                if left <= 0 or not select.select([inp], [], [], left)[0]:
+                    os.kill(pid, 9)
+                    break
+                chunk = inp.read1(1 << 20)
+                if not chunk:
+                    break
+                chunks.append(chunk)
+        os.waitpid(pid, 0)
+        if chunks:
+            try:
+                final_term, final_cost, engine = pickle.loads(b"".join(chunks))
+            except Exception:
+                final_term = None
+            if final_term is not None:
+                if iterations != 6:
+                    _note_fallback(term, f"egglog ok with iterations={iterations}")
+                return final_term, final_cost, time.perf_counter() - start, engine
+    _note_fallback(term, "egglog failed at every iteration count; input kept")
+    return term, language.cost(term), time.perf_counter() - start, "egglog"
+
+
+def _note_fallback(term, message: str) -> None:
+    with (CHECKPOINTS / "egglog_fallbacks.log").open("a") as log:
+        log.write(f"{os.environ.get('RLGES_ASM_LEARNED', '')}\t{message}\t{term}\n")
+
+
 def _evaluate(job: tuple[str, Expr, str | None, tuple[int, ...]]) -> list[dict]:
     """All budgets for one term. ``checkpoint`` picks the engine: None is MCTS,
     "egglog" is egglog (one row, budget 0), "egglog+mcts" and "egglog+az:<path>"
     search from egglog's result, and any other value is an AlphaZero checkpoint."""
     from src.api import rewrite_detailed
     from src.engines.alphazero.config import AlphaZeroConfig
-    from src.engines.egglog import EgglogConfig
     from src.engines.mcts import MCTSConfig
 
     from .language import AsmLanguage
@@ -115,10 +176,25 @@ def _evaluate(job: tuple[str, Expr, str | None, tuple[int, ...]]) -> list[dict]:
         return _hybrid(name, term, checkpoint, budgets)
     if checkpoint == "egglog":
         budgets = (0,)
+    if checkpoint == "egglog":
+        initial = language.cost(term)
+        _, final, seconds, engine = _egglog_guarded(language, term)
+        return [
+            {
+                "term": name,
+                "engine": engine,
+                "budget": 0,
+                "seed": 0,
+                "initial_cost": initial,
+                "final_cost": final,
+                "improvement": 100 * (initial - final) / initial if initial else 0.0,
+                "transitions": "",
+                "states": "",
+                "seconds": seconds,
+            }
+        ]
     for budget in budgets:
-        if checkpoint == "egglog":
-            config = EgglogConfig()
-        elif checkpoint is None:
+        if checkpoint is None:
             config = MCTSConfig(iterations=budget, seed=0)
         else:
             config = AlphaZeroConfig(iterations=budget, seed=0, network=_network(checkpoint))
@@ -145,13 +221,13 @@ def _hybrid(name: str, term: Expr, checkpoint: str, budgets: tuple[int, ...]) ->
     """egglog first, then MCTS or AlphaZero from its extracted term."""
     from src.api import rewrite_detailed
     from src.engines.alphazero.config import AlphaZeroConfig
-    from src.engines.egglog import EgglogConfig
     from src.engines.mcts import MCTSConfig
 
     from .language import AsmLanguage
 
     language = AsmLanguage()
-    first = rewrite_detailed(language, term, EgglogConfig())
+    first_term, first_cost, first_seconds, _ = _egglog_guarded(language, term)
+    initial = language.cost(term)
     engine = "egglog+MCTS" if checkpoint == "egglog+mcts" else "egglog+AlphaZero"
     rows = []
     for budget in budgets:
@@ -160,8 +236,8 @@ def _hybrid(name: str, term: Expr, checkpoint: str, budgets: tuple[int, ...]) ->
         else:
             path = checkpoint.split(":", 1)[1]
             config = AlphaZeroConfig(iterations=budget, seed=0, network=_network(path))
-        second = rewrite_detailed(language, first.final_term, config)
-        initial, final = first.initial_cost, min(second.final_cost, first.final_cost)
+        second = rewrite_detailed(language, first_term, config)
+        final = min(second.final_cost, first_cost)
         rows.append(
             {
                 "term": name,
@@ -173,7 +249,7 @@ def _hybrid(name: str, term: Expr, checkpoint: str, budgets: tuple[int, ...]) ->
                 "improvement": 100 * (initial - final) / initial if initial else 0.0,
                 "transitions": second.statistics.get("transitions", ""),
                 "states": second.statistics.get("states_explored", ""),
-                "seconds": first.wall_time + second.wall_time,
+                "seconds": first_seconds + second.wall_time,
             }
         )
     return rows
