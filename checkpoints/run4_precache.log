@@ -1,2 +1,9 @@
 === 2026-11-23 09:45:33 caches for rules none
 heldout: MCTS on 1722 terms, rules none
+heldout: egglog on 1722 terms, rules none
+heldout: egglog + MCTS on 1722 terms, rules none
+stress: MCTS on 784 terms, rules none
+stress: egglog on 784 terms, rules none
+stress: egglog + MCTS on 784 terms, rules none
+=== 2026-11-23 10:16:13 caches for rules benchmarks/asm/learned_rules_qwen_all.json
+heldout: MCTS on 1722 terms, rules learned_rules_qwen_all

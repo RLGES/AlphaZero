@@ -1,0 +1,30 @@
+Overnight summary: asm_v4_llm_s1, rules benchmarks/asm/learned_rules_qwen_all.json (2026-11-23 05:54:39)
+
+asm training (last rounds):
+round 45: loss=1.7216 policy=1.7172 value=0.0044 samples=2976 eval_cost=2.43 score=0.6337 best=0.6364 (468.56s play, 83.75s train)
+round 46: loss=1.7175 policy=1.7133 value=0.0042 samples=3153 eval_cost=2.43 score=0.6306 best=0.6364 (437.19s play, 80.93s train)
+round 47: loss=1.7201 policy=1.7158 value=0.0043 samples=3021 eval_cost=2.43 score=0.6313 best=0.6364 (417.37s play, 80.68s train)
+early stop: no better score for 15 rounds
+Latest checkpoint: checkpoints/asm_v4_llm_s1/latest.pt
+
+BEFORE (untrained):
+Engine     Budget  Runs  Improvement  best-known  transitions   Seconds
+AlphaZero      10   314        50.0%         30%          9.9    0.0703
+MCTS           10   314        62.5%         56%         77.5    0.6048
+AlphaZero      25   314        59.6%         55%         23.9    0.1344
+MCTS           25   314        65.2%         71%        180.5    1.3705
+AlphaZero      50   314        65.2%         72%         47.5    0.2392
+MCTS           50   314        66.0%         78%        333.6    2.4992
+AlphaZero     100   314        66.6%         87%         93.7    0.4290
+MCTS          100   314        66.5%         83%        622.3    4.6306
+
+AFTER (best.pt):
+Engine     Budget  Runs  Improvement  best-known  transitions   Seconds
+AlphaZero      10   314        58.8%         51%          9.0    0.0858
+MCTS           10   314        62.5%         56%         77.5    0.5993
+AlphaZero      25   314        64.0%         67%         21.7    0.1690
+MCTS           25   314        65.2%         72%        180.5    1.3753
+AlphaZero      50   314        66.0%         80%         42.4    0.3003
+MCTS           50   314        66.0%         78%        333.6    2.4816
+AlphaZero     100   314        67.3%         90%         83.0    0.5634
+MCTS          100   314        66.5%         83%        622.3    4.6108
