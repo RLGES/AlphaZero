@@ -97,7 +97,7 @@ def _network(checkpoint: str):
     return load_network(checkpoint, AsmLanguage())
 
 
-def _egglog_guarded(language, term):
+def _egglog_guarded(language, term, rules: set[str] | None = None):
     """egglog in a forked child with a memory cap (EGGLOG_MEM_GB, default 2) and a
     timeout (EGGLOG_TIMEOUT s, default 300). With many learned rules the e-graph can
     outgrow the machine (one held-out term reached 11.7 GB and the OOM killer took
@@ -122,8 +122,11 @@ def _egglog_guarded(language, term):
             os.close(read)
             try:
                 resource.setrlimit(resource.RLIMIT_AS, (limit, limit))
+                if rules is not None:
+                    os.environ["RLGES_EGGLOG_RULES"] = ",".join(sorted(rules))
                 r = rewrite_detailed(language, term, EgglogConfig(iterations=iterations))
-                data = pickle.dumps((r.final_term, r.final_cost, r.engine))
+                matches = r.statistics.get("rule_matches", "")
+                data = pickle.dumps((r.final_term, r.final_cost, r.engine, matches))
                 with os.fdopen(write, "wb") as out:
                     out.write(data)
             finally:
@@ -143,15 +146,20 @@ def _egglog_guarded(language, term):
         os.waitpid(pid, 0)
         if chunks:
             try:
-                final_term, final_cost, engine = pickle.loads(b"".join(chunks))
+                final_term, final_cost, engine, matches = pickle.loads(b"".join(chunks))
             except Exception:
                 final_term = None
             if final_term is not None:
                 if iterations != 6:
                     _note_fallback(term, f"egglog ok with iterations={iterations}")
+                _LAST_MATCHES[0] = matches
                 return final_term, final_cost, time.perf_counter() - start, engine
     _note_fallback(term, "egglog failed at every iteration count; input kept")
+    _LAST_MATCHES[0] = ""
     return term, language.cost(term), time.perf_counter() - start, "egglog"
+
+
+_LAST_MATCHES = [""]  # rule matches of the last guarded egglog call (e-graph growth proxy)
 
 
 def _note_fallback(term, message: str) -> None:
@@ -174,6 +182,8 @@ def _evaluate(job: tuple[str, Expr, str | None, tuple[int, ...]]) -> list[dict]:
     rows = []
     if checkpoint in ("egglog+mcts",) or (checkpoint or "").startswith("egglog+az:"):
         return _hybrid(name, term, checkpoint, budgets)
+    if (checkpoint or "").startswith(("az+egglog:", "azrules+egglog:")):
+        return _az_first(name, term, checkpoint, budgets)
     if checkpoint == "egglog":
         budgets = (0,)
     if checkpoint == "egglog":
@@ -189,7 +199,7 @@ def _evaluate(job: tuple[str, Expr, str | None, tuple[int, ...]]) -> list[dict]:
                 "final_cost": final,
                 "improvement": 100 * (initial - final) / initial if initial else 0.0,
                 "transitions": "",
-                "states": "",
+                "states": _LAST_MATCHES[0],
                 "seconds": seconds,
             }
         ]
@@ -250,6 +260,70 @@ def _hybrid(name: str, term: Expr, checkpoint: str, budgets: tuple[int, ...]) ->
                 "transitions": second.statistics.get("transitions", ""),
                 "states": second.statistics.get("states_explored", ""),
                 "seconds": first_seconds + second.wall_time,
+            }
+        )
+    return rows
+
+
+def _az_rule_choice(language, term, path: str, trace) -> set[str]:
+    """Rules AlphaZero picks for ``term``: the top AZRULES_K (default 24) by the
+    network's prior at the root, plus every rule on AZ's best rewrite path."""
+    from src.engines.alphazero.inference import NetworkEvaluator
+
+    from .rules import PATTERN_RULES
+
+    k = int(os.environ.get("AZRULES_K", "24"))
+    ((prior, _),) = NetworkEvaluator(_network(path)).evaluate(language, [term])
+    vocabulary = language.action_vocabulary()
+    # AZRULES_SCOPE=learned (default) keeps every built-in rule and lets AZ choose
+    # only among the learned ones; "all" lets AZ choose among every rule.
+    builtin = {name for name, _, _ in PATTERN_RULES}
+    scope_all = os.environ.get("AZRULES_SCOPE", "learned") == "all"
+    pool = [i for i in range(len(vocabulary)) if scope_all or vocabulary[i].name not in builtin]
+    ranked = sorted(pool, key=lambda i: -float(prior[i]))
+    chosen = {vocabulary[i].name for i in ranked[:k]}
+    if not scope_all:
+        chosen |= builtin
+    return chosen | {step.action.name for step in trace}
+
+
+def _az_first(name: str, term: Expr, checkpoint: str, budgets: tuple[int, ...]) -> list[dict]:
+    """AlphaZero first. "az+egglog": egglog (all rules) from AZ's result.
+    "azrules+egglog": egglog on the original term with only the rules AZ chose
+    (_az_rule_choice). Final cost is the better of AZ and egglog; "states" holds
+    egglog's rule matches (a proxy for e-graph growth)."""
+    from src.api import rewrite_detailed
+    from src.engines.alphazero.config import AlphaZeroConfig
+
+    from .language import AsmLanguage
+
+    language = AsmLanguage()
+    kind, path = checkpoint.split(":", 1)
+    initial = language.cost(term)
+    rows = []
+    for budget in budgets:
+        config = AlphaZeroConfig(iterations=budget, seed=0, network=_network(path))
+        az = rewrite_detailed(language, term, config)
+        if kind == "az+egglog":
+            _, egg_cost, egg_seconds, _ = _egglog_guarded(language, az.final_term)
+            engine = "AlphaZero+egglog"
+        else:
+            rules = _az_rule_choice(language, term, path, az.trace)
+            _, egg_cost, egg_seconds, _ = _egglog_guarded(language, term, rules)
+            engine = f"AZrules+egglog(k={os.environ.get('AZRULES_K', '24')})"
+        final = min(az.final_cost, egg_cost)
+        rows.append(
+            {
+                "term": name,
+                "engine": engine,
+                "budget": budget,
+                "seed": 0,
+                "initial_cost": initial,
+                "final_cost": final,
+                "improvement": 100 * (initial - final) / initial if initial else 0.0,
+                "transitions": az.statistics.get("transitions", ""),
+                "states": _LAST_MATCHES[0],
+                "seconds": az.wall_time + egg_seconds,
             }
         )
     return rows
@@ -326,6 +400,25 @@ def evaluate_runs(
             log(f"{set_name}: {run.name} egglog + AlphaZero on {len(terms)} terms")
             jobs = [(n, t, f"egglog+az:{run / 'best.pt'}", budgets) for n, t in terms]
             _write(out, _run_jobs(jobs, workers))
+
+
+def evaluate_az_first(
+    runs: list[Path], sets: list[str], budgets: tuple[int, ...], workers: int, log=print,
+    limit: int = 0,
+) -> None:
+    """AZ -> egglog and AZ-chosen rules -> egglog for each run, written to
+    <run>/final_<set>_azegg.csv and <run>/final_<set>_azrules.csv."""
+    available = test_sets()
+    for set_name in sets:
+        terms = available[set_name][:limit] if limit else available[set_name]
+        for run in runs:
+            for kind, suffix in (("az+egglog", "azegg"), ("azrules+egglog", "azrules")):
+                out = run / f"final_{set_name}_{suffix}{'_limit%d' % limit if limit else ''}.csv"
+                if out.exists():
+                    continue
+                log(f"{set_name}: {run.name} {kind} on {len(terms)} terms")
+                jobs = [(n, t, f"{kind}:{run / 'best.pt'}", budgets) for n, t in terms]
+                _write(out, _run_jobs(jobs, workers))
 
 
 def main(argv: list[str] | None = None) -> int:

@@ -9,6 +9,7 @@ and ``phi`` stay uninterpreted), and extraction uses the suite's cost model.
 from __future__ import annotations
 
 import json
+import os
 
 from egglog import EGraph, String, i64, ne, rewrite, ruleset, vars_
 from egglog import Expr as EggExpr
@@ -58,10 +59,15 @@ def _apply(op: str, args: list[AsmExpr]) -> AsmExpr:
 
 def learned_patterns() -> list[tuple[str, str]]:
     """(lhs, rhs) of the learned rules the search engines load, if any."""
+    return [(lhs, rhs) for _, lhs, rhs in learned_named()]
+
+
+def learned_named() -> list[tuple[str, str, str]]:
+    """(name, lhs, rhs) of the learned rules, named as in ``AsmLanguage.rules``."""
     path = learned_path()
     if path is None or not path.exists():
         return []
-    return [(rule["lhs"], rule["rhs"]) for rule in json.loads(path.read_text())["accepted"]]
+    return [(r["name"], r["lhs"], r["rhs"]) for r in json.loads(path.read_text())["accepted"]]
 
 
 class AsmAdapter:
@@ -121,7 +127,14 @@ class AsmAdapter:
         ]
 
     def ruleset(self):
-        patterns = [(lhs, rhs) for _, lhs, rhs in PATTERN_RULES] + learned_patterns()
+        named = list(PATTERN_RULES) + learned_named()
+        # RLGES_EGGLOG_RULES (comma-separated names) keeps only those pattern rules;
+        # constant folding always stays. Used by the AZ-chosen-rules hybrid.
+        keep = os.environ.get("RLGES_EGGLOG_RULES")
+        if keep is not None:
+            wanted = set(keep.split(",")) if keep else set()
+            named = [rule for rule in named if rule[0] in wanted]
+        patterns = [(lhs, rhs) for _, lhs, rhs in named]
         return ruleset(
             *self.fold_rules(), *(self.rewrite_rule(lhs, rhs) for lhs, rhs in patterns), name="asm"
         )
