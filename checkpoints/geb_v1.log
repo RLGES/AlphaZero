@@ -1,2 +1,13 @@
 === 2026-11-23 15:44:43 AZ-GEB from checkpoints/asm_v4_llm_s0/best.pt, round 0, node limit 1000, steps 8, sims 16
 round 0: samples=256 loss=0.543 az=69.49 egglog=70.17 nodes az=119 egglog=580 best=69.49 (166s)
+round 1: samples=256 loss=0.276 az=69.49 egglog=70.17 nodes az=116 egglog=580 best=69.49 (148s)
+round 2: samples=256 loss=0.306 az=69.49 egglog=70.17 nodes az=116 egglog=580 best=69.49 (135s)
+round 3: samples=256 loss=0.309 az=69.49 egglog=70.17 nodes az=116 egglog=580 best=69.49 (137s)
+round 4: samples=256 loss=0.332 az=69.49 egglog=70.17 nodes az=116 egglog=580 best=69.49 (155s)
+round 5: samples=256 loss=0.325 az=69.47 egglog=70.17 nodes az=116 egglog=580 best=69.49 (155s)
+round 6: samples=256 loss=0.325 az=69.33 egglog=70.17 nodes az=116 egglog=580 best=69.49 (154s)
+round 7: samples=256 loss=0.310 az=69.49 egglog=70.17 nodes az=116 egglog=580 best=69.49 (147s)
+round 8: samples=256 loss=0.306 az=69.49 egglog=70.17 nodes az=116 egglog=580 best=69.49 (143s)
+round 9: samples=256 loss=0.299 az=69.49 egglog=70.17 nodes az=116 egglog=580 best=69.49 (145s)
+round 10: samples=256 loss=0.288 az=69.49 egglog=70.17 nodes az=116 egglog=580 best=69.49 (147s)
+early stop: no better validation score for 10 rounds

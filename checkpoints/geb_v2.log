@@ -1,0 +1,9 @@
+=== 2026-11-23 16:44:30 AZ-GEB from checkpoints/asm_v4_llm_s0/best.pt, round 0, kind enable_all, node limit 400, steps 16, sims 16
+round 0: samples=512 loss=1.428 az=36.05 egglog=70.09 nodes az=24 egglog=522 best=36.05 (80s)
+round 1: samples=512 loss=1.153 az=35.09 egglog=70.09 nodes az=24 egglog=522 best=36.05 (72s)
+round 2: samples=512 loss=1.105 az=36.24 egglog=70.09 nodes az=24 egglog=522 best=36.24 (69s)
+round 3: samples=512 loss=1.137 az=36.12 egglog=70.09 nodes az=24 egglog=522 best=36.24 (69s)
+round 4: samples=512 loss=1.125 az=35.41 egglog=70.09 nodes az=24 egglog=522 best=36.24 (73s)
+round 5: samples=512 loss=1.080 az=32.60 egglog=70.09 nodes az=24 egglog=522 best=36.24 (68s)
+round 6: samples=512 loss=1.060 az=32.60 egglog=70.09 nodes az=24 egglog=522 best=36.24 (74s)
+round 7: samples=512 loss=1.035 az=32.96 egglog=70.09 nodes az=24 egglog=522 best=36.24 (73s)
