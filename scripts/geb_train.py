@@ -16,6 +16,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import multiprocessing
 import os
 import time
 from concurrent.futures import ProcessPoolExecutor
@@ -55,7 +56,7 @@ def _net(path: str):
 def _guard() -> None:
     import resource
 
-    limit = 3 * 2**30
+    limit = 6 * 2**30  # torch reserves a lot of address space
     resource.setrlimit(resource.RLIMIT_AS, (limit, limit))
 
 
@@ -132,7 +133,10 @@ def main() -> int:
 
     say(f"=== {time.strftime('%F %T')} AZ-GEB from {start_path}, round {first}, "
         f"node limit {a.node_limit}, steps {a.steps}, sims {a.sims}")
-    with ProcessPoolExecutor(a.workers, initializer=_guard) as pool:
+    # spawn, not fork: forking after torch has started its thread pools deadlocks the
+    # workers (first launch hung with every process at 0% CPU).
+    context = multiprocessing.get_context("spawn")
+    with ProcessPoolExecutor(a.workers, mp_context=context, initializer=_guard) as pool:
         for rnd in range(first, a.rounds):
             t0 = time.time()
             save_checkpoint(current, net, language, rnd, {})
