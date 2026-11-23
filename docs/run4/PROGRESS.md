@@ -5,7 +5,7 @@
 > - **Commits:** sumeettummarmatti <sumeettummarmatti@gmail.com>, no Claude trailers.
 > - **Pushing:** `git -c credential.helper= -c 'credential.helper=!gh auth git-credential' push`. Plain `git push` returns 403.
 
-## ▶ RESUME HERE (last updated 2026-11-23 ~20:55 IST)
+## ▶ RESUME HERE (last updated 2026-11-23 ~21:20 IST)
 
 **Run 4 is in progress on the Vultr server.**
 - Server: `ssh <server>`; work dir `/root/rlges`.
@@ -113,6 +113,7 @@
 - 11-23 20:25 IST: AZ-GEB smoke died with the ssh session (not setsid) and was slow: one step could overshoot the node limit (7398 nodes at limit 1000). Fix: back_off(match_limit=200) per step; episode ~8 s under load. Launched training (setsid): checkpoints/geb_v1 (init llm_s0 best.pt, 32 episodes, 16 sims, 1000 nodes, 8 steps, 3 workers, nice 5), log checkpoints/geb_v1/train.log.
 - 11-23 20:22 IST: llm_s2 round 43, best 0.632. Full sets, llm_s0: azrules+egglog held-out 80.79 @100 (egglog-all 80.8, so the 60-term +0.2 did not hold), az+egglog stress 75.82, azrules stress 75.70 (egglog 75.7). Seed 1 hybrids running. AZ-GEB round 0 not finished after 40 min (slow on loaded CPU).
 - 11-23 20:55 IST: USER: keep everything for writing the paper. Added docs/paper/RESULTS.md (every number so far with its source file) and scripts/paper_figures.py (runs on the server, matplotlib installed via uv; writes docs/paper/figures/fig1_training, fig2_az_vs_mcts_314, fig3_transitions, fig4_final_{heldout,stress} as png+pdf+csv). The hourly push now re-renders figures on the server and commits docs/paper. Keep RESULTS.md updated whenever new results land.
+- 11-23 21:20 IST: CRASH fix: AZ-GEB geb_v1 hung 1 h with all workers at 0% CPU (fork after torch init deadlock). Killed those 4 PIDs, switched the pool to spawn (RLIMIT_AS 6 GB), relaunched geb_v1 from scratch at 15:44 UTC; workers at ~85% CPU. llm_s2 round 47, best 0.632 (r35), early stop at r50 if no new best. Seed-1 hybrids on stress running.
 - 11-22 18:13 IST: llm_s0 round 42, score 0.637, best 0.638. No errors. Revised ETA: main results ~Tue 24 Nov 21:00 IST, llmbig ~Wed 25 Nov 12:00.
 - 11-22 20:13 IST: llm_s0 round 54, score 0.637, new best 0.643. Still improving. No errors.
 - 11-22 21:13 IST: llm_s0 round 60, new best 0.644. Still improving. No errors.
