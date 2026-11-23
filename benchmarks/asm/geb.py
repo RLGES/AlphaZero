@@ -51,7 +51,14 @@ def _rulesets(adapter: AsmAdapter, names: list[str]) -> list:
 
 
 class EGraphEnv:
-    def __init__(self, language: AsmLanguage, node_limit: int = 2000, max_steps: int = 12):
+    """kind="rule": MCTS-GEB's action space, one action = one iteration of one rule.
+    kind="enable": guided saturation, one action = enable one learned rule (or none,
+    the FOLD index), then one iteration of the built-in rules plus every enabled
+    learned rule. Built-in rules always run; the agent decides which learned
+    (LLM-discovered) rules join and when."""
+
+    def __init__(self, language: AsmLanguage, node_limit: int = 2000, max_steps: int = 12,
+                 kind: str = "rule"):
         self.language = language
         self.adapter = AsmAdapter()
         self.names = [rule.name for rule in language.action_vocabulary()]
@@ -59,6 +66,31 @@ class EGraphEnv:
         self.fold = _RULESETS["__fold__"]
         self.node_limit = node_limit
         self.max_steps = max_steps
+        self.kind = kind
+        builtin = {name for name, _, _ in PATTERN_RULES}
+        self.noop = next(i for i, n in enumerate(self.names) if n not in builtin
+                         and n not in {r[0] for r in learned_named()})
+        if kind == "enable":
+            if "__builtin__" not in _RULESETS:
+                _RULESETS["__builtin__"] = ruleset(
+                    *self.adapter.fold_rules(),
+                    *(self.adapter.rewrite_rule(lhs, rhs) for _, lhs, rhs in PATTERN_RULES),
+                    name="geb_builtin",
+                )
+            self.builtin = _RULESETS["__builtin__"]
+            learned = {r[0] for r in learned_named()}
+            self.valid = [i for i, n in enumerate(self.names) if n in learned] + [self.noop]
+        else:
+            self.valid = list(range(len(self.names)))
+        self.active: tuple[int, ...] = ()
+
+    def snapshot(self):
+        self.egraph.push()
+        return (self.steps, self.active)
+
+    def restore(self, saved) -> None:
+        self.egraph.pop()
+        self.steps, self.active = saved
 
     def reset(self, term) -> None:
         self.egraph = EGraph()
@@ -67,10 +99,19 @@ class EGraphEnv:
         self.egraph.run(self.fold)
         self.initial_cost = self.language.cost(term)
         self.steps = 0
+        self.active = ()
 
     def apply(self, action: int) -> None:
-        self.egraph.run(self.rulesets[action])
-        self.egraph.run(self.fold)
+        if self.kind == "enable":
+            if action != self.noop and action not in self.active:
+                self.active = self.active + (action,)
+            schedule = self.builtin
+            for i in self.active:
+                schedule = schedule | self.rulesets[i]
+            self.egraph.run(1, ruleset=schedule)
+        else:
+            self.egraph.run(self.rulesets[action])
+            self.egraph.run(self.fold)
         self.steps += 1
 
     def size(self) -> int:
@@ -156,7 +197,7 @@ def _leaf_value(env: EGraphEnv, agent: Agent, node: _Node, cfg: SearchConfig, rn
     node.priors = _uniform(agent.width)
     best = cost
     for _ in range(cfg.rollout_depth):
-        env.apply(rng.randrange(agent.width))
+        env.apply(rng.choice(env.valid))
         if env.terminal():
             break
     term, cost = env.extract()
@@ -176,20 +217,18 @@ def search(env: EGraphEnv, agent: Agent, root: _Node, cfg: SearchConfig, rng: Ra
     """Run simulations from the current e-graph (restored after each one)."""
     width = agent.width
     if root.priors is None:
-        env.egraph.push()
-        steps = env.steps
+        saved = env.snapshot()
         _leaf_value(env, agent, root, cfg, rng, tracker)
-        env.egraph.pop()
-        env.steps = steps
+        env.restore(saved)
     _init(root, width)
     if cfg.dirichlet_epsilon > 0:
         noise = [rng.gammavariate(cfg.dirichlet_alpha, 1.0) for _ in range(width)]
         total = sum(noise)
         eps = cfg.dirichlet_epsilon
         root.priors = [(1 - eps) * p + eps * n / total for p, n in zip(root.priors, noise)]
+    valid = set(env.valid)
     for _ in range(cfg.simulations):
-        env.egraph.push()
-        steps = env.steps
+        saved = env.snapshot()
         node, path = root, []
         value = None
         while True:
@@ -197,7 +236,7 @@ def search(env: EGraphEnv, agent: Agent, root: _Node, cfg: SearchConfig, rng: Ra
             scale = cfg.c_puct * math.sqrt(max(1, node.total))
 
             def score(a: int, node=node, scale=scale) -> float:
-                if a in node.dead:
+                if a in node.dead or a not in valid:
                     return -1e9
                 n = node.visits[a]
                 q = node.value_sum[a] / n if n else 0.0
@@ -208,7 +247,7 @@ def search(env: EGraphEnv, agent: Agent, root: _Node, cfg: SearchConfig, rng: Ra
             env.apply(action)
             after = env.size()
             path.append((node, action))
-            if after == before and action not in node.children:
+            if after == before and action not in node.children and env.kind == "rule":
                 node.dead.add(action)  # MCTS-GEB's saturated-action pruning
             child = node.children.get(action)
             if child is None:
@@ -225,8 +264,7 @@ def search(env: EGraphEnv, agent: Agent, root: _Node, cfg: SearchConfig, rng: Ra
             parent.visits[action] += 1
             parent.value_sum[action] += value
             parent.total += 1
-        env.egraph.pop()
-        env.steps = steps
+        env.restore(saved)
     return root
 
 

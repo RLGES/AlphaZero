@@ -1,7 +1,7 @@
 # Run 4 extension: AlphaZero and e-graphs
 
 Decided 23 Nov 2026. All runs on the server. Run 4's baseline plan continues
-unchanged except llmbig, which is skipped (watcher `scripts/run4_skip_llmbig.sh`).
+unchanged except llmft and llmbig, which are skipped to free the CPU for AZ-GEB (`scripts/run4_finish.sh` stops run4.sh at the llmft step and runs the final evaluation for builtin and llm).
 
 ## Why
 On the 1,722 held-out terms (qwen_all rules): egglog 80.8, egglog+MCTS 80.9,

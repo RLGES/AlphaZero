@@ -12,8 +12,13 @@ from benchmarks.asm.language import AsmLanguage
 
 n, limit, sims, ckpt = int(sys.argv[1]), int(sys.argv[2]), int(sys.argv[3]), sys.argv[4]
 language = AsmLanguage()
-env = EGraphEnv(language, node_limit=limit, max_steps=12)
-terms = test_sets()["heldout"][:n]
+import os
+env = EGraphEnv(language, node_limit=limit, max_steps=int(os.environ.get("STEPS", "40")), kind=os.environ.get("KIND", "rule"))
+terms = test_sets()["heldout"]
+if os.environ.get("TERMS"):
+    wanted = set(open(os.environ["TERMS"]).read().split())
+    terms = [t for t in terms if t[0] in wanted]
+terms = terms[:n]
 agents = {
     "egglog": None,
     "mcts-geb": (Agent(language), SearchConfig(simulations=sims, mode="geb", rollout_depth=6)),
