@@ -1,0 +1,17 @@
+arm,engine,budget,improvement,seeds
+builtin,AlphaZero,10,50.3,3
+builtin,AlphaZero,25,55.87,3
+builtin,AlphaZero,50,58.37,3
+builtin,AlphaZero,100,59.83,3
+builtin,MCTS,10,54.4,3
+builtin,MCTS,25,58.0,3
+builtin,MCTS,50,59.1,3
+builtin,MCTS,100,59.9,3
+llm,AlphaZero,10,59.65,2
+llm,AlphaZero,25,64.5,2
+llm,AlphaZero,50,66.3,2
+llm,AlphaZero,100,67.2,2
+llm,MCTS,10,62.5,2
+llm,MCTS,25,65.2,2
+llm,MCTS,50,66.0,2
+llm,MCTS,100,66.5,2

@@ -1,0 +1,134 @@
+# Run 4 results log (for the paper)
+
+Every number here comes from a file in this repository (path given) produced on the
+run-4 server. Updated as results arrive. "Improvement" = mean relative cost reduction
+over terms, in percent. Budgets are search iterations. Bold = headline result.
+
+## Setup
+- Suite: asm (Learn-R IR), cost = op latencies (mul 3, div/mod 10, load 4, other 1).
+- Test sets (rebuilt with the night-3 commands and seeds): 1,722 held-out Learn-R
+  terms and 784 stress terms. Check: built-in MCTS@100 on held-out = 66.1, identical
+  to night 3 (`checkpoints/final_mcts_none_heldout.csv`).
+- Training: AlphaZero (PUCT + GNN), early stop after 15 rounds without a new best
+  on 300 generated validation terms (score = mean improvement at 25 iterations).
+- Hardware: 8 vCPU EPYC, 15 GiB RAM, no GPU.
+
+## 1. Rule discovery (qwen2.5-coder-7b via Ollama, Z3-verified)
+Logs: `checkpoints/discover{1..5}.log`, rules `benchmarks/asm/learned_rules_qwen*.json`.
+
+| Round | Prompts | Verified | Loaded |
+|---|---|---|---|
+| 1 | 150 | 105 | 20 |
+| 2 | 200 | 89 | 20 |
+| 3 | 200 | 71 | 20 |
+| 4 | 200 | 76 | 20 |
+| 5 (extra) | 200 | 66 | 20 |
+
+- 80 rules (rounds 1-4) = `learned_rules_qwen_all.json`, used for all llm runs.
+- Rule-set selection check, plain MCTS on 300 train-distribution terms (seed 424242,
+  `scripts/rule_select_eval.py`, `checkpoints/rulecheck5.log`):
+
+| Rule set | MCTS@25 | MCTS@100 |
+|---|---|---|
+| built-in only | 57.4 | 59.4 |
+| qwen_all (80) | 65.2 | 66.7 |
+| all 189 verified cost-lowering (rounds 1-4) | 65.2 | 66.9 |
+| qwen_all + round 5 (100) | 65.4 | 66.8 |
+| all 222 verified cost-lowering (rounds 1-5) | 65.3 | 67.0 |
+
+Finding: discovery saturates; the top-20-per-round filter is not the bottleneck.
+Round-5 rules almost never match terms that are still stuck (seed_matches ~0).
+
+## 2. Term-level AlphaZero training
+`checkpoints/asm_v4_<arm>_s<seed>/train.log`, `metrics.jsonl`.
+
+| Run | Rounds | Best validation score |
+|---|---|---|
+| builtin s0 / s1 / s2 | 55 / 32 / 55 | 0.552 / 0.544 / 0.560 |
+| llm s0 / s1 | 89 / 47 | 0.646 / 0.636 |
+| llm s2 | (running) | 0.632 at round 43 |
+
+## 3. AlphaZero vs MCTS, 314 held-out terms (per-run reports)
+`checkpoints/asm_v4_*/report_before.txt`, `report_after.txt`. Columns: improvement,
+best-known share, transitions (calls to apply).
+
+Built-in rules, trained (s0 / s1 / s2), AZ vs MCTS:
+
+| Budget | AZ s0 | AZ s1 | AZ s2 | MCTS |
+|---|---|---|---|---|
+| 10 | 50.6 | 49.4 | 50.9 | 54.4 |
+| 25 | 56.0 | 55.2 | 56.4 | 58.0 |
+| 50 | 58.3 | 58.2 | 58.6 | 59.1 |
+| 100 | 59.8 | 60.1 | 59.6 | 59.9 |
+
+Best-known @100: AZ 83/85/85% vs MCTS 80-81%. Transitions @100: AZ ~89 vs MCTS 583
+(6.5x fewer). Untrained AZ @100: 59.2 (best-known 78%).
+
+qwen rules, trained (s0 / s1), AZ vs MCTS:
+
+| Budget | AZ s0 | AZ s1 | MCTS |
+|---|---|---|---|
+| 10 | 60.5 | 58.8 | 62.5 |
+| 25 | 65.0 | 64.0 | 65.2 |
+| 50 | 66.6 | 66.0 | 66.0 |
+| 100 | **67.1** | **67.3** | 66.5 |
+
+Best-known @100: AZ 89/90% vs MCTS 82-83%. Transitions @100: AZ 80-83 vs MCTS 622
+(~7.8x fewer). Untrained AZ (qwen rules) @100: 66.6.
+
+## 4. Final test sets, engines that need no training
+`checkpoints/final_{mcts,egglog,egglogmcts}_<rules>_<set>.csv`.
+
+| Engine | Held-out, built-in | Held-out, qwen | Stress, built-in | Stress, qwen |
+|---|---|---|---|---|
+| MCTS @10 | 56.3 | 66.7 | 51.3 | 61.6 |
+| MCTS @25 | 63.0 | 71.8 | 56.6 | 66.0 |
+| MCTS @50 | 64.6 | 73.1 | 58.6 | 67.4 |
+| MCTS @100 | 66.1 | 74.0 | 60.4 | 68.4 |
+| egglog (6 iterations) | 80.5 | 80.8 | 75.6 | 75.7 |
+| egglog + MCTS (any budget) | 80.6 | 80.9 | 75.7 | 75.8 |
+
+- Rule lift for MCTS@100 on held-out: +7.9 (night 3's rules: +12.5).
+- Rule lift for egglog: +0.3. Discovered rules matter for step-wise search, barely for saturation.
+- Time per term, held-out: egglog 0.13 s (built-in) / 0.64 s (qwen, max 7.2 s); MCTS@100 3.3 s.
+- **egglog memory blow-up with many rules:** with the 80 qwen rules one held-out term
+  reached 11.7 GB and was OOM-killed. Final eval now runs egglog under a 2 GB cap,
+  retrying with fewer iterations: 30 terms needed it (26 at 4 iterations, 4 at 2), none
+  failed (`checkpoints/egglog_fallbacks.log`). Built-in rules: no cap needed.
+- Only 79 of 1,722 held-out terms change under egglog when the qwen rules are added
+  (75 better, 4 worse).
+
+## 5. AlphaZero-first hybrids (no new training)
+`checkpoints/asm_v4_llm_s<seed>/final_<set>_{azegg,azrules}.csv`.
+
+60-term pilot (llm s0, @100): egglog all 125 rules 86.9 (4,100 rule matches), egglog
+built-in 86.3, AZ then egglog 86.6; egglog on rules AZ picks from ALL rules k=24/40/60:
+79.1/79.5/81.4; built-in + AZ top-k learned + AZ path: k=0 86.7, **k=10 87.1 (2,643
+matches, -35%)**, k=20 87.1.
+
+Full sets, llm s0, k=10:
+
+| Hybrid | Held-out @10/25/50/100 | Stress @10/25/50/100 |
+|---|---|---|
+| AZ then egglog | 80.69 / 80.65 / 80.68 / 80.74 | 75.76 / 75.73 / 75.81 / 75.82 |
+| egglog on AZ-chosen rules | 80.73 / 80.76 / 80.78 / 80.79 | 75.67 / 75.68 / 75.68 / 75.70 |
+
+Finding: on the full sets both hybrids tie egglog with all rules (80.8 / 75.7); the
+pilot's +0.2 did not hold. Seeds 1-2: running.
+
+## 6. AlphaZero on e-graphs (AZ-GEB), in progress
+Design: `docs/run4/EGRAPH_PLAN.md`; code `benchmarks/asm/geb.py`, `scripts/geb_train.py`.
+
+Untrained smoke tests (`scripts/geb_smoke.py`):
+- MCTS-GEB action space (one rule, one iteration), 10 held-out terms, 2,000 nodes:
+  egglog 81.5 (0.3 s), MCTS-GEB 62.8 (11 s), AZ-GEB untrained 44.6 (5.5 s).
+- Guided saturation (enable one learned rule, then one iteration of built-in + enabled),
+  20 rule-sensitive terms: 300 nodes: egglog 77.9 / MCTS-GEB 77.4 / AZ-GEB 75.2;
+  1,000 nodes: 79.3 / 78.5 / 76.5.
+- Training run `checkpoints/geb_v1` started 23 Nov (init llm s0, 1,000 nodes, 8 steps).
+
+## Decisions and incidents (dates IST)
+- 22 Nov: test assumed built-in rules only; pinned (`tests/test_asm.py`).
+- 23 Nov: discovery round 5 run; no gain, no extra arm.
+- 23 Nov: egglog OOM in final eval fixed (memory cap + retry), commit c3d36e1.
+- 23 Nov: llmft and llmbig skipped to free CPU for AZ-GEB (user decision).

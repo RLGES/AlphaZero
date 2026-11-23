@@ -1,0 +1,9 @@
+engine,budget,transitions
+AlphaZero,10,9.1
+AlphaZero,25,21.6
+AlphaZero,50,42.0
+AlphaZero,100,81.5
+MCTS,10,77.5
+MCTS,25,180.5
+MCTS,50,333.6
+MCTS,100,622.3
