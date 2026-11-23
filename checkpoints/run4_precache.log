@@ -7,3 +7,29 @@ stress: egglog on 784 terms, rules none
 stress: egglog + MCTS on 784 terms, rules none
 === 2026-11-23 10:16:13 caches for rules benchmarks/asm/learned_rules_qwen_all.json
 heldout: MCTS on 1722 terms, rules learned_rules_qwen_all
+heldout: egglog on 1722 terms, rules learned_rules_qwen_all
+Traceback (most recent call last):
+  File "<string>", line 3, in <module>
+  File "/root/rlges/AlphaZero/benchmarks/asm/final_eval.py", line 232, in evaluate_runs
+    _write(egglog_cache, _run_jobs([(n, t, "egglog", budgets) for n, t in terms], workers))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/rlges/AlphaZero/benchmarks/asm/final_eval.py", line 186, in _run_jobs
+    return [row for rows in pool.map(_evaluate, jobs, chunksize=8) for row in rows]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/process.py", line 642, in _chain_from_iterable_of_lists
+    for element in iterable:
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 619, in result_iterator
+    yield _result_or_cancel(fs.pop())
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 317, in _result_or_cancel
+    return fut.result(timeout)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 456, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+concurrent.futures.process.BrokenProcessPool: A process in the process pool was terminated abruptly while the future was running or pending.
+=== 2026-11-23 11:46:14 caches for rules none
+=== 2026-11-23 11:46:18 caches for rules benchmarks/asm/learned_rules_qwen_all.json
+heldout: egglog on 1722 terms, rules learned_rules_qwen_all
