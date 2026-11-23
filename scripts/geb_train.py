@@ -90,7 +90,36 @@ def _score(job) -> tuple[float, float, int, int]:
     except Exception:
         az_cost, az_size = egg.initial_cost, 0
     c0 = egg.initial_cost
-    return (100 * (c0 - az_cost) / c0, 100 * (c0 - egg.best_cost) / c0, az_size, egg.final_size)
+    # "all rules, capped" baseline: always the macro action (FOLD index) in mixed mode.
+    env.reset(term)
+    capped = env.extract()[1]
+    if env.kind == "mixed":
+        while not env.terminal():
+            before = env.size()
+            env.apply(env.noop)
+            capped = min(capped, env.extract()[1])
+            if env.size() == before:
+                break
+    return (100 * (c0 - az_cost) / c0, 100 * (c0 - egg.best_cost) / c0, az_size, egg.final_size,
+            100 * (c0 - capped) / c0)
+
+
+def _terms(rng: Random, n: int, k: int, depth: tuple[int, int]) -> list:
+    """n training-split terms; with k > 0 each joins k generated terms by add/xor."""
+    if not k:
+        return generate("asm", rng, n, depth, split="train")
+    from benchmarks.asm.term import Expr
+
+    language = AsmLanguage()
+    out = []
+    while len(out) < n:
+        parts = generate("asm", rng, k, depth, split="train")
+        term = parts[0]
+        for part in parts[1:]:
+            term = Expr(rng.choice(["add", "xor"]), (term, part))
+        if language.size(term) <= language.max_nodes:
+            out.append(term)
+    return out
 
 
 def main() -> int:
@@ -107,7 +136,9 @@ def main() -> int:
     p.add_argument("--train-steps", type=int, default=150)
     p.add_argument("--validation", type=int, default=40)
     p.add_argument("--patience", type=int, default=10)
-    p.add_argument("--kind", default="enable", choices=["enable", "enable_all", "rule"])
+    p.add_argument("--composite", type=int, default=0,
+                   help="train/validate on k generated terms joined by add/xor (bigger blocks)")
+    p.add_argument("--kind", default="enable", choices=["enable", "enable_all", "rule", "mixed"])
     a = p.parse_args()
 
     out = Path(a.out)
@@ -125,7 +156,7 @@ def main() -> int:
     current = out / "current.pt"
     args = {"node_limit": a.node_limit, "steps": a.steps, "sims": a.sims, "current": str(current),
             "kind": a.kind}
-    validation = generate("asm", Random(VALIDATION_SEED), a.validation, (4, 6), split="train")
+    validation = _terms(Random(VALIDATION_SEED), a.validation, a.composite, (4, 6))
     log = (out / "train.log").open("a")
 
     def say(text: str) -> None:
@@ -142,7 +173,7 @@ def main() -> int:
         for rnd in range(first, a.rounds):
             t0 = time.time()
             save_checkpoint(current, net, language, rnd, {})
-            terms = generate("asm", Random(10_000 + rnd), a.episodes, (3, 6))
+            terms = _terms(Random(10_000 + rnd), a.episodes, a.composite, (3, 6))
             jobs = [(t, rnd * 1000 + i, args) for i, t in enumerate(terms)]
             samples = [s for batch in pool.map(_play, jobs) for s in batch]
             buffer.extend(samples)
@@ -153,6 +184,7 @@ def main() -> int:
             egg = sum(s[1] for s in scores) / len(scores)
             az_nodes = sum(s[2] for s in scores) / len(scores)
             egg_nodes = sum(s[3] for s in scores) / len(scores)
+            capped = sum(s[4] for s in scores) / len(scores)
             improved = az > best + 1e-6
             if improved:
                 best, stale = az, 0
@@ -160,13 +192,13 @@ def main() -> int:
             else:
                 stale += 1
             metrics = {"round": rnd, "samples": len(samples), **losses, "az": az, "egglog": egg,
-                       "az_nodes": az_nodes, "egglog_nodes": egg_nodes, "best": best,
+                       "az_nodes": az_nodes, "egglog_nodes": egg_nodes, "all_capped": capped, "best": best,
                        "stale": stale, "seconds": time.time() - t0}
             save_checkpoint(out / "latest.pt", net, language, rnd, metrics, optimizer)
             with (out / "metrics.jsonl").open("a") as handle:
                 handle.write(json.dumps(metrics) + "\n")
             say(f"round {rnd}: samples={len(samples)} loss={losses['loss']:.3f} "
-                f"az={az:.2f} egglog={egg:.2f} nodes az={az_nodes:.0f} egglog={egg_nodes:.0f} "
+                f"az={az:.2f} egglog={egg:.2f} capped={capped:.2f} nodes az={az_nodes:.0f} egglog={egg_nodes:.0f} "
                 f"best={best:.2f} ({time.time() - t0:.0f}s)")
             if stale >= a.patience:
                 say(f"early stop: no better validation score for {a.patience} rounds")

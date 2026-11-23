@@ -71,7 +71,21 @@ class EGraphEnv:
         builtin = {name for name, _, _ in PATTERN_RULES}
         self.noop = next(i for i, n in enumerate(self.names) if n not in builtin
                          and n not in {r[0] for r in learned_named()})
-        if kind == "enable_all":
+        if kind == "mixed":
+            # One action = one capped iteration of a single rule (MCTS-GEB's fine
+            # control), except the FOLD index, a macro action: one capped iteration of
+            # every rule. Under a tight e-node budget the agent can run everything while
+            # it is cheap and pick single rules near the limit.
+            if "__all__" not in _RULESETS:
+                named = list(PATTERN_RULES) + learned_named()
+                _RULESETS["__all__"] = ruleset(
+                    *self.adapter.fold_rules(),
+                    *(self.adapter.rewrite_rule(lhs, rhs) for _, lhs, rhs in named),
+                    name="geb_all",
+                )
+            self.builtin = _RULESETS["__all__"]
+            self.valid = list(range(len(self.names)))
+        elif kind == "enable_all":
             # Start from constant folding only; each action enables any rule (built-in
             # or learned). Under a tight e-node budget the agent must choose which
             # rules are worth the space.
@@ -109,11 +123,15 @@ class EGraphEnv:
         self.active = ()
 
     def apply(self, action: int) -> None:
-        if self.kind == "enable":
+        from egglog import back_off, run
+
+        if self.kind == "mixed":
+            chosen = self.builtin if action == self.noop else self.rulesets[action] | self.fold
+            self.egraph.run(run(chosen, scheduler=back_off(match_limit=self.match_limit,
+                                                           ban_length=2)))
+        elif self.kind in ("enable", "enable_all"):
             if action != self.noop and action not in self.active:
                 self.active = self.active + (action,)
-            from egglog import back_off, run
-
             schedule = self.builtin
             for i in self.active:
                 schedule = schedule | self.rulesets[i]
