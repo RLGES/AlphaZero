@@ -5,7 +5,7 @@
 > - **Commits:** sumeettummarmatti <sumeettummarmatti@gmail.com>, no Claude trailers.
 > - **Pushing:** `git -c credential.helper= -c 'credential.helper=!gh auth git-credential' push`. Plain `git push` returns 403.
 
-## ▶ RESUME HERE (last updated 2026-11-23 ~13:13 IST)
+## ▶ RESUME HERE (last updated 2026-11-23 ~14:13 IST)
 
 **Run 4 is in progress on the Vultr server.**
 - Server: `ssh <server>`; work dir `/root/rlges`.
@@ -102,6 +102,7 @@
 - 11-23 11:43 IST: llm_s1 finished: early stop r47, best 0.636; after-eval @10 58.8/62.5, @25 64.0/65.2, @50 66.0/66.0, @100 67.3/66.5 (AZ/MCTS), best-known@100 90% vs 83%. llm_s2 started 11:25 IST. Round 5 discovery prompt 52/200, 13 verified, ETA ~14:30 IST. Load ~11 on 8 cores (training + Ollama), 7.6 GiB RAM avail. No errors.
 - 11-23 12:13 IST: llm_s2 round 2, best 0.597 (~16 min/round while Ollama shares the CPU). Round 5 prompt 80/200, 25 verified, ETA ~14:30 IST. No errors.
 - 11-23 13:13 IST: llm_s2 round 7, best 0.624. Round 5 prompt 141/200, 47 verified, ETA ~14:15 IST. No errors.
+- 11-23 14:13 IST: llm_s2 round 11, best 0.624. Round 5 prompt 197/200, 64 verified, finishing now. No errors.
 - 11-22 18:13 IST: llm_s0 round 42, score 0.637, best 0.638. No errors. Revised ETA: main results ~Tue 24 Nov 21:00 IST, llmbig ~Wed 25 Nov 12:00.
 - 11-22 20:13 IST: llm_s0 round 54, score 0.637, new best 0.643. Still improving. No errors.
 - 11-22 21:13 IST: llm_s0 round 60, new best 0.644. Still improving. No errors.
