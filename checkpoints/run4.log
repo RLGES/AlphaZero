@@ -550,3 +550,8 @@ MCTS          100   314        66.5%         83%        622.3    4.6306
 round 0: loss=1.9415 policy=1.9288 value=0.0127 samples=3181 eval_cost=2.43 score=0.5778 best=0.5778 (623.02s play, 95.09s train)
 round 1: loss=1.8772 policy=1.8712 value=0.0060 samples=3095 eval_cost=2.43 score=0.5815 best=0.5815 (647.49s play, 90.59s train)
 round 2: loss=1.8715 policy=1.8659 value=0.0056 samples=3074 eval_cost=2.43 score=0.5974 best=0.5974 (626.02s play, 89.72s train)
+round 3: loss=1.8788 policy=1.8731 value=0.0056 samples=3155 eval_cost=2.43 score=0.6020 best=0.6020 (793.86s play, 97.33s train)
+round 4: loss=1.8643 policy=1.8587 value=0.0056 samples=3168 eval_cost=2.43 score=0.5922 best=0.6020 (728.79s play, 94.08s train)
+round 5: loss=1.8579 policy=1.8528 value=0.0051 samples=3115 eval_cost=2.43 score=0.6075 best=0.6075 (581.68s play, 95.66s train)
+round 6: loss=1.8472 policy=1.8426 value=0.0046 samples=2987 eval_cost=2.43 score=0.6244 best=0.6244 (566.99s play, 92.16s train)
+round 7: loss=1.8279 policy=1.8231 value=0.0049 samples=2905 eval_cost=2.43 score=0.6020 best=0.6244 (552.13s play, 95.15s train)
