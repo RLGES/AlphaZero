@@ -1,0 +1,9 @@
+Engine     Budget  Runs  Improvement  best-known  transitions   Seconds
+AlphaZero      10   314        60.5%         52%          9.1    0.0848
+MCTS           10   314        62.5%         56%         77.5    0.5975
+AlphaZero      25   314        65.0%         68%         21.6    0.1628
+MCTS           25   314        65.2%         72%        180.5    1.3622
+AlphaZero      50   314        66.6%         82%         41.6    0.2777
+MCTS           50   314        66.0%         77%        333.6    2.4698
+AlphaZero     100   314        67.1%         89%         80.0    0.4814
+MCTS          100   314        66.5%         82%        622.3    4.5818
