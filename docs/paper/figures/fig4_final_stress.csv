@@ -4,6 +4,7 @@ method,improvement
 "egglog, built-in",75.61
 "egglog, qwen",75.74
 "egglog then MCTS @100, qwen",75.79
-"AlphaZero @100, qwen (2 seeds)",68.59
+"AlphaZero @100, qwen (3 seeds)",68.6
+"egglog then AZ @100, qwen (3 seeds)",75.78
 "AZ @100 then egglog, qwen (3 seeds)",75.72
-"egglog on AZ-chosen rules, qwen (2 seeds)",75.71
+"egglog on AZ-chosen rules, qwen (3 seeds)",75.7

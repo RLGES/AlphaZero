@@ -146,6 +146,31 @@ Untrained smoke tests (`scripts/geb_smoke.py`):
   schedule with ~2.7x fewer e-nodes; learning which learned rules to enable does not
   beat enabling them all. The next design starts from all rules and learns what to prune.
 
+## 7. FINAL run-4 tables (final eval finished 23 Nov 18:32 UTC)
+Sources: `checkpoints/final_v4_heldout.md`, `final_v4_stress.md`, `final_v4_*_egglog.md`
+(3 seeds, mean ± std over seeds, paired per-term bootstrap 95% CI).
+
+Held-out (1,722), trained AZ vs MCTS:
+
+| Arm | Budget | AZ | MCTS | AZ − MCTS | AZ Δ vs builtin (95% CI) |
+|---|---|---|---|---|---|
+| builtin | 10 | 53.6 ± 1.3 | 56.3 | -2.7 | — |
+| builtin | 100 | 66.3 ± 0.3 | 66.1 | +0.1 | — |
+| qwen | 10 | 64.4 ± 1.1 | 66.7 | -2.3 | +10.8 [+9.7, +11.9] |
+| qwen | 25 | 71.2 ± 0.7 | 71.8 | -0.6 | +10.4 [+9.5, +11.6] |
+| qwen | 50 | 73.7 ± 0.4 | 73.1 | +0.6 | +9.6 [+8.7, +10.6] |
+| **qwen** | **100** | **75.0 ± 0.2** | 74.0 | **+0.9** | **+8.7 [+7.8, +9.7]** |
+
+Stress (784): qwen @100 AZ 68.6 ± 0.2 vs MCTS 68.4 (+0.2); Δ vs builtin +9.2 [+7.8, +10.8];
+@10 59.5 vs 61.6. Builtin @100 59.4 vs 60.4.
+
+egglog comparison (held-out, qwen @100): AZ − egglog -5.8 [-6.5, -5.2]; egglog+AZ − egglog
++0.1 [+0.1, +0.1]; egglog+AZ − egglog+MCTS -0.0. AZ-first hybrids, 3 seeds: AZ→egglog
+held-out 80.74/80.66/80.62, stress 75.82/75.66/75.68; egglog on AZ-chosen rules held-out
+80.79/80.76/80.75 (`asm_v4_llm_s*/final_*_{azegg,azrules}.csv`).
+
+314-term reports (`checkpoints/ablation_v4.md`): qwen @100 AZ 67.1 ± 0.2 vs MCTS 66.5.
+
 ## Decisions and incidents (dates IST)
 - 22 Nov: test assumed built-in rules only; pinned (`tests/test_asm.py`).
 - 23 Nov: discovery round 5 run; no gain, no extra arm.
