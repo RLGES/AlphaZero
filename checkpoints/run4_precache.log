@@ -33,3 +33,76 @@ concurrent.futures.process.BrokenProcessPool: A process in the process pool was 
 === 2026-11-23 11:46:14 caches for rules none
 === 2026-11-23 11:46:18 caches for rules benchmarks/asm/learned_rules_qwen_all.json
 heldout: egglog on 1722 terms, rules learned_rules_qwen_all
+memory allocation of 2147483648 bytes failed
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+memory allocation of 134217728 bytes failed
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+memory allocation of 2147483648 bytes failed
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+memory allocation of 2147483648 bytes failed
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+memory allocation of 3758096384 bytes failed
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+memory allocation of 2147483648 bytes failed
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+memory allocation of 3758096384 bytes failed
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+memory allocation of 3758096384 bytes failed
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+memory allocation of 2147483648 bytes failed
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+memory allocation of 2147483648 bytes failed
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+memory allocation of 2147483648 bytes failed
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+heldout: egglog + MCTS on 1722 terms, rules learned_rules_qwen_all
+memory allocation of 2147483648 bytes failed
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+memory allocation of 67108864 bytes failed
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+memory allocation of 2147483648 bytes failed
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+memory allocation of 2147483648 bytes failed
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+memory allocation of 2147483648 bytes failed
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+memory allocation of 1879048192 bytes failed
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+memory allocation of 1879048192 bytes failed
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+memory allocation of 1879048192 bytes failed
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+memory allocation of 2147483648 bytes failed
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+memory allocation of 2147483648 bytes failed
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+memory allocation of 2147483648 bytes failed
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+stress: MCTS on 784 terms, rules learned_rules_qwen_all
+stress: egglog on 784 terms, rules learned_rules_qwen_all
+memory allocation of 2147483648 bytes failed
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+memory allocation of 536870912 bytes failed
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+memory allocation of 2147483648 bytes failed
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+memory allocation of 2147483648 bytes failed
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+memory allocation of 2147483648 bytes failed
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+memory allocation of 2147483648 bytes failed
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+stress: egglog + MCTS on 784 terms, rules learned_rules_qwen_all
+memory allocation of 2147483648 bytes failed
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+memory allocation of 536870912 bytes failed
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+memory allocation of 2147483648 bytes failed
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+memory allocation of 2147483648 bytes failed
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+memory allocation of 2147483648 bytes failed
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+memory allocation of 2147483648 bytes failed
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+=== 2026-11-23 12:23:43 caches done

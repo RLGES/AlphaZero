@@ -5,7 +5,7 @@
 > - **Commits:** sumeettummarmatti <sumeettummarmatti@gmail.com>, no Claude trailers.
 > - **Pushing:** `git -c credential.helper= -c 'credential.helper=!gh auth git-credential' push`. Plain `git push` returns 403.
 
-## ▶ RESUME HERE (last updated 2026-11-23 ~17:20 IST)
+## ▶ RESUME HERE (last updated 2026-11-23 ~18:13 IST)
 
 **Run 4 is in progress on the Vultr server.**
 - Server: `ssh <server>`; work dir `/root/rlges`.
@@ -106,6 +106,7 @@
 - 11-23 15:15 IST: round 5 done: 20 loaded + 46 verified (seed_matches mostly 0 = diminishing returns). Rule check @25/@100: qwen_all 65.2/66.7, qwen_all5 (100 rules) 65.4/66.8, pool5 (222) 65.3/67.0: no real gain, so NO extra training arm. Launched scripts/run4_precache.sh (nice 15, 3 workers): MCTS/egglog/egglog+MCTS caches on the 1722 held-out + 784 stress terms for none and qwen_all; reused by final_eval.sh and gives the run-4 rule lift on the same test set as night 3. llm_s2 round 16, best 0.624.
 - 11-23 16:13 IST: builtin caches done on 1722 held-out: MCTS @10/25/50/100 = 56.3/63.0/64.6/66.1 (exactly night 3 66.1, so the test set is reproduced), egglog alone 80.5, egglog+MCTS 80.6 (flat across budgets). Stress MCTS @100 60.4 (= night 3). egglog alone beats night-3 llm2 AZ (79.2)! qwen_all caches running. llm_s2 round 22, best 0.631.
 - 11-23 17:20 IST: CRASH in precache: egglog with qwen_all hit 11.7 GB on one held-out term, OOM killer (11:22 UTC) broke the pool (training survived). Same would have killed run4 final eval. Fix c3d36e1: final_eval runs egglog in a forked child with RLIMIT_AS 2 GB (EGGLOG_MEM_GB) + 300 s timeout, retries iterations 6/4/2/1, logs to checkpoints/egglog_fallbacks.log; builtin results identical to cache; 164 tests pass on server. Precache relaunched. qwen_all MCTS on 1722 held-out @10/25/50/100 = 66.7/71.8/73.1/74.0 (builtin 66.1 @100 -> lift +7.9; night 3 +12.5). llm_s2 round 27, best 0.631.
+- 11-23 18:13 IST: precache DONE (12:23 UTC). Held-out (1722): MCTS@100 none 66.1 / qwen_all 74.0; egglog none 80.5 / qwen_all 80.8; egglog+MCTS 80.6 / 80.9 (flat over budgets). Stress (784): MCTS@100 60.4 / 68.4; egglog 75.6 / 75.7; egglog+MCTS 75.7 / 75.8. 30 egglog memory-cap retries with qwen_all (26 at 4 iterations, 4 at 2), none failed. llm_s2 round 32, best 0.631 (r22) -> early stop at r37 if no new best.
 - 11-22 18:13 IST: llm_s0 round 42, score 0.637, best 0.638. No errors. Revised ETA: main results ~Tue 24 Nov 21:00 IST, llmbig ~Wed 25 Nov 12:00.
 - 11-22 20:13 IST: llm_s0 round 54, score 0.637, new best 0.643. Still improving. No errors.
 - 11-22 21:13 IST: llm_s0 round 60, new best 0.644. Still improving. No errors.
