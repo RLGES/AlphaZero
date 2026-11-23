@@ -171,6 +171,28 @@ held-out 80.74/80.66/80.62, stress 75.82/75.66/75.68; egglog on AZ-chosen rules 
 
 314-term reports (`checkpoints/ablation_v4.md`): qwen @100 AZ 67.1 ± 0.2 vs MCTS 66.5.
 
+## 8. Memory: egglog with all rules vs egglog on AlphaZero-chosen rules (measured)
+`scripts/memory_compare.py`, `checkpoints/memory_compare_heldout.csv` (all 1,722 held-out
+terms, llm s0 network, k=10). Peak RAM = ru_maxrss of each egglog child; "extra" subtracts
+the trivial-term baseline (182.9 MB all rules, 179.5 MB AZ rules). 2 GB cap, retry with
+4/2/1 iterations on failure.
+
+| | egglog, all rules | egglog, AZ-chosen rules |
+|---|---|---|
+| Rules per term | 124 | 54.8 (44 built-in + 10 learned + AZ path) |
+| Improvement | 80.83 | 80.79 |
+| Extra RAM mean / median | 63.7 / 48.5 MB | 50.2 / 48.5 MB |
+| Extra RAM p95 | 117.5 MB | 56.1 MB |
+| Extra RAM max (successful run) | 931.2 MB | 96.4 MB |
+| Terms over 100 MB extra | 112 | 0 |
+| Terms exceeding the 2 GB cap (retried) | 11 | 0 |
+| Rule matches (mean) | 3,769 | 2,090 (-45%) |
+| Seconds per term (egglog only) | 0.711 | 0.486 (-32%) |
+
+Finding: same quality (-0.04), with the memory tail removed: p95 halves, the worst case drops
+from >2 GB (11 terms) to under 100 MB extra, and egglog runs 32% faster. The max for all
+rules is understated: the 11 retried terms first exceeded 2 GB.
+
 ## Decisions and incidents (dates IST)
 - 22 Nov: test assumed built-in rules only; pinned (`tests/test_asm.py`).
 - 23 Nov: discovery round 5 run; no gain, no extra arm.

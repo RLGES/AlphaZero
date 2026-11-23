@@ -27,3 +27,21 @@ note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
 memory allocation of 1879048192 bytes failed
 note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
 700 terms
+800 terms
+memory allocation of 2147483648 bytes failed
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+900 terms
+memory allocation of 1073741824 bytes failed
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+1000 terms
+1100 terms
+1200 terms
+1300 terms
+1400 terms
+1500 terms
+memory allocation of 2147483648 bytes failed
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+1600 terms
+1700 terms
+egglog-all terms 1722 rules mean 124.0 improvement 80.83 peak MB mean 246.6 p95 300.4 max 1114.1 matches mean 3769 sec mean 0.711 retried 11
+egglog-AZ-rules terms 1722 rules mean 54.8 improvement 80.79 peak MB mean 229.7 p95 235.6 max 275.9 matches mean 2090 sec mean 0.486 retried 0
