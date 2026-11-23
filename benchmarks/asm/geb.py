@@ -71,7 +71,13 @@ class EGraphEnv:
         builtin = {name for name, _, _ in PATTERN_RULES}
         self.noop = next(i for i, n in enumerate(self.names) if n not in builtin
                          and n not in {r[0] for r in learned_named()})
-        if kind == "enable":
+        if kind == "enable_all":
+            # Start from constant folding only; each action enables any rule (built-in
+            # or learned). Under a tight e-node budget the agent must choose which
+            # rules are worth the space.
+            self.builtin = self.fold
+            self.valid = list(range(len(self.names)))
+        elif kind == "enable":
             if "__builtin__" not in _RULESETS:
                 _RULESETS["__builtin__"] = ruleset(
                     *self.adapter.fold_rules(),

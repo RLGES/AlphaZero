@@ -125,7 +125,26 @@ Untrained smoke tests (`scripts/geb_smoke.py`):
 - Guided saturation (enable one learned rule, then one iteration of built-in + enabled),
   20 rule-sensitive terms: 300 nodes: egglog 77.9 / MCTS-GEB 77.4 / AZ-GEB 75.2;
   1,000 nodes: 79.3 / 78.5 / 76.5.
-- Training run `checkpoints/geb_v1` started 23 Nov (init llm s0, 1,000 nodes, 8 steps).
+- Training run `checkpoints/geb_v1` (guided saturation, init llm s0, 1,000 nodes, 8 steps,
+  16 sims, 32 episodes/round): validation (40 train-distribution terms, depth 4-6, seed
+  515151) flat at 69.49 for 11 rounds, early-stopped; e-graphs ~116 nodes (the 8-step
+  limit binds, not the node limit).
+- `checkpoints/geb_v2` (enable any rule, starting from folding only; 400 nodes, 16 steps):
+  ~36 vs egglog 70 with 24-node e-graphs; enabling one rule per step is far too slow.
+  Stopped by hand at round 8.
+- Ablation on the same 40 validation terms, 1,000 nodes, 8 steps (`/tmp/geb_ablate.py`,
+  copied to `scripts/geb_ablate.py`):
+
+| Policy | Improvement | Mean e-nodes |
+|---|---|---|
+| egglog default schedule (6 iterations, match limit 1000) | 70.17 | 580 |
+| built-in rules only, match limit 200 per step, 8 steps | 68.45 | 115 |
+| **all rules enabled, match limit 200 per step, 8 steps** | **71.69** | **211** |
+| AZ-GEB v1 (learned choice of rules to enable) | 69.49 | 118 |
+
+  Finding: a tighter per-step match limit with more steps beats egglog's default
+  schedule with ~2.7x fewer e-nodes; learning which learned rules to enable does not
+  beat enabling them all. The next design starts from all rules and learns what to prune.
 
 ## Decisions and incidents (dates IST)
 - 22 Nov: test assumed built-in rules only; pinned (`tests/test_asm.py`).

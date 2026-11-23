@@ -39,7 +39,7 @@ _CACHE: dict = {}
 
 def _env(args) -> EGraphEnv:
     return EGraphEnv(AsmLanguage(), node_limit=args["node_limit"], max_steps=args["steps"],
-                     kind="enable")
+                     kind=args["kind"])
 
 
 def _net(path: str):
@@ -107,6 +107,7 @@ def main() -> int:
     p.add_argument("--train-steps", type=int, default=150)
     p.add_argument("--validation", type=int, default=40)
     p.add_argument("--patience", type=int, default=10)
+    p.add_argument("--kind", default="enable", choices=["enable", "enable_all", "rule"])
     a = p.parse_args()
 
     out = Path(a.out)
@@ -122,7 +123,8 @@ def main() -> int:
     stale = payload["metrics"].get("stale", 0) if first else 0
     buffer = ReplayBuffer(20_000)
     current = out / "current.pt"
-    args = {"node_limit": a.node_limit, "steps": a.steps, "sims": a.sims, "current": str(current)}
+    args = {"node_limit": a.node_limit, "steps": a.steps, "sims": a.sims, "current": str(current),
+            "kind": a.kind}
     validation = generate("asm", Random(VALIDATION_SEED), a.validation, (4, 6), split="train")
     log = (out / "train.log").open("a")
 
@@ -132,7 +134,7 @@ def main() -> int:
         log.flush()
 
     say(f"=== {time.strftime('%F %T')} AZ-GEB from {start_path}, round {first}, "
-        f"node limit {a.node_limit}, steps {a.steps}, sims {a.sims}")
+        f"kind {a.kind}, node limit {a.node_limit}, steps {a.steps}, sims {a.sims}")
     # spawn, not fork: forking after torch has started its thread pools deadlocks the
     # workers (first launch hung with every process at 0% CPU).
     context = multiprocessing.get_context("spawn")
