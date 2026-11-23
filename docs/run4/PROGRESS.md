@@ -5,7 +5,7 @@
 > - **Commits:** sumeettummarmatti <sumeettummarmatti@gmail.com>, no Claude trailers.
 > - **Pushing:** `git -c credential.helper= -c 'credential.helper=!gh auth git-credential' push`. Plain `git push` returns 403.
 
-## ▶ RESUME HERE (last updated 2026-11-23 ~10:17 IST)
+## ▶ RESUME HERE (last updated 2026-11-23 ~10:45 IST)
 
 **Run 4 is in progress on the Vultr server.**
 - Server: `ssh <server>`; work dir `/root/rlges`.
@@ -98,3 +98,4 @@
 - 11-23 01:13 IST: llm_s0 round 85, score 0.642, best 0.646. No errors.
 - 11-23 02:13 IST: llm_s0 early-stopped at round 89 (best 0.646); its after-eval (AZ vs MCTS, step 6) is running since 01:47 IST. No errors.
 - 11-23 10:17 IST: llm_s0 after-eval (314 terms) AZ vs MCTS: @10 60.5/62.5, @25 65.0/65.2, @50 66.6/66.0, @100 67.1/66.5; best-known@100 89% vs 82%; AZ ~7.8x fewer transitions. llm_s1 started 02:41 IST (tests 164 pass), round 45, best 0.636. No errors.
+- 11-23 10:45 IST: rule-set check (MCTS, 300 train-distribution terms, seed 424242): none 57.4/59.4, qwen_all(80) 65.2/66.7, pool of all 189 verified lowering rules 65.2/66.9 at @25/@100: filter is not the bottleneck, factoring rules are missing. Launched discovery round 5 on server (scripts/run4_discover5.sh, seeded from terms stuck with all 80 rules). User: run EVERYTHING on the server, nothing locally.
