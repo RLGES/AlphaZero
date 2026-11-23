@@ -5,7 +5,7 @@
 > - **Commits:** sumeettummarmatti <sumeettummarmatti@gmail.com>, no Claude trailers.
 > - **Pushing:** `git -c credential.helper= -c 'credential.helper=!gh auth git-credential' push`. Plain `git push` returns 403.
 
-## ▶ RESUME HERE (last updated 2026-11-24 ~00:45 IST)
+## ▶ RESUME HERE (last updated 2026-11-24 ~00:47 IST)
 
 **Run 4 is in progress on the Vultr server.**
 - Server: `ssh <server>`; work dir `/root/rlges`.
@@ -119,6 +119,7 @@
 - 11-23 23:40 IST: USER: build test sets inline (keep context-mode on). scripts/build_testsets.py (candidates: T3 399 real blocks, T4 300 AC chains len 10-32, T5 500 deep generated, T7 520 rule-sensitive blocks + generated) + scripts/testset_stats.py (all 10 aspects; egglog forked 2 GB cap) + scripts/run_testsets.sh launched 18:05 UTC (2 workers, nice 15), log checkpoints/testsets.log; outputs benchmarks/asm/testsets/<suite>.jsonl + _manifest.json + summary.json. Smoke: ~6.6 s wall per term with 2 workers; ETA ~3.5-4.5 h. Nothing is training now. Explainer session wants paths when final_v4_*.md and final fig4 land.
 - 11-24 00:10 IST: Verified every deck number for the explainer session from per-term CSVs (corrections: AZ-then-egglog stress now 3 seeds 75.7; seconds ~9x; builtin MCTS ahead at 10/25/50). AZ qwen final held-out 75.22/74.77/74.98 (mean 74.99); stress s0 68.80, s1/s2 running. Launched scripts/memory_compare.py (peak RSS per egglog child, all rules vs AZ-chosen k=10, 1722 held-out, s0) -> checkpoints/memory_compare_heldout.csv; 10-term smoke: 124 rules 275 MB mean/385 max vs 54.7 rules 260/262, same score.
 - 11-24 00:45 IST: memory_compare DONE (1722 held-out): all rules 124 rules, extra RAM mean 63.7 / p95 117.5 / max 931 MB, 11 terms over 2 GB (retried), 3769 matches, 0.71 s; AZ-chosen 54.8 rules, extra 50.2 / 56.1 / 96.4 MB, 0 retries, 2090 matches, 0.49 s; improvement 80.83 vs 80.79. RESULTS.md section 8. Test sets restarted with 5 workers at 18:59 UTC. Cron replaced: 30-min update job d5ef05aa (4,34 * * * *).
+- 11-24 00:47 IST: test sets: T3 measured 399/399 (+builtin), T4 289/300, then T5, T7. No errors.
 - 11-22 18:13 IST: llm_s0 round 42, score 0.637, best 0.638. No errors. Revised ETA: main results ~Tue 24 Nov 21:00 IST, llmbig ~Wed 25 Nov 12:00.
 - 11-22 20:13 IST: llm_s0 round 54, score 0.637, new best 0.643. Still improving. No errors.
 - 11-22 21:13 IST: llm_s0 round 60, new best 0.644. Still improving. No errors.
