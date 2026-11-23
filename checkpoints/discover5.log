@@ -196,3 +196,39 @@ prompt 194/200: 5 proposals, 64 verified so far (11584s)
 prompt 195/200: 5 proposals, 64 verified so far (11653s)
 prompt 196/200: 5 proposals, 64 verified so far (11733s)
 prompt 197/200: 5 proposals, 64 verified so far (11813s)
+prompt 198/200: 5 proposals, 65 verified so far (11891s)
+prompt 199/200: 5 proposals, 65 verified so far (11930s)
+prompt 200/200: 4 proposals, 66 verified so far (11982s)
+wrote benchmarks/asm/learned_rules_qwen5.json.tmp
+{
+  "prompts": 200,
+  "proposals": 971,
+  "duplicate": 337,
+  "unknown operator or arity": 125,
+  "unsound (random 32-bit test)": 301,
+  "unparseable": 132,
+  "accepted": 66,
+  "unsound (z3 unknown)": 3,
+  "right side uses unbound variables": 5,
+  "no-op": 2
+}
+  (div ?x 8) -> (shr ?x 3)  (cost 12->3)
+  (mul 8 ?x) -> (shl ?x 3)  (cost 5->3)
+  (sub (add ?x ?y) (add ?z ?y)) -> (sub ?x ?z)  (cost 7->3)
+  (add (mod ?x ?y) (neg (mod ?x ?y))) -> 0  (cost 26->1)
+  (mod (add ?x (mod ?y 1)) ?z) -> (mod ?x ?z)  (cost 25->12)
+  (mod (sub ?x (mod ?y 1)) ?z) -> (mod ?x ?z)  (cost 25->12)
+  (add (mul ?x ?z) (sub ?y (mul ?x ?z))) -> ?y  (cost 13->1)
+  (mod (shr ?x ?y) 16) -> (and (shr ?x ?y) 15)  (cost 14->5)
+  (sub (add ?x ?y) (div ?z 2)) -> (sub (add ?x ?y) (shr ?z 1))  (cost 16->7)
+  (sub (add ?x (shl ?x ?y)) (shl ?x ?y)) -> ?x  (cost 9->1)
+  (mul (sub ?x ?y) 0) -> 0  (cost 7->1)
+  (and (or (not ?x) ?y) ?y) -> ?y  (cost 6->1)
+  (mul (add ?x ?y) 1) -> (add ?x ?y)  (cost 7->3)
+  (sub (add (shl ?x ?y) ?z) ?z) -> (shl ?x ?y)  (cost 7->3)
+  (sub (add (mod ?x ?y) ?z) ?z) -> (mod ?x ?y)  (cost 16->12)
+  (sub (add (mul ?x ?y) ?z) ?z) -> (mul ?x ?y)  (cost 9->5)
+  (add (mul ?x -1) ?y) -> (sub ?y ?x)  (cost 7->3)
+  (add (mul (shl ?x ?y) ?z) (mul (shr ?x ?y) ?z)) -> (mul (add (shl ?x ?y) (shr ?x ?y)) ?z)  (cost 15->11)
+  (add (mul ?x (shl ?y ?z)) (mul ?w ?y)) -> (mul ?y (add (shl ?x ?z) ?w))  (cost 13->9)
+  (or ?x (neg (neg ?x))) -> ?x  (cost 5->1)

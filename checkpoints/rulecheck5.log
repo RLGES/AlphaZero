@@ -1,0 +1,7 @@
+100 rules -> benchmarks/asm/learned_rules_qwen_all5.json
+222 rules -> benchmarks/asm/learned_rules_pool5.json
+=== 2026-11-23 08:46:23 rule check (MCTS, 300 train-split terms, seed 424242)
+benchmarks/asm/learned_rules_qwen_all.json @25=65.2 @100=66.7
+benchmarks/asm/learned_rules_qwen_all5.json @25=65.4 @100=66.8
+benchmarks/asm/learned_rules_pool5.json @25=65.3 @100=67.0
+=== 2026-11-23 09:40:09 rule check done
