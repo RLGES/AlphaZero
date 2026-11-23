@@ -5,7 +5,7 @@
 > - **Commits:** sumeettummarmatti <sumeettummarmatti@gmail.com>, no Claude trailers.
 > - **Pushing:** `git -c credential.helper= -c 'credential.helper=!gh auth git-credential' push`. Plain `git push` returns 403.
 
-## ▶ RESUME HERE (last updated 2026-11-24 ~03:20 IST)
+## ▶ RESUME HERE (last updated 2026-11-24 ~03:47 IST)
 
 **Run 4 is in progress on the Vultr server.**
 - Server: `ssh <server>`; work dir `/root/rlges`.
@@ -125,6 +125,7 @@
 - 11-24 02:20 IST: geb_v3 round 0 (24 min): AZ 21.3 vs egglog 67.5 vs capped 69.4, AZ e-graphs only 52 nodes: the term network gives the macro action (FOLD index) ~0 prior, so AZ only picked single rules. Stopped v3; added Agent macro_prior (0.5 floor on the macro action). Started geb_v4 (same as v3 + --macro-prior 0.5, 5 workers). Stopped the redundant 24-term probe. Baseline probes (T3 all @1000, 3 workers) running; their az-geb column = untrained AZ without macro prior.
 - 11-24 02:47 IST: geb_v4 round 0 still running after 28 min (macro steps make bigger e-graphs, slower). T3 baseline probe running 59 min (3 workers). RAM used 9.1 GiB of 15. No errors.
 - 11-24 03:20 IST: geb_v4 workers grew to 1.2-2.6 GB each (egglog e-graphs not freed between episodes), 4.6 GiB free and falling, round 0 unfinished after 59 min. Stopped v4 (PIDs), added max_tasks_per_child=4, started geb_v5 (same settings). Memory back to 12 GiB free. T3 baseline probe still running (1.5 h).
+- 11-24 03:47 IST: geb_v5 round 0 running (29 min); largest worker 2.0 GB, 9.9 GiB available. T3 baseline probe at 2 h (writes results only at the end). No errors.
 - 11-22 18:13 IST: llm_s0 round 42, score 0.637, best 0.638. No errors. Revised ETA: main results ~Tue 24 Nov 21:00 IST, llmbig ~Wed 25 Nov 12:00.
 - 11-22 20:13 IST: llm_s0 round 54, score 0.637, new best 0.643. Still improving. No errors.
 - 11-22 21:13 IST: llm_s0 round 60, new best 0.644. Still improving. No errors.
