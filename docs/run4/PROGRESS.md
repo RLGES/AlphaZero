@@ -5,7 +5,7 @@
 > - **Commits:** sumeettummarmatti <sumeettummarmatti@gmail.com>, no Claude trailers.
 > - **Pushing:** `git -c credential.helper= -c 'credential.helper=!gh auth git-credential' push`. Plain `git push` returns 403.
 
-## ▶ RESUME HERE (last updated 2026-11-24 ~02:20 IST)
+## ▶ RESUME HERE (last updated 2026-11-24 ~02:47 IST)
 
 **Run 4 is in progress on the Vultr server.**
 - Server: `ssh <server>`; work dir `/root/rlges`.
@@ -123,6 +123,7 @@
 - 11-24 01:17 IST: test sets: T3 399, T4 300, T5 500 measured (+builtin), T7 201/520. T3 egglog-stress 14.8% (<15%), T4 0% (FAIL, egglog never blows up on AC chains). Queued scripts/run_geb_probes.sh (all suites, after build). AZ-GEB suite-style training generator added (geb_train --composite -1); train-side rule-sensitive screening running. 24-term T3 probe still running (slow). Load ~11.
 - 11-24 01:55 IST: TEST SUITES BUILT (5010 s): T3 366 (all criteria PASS, egglog stress exactly 15.0%), T4 300 (egglog stress 0% FAIL), T5 only 29 (FAIL: 259 dup of held-out/stress, 82 in training), T7 249 PASS. RESULTS.md section 9. Train-side rule-sensitive pool 265/1500. Started AZ-GEB v3 training (checkpoints/geb_v3: mixed actions, suite-style training terms --composite -1, 1000 nodes, 30 steps, 16 sims, 4 workers) and the baseline probes on all suites (run_geb_probes.sh, 3 workers). 24-term T3 probe still running. TODO: rebuild T5 with deeper/non-overlapping terms; redesign T4 from the held-out terms that blew up egglog.
 - 11-24 02:20 IST: geb_v3 round 0 (24 min): AZ 21.3 vs egglog 67.5 vs capped 69.4, AZ e-graphs only 52 nodes: the term network gives the macro action (FOLD index) ~0 prior, so AZ only picked single rules. Stopped v3; added Agent macro_prior (0.5 floor on the macro action). Started geb_v4 (same as v3 + --macro-prior 0.5, 5 workers). Stopped the redundant 24-term probe. Baseline probes (T3 all @1000, 3 workers) running; their az-geb column = untrained AZ without macro prior.
+- 11-24 02:47 IST: geb_v4 round 0 still running after 28 min (macro steps make bigger e-graphs, slower). T3 baseline probe running 59 min (3 workers). RAM used 9.1 GiB of 15. No errors.
 - 11-22 18:13 IST: llm_s0 round 42, score 0.637, best 0.638. No errors. Revised ETA: main results ~Tue 24 Nov 21:00 IST, llmbig ~Wed 25 Nov 12:00.
 - 11-22 20:13 IST: llm_s0 round 54, score 0.637, new best 0.643. Still improving. No errors.
 - 11-22 21:13 IST: llm_s0 round 60, new best 0.644. Still improving. No errors.
