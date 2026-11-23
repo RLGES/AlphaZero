@@ -39,3 +39,6 @@ round 37: loss=1.7232 policy=1.7185 value=0.0046 samples=2788 eval_cost=2.43 sco
 round 38: loss=1.7237 policy=1.7193 value=0.0043 samples=2794 eval_cost=2.43 score=0.6252 best=0.6316 (572.56s play, 81.4s train)
 round 39: loss=1.7236 policy=1.7194 value=0.0043 samples=2824 eval_cost=2.43 score=0.6289 best=0.6316 (591.33s play, 81.59s train)
 round 40: loss=1.7206 policy=1.7161 value=0.0045 samples=2869 eval_cost=2.43 score=0.6214 best=0.6316 (585.98s play, 84.43s train)
+round 41: loss=1.7151 policy=1.7107 value=0.0044 samples=2808 eval_cost=2.43 score=0.6315 best=0.6316 (477.94s play, 79.83s train)
+round 42: loss=1.7059 policy=1.7011 value=0.0048 samples=2870 eval_cost=2.43 score=0.6202 best=0.6316 (549.52s play, 80.9s train)
+round 43: loss=1.7162 policy=1.7119 value=0.0043 samples=2916 eval_cost=2.43 score=0.6265 best=0.6316 (759.85s play, 79.67s train)

@@ -5,7 +5,7 @@
 > - **Commits:** sumeettummarmatti <sumeettummarmatti@gmail.com>, no Claude trailers.
 > - **Pushing:** `git -c credential.helper= -c 'credential.helper=!gh auth git-credential' push`. Plain `git push` returns 403.
 
-## ▶ RESUME HERE (last updated 2026-11-23 ~19:50 IST)
+## ▶ RESUME HERE (last updated 2026-11-23 ~20:25 IST)
 
 **Run 4 is in progress on the Vultr server.**
 - Server: `ssh <server>`; work dir `/root/rlges`.
@@ -110,6 +110,7 @@
 - 11-23 18:40 IST: USER DECISION: do all recs: skip llmbig (watcher scripts/run4_skip_llmbig.sh 3218742 kills run4.sh when it logs asm_v4_llmbig), add AZ->egglog and AZ-chosen-rules->egglog arms (separate), and build AlphaZero acting directly on e-graphs (MCTS-GEB + learning), plan docs/run4/EGRAPH_PLAN.md. Test on 60 held-out terms (llm_s0 best.pt, @100): egglog all 125 rules 86.9 (matches 4100), egglog builtin 86.3, AZ+egglog 86.6, AZrules top-k over ALL rules k=24/40/60: 79.1/79.5/81.4 (bad), builtin + AZ top-k learned + path: k=0 86.7, k=10 87.1 (matches 2643, -35%), k=20 87.1. Launched scripts/run4_azfirst.sh (k=10, 3 workers, nice 15) for llm s0-s2 on both sets. Commit c? pending push.
 - 11-23 19:14 IST: llm_s2 round 38, new best 0.632 (r35). AZ-first hybrids: llm_s0 held-out az+egglog done, azrules running. GEB prototype committed (benchmarks/asm/geb.py); 10-term smoke @2000 nodes: egglog 81.5 (0.3 s), MCTS-GEB 62.8 (11 s), AZ-GEB untrained 44.6 (5.5 s). Next: action = builtin iteration + one AZ-chosen learned rule; self-play training loop.
 - 11-23 19:50 IST: USER OK: skip llmft too. scripts/run4_finish.sh 3218742 (replaced skip_llmbig watcher) stops run4.sh when it logs asm_v4_llmft, then runs TAG=v4 ARMS="builtin=none llm=qwen_all" final_eval.sh and ablation table. AZ-GEB: guided saturation (kind=enable) + scripts/geb_train.py; 20 rule-sensitive held-out terms: @300 nodes egglog 77.9 / MCTS-GEB 77.4 / AZ-GEB init 75.2; @1000 79.3 / 78.5 / 76.5. Only 79 of 1722 held-out terms are sensitive to the qwen rules under egglog. Training smoke running (slow: >13 min for 4 episodes on a loaded CPU). ETA: AZ-first hybrids Tue 24 midday; run 4 final eval Tue 24 night; AZ-GEB trained results Wed 25 - Thu 26.
+- 11-23 20:25 IST: AZ-GEB smoke died with the ssh session (not setsid) and was slow: one step could overshoot the node limit (7398 nodes at limit 1000). Fix: back_off(match_limit=200) per step; episode ~8 s under load. Launched training (setsid): checkpoints/geb_v1 (init llm_s0 best.pt, 32 episodes, 16 sims, 1000 nodes, 8 steps, 3 workers, nice 5), log checkpoints/geb_v1/train.log.
 - 11-22 18:13 IST: llm_s0 round 42, score 0.637, best 0.638. No errors. Revised ETA: main results ~Tue 24 Nov 21:00 IST, llmbig ~Wed 25 Nov 12:00.
 - 11-22 20:13 IST: llm_s0 round 54, score 0.637, new best 0.643. Still improving. No errors.
 - 11-22 21:13 IST: llm_s0 round 60, new best 0.644. Still improving. No errors.
