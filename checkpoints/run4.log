@@ -722,3 +722,47 @@ memory allocation of 1073741824 bytes failed
 note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
 memory allocation of 1073741824 bytes failed
 note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+memory allocation of 1073741824 bytes failed
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+memory allocation of 1073741824 bytes failed
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+heldout: asm_v4_llm_s2 egglog + AlphaZero on 1722 terms
+/root/rlges/AlphaZero/benchmarks/asm/final_eval.py:120: DeprecationWarning: This process (pid=3450879) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+memory allocation of 1073741824 bytes failed
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+memory allocation of 536870912 bytes failed
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+memory allocation of 150994960 bytes failed
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+memory allocation of 671088640 bytes failed
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+memory allocation of 671088640 bytes failed
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+memory allocation of 1342177280 bytes failed
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+memory allocation of 1073741824 bytes failed
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+memory allocation of 1073741824 bytes failed
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+memory allocation of 1073741824 bytes failed
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+memory allocation of 1879048192 bytes failed
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+memory allocation of 1879048192 bytes failed
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+memory allocation of 1879048192 bytes failed
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+memory allocation of 1073741824 bytes failed
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+memory allocation of 1073741824 bytes failed
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+memory allocation of 1073741824 bytes failed
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+memory allocation of 1073741824 bytes failed
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+memory allocation of 1073741824 bytes failed
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+stress: asm_v4_llm_s0 AlphaZero on 784 terms
+stress: asm_v4_llm_s1 AlphaZero on 784 terms
+stress: asm_v4_llm_s2 AlphaZero on 784 terms
