@@ -5,7 +5,7 @@
 > - **Commits:** sumeettummarmatti <sumeettummarmatti@gmail.com>, no Claude trailers.
 > - **Pushing:** `git -c credential.helper= -c 'credential.helper=!gh auth git-credential' push`. Plain `git push` returns 403.
 
-## ▶ RESUME HERE (last updated 2026-11-23 ~10:45 IST)
+## ▶ RESUME HERE (last updated 2026-11-23 ~11:43 IST)
 
 **Run 4 is in progress on the Vultr server.**
 - Server: `ssh <server>`; work dir `/root/rlges`.
@@ -39,7 +39,8 @@
 
 **Current state (23 Nov, 10:45 IST)**
 - Done: builtin s0–s2 (best 0.552/0.544/0.560); llm s0 (best 0.646, after-eval @100 AZ 67.1 vs MCTS 66.5, best-known 89% vs 82%, ~7.8x fewer transitions).
-- Running: llm_s1 training (round ~45, best 0.636); then llm_s2, llmft s0–s2, final eval, llmbig (all inside `run4.sh`, do not edit that script while it runs).
+- Done: llm s1 (early stop r47, best 0.636; @100 AZ 67.3 vs MCTS 66.5, best-known 90% vs 83%).
+- Running: llm_s2 training (started 11:25 IST); then, llmft s0–s2, final eval, llmbig (all inside `run4.sh`, do not edit that script while it runs).
 - Gap vs night 3: rule lift is +7.3 (run 4, 314 terms) vs +12.7 (night 3). Night-3 qwen12 rule file is lost (overwritten by run-4 round 1–2 files).
 - Rule-set check (`scripts/rule_select_eval.py`, MCTS on 300 train-split terms, seed 424242): none 59.4, qwen_all 66.7, all-189-verified pool 66.9 @100. So the 20-per-round filter is not the issue; the factoring rules (x*z+y*z -> (x+y)*z, x*2+x*3 -> x*5) were never found.
 - **Discovery round 5** running on the server since 23 Nov 10:36 IST: `scripts/run4_discover5.sh` (Ollama, 200 prompts, seeded from terms stuck with all 80 rules). Logs `checkpoints/run4_discover5.log`, `discover5.log`; output `benchmarks/asm/learned_rules_qwen5.json`.
@@ -98,6 +99,7 @@
 - 11-22 15:13 IST: llm_s0 round 23, score 0.624, best 0.630. No errors.
 - 11-22 16:13 IST: llm_s0 round 29, score 0.634, best 0.636. No errors.
 - 11-22 17:13 IST: llm_s0 round 36, score 0.629, best 0.638. No errors.
+- 11-23 11:43 IST: llm_s1 finished: early stop r47, best 0.636; after-eval @10 58.8/62.5, @25 64.0/65.2, @50 66.0/66.0, @100 67.3/66.5 (AZ/MCTS), best-known@100 90% vs 83%. llm_s2 started 11:25 IST. Round 5 discovery prompt 52/200, 13 verified, ETA ~14:30 IST. Load ~11 on 8 cores (training + Ollama), 7.6 GiB RAM avail. No errors.
 - 11-22 18:13 IST: llm_s0 round 42, score 0.637, best 0.638. No errors. Revised ETA: main results ~Tue 24 Nov 21:00 IST, llmbig ~Wed 25 Nov 12:00.
 - 11-22 20:13 IST: llm_s0 round 54, score 0.637, new best 0.643. Still improving. No errors.
 - 11-22 21:13 IST: llm_s0 round 60, new best 0.644. Still improving. No errors.

@@ -1,0 +1,1 @@
+round 0: loss=1.9415 policy=1.9288 value=0.0127 samples=3181 eval_cost=2.43 score=0.5778 best=0.5778 (623.02s play, 95.09s train)
