@@ -7,3 +7,5 @@ round 4: samples=512 loss=1.125 az=35.41 egglog=70.09 nodes az=24 egglog=522 bes
 round 5: samples=512 loss=1.080 az=32.60 egglog=70.09 nodes az=24 egglog=522 best=36.24 (68s)
 round 6: samples=512 loss=1.060 az=32.60 egglog=70.09 nodes az=24 egglog=522 best=36.24 (74s)
 round 7: samples=512 loss=1.035 az=32.96 egglog=70.09 nodes az=24 egglog=522 best=36.24 (73s)
+/usr/lib/python3.12/multiprocessing/resource_tracker.py:254: UserWarning: resource_tracker: There appear to be 5 leaked semaphore objects to clean up at shutdown
+  warnings.warn('resource_tracker: There appear to be %d '

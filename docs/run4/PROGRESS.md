@@ -5,7 +5,7 @@
 > - **Commits:** sumeettummarmatti <sumeettummarmatti@gmail.com>, no Claude trailers.
 > - **Pushing:** `git -c credential.helper= -c 'credential.helper=!gh auth git-credential' push`. Plain `git push` returns 403.
 
-## ▶ RESUME HERE (last updated 2026-11-23 ~22:45 IST)
+## ▶ RESUME HERE (last updated 2026-11-23 ~23:13 IST)
 
 **Run 4 is in progress on the Vultr server.**
 - Server: `ssh <server>`; work dir `/root/rlges`.
@@ -115,6 +115,7 @@
 - 11-23 20:55 IST: USER: keep everything for writing the paper. Added docs/paper/RESULTS.md (every number so far with its source file) and scripts/paper_figures.py (runs on the server, matplotlib installed via uv; writes docs/paper/figures/fig1_training, fig2_az_vs_mcts_314, fig3_transitions, fig4_final_{heldout,stress} as png+pdf+csv). The hourly push now re-renders figures on the server and commits docs/paper. Keep RESULTS.md updated whenever new results land.
 - 11-23 21:20 IST: CRASH fix: AZ-GEB geb_v1 hung 1 h with all workers at 0% CPU (fork after torch init deadlock). Killed those 4 PIDs, switched the pool to spawn (RLIMIT_AS 6 GB), relaunched geb_v1 from scratch at 15:44 UTC; workers at ~85% CPU. llm_s2 round 47, best 0.632 (r35), early stop at r50 if no new best. Seed-1 hybrids on stress running.
 - 11-23 22:45 IST: llm_s2 early-stopped r50 (best 0.632); after-eval running since 21:36 IST, then run4_finish.sh triggers the final eval. AZ-GEB v1 flat at 69.49 (egglog 70.17), early-stopped r10; v2 (enable_all, 400 nodes) ~36, stopped by hand. Ablation (40 val terms, 1000 nodes, 8 steps): egglog 70.17/580 nodes, builtin-only 68.45/115, ALL rules with match limit 200 per step 71.69/211, AZ-GEB v1 69.49/118. Next: prune design (start from all rules, learn what to drop) under tighter node budgets. Results in docs/paper/RESULTS.md.
+- 11-23 23:13 IST: llm_s2 report @100 AZ 66.8 vs MCTS 66.5 (best-known 90 vs 82). run4_finish watcher missed its trigger (log line comes after the before-eval); appended a marker line by hand at 22:40, it stopped run4.sh/llmft and started final_eval.sh (17:10 UTC). Killed 5 orphaned geb_v2 spawn workers. Final eval builtin done: held-out AZ@100 66.4/66.0/66.5 vs MCTS 66.1 (night 3 builtin 66.5), @10 54.1/52.2/54.6 vs 56.3; stress AZ@100 59.0/58.9/60.3 vs MCTS 60.4; egglog+AZ 80.6 / 75.6. llm arm running. Spec saved docs/paper/TESTSET_SPEC.md. Builder/advocate agents blocked: auto mode cannot review Agent calls because the context-mode plugin hook rewrites prompts; asked user to disable it or let me build inline. v2 enable_all result INVALID (apply() fell through to single-rule branch); fixed + mixed mode added.
 - 11-22 18:13 IST: llm_s0 round 42, score 0.637, best 0.638. No errors. Revised ETA: main results ~Tue 24 Nov 21:00 IST, llmbig ~Wed 25 Nov 12:00.
 - 11-22 20:13 IST: llm_s0 round 54, score 0.637, new best 0.643. Still improving. No errors.
 - 11-22 21:13 IST: llm_s0 round 60, new best 0.644. Still improving. No errors.

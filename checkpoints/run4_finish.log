@@ -1,0 +1,23 @@
+=== 2026-11-23 17:10:27 llmft and llmbig skipped by decision: stopped run4.sh and children (3218742 3218744
+3420378
+3420381
+3420420
+3420421)
+=== 2026-11-23 17:10:27 final evaluation (builtin, llm)
+=== 2026-11-23 17:10:27 final eval: builtin
+heldout: asm_v4_builtin_s0 AlphaZero on 1722 terms
+heldout: asm_v4_builtin_s1 AlphaZero on 1722 terms
+heldout: asm_v4_builtin_s2 AlphaZero on 1722 terms
+heldout: asm_v4_builtin_s0 egglog + AlphaZero on 1722 terms
+/root/rlges/AlphaZero/benchmarks/asm/final_eval.py:120: DeprecationWarning: This process (pid=3425233) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+heldout: asm_v4_builtin_s1 egglog + AlphaZero on 1722 terms
+heldout: asm_v4_builtin_s2 egglog + AlphaZero on 1722 terms
+stress: asm_v4_builtin_s0 AlphaZero on 784 terms
+stress: asm_v4_builtin_s1 AlphaZero on 784 terms
+stress: asm_v4_builtin_s2 AlphaZero on 784 terms
+stress: asm_v4_builtin_s0 egglog + AlphaZero on 784 terms
+stress: asm_v4_builtin_s1 egglog + AlphaZero on 784 terms
+stress: asm_v4_builtin_s2 egglog + AlphaZero on 784 terms
+=== 2026-11-23 17:41:28 final eval: llm
+heldout: asm_v4_llm_s0 AlphaZero on 1722 terms

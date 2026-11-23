@@ -4,5 +4,5 @@ method,improvement
 "egglog, built-in",80.54
 "egglog, qwen",80.83
 "egglog then MCTS @100, qwen",80.92
-"AZ @100 then egglog, qwen (2 seeds)",80.7
+"AZ @100 then egglog, qwen (3 seeds)",80.68
 "egglog on AZ-chosen rules, qwen (2 seeds)",80.78
