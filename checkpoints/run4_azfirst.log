@@ -5,3 +5,5 @@ note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
 memory allocation of 2147483648 bytes failed
 note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
 heldout: asm_v4_llm_s0 azrules+egglog on 1722 terms
+stress: asm_v4_llm_s0 az+egglog on 784 terms
+stress: asm_v4_llm_s0 azrules+egglog on 784 terms
