@@ -5,7 +5,7 @@
 > - **Commits:** sumeettummarmatti <sumeettummarmatti@gmail.com>, no Claude trailers.
 > - **Pushing:** `git -c credential.helper= -c 'credential.helper=!gh auth git-credential' push`. Plain `git push` returns 403.
 
-## ▶ RESUME HERE (last updated 2026-11-24 ~15:35 IST)
+## ▶ RESUME HERE (last updated 2026-11-24 ~16:05 IST)
 
 **Run 4 is in progress on the Vultr server.**
 - Server: `ssh <server>`; work dir `/root/rlges`.
@@ -158,6 +158,7 @@
 - 11-24 14:45 IST: AZ-GEB v2 done. Chosen on validation: Math v2 (val 26.1) -> test 17.3%; Prop v1 (val 65.4) -> test 59.5% (v2 Prop test 53.2, not chosen). vs MCTS-GEB 28.2/69.5, BackOff-200 18.6/48.4. AZ-GEB never beats MCTS-GEB on any expr; 50-90x faster. RESULTS.md section 11.
 - 11-24 15:05 IST: server idle (no jobs). All planned runs finished; awaiting user direction on next AZ-GEB step.
 - 11-24 15:35 IST: server idle, no jobs. Answered the explainer session audit (validation terms overlap held-out by construction; node limit 256 wording; fig4 seed label stale). Awaiting user decision on next step.
+- 11-24 16:05 IST: idle, no jobs; waiting for user decision.
 - 11-22 18:13 IST: llm_s0 round 42, score 0.637, best 0.638. No errors. Revised ETA: main results ~Tue 24 Nov 21:00 IST, llmbig ~Wed 25 Nov 12:00.
 - 11-22 20:13 IST: llm_s0 round 54, score 0.637, new best 0.643. Still improving. No errors.
 - 11-22 21:13 IST: llm_s0 round 60, new best 0.644. Still improving. No errors.
