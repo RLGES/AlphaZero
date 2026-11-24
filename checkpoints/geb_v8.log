@@ -36,3 +36,12 @@ round 5: samples=132 loss=0.140 az=63.35 egglog=63.35 capped=63.35 nodes az=300 
 round 6: samples=51 loss=0.130 az=63.35 egglog=63.35 capped=63.35 nodes az=300 egglog=379 best=63.55 (421s)
   _play: 10/16 (02:46:19)
   _play: 16/16 (02:46:36)
+  _score: 10/20 (02:49:22)
+  _score: 20/20 (02:51:36)
+round 7: samples=73 loss=0.121 az=63.35 egglog=63.35 capped=63.35 nodes az=300 egglog=379 best=63.55 (436s)
+  _play: 10/16 (02:51:42)
+  _play: 16/16 (02:54:12)
+  _score: 10/20 (02:57:00)
+  _score: 20/20 (02:59:07)
+round 8: samples=52 loss=0.112 az=63.35 egglog=63.35 capped=63.35 nodes az=300 egglog=379 best=63.55 (451s)
+early stop: no better validation score for 8 rounds

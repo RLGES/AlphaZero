@@ -1,0 +1,2 @@
+/root/rlges/AlphaZero/scripts/memory_compare.py:27: DeprecationWarning: This process (pid=3522148) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
