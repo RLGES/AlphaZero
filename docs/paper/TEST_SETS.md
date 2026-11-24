@@ -88,6 +88,21 @@ not built: the current term format is single-expression trees capped at 256 node
 - **Spec check:** PASS (rule-sensitive on 100%).
 - **Results:** memory test running.
 
+## AZ-GEB (AlphaZero steering egglog step by step) — not evaluated on T1-T7
+Trained only on training-style examples (never on the test sets); it never learned enough to
+be worth testing.
+| Version | Setup | Result |
+|---|---|---|
+| v1 | small terms, enable learned rules | 69.5 vs egglog 70.2 with 5x smaller e-graph; flat during training |
+| v2 | enable any rule | invalid (bug: one rule per step was run instead) |
+| v3 | large terms, 1,000 nodes | 21.3 (never used the all-rules step) |
+| v4-v6 | same | infrastructure failures (memory growth, pool hang, > 2 h per round) |
+| v7 | 500 nodes | 70.2 = capped, above egglog 65.7; copied capped every round |
+| v8 | 200 nodes | 63.35 = capped = egglog; best +0.2 once |
+Reason: on these programs the simple capped schedule already reaches nearly the best answer
+within the memory budget, so step-by-step learning has nothing to gain. The T3 baselines
+(egglog / capped / MCTS-GEB) will confirm whether any step-wise scheduler can beat capped.
+
 ## Overall conclusions so far
 - **Works:** AlphaZero beats MCTS efficiently; LLM rules add about +9; AlphaZero choosing
   egglog's rules keeps egglog's score while removing its memory blow-ups and running 32%
