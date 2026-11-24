@@ -49,7 +49,7 @@ Where the files are (on the Desktop, inside `~/Desktop/cap/RLGES/AlphaZero/`):
   | egglog then MCTS | 75.7 | 75.8 |
   | AlphaZero then egglog | — | 75.7 |
   | egglog on AlphaZero-chosen rules | — | 75.7 |
-- **AlphaZero + egglog memory:** running (results to be added).
+- **AlphaZero + egglog memory:** score 75.74 -> 75.70, worst case 577 -> 97 MB extra, 6 retries -> 0, 25% faster.
 - **Conclusions (T2):**
   1. AlphaZero ties MCTS (+0.2 ± 0.2) with qwen rules; with built-in rules MCTS is ahead
      by 1.0.
@@ -62,8 +62,7 @@ Where the files are (on the Desktop, inside `~/Desktop/cap/RLGES/AlphaZero/`):
 - **Spec check:** all criteria PASS. egglog failed outright (2 GB cap) on 7.7%, failed or
   built > 3k e-nodes on 15.0% (target 15%); 99.5% have repeated pieces; 100% of best answers
   verified on 200 random inputs.
-- **Results:** AlphaZero + egglog memory test and the egglog / BackOff-200 / MCTS-GEB baselines
-  running.
+- **AlphaZero + egglog memory:** score 89.05 -> 88.50, p95 extra RAM 330 -> 28 MB, worst case 888 MB (+12 runs over 2 GB) -> 85 MB, 40% faster. egglog / BackOff-200 / MCTS-GEB baselines still running.
 
 ## T4 — Explosion (new)
 - **What:** 300 long same-operator chains (10-32 parts) with rules that undo each other
@@ -104,6 +103,24 @@ be worth testing.
 Reason: on these programs the simple BackOff-200 schedule already reaches nearly the best answer
 within the memory budget, so step-by-step learning has nothing to gain. The T3 baselines
 (egglog / BackOff-200 / MCTS-GEB) will confirm whether any step-wise scheduler can beat BackOff-200.
+
+### Memory comparison on every test set (llm s0 network, k=10; `checkpoints/memory_compare_<set>.csv`)
+Extra RAM = peak RSS of the egglog child minus the trivial-term baseline (182.9 MB all rules,
+179.5 MB AZ rules). "Retried" = runs that exceeded the 2 GB cap at 6 iterations.
+
+| Set | Terms | Score all / AZ-rules | Extra RAM mean (all -> AZ) | p95 | max (successful) | Retried (all -> AZ) | Seconds (all -> AZ) |
+|---|---|---|---|---|---|---|---|
+| T1 held-out | 1722 | 80.83 / 80.79 | 63.7 -> 50.2 MB | 117.5 -> 56.1 | 931 -> 96 | 11 -> 0 | 0.71 -> 0.49 |
+| T2 stress | 784 | 75.74 / 75.70 | 67.6 -> 62.0 | 92.5 -> 84.3 | 577 -> 97 | 6 -> 0 | 0.62 -> 0.47 |
+| T3 large blocks | 366 | 89.05 / 88.50 | 72.6 -> 21.1 | 329.9 -> 28.0 | 888 -> 85 | 12 -> 0 | 1.32 -> 0.79 |
+| T4 explosion | 300 | 37.88 / 37.36 | 15.2 -> 16.0 | 24.3 -> 25.0 | 38 -> 33 | 0 -> 0 | 1.05 -> 1.01 |
+| T5 deep | 29 | 56.52 / 56.10 | 17.7 -> 9.3 | 72.5 -> 15.0 | 102 -> 28 | 0 -> 0 | 0.72 -> 0.53 |
+| T7 rule-sensitive | 249 | 73.71 / 72.72 | 42.9 -> 16.0 | 173.9 -> 22.0 | 689 -> 38 | 3 -> 0 | 1.01 -> 0.64 |
+
+Finding: across every set, egglog on AlphaZero-chosen rules never needed a retry (32 retries
+-> 0), cut the memory tail sharply (T3 p95 330 -> 28 MB extra) and ran 25-40% faster, for a
+score cost of 0.0-1.0 points (largest on T7, where the qwen rules matter most). T4 shows no
+memory effect (egglog never blows up there).
 
 ## Overall conclusions so far
 - **Works:** AlphaZero beats MCTS efficiently; LLM rules add about +9; AlphaZero choosing

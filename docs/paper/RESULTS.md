@@ -231,6 +231,24 @@ iteration); macro prior floor 0.5.
 - geb_v8 started: 200-node budget (tighter, where one BackOff-200 step overshoots), 16 sims,
   macro floor 0.3.
 
+### Memory comparison on every test set (llm s0 network, k=10; `checkpoints/memory_compare_<set>.csv`)
+Extra RAM = peak RSS of the egglog child minus the trivial-term baseline (182.9 MB all rules,
+179.5 MB AZ rules). "Retried" = runs that exceeded the 2 GB cap at 6 iterations.
+
+| Set | Terms | Score all / AZ-rules | Extra RAM mean (all -> AZ) | p95 | max (successful) | Retried (all -> AZ) | Seconds (all -> AZ) |
+|---|---|---|---|---|---|---|---|
+| T1 held-out | 1722 | 80.83 / 80.79 | 63.7 -> 50.2 MB | 117.5 -> 56.1 | 931 -> 96 | 11 -> 0 | 0.71 -> 0.49 |
+| T2 stress | 784 | 75.74 / 75.70 | 67.6 -> 62.0 | 92.5 -> 84.3 | 577 -> 97 | 6 -> 0 | 0.62 -> 0.47 |
+| T3 large blocks | 366 | 89.05 / 88.50 | 72.6 -> 21.1 | 329.9 -> 28.0 | 888 -> 85 | 12 -> 0 | 1.32 -> 0.79 |
+| T4 explosion | 300 | 37.88 / 37.36 | 15.2 -> 16.0 | 24.3 -> 25.0 | 38 -> 33 | 0 -> 0 | 1.05 -> 1.01 |
+| T5 deep | 29 | 56.52 / 56.10 | 17.7 -> 9.3 | 72.5 -> 15.0 | 102 -> 28 | 0 -> 0 | 0.72 -> 0.53 |
+| T7 rule-sensitive | 249 | 73.71 / 72.72 | 42.9 -> 16.0 | 173.9 -> 22.0 | 689 -> 38 | 3 -> 0 | 1.01 -> 0.64 |
+
+Finding: across every set, egglog on AlphaZero-chosen rules never needed a retry (32 retries
+-> 0), cut the memory tail sharply (T3 p95 330 -> 28 MB extra) and ran 25-40% faster, for a
+score cost of 0.0-1.0 points (largest on T7, where the qwen rules matter most). T4 shows no
+memory effect (egglog never blows up there).
+
 ## Decisions and incidents (dates IST)
 - 22 Nov: test assumed built-in rules only; pinned (`tests/test_asm.py`).
 - 23 Nov: discovery round 5 run; no gain, no extra arm.
