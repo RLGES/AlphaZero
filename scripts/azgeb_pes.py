@@ -31,7 +31,11 @@ import torch.nn as nn
 from pes.environment.base_env import BaseEnvironment
 from pes.utils.utils import get_lang
 
-LIMIT, MAX_STEPS, SIMS, C_PUCT = 500, 60, 32, 1.5
+LIMIT, MAX_STEPS, C_PUCT = 500, 60, 1.5
+SIMS = int(os.environ.get("SIMS", "32"))
+LR = float(os.environ.get("LR", "1e-3"))
+EPISODES = int(os.environ.get("EPISODES", "24"))
+ROUNDS = int(os.environ.get("ROUNDS", "30"))
 
 
 def reward_func(done, info, egraph, expr, base_cost):  # MCTS-GEB's sparse reward
@@ -171,12 +175,12 @@ def _worker(args):
     return [(x.numpy(), p, z) for x, p, z in samples], base, best, sec
 
 
-def train(lang_name, out, rounds=30, episodes=24, workers=3):
+def train(lang_name, out, rounds=ROUNDS, episodes=EPISODES, workers=3):
     os.makedirs(out, exist_ok=True)
     lang, _ = make_expr(lang_name, 0)
     n = len(lang.rewrite_rules())
     net, path = Net(n), os.path.join(out, "net.pt")
-    opt = torch.optim.Adam(net.parameters(), lr=1e-3)
+    opt = torch.optim.Adam(net.parameters(), lr=LR, weight_decay=1e-4)
     torch.save(net.state_dict(), path)
     buffer, ctx = [], mp.get_context("spawn")
     val = list(range(900, 920))  # validation seeds, never test (0-19) or train (1000+)
