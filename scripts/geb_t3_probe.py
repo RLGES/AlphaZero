@@ -40,20 +40,28 @@ def run(job):
     def agent(mode):
         def go():
             net = None
+            macro, prior = None, 0.0
+            env = EGraphEnv(lang, node_limit=limit, max_steps=30, kind="mixed")
             if mode == "az":
                 import torch
 
                 from benchmarks.asm.final_eval import _network
                 torch.set_num_threads(1)
-                net = _network("checkpoints/asm_v4_llm_s0/best.pt")
-            env = EGraphEnv(lang, node_limit=limit, max_steps=30, kind="mixed")
+                # AZ_CKPT: trained AZ-GEB checkpoint (default: the term network, untrained
+                # for e-graphs); MACRO_PRIOR: its macro-action prior floor.
+                net = _network(os.environ.get("AZ_CKPT", "checkpoints/asm_v4_llm_s0/best.pt"))
+                macro, prior = env.noop, float(os.environ.get("MACRO_PRIOR", "0"))
             cfg = SearchConfig(simulations=16, mode=mode, rollout_depth=6)
-            ep = build(term, env, Agent(lang, net), cfg, Random(0))
+            ep = build(term, env, Agent(lang, net, macro=macro, macro_prior=prior), cfg, Random(0))
             return ep.best_cost, ep.final_size
         return go
 
-    for name, fn in (("egglog", egg), ("capped", cap), ("mcts-geb", agent("geb")),
-                     ("az-geb", agent("az"))):
+    methods = (("egglog", egg), ("capped", cap), ("mcts-geb", agent("geb")),
+               ("az-geb", agent("az")))
+    only = os.environ.get("ONLY")  # e.g. ONLY=az-geb to run one method
+    for name, fn in methods:
+        if only and name != only:
+            continue
         t = time.perf_counter()
         r = _forked(fn, timeout=300)
         out[name] = (100 * (c0 - r[0]) / c0 if r else None, r[1] if r else None,
@@ -75,7 +83,7 @@ def main():
     if len(rows) > n:  # fixed random sample, so the subset is reproducible
         rows = Random(20261124).sample(rows, n)
     hard = rows
-    tag = f"{suite}_{which}_{limit}"
+    tag = f"{suite}_{which}_{limit}" + os.environ.get("TAG", "")
     out_path = f"checkpoints/geb_probe_{tag}.jsonl"
     done = {}
     if os.path.exists(out_path):  # resume: keep finished terms
@@ -98,6 +106,8 @@ def main():
     results = [done[r.get("id")] for r in hard if r.get("id") in done]
     print(f"{len(hard)} {which} {suite} terms, e-node limit {limit}")
     for name in ("egglog", "capped", "mcts-geb", "az-geb"):
+        if name not in results[0]:
+            continue
         ok = [r[name] for r in results if r[name][0] is not None]
         print(f"{name:9s} improvement {sum(x[0] for x in ok)/max(1,len(ok)):6.2f} "
               f"e-nodes {sum(x[1] for x in ok)/max(1,len(ok)):7.0f} "
