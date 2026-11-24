@@ -58,9 +58,9 @@ def run(job):
 
     methods = (("egglog", egg), ("capped", cap), ("mcts-geb", agent("geb")),
                ("az-geb", agent("az")))
-    only = os.environ.get("ONLY")  # e.g. ONLY=az-geb to run one method
+    only = os.environ.get("ONLY")  # e.g. ONLY=az-geb or ONLY=egglog,capped
     for name, fn in methods:
-        if only and name != only:
+        if only and name not in only.split(","):
             continue
         t = time.perf_counter()
         r = _forked(fn, timeout=300)
@@ -106,9 +106,9 @@ def main():
     results = [done[r.get("id")] for r in hard if r.get("id") in done]
     print(f"{len(hard)} {which} {suite} terms, e-node limit {limit}")
     for name in ("egglog", "capped", "mcts-geb", "az-geb"):
-        if name not in results[0]:
+        ok = [r[name] for r in results if name in r and r[name][0] is not None]
+        if not ok:
             continue
-        ok = [r[name] for r in results if r[name][0] is not None]
         print(f"{name:9s} improvement {sum(x[0] for x in ok)/max(1,len(ok)):6.2f} "
               f"e-nodes {sum(x[1] for x in ok)/max(1,len(ok)):7.0f} "
               f"sec {sum(x[2] for x in ok)/max(1,len(ok)):6.1f} failed {len(results)-len(ok)}")

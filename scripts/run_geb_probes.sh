@@ -5,6 +5,9 @@
 set -uo pipefail
 cd "$(dirname "$0")/.."
 export PYTHONPATH=. RLGES_ASM_LEARNED=benchmarks/asm/learned_rules_qwen_all.json
+# egglog default and BackOff-200 here; the trained AZ-GEB runs separately (TAG=_azv7).
+# The re-implemented MCTS-GEB was dropped (24 Nov): the head-to-head uses MCTS-GEB's original code.
+export ONLY=egglog,capped
 W="${WORKERS:-6}"
 for job in "T3 all 1000 100" "T3 all 300 100" "T4 all 1000 50" "T5 all 1000 29" "T7 all 1000 50"; do
   read -r suite which limit n <<< "$job"
