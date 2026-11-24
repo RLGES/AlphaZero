@@ -5,7 +5,7 @@
 > - **Commits:** sumeettummarmatti <sumeettummarmatti@gmail.com>, no Claude trailers.
 > - **Pushing:** `git -c credential.helper= -c 'credential.helper=!gh auth git-credential' push`. Plain `git push` returns 403.
 
-## ▶ RESUME HERE (last updated 2026-11-24 ~07:47 IST)
+## ▶ RESUME HERE (last updated 2026-11-24 ~08:17 IST)
 
 **Run 4 is in progress on the Vultr server.**
 - Server: `ssh <server>`; work dir `/root/rlges`.
@@ -134,6 +134,7 @@
 - 11-24 06:47 IST: geb_v7 rounds 0-3 (~6.5 min each): AZ 70.19 = capped 70.19 > egglog 65.70 (20 suite-style validation terms, 500 nodes); AZ e-graphs 408 vs egglog 644. Policy loss ~0.03: AZ has collapsed to always taking the macro (all rules capped) action, so it matches capped but adds nothing yet. Will stop at patience 8 (~round 8). Next idea: tighter budget (200 nodes) where one capped step overshoots, and/or rule-group macro actions. T3 probe at 5 h.
 - 11-24 07:17 IST: geb_v7 early-stopped r8: AZ = capped 70.19 every round (always picks macro). Started geb_v8: 200 nodes, 16 sims, macro prior 0.3. RESULTS.md section 10. T3 probe at 5.5 h.
 - 11-24 07:47 IST: geb_v8 (200 nodes) r0 AZ 63.55 vs egglog 63.35 = capped 63.35 (+0.2); r1 63.36, r2 63.35: drifting back to capped. Little headroom at 200 nodes too. T3 probe at 6 h.
+- 11-24 08:17 IST: geb_v8 rounds 4-6 flat at 63.35 = capped = egglog (best 63.55 at r0); will early-stop at r8. T3 probe at 6.5 h.
 - 11-22 18:13 IST: llm_s0 round 42, score 0.637, best 0.638. No errors. Revised ETA: main results ~Tue 24 Nov 21:00 IST, llmbig ~Wed 25 Nov 12:00.
 - 11-22 20:13 IST: llm_s0 round 54, score 0.637, new best 0.643. Still improving. No errors.
 - 11-22 21:13 IST: llm_s0 round 60, new best 0.644. Still improving. No errors.
