@@ -1,5 +1,7 @@
 # Test sets T1-T7: what each contains, and what we learned (24 Nov 2026)
 
+> Terminology: "BackOff-200" = egglog with the back-off scheduler at match limit 200 (ban length 2, up to 12 iterations); "egglog default" = back-off scheduler at match limit 1000, 6 iterations. Earlier notes called BackOff-200 "capped" / "all rules capped".
+
 "Score" = mean % reduction in code cost (higher is better). "@100" = 100 search steps.
 Sizes are expression nodes. Buckets: S < 20, M 20-60, L 60-150, XL 151-256.
 Where the files are (on the Desktop, inside `~/Desktop/cap/RLGES/AlphaZero/`):
@@ -60,7 +62,7 @@ Where the files are (on the Desktop, inside `~/Desktop/cap/RLGES/AlphaZero/`):
 - **Spec check:** all criteria PASS. egglog failed outright (2 GB cap) on 7.7%, failed or
   built > 3k e-nodes on 15.0% (target 15%); 99.5% have repeated pieces; 100% of best answers
   verified on 200 random inputs.
-- **Results:** AlphaZero + egglog memory test and the egglog / capped / MCTS-GEB baselines
+- **Results:** AlphaZero + egglog memory test and the egglog / BackOff-200 / MCTS-GEB baselines
   running.
 
 ## T4 — Explosion (new)
@@ -80,7 +82,7 @@ Where the files are (on the Desktop, inside `~/Desktop/cap/RLGES/AlphaZero/`):
 
 ## T6 — Real whole functions (not built)
 Planned in the spec as a feasibility study (multi-output basic blocks from the corpus);
-not built: the current term format is single-expression trees capped at 256 nodes.
+not built: the current term format is single-expression trees BackOff-200 at 256 nodes.
 
 ## T7 — Rule-sensitive (new)
 - **What:** 249 expressions where the qwen rules change egglog's result (blocks around the
@@ -97,17 +99,17 @@ be worth testing.
 | v2 | enable any rule | invalid (bug: one rule per step was run instead) |
 | v3 | large terms, 1,000 nodes | 21.3 (never used the all-rules step) |
 | v4-v6 | same | infrastructure failures (memory growth, pool hang, > 2 h per round) |
-| v7 | 500 nodes | 70.2 = capped, above egglog 65.7; copied capped every round |
-| v8 | 200 nodes | 63.35 = capped = egglog; best +0.2 once |
-Reason: on these programs the simple capped schedule already reaches nearly the best answer
+| v7 | 500 nodes | 70.2 = BackOff-200, above egglog 65.7; copied BackOff-200 every round |
+| v8 | 200 nodes | 63.35 = BackOff-200 = egglog; best +0.2 once |
+Reason: on these programs the simple BackOff-200 schedule already reaches nearly the best answer
 within the memory budget, so step-by-step learning has nothing to gain. The T3 baselines
-(egglog / capped / MCTS-GEB) will confirm whether any step-wise scheduler can beat capped.
+(egglog / BackOff-200 / MCTS-GEB) will confirm whether any step-wise scheduler can beat BackOff-200.
 
 ## Overall conclusions so far
 - **Works:** AlphaZero beats MCTS efficiently; LLM rules add about +9; AlphaZero choosing
   egglog's rules keeps egglog's score while removing its memory blow-ups and running 32%
   faster.
 - **Does not work yet:** AlphaZero steering egglog step by step (AZ-GEB) only matches the
-  simple "capped" schedule; on these programs simple schedules already reach nearly the best
+  simple "BackOff-200" schedule; on these programs simple schedules already reach nearly the best
   answer.
 - Full numbers and sources: `docs/paper/RESULTS.md`.
