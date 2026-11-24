@@ -6,6 +6,7 @@ term-network priors, untrained for e-graphs). Each run in a forked child, 2 GB c
 """
 import json
 import multiprocessing
+import os
 import sys
 import time
 from concurrent.futures import ProcessPoolExecutor
@@ -54,7 +55,7 @@ def run(job):
     for name, fn in (("egglog", egg), ("capped", cap), ("mcts-geb", agent("geb")),
                      ("az-geb", agent("az"))):
         t = time.perf_counter()
-        r = _forked(fn, timeout=600)
+        r = _forked(fn, timeout=300)
         out[name] = (100 * (c0 - r[0]) / c0 if r else None, r[1] if r else None,
                      round(time.perf_counter() - t, 1))
     return out
@@ -71,13 +72,30 @@ def main():
     rows = [json.loads(x) for x in open(path)]
     if which == "hard":
         rows = [r for r in rows if r.get("egglog_failed") or r.get("egglog_enodes", 0) > 3000]
-    hard = rows[:n]
-    ctx = multiprocessing.get_context("spawn")
-    with ProcessPoolExecutor(workers, mp_context=ctx) as pool:
-        results = list(pool.map(run, [(r["sexpr"], limit) for r in hard]))
+    if len(rows) > n:  # fixed random sample, so the subset is reproducible
+        rows = Random(20261124).sample(rows, n)
+    hard = rows
     tag = f"{suite}_{which}_{limit}"
-    json.dump([{"id": r.get("id"), **res} for r, res in zip(hard, results)],
-              open(f"checkpoints/geb_probe_{tag}.json", "w"))
+    out_path = f"checkpoints/geb_probe_{tag}.jsonl"
+    done = {}
+    if os.path.exists(out_path):  # resume: keep finished terms
+        for line in open(out_path):
+            rec = json.loads(line)
+            done[rec["id"]] = rec
+    todo = [r for r in hard if r.get("id") not in done]
+    ctx = multiprocessing.get_context("spawn")
+    start = time.time()
+    with ProcessPoolExecutor(workers, mp_context=ctx) as pool, open(out_path, "a") as out:
+        futures = {pool.submit(run, (r["sexpr"], limit)): r for r in todo}
+        from concurrent.futures import as_completed
+        for i, fut in enumerate(as_completed(futures), 1):
+            r = futures[fut]
+            rec = {"id": r.get("id"), **fut.result()}
+            done[rec["id"]] = rec
+            out.write(json.dumps(rec) + "\n")
+            out.flush()
+            print(f"{len(done)}/{len(hard)} terms ({time.time() - start:.0f}s)", flush=True)
+    results = [done[r.get("id")] for r in hard if r.get("id") in done]
     print(f"{len(hard)} {which} {suite} terms, e-node limit {limit}")
     for name in ("egglog", "capped", "mcts-geb", "az-geb"):
         ok = [r[name] for r in results if r[name][0] is not None]
