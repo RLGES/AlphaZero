@@ -5,7 +5,7 @@
 > - **Commits:** sumeettummarmatti <sumeettummarmatti@gmail.com>, no Claude trailers.
 > - **Pushing:** `git -c credential.helper= -c 'credential.helper=!gh auth git-credential' push`. Plain `git push` returns 403.
 
-## ▶ RESUME HERE (last updated 2026-11-24 ~11:25 IST)
+## ▶ RESUME HERE (last updated 2026-11-24 ~12:05 IST)
 
 **Run 4 is in progress on the Vultr server.**
 - Server: `ssh <server>`; work dir `/root/rlges`.
@@ -147,6 +147,7 @@
 - 11-24 11:00 IST: MCTS-GEB sweep done + egg Runner baselines (/root/rlges/external/egg_proper.py). 500 nodes, mean size reduction: Math their-egg 14.9 / egg back-off 17.8 / MCTS-GEB 28.2; Prop 45.5 / 45.9 / 69.5. MCTS-GEB never worse than egg back-off, better on 10/20 Math, 12/18 Prop; ~51-73 s per term. RESULTS.md section 11, files results/mctsgeb/. Headroom exists here (unlike asm): next port AZ-GEB to Math/Prop.
 - 11-24 11:17 IST: T3 baselines 51/100 (1000 nodes). Server idle otherwise (13 GiB free). Next: BackOff-200 analogue + AZ-GEB port for Math/Prop.
 - 11-24 11:25 IST: USER (rightly): the T3 baseline used an UNTRAINED AZ-GEB (33%). Launched the trained AZ-GEB (checkpoints/geb_v7/best.pt, macro prior 0.5) on the same 100-term T3 sample at 1000 nodes -> checkpoints/geb_probe_T3_all_1000_azv7.jsonl (log geb_probe_T3_azv7.log). Untrained column to be dropped from results. T3 baselines so far (51): egglog 86.7 / BackOff-200 87.5 (57% fewer nodes) / our MCTS-GEB-style search finished 3 of 51 (5-min, 2 GB limits).
+- 11-24 12:05 IST: USER: compare only MCTS-GEB ORIGINAL vs AZ-GEB vs egglog; do not modify their method. Dropped the re-implemented MCTS-GEB from test-set runs (it timed out on 48/51 T3 terms anyway). Queue restarted with ONLY=egglog,capped (resumes: T3@1000 74/100 kept, then T3@300, T4, T5, T7). Trained AZ-GEB (geb_v7) on T3 running separately (TAG=_azv7). PLAN: build AZ-GEB as an extra planner INSIDE their framework (their gym env, egg engine, rules, benchmarks; our PUCT + network instead of random rollouts) for the Math/Prop head-to-head; optionally add an asm language definition to their framework so MCTS-GEB original can run on T3-T7 (AstSize cost).
 - 11-22 18:13 IST: llm_s0 round 42, score 0.637, best 0.638. No errors. Revised ETA: main results ~Tue 24 Nov 21:00 IST, llmbig ~Wed 25 Nov 12:00.
 - 11-22 20:13 IST: llm_s0 round 54, score 0.637, new best 0.643. Still improving. No errors.
 - 11-22 21:13 IST: llm_s0 round 60, new best 0.644. Still improving. No errors.

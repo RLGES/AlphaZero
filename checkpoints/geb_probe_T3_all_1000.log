@@ -1,0 +1,31 @@
+75/100 terms (1s)
+76/100 terms (1s)
+77/100 terms (1s)
+78/100 terms (2s)
+79/100 terms (2s)
+80/100 terms (2s)
+81/100 terms (3s)
+82/100 terms (3s)
+83/100 terms (3s)
+84/100 terms (3s)
+85/100 terms (3s)
+86/100 terms (4s)
+87/100 terms (4s)
+88/100 terms (5s)
+89/100 terms (5s)
+90/100 terms (5s)
+91/100 terms (6s)
+92/100 terms (6s)
+93/100 terms (6s)
+94/100 terms (6s)
+95/100 terms (7s)
+96/100 terms (7s)
+97/100 terms (7s)
+98/100 terms (7s)
+99/100 terms (8s)
+100/100 terms (8s)
+100 all T3 terms, e-node limit 1000
+egglog    improvement  87.14 e-nodes    1444 sec    0.4 failed 0
+capped    improvement  87.79 e-nodes     642 sec    0.5 failed 0
+mcts-geb  improvement  89.47 e-nodes    1050 sec   23.7 failed 95
+az-geb    improvement  31.69 e-nodes      54 sec   28.8 failed 26
