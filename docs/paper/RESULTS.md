@@ -293,6 +293,23 @@ Trained AZ-GEB (geb_v7) on T3 at 1,000 nodes: finished only 3 of 30 terms within
 limit (mean 276 s per term); on those 3 it equals BackOff-200 (89.02). Run stopped: too slow
 on large blocks. The re-implemented MCTS-GEB was dropped (timed out on 48/51 T3 terms).
 
+### AZ-GEB in the MCTS-GEB framework (first version, 24 Nov)
+`scripts/azgeb_pes.py`: planner added to their framework (their env, egg, rules, generator,
+unmodified); PUCT (32 simulations) with a small MLP policy/value network on e-graph
+features, no rollouts. Trained per language on seeds 1000+ (30 rounds x 24 episodes, ~20 s
+per round), best round chosen on validation seeds 900-919; test = the same 40 expressions
+(seeds 0-19). Files: `results/mctsgeb/azgeb/`.
+
+| Set | egglog BackOff-200 | MCTS-GEB (original) | AZ-GEB v1 | AZ-GEB time | MCTS-GEB time |
+|---|---|---|---|---|---|
+| Math | 18.6% | **28.2%** | 6.7% | 0.66 s | 51 s |
+| Prop | 48.4% | **69.5%** | 59.5% | 0.84 s | 73 s |
+
+Prop: AZ-GEB beats egglog BackOff-200 by +11 (better on 7, worse on 5 of 18) at about 87x
+less time than MCTS-GEB, but stays 10 points below MCTS-GEB (worse on 10/18, never better).
+Math: AZ-GEB is below every baseline. Training peaked at round 1-2 and then degraded
+(policy collapse), so this is a first, weak version.
+
 ## Decisions and incidents (dates IST)
 - 22 Nov: test assumed built-in rules only; pinned (`tests/test_asm.py`).
 - 23 Nov: discovery round 5 run; no gain, no extra arm.

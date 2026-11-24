@@ -28,3 +28,7 @@
 28/100 terms (2702s)
 29/100 terms (2710s)
 30/100 terms (2877s)
+memory allocation of 5242880 bytes failed
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+/usr/lib/python3.12/multiprocessing/resource_tracker.py:254: UserWarning: resource_tracker: There appear to be 5 leaked semaphore objects to clean up at shutdown
+  warnings.warn('resource_tracker: There appear to be %d '
