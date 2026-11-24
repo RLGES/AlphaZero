@@ -5,7 +5,7 @@
 > - **Commits:** sumeettummarmatti <sumeettummarmatti@gmail.com>, no Claude trailers.
 > - **Pushing:** `git -c credential.helper= -c 'credential.helper=!gh auth git-credential' push`. Plain `git push` returns 403.
 
-## ▶ RESUME HERE (last updated 2026-11-24 ~12:45 IST)
+## ▶ RESUME HERE (last updated 2026-11-24 ~13:55 IST)
 
 **Run 4 is in progress on the Vultr server.**
 - Server: `ssh <server>`; work dir `/root/rlges`.
@@ -152,6 +152,7 @@
 - 11-24 12:10 IST: test-set baseline queue DONE (egglog vs BackOff-200; T3@1000 87.14/87.79, T3@300 82.46/82.47, T4 33.15/35.06, T5 56.48/56.52, T7 70.23/70.28; BackOff-200 uses 33-56% fewer e-nodes). Trained AZ-GEB on T3: only 3/30 finished in 5 min (276 s mean), equal to BackOff-200 on those; stopped. Results in RESULTS.md + TEST_SETS.md (Desktop copy updated).
 - 11-24 12:30 IST: A6 built: scripts/azgeb_pes.py (copied to /root/rlges/external/azgeb_pes.py) = AZ-GEB planner inside their framework (their BaseEnvironment, egg, rules, generator; PUCT + small MLP policy/value on e-graph features, no rollouts; 32 sims; 500 nodes; max 60 steps; train seeds 1000+, val 900-919, test 0-19). Untrained smoke: 0.2-0.3 s per expression (vs MCTS-GEB ~50 s). A7 training started for MATH and PROP (3 workers each, 30 rounds x 24 episodes), logs /root/rlges/external/azgeb/train_<LANG>.log.
 - 11-24 12:45 IST: A7/A8 v1 done. AZ-GEB (in their framework) test on the 40 exprs: Prop 59.5% (BackOff-200 48.4, MCTS-GEB 69.5) at 0.84 s vs 73 s; Math 6.7% (BackOff-200 18.6, MCTS-GEB 28.2). Training peaked at round 1-2 then collapsed. RESULTS.md section 11, results/mctsgeb/azgeb/. Next: fix collapse (lower lr, more sims, value from best-so-far), train longer.
+- 11-24 13:55 IST: server was idle after A8 v1. Started AZ-GEB v2 training (pes framework): SIMS=64, LR=3e-4 (+weight decay), 48 episodes/round, 40 rounds; out /root/rlges/external/azgeb_v2/<LANG>, logs /root/rlges/external/azgeb_v2_train_<LANG>.log. T3/test-set baselines finished earlier.
 - 11-22 18:13 IST: llm_s0 round 42, score 0.637, best 0.638. No errors. Revised ETA: main results ~Tue 24 Nov 21:00 IST, llmbig ~Wed 25 Nov 12:00.
 - 11-22 20:13 IST: llm_s0 round 54, score 0.637, new best 0.643. Still improving. No errors.
 - 11-22 21:13 IST: llm_s0 round 60, new best 0.644. Still improving. No errors.
