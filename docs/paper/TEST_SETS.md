@@ -122,6 +122,20 @@ Finding: across every set, egglog on AlphaZero-chosen rules never needed a retry
 score cost of 0.0-1.0 points (largest on T7, where the qwen rules matter most). T4 shows no
 memory effect (egglog never blows up there).
 
+### Test-set baselines (100-term T3 sample + T4/T5/T7; `checkpoints/geb_probe_<set>_all_<limit>.jsonl`)
+| Set | Limit | Terms | egglog default | egglog BackOff-200 |
+|---|---|---|---|---|
+| T3 | 1,000 | 100 | 87.14 (1,443 e-nodes) | 87.79 (642) |
+| T3 | 300 | 100 | 82.46 (678) | 82.47 (452) |
+| T4 | 1,000 | 50 | 33.15 (1,011) | 35.06 (615) |
+| T5 | 1,000 | 29 | 56.48 (672) | 56.52 (320) |
+| T7 | 1,000 | 50 | 70.23 (968) | 70.28 (433) |
+
+BackOff-200 matches or beats egglog default everywhere with 33-56% fewer e-nodes.
+Trained AZ-GEB (geb_v7) on T3 at 1,000 nodes: finished only 3 of 30 terms within the 5-minute
+limit (mean 276 s per term); on those 3 it equals BackOff-200 (89.02). Run stopped: too slow
+on large blocks. The re-implemented MCTS-GEB was dropped (timed out on 48/51 T3 terms).
+
 ## Overall conclusions so far
 - **Works:** AlphaZero beats MCTS efficiently; LLM rules add about +9; AlphaZero choosing
   egglog's rules keeps egglog's score while removing its memory blow-ups and running 32%

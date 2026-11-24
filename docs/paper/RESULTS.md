@@ -279,6 +279,20 @@ for egg. Two tiny Prop terms (seeds 12, 16) gave no MCTS-GEB output.
 Finding: unlike our asm programs, these benchmarks leave large headroom for scheduling under a
 tight node budget, so they are the right place to test AZ-GEB.
 
+### Test-set baselines (100-term T3 sample + T4/T5/T7; `checkpoints/geb_probe_<set>_all_<limit>.jsonl`)
+| Set | Limit | Terms | egglog default | egglog BackOff-200 |
+|---|---|---|---|---|
+| T3 | 1,000 | 100 | 87.14 (1,443 e-nodes) | 87.79 (642) |
+| T3 | 300 | 100 | 82.46 (678) | 82.47 (452) |
+| T4 | 1,000 | 50 | 33.15 (1,011) | 35.06 (615) |
+| T5 | 1,000 | 29 | 56.48 (672) | 56.52 (320) |
+| T7 | 1,000 | 50 | 70.23 (968) | 70.28 (433) |
+
+BackOff-200 matches or beats egglog default everywhere with 33-56% fewer e-nodes.
+Trained AZ-GEB (geb_v7) on T3 at 1,000 nodes: finished only 3 of 30 terms within the 5-minute
+limit (mean 276 s per term); on those 3 it equals BackOff-200 (89.02). Run stopped: too slow
+on large blocks. The re-implemented MCTS-GEB was dropped (timed out on 48/51 T3 terms).
+
 ## Decisions and incidents (dates IST)
 - 22 Nov: test assumed built-in rules only; pinned (`tests/test_asm.py`).
 - 23 Nov: discovery round 5 run; no gain, no extra arm.
