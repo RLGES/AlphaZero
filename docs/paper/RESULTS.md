@@ -310,6 +310,21 @@ less time than MCTS-GEB, but stays 10 points below MCTS-GEB (worse on 10/18, nev
 Math: AZ-GEB is below every baseline. Training peaked at round 1-2 and then degraded
 (policy collapse), so this is a first, weak version.
 
+### AZ-GEB v2 and final model choice (selected on validation only)
+v2: 64 simulations, lr 3e-4 + weight decay, 48 episodes x 40 rounds (`results/mctsgeb/azgeb_v2/`).
+Validation best (seeds 900-919): Math v1 8.77 / v2 **26.10**; Prop v1 **65.42** / v2 58.17. Chosen
+by validation: Math = v2, Prop = v1. Test (the 40 expressions; v2 Prop test 53.2 shown for
+completeness, not chosen):
+
+| Set | egglog BackOff-200 | MCTS-GEB (original) | AZ-GEB (chosen) | AZ-GEB time | MCTS-GEB time |
+|---|---|---|---|---|---|
+| Math | 18.6% | **28.2%** | 17.3% (v2) | 0.96 s | 51 s |
+| Prop | 48.4% | **69.5%** | 59.5% (v1) | 0.84 s | 73 s |
+
+AZ-GEB is never better than MCTS-GEB on any expression (worse on 12/20 Math, 10/18 Prop). Against
+BackOff-200: Math better on 4, worse on 8 (-1.3 mean); Prop better on 7, worse on 5 (+11.1 mean).
+AZ-GEB is 50-90x faster than MCTS-GEB.
+
 ## Decisions and incidents (dates IST)
 - 22 Nov: test assumed built-in rules only; pinned (`tests/test_asm.py`).
 - 23 Nov: discovery round 5 run; no gain, no extra arm.
