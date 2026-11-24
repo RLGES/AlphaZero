@@ -5,7 +5,7 @@
 > - **Commits:** sumeettummarmatti <sumeettummarmatti@gmail.com>, no Claude trailers.
 > - **Pushing:** `git -c credential.helper= -c 'credential.helper=!gh auth git-credential' push`. Plain `git push` returns 403.
 
-## ▶ RESUME HERE (last updated 2026-11-24 ~11:00 IST)
+## ▶ RESUME HERE (last updated 2026-11-24 ~11:17 IST)
 
 **Run 4 is in progress on the Vultr server.**
 - Server: `ssh <server>`; work dir `/root/rlges`.
@@ -145,6 +145,7 @@
 - 11-24 10:17 IST: MCTS-GEB sweep (500 nodes) MATH seeds 0-8 done (~50 s each): seed0 egg 183 vs MCTS-GEB 125; seed5 43 vs 13; seed6 108 vs 54; seed7 109 vs 81; small exprs tie. T3 baselines 17/100. 13 GiB free.
 - 11-24 10:48 IST: MCTS-GEB sweep at 500 nodes: MATH 20/20 done, PROP 19/20. MCTS-GEB beats their egg baseline on many terms (MATH s19 55 vs 25, s13 51 vs 29; PROP s5 183 vs 1, s18 77 vs 1, s2 83 vs 35); 2 tiny PROP terms gave NA. T3 baselines 33/100.
 - 11-24 11:00 IST: MCTS-GEB sweep done + egg Runner baselines (/root/rlges/external/egg_proper.py). 500 nodes, mean size reduction: Math their-egg 14.9 / egg back-off 17.8 / MCTS-GEB 28.2; Prop 45.5 / 45.9 / 69.5. MCTS-GEB never worse than egg back-off, better on 10/20 Math, 12/18 Prop; ~51-73 s per term. RESULTS.md section 11, files results/mctsgeb/. Headroom exists here (unlike asm): next port AZ-GEB to Math/Prop.
+- 11-24 11:17 IST: T3 baselines 51/100 (1000 nodes). Server idle otherwise (13 GiB free). Next: BackOff-200 analogue + AZ-GEB port for Math/Prop.
 - 11-22 18:13 IST: llm_s0 round 42, score 0.637, best 0.638. No errors. Revised ETA: main results ~Tue 24 Nov 21:00 IST, llmbig ~Wed 25 Nov 12:00.
 - 11-22 20:13 IST: llm_s0 round 54, score 0.637, new best 0.643. Still improving. No errors.
 - 11-22 21:13 IST: llm_s0 round 60, new best 0.644. Still improving. No errors.
