@@ -62,7 +62,16 @@ def main():
     language = AsmLanguage()
     net = _network(ckpt)
     rows = []
-    for name, term in test_sets()["heldout"][:n]:
+    suite = sys.argv[5] if len(sys.argv) > 5 else "heldout"
+    if suite in ("heldout", "stress"):
+        items = test_sets()[suite][:n]
+    else:  # a suite from benchmarks/asm/testsets (T3, T4, T5, T7)
+        import json
+
+        from benchmarks.asm.term import from_sexpr
+        items = [(r["id"], from_sexpr(r["sexpr"]))
+                 for r in map(json.loads, open(f"benchmarks/asm/testsets/{suite}.jsonl"))][:n]
+    for name, term in items:
         az = rewrite_detailed(language, term, AlphaZeroConfig(iterations=100, seed=0, network=net))
         rules = _az_rule_choice(language, term, ckpt, az.trace)
         c0 = language.cost(term)
