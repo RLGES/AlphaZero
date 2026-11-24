@@ -5,7 +5,7 @@
 > - **Commits:** sumeettummarmatti <sumeettummarmatti@gmail.com>, no Claude trailers.
 > - **Pushing:** `git -c credential.helper= -c 'credential.helper=!gh auth git-credential' push`. Plain `git push` returns 403.
 
-## ▶ RESUME HERE (last updated 2026-11-24 ~10:05 IST)
+## ▶ RESUME HERE (last updated 2026-11-24 ~09:50 IST)
 
 **Run 4 is in progress on the Vultr server.**
 - Server: `ssh <server>`; work dir `/root/rlges`.
@@ -139,6 +139,7 @@
 - 11-24 08:47 IST: memory_compare on new sets: T5 done (29 terms), T3/T4/T7 at 100, stress at 300 after 8 min; ETA ~30 min. T3 probe at 7 h.
 - 11-24 09:17 IST: memory_compare on ALL sets done. AZ-chosen rules: 0 retries everywhere (all-rules 32 retries total), T3 p95 extra RAM 330 -> 28 MB, 25-40% faster, score cost 0.0-1.0 (T7 -1.0, T3 -0.55). T4 no effect. Tables in RESULTS.md and TEST_SETS.md (Desktop copy updated). T3 probe at 7.5 h.
 - 11-24 10:05 IST: USER: head-to-head with MCTS-GEB on their own benchmarks (permission granted to clone github.com/ucamrl/eqs + egg and install the Rust toolchain). Server: /root/rlges/external/{eqs,egg} (14 MB + 0.9 MB), rustup minimal, separate venv /root/rlges/external/venv (Python 3.10 via uv, gym 0.23.1, numpy<2, maturin 0.13.7), rust_lib built. Their setup: Math 26 rules, Prop 13 rules, depth-5 random exprs per seed, egg baseline = round-robin single rules, SimpleScheduler, 1 iteration each, until node limit; MCTS budget 512, rollouts 20, AstSize. Reproduced their egg MATH-5-0 at 10k nodes: 251 -> 169 (matches paper). Running their MCTS-GEB (wu, 4 sim workers) on MATH-5-0, log /root/rlges/external/results/mcts_MATH-5-0.log. Labelled running T3 baselines job in checkpoints/RUNNING_JOBS.md.
+- 11-24 09:50 IST: T3 baselines (8 h, nothing saved yet, ETA unknown) STOPPED and restarted on a fixed sample of 100 T3 terms (seed 20261124), 5-min limit per method, results saved per term to checkpoints/geb_probe_<suite>_all_<limit>.jsonl. Queue T3@1000, T3@300, T4 50, T5 29, T7 50. MCTS-GEB reproduction on MATH-5-0 running (needed torch CPU + --env_id pes-par-env-v0). Job note checkpoints/RUNNING_JOBS.md on the server.
 - 11-22 18:13 IST: llm_s0 round 42, score 0.637, best 0.638. No errors. Revised ETA: main results ~Tue 24 Nov 21:00 IST, llmbig ~Wed 25 Nov 12:00.
 - 11-22 20:13 IST: llm_s0 round 54, score 0.637, new best 0.643. Still improving. No errors.
 - 11-22 21:13 IST: llm_s0 round 60, new best 0.644. Still improving. No errors.
