@@ -5,7 +5,7 @@
 > - **Commits:** sumeettummarmatti <sumeettummarmatti@gmail.com>, no Claude trailers.
 > - **Pushing:** `git -c credential.helper= -c 'credential.helper=!gh auth git-credential' push`. Plain `git push` returns 403.
 
-## ▶ RESUME HERE (last updated 2026-11-24 ~10:15 IST)
+## ▶ RESUME HERE (last updated 2026-11-24 ~10:17 IST)
 
 **Run 4 is in progress on the Vultr server.**
 - Server: `ssh <server>`; work dir `/root/rlges`.
@@ -142,6 +142,7 @@
 - 11-24 09:50 IST: T3 baselines (8 h, nothing saved yet, ETA unknown) STOPPED and restarted on a fixed sample of 100 T3 terms (seed 20261124), 5-min limit per method, results saved per term to checkpoints/geb_probe_<suite>_all_<limit>.jsonl. Queue T3@1000, T3@300, T4 50, T5 29, T7 50. MCTS-GEB reproduction on MATH-5-0 running (needed torch CPU + --env_id pes-par-env-v0). Job note checkpoints/RUNNING_JOBS.md on the server.
 - 11-24 09:55 IST: MEMORY ALERT: MCTS-GEB workers (their code) reached 5.9 + 2.7 + 1.7 GB (548 MB left; paper used 256 GB RAM). Stopped it (PIDs), restarted with --w2 2 (log kept as mcts_MATH-5-0_w4_stopped.log: after 2 planning steps AST 251 -> 207, step 2 took 108 s). Added /root/rlges/external/memguard.sh: stops run_mcts.py if available < 1.5 GB. Memory back to 13 GiB free. T3 baselines (100-term sample) running.
 - 11-24 10:15 IST: MCTS-GEB at 10k nodes does NOT fit in 15 GB (kernel OOM-killed 2 workers; with 2 workers the guard stopped it at 70 MB free; paper used 256 GB). At 500 nodes (their scripts default) MATH-5-0: their egg 251 -> 183, their MCTS-GEB 251 -> 135 in 47 s (2 workers). Launched /root/rlges/external/run_sweep.sh 500 20: their egg + MCTS-GEB on MATH and PROP seeds 0-19 -> results/sweep_500.csv/.log; memguard.sh now stays alive for the whole sweep. T3 baselines 10/100 after 25 min.
+- 11-24 10:17 IST: MCTS-GEB sweep (500 nodes) MATH seeds 0-8 done (~50 s each): seed0 egg 183 vs MCTS-GEB 125; seed5 43 vs 13; seed6 108 vs 54; seed7 109 vs 81; small exprs tie. T3 baselines 17/100. 13 GiB free.
 - 11-22 18:13 IST: llm_s0 round 42, score 0.637, best 0.638. No errors. Revised ETA: main results ~Tue 24 Nov 21:00 IST, llmbig ~Wed 25 Nov 12:00.
 - 11-22 20:13 IST: llm_s0 round 54, score 0.637, new best 0.643. Still improving. No errors.
 - 11-22 21:13 IST: llm_s0 round 60, new best 0.644. Still improving. No errors.
