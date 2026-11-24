@@ -211,6 +211,24 @@ Findings: egglog's back-off scheduler keeps long same-operator chains under cont
 asm generator's test split overlaps the existing held-out/stress sets heavily (T5), so T5 needs
 deeper or differently seeded terms. XL is capped at 256 nodes by the language.
 
+## 10. AZ-GEB training on suite-style terms (24 Nov)
+Training terms: T3/T4/T5/T7-style built from training-split material only
+(`scripts/geb_train.py --composite -1`); validation 20 terms of the same kind (seed 515151).
+Mixed action space: single rule (one capped iteration) or macro (all rules, one capped
+iteration); macro prior floor 0.5.
+
+- geb_v3 (no macro floor, 1,000 nodes): round 0 AZ 21.3 vs egglog 67.5 vs capped 69.4 (the
+  term network gives the macro action ~0 prior). Stopped.
+- geb_v4/v5/v6: infrastructure failures (egglog memory growth in workers; Python
+  max_tasks_per_child hang; > 2 h per round). Fixed with a fresh worker pool per batch.
+- geb_v7 (500 nodes, 20 steps, 8 sims, 16 episodes): 9 rounds of ~6 min, flat:
+  AZ 70.19 = capped 70.19 > egglog 65.70; e-nodes AZ 408 vs egglog 644. The policy collapsed
+  to always taking the macro action (policy loss 0.02-0.04). Early-stopped at round 8.
+  Finding: under a 500-node budget, capped scheduling beats egglog's default by +4.5 with
+  37% fewer e-nodes; learning has not yet improved on capped.
+- geb_v8 started: 200-node budget (tighter, where one capped step overshoots), 16 sims,
+  macro floor 0.3.
+
 ## Decisions and incidents (dates IST)
 - 22 Nov: test assumed built-in rules only; pinned (`tests/test_asm.py`).
 - 23 Nov: discovery round 5 run; no gain, no extra arm.
