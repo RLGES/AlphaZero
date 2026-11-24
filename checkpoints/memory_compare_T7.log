@@ -1,2 +1,9 @@
 /root/rlges/AlphaZero/scripts/memory_compare.py:27: DeprecationWarning: This process (pid=3522148) is multi-threaded, use of fork() may lead to deadlocks in the child.
   pid = os.fork()
+memory allocation of 1342177280 bytes failed
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+memory allocation of 16 bytes failed
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+memory allocation of 536870912 bytes failed
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+100 terms
