@@ -261,6 +261,8 @@ def main() -> int:
                 with ProcessPoolExecutor(a.workers, mp_context=context,
                                          initializer=_guard) as fresh:
                     out.extend(fresh.map(fn, jobs[i:i + 2 * a.workers]))
+                print(f"  {fn.__name__}: {len(out)}/{len(jobs)} ({time.strftime('%T')})",
+                      flush=True)
             return out
 
     with contextlib.nullcontext(_Pool()) as pool:
