@@ -260,10 +260,18 @@ Reproduction check: their egg baseline on MATH-5-0 at 10k nodes = 251 -> 169, as
 
 Mean relative size reduction (higher is better), terms where MCTS-GEB produced a result:
 
-| Set | Terms | Their egg baseline (round-robin, 1 rule/step) | egg Runner, back-off (default) | egg Runner, simple | MCTS-GEB |
-|---|---|---|---|---|---|
-| Math | 20 | 14.9% | 17.8% | 17.8% | **28.2%** |
-| Prop | 18 | 45.5% | 45.9% | 45.9% | **69.5%** |
+| Set | Terms | Their egg baseline (round-robin, 1 rule/step) | egg Runner, back-off | egglog default | egglog BackOff-200 | MCTS-GEB (original) |
+|---|---|---|---|---|---|---|
+| Math | 20 | 14.9% | 17.8% | 17.2% | 18.6% | **28.2%** |
+| Prop | 18 | 45.5% | 45.9% | 48.1% | 48.4% | **69.5%** |
+
+egglog columns: `scripts/egglog_mathprop.py`, `results/mctsgeb/egglog_500.csv`; same 40 expressions
+(exported from their generator: `results/mctsgeb/mctsgeb_exprs.json`), their 26 + 13 rules
+transcribed one-to-one, AstSize, no constant folding (their runs have none: `new_egraph`
+passes no evaluator), strict 500-node limit (an iteration that would cross it is rolled
+back). BackOff-200 is never better than MCTS-GEB (worse on 8/20 Math, 12/18 Prop).
+Note: a first egglog run with constant folding and a soft limit (up to ~1,000 e-nodes)
+looked much better (Prop 87%); that run was unfair and is discarded.
 
 MCTS-GEB is strictly better than egg's back-off runner on 10/20 Math and 12/18 Prop terms and
 never worse; ~51 s (Math) / ~73 s (Prop) per term with 2 simulation workers vs milliseconds
