@@ -249,6 +249,28 @@ Finding: across every set, egglog on AlphaZero-chosen rules never needed a retry
 score cost of 0.0-1.0 points (largest on T7, where the qwen rules matter most). T4 shows no
 memory effect (egglog never blows up there).
 
+## 11. Head-to-head on the MCTS-GEB benchmarks (their released code)
+Code: github.com/ucamrl/eqs (commit bba5059, cloned on the server, run unmodified in a separate
+Python 3.10 venv; Rust library built with maturin 0.13.7). Benchmarks: their Math (26 rules) and
+Prop (13 rules) languages, depth-5 expressions from their generator, seeds 0-19 each, cost =
+AstSize, e-node limit 500 (their scripts' default; 10k needed more than our 15 GB RAM: their
+paper used 256 GB). Files: `results/mctsgeb/sweep_500.csv` (their egg baseline + MCTS-GEB),
+`results/mctsgeb/egg_proper_500.csv` (egg Runner, all rules per iteration), scripts alongside.
+Reproduction check: their egg baseline on MATH-5-0 at 10k nodes = 251 -> 169, as in their paper.
+
+Mean relative size reduction (higher is better), terms where MCTS-GEB produced a result:
+
+| Set | Terms | Their egg baseline (round-robin, 1 rule/step) | egg Runner, back-off (default) | egg Runner, simple | MCTS-GEB |
+|---|---|---|---|---|---|
+| Math | 20 | 14.9% | 17.8% | 17.8% | **28.2%** |
+| Prop | 18 | 45.5% | 45.9% | 45.9% | **69.5%** |
+
+MCTS-GEB is strictly better than egg's back-off runner on 10/20 Math and 12/18 Prop terms and
+never worse; ~51 s (Math) / ~73 s (Prop) per term with 2 simulation workers vs milliseconds
+for egg. Two tiny Prop terms (seeds 12, 16) gave no MCTS-GEB output.
+Finding: unlike our asm programs, these benchmarks leave large headroom for scheduling under a
+tight node budget, so they are the right place to test AZ-GEB.
+
 ## Decisions and incidents (dates IST)
 - 22 Nov: test assumed built-in rules only; pinned (`tests/test_asm.py`).
 - 23 Nov: discovery round 5 run; no gain, no extra arm.
